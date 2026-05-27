@@ -1,0 +1,1504 @@
+[
+  {
+    "issue_id": "HLE-413",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "Тема 1. Фундамент: готовая основа и стратегия «форк vs сборка»",
+    "status": "Done",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-492"
+    ],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-413.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-414",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "Тема 2. Обработка кода 1С (Приоритет №1)",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [
+      "done"
+    ],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-414.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-415",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "Тема 3. Поисковый стек: эмбеддинги, гибрид, реранкинг, оркестрация",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-415.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-416",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "Тема 4. Приём и подготовка документации (ИТС, OCR, мультимодал)",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-416.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-417",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "Тема 5. Анти-галлюцинации и поведенческий контракт агента",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-417.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-418",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "Тема 6. Eval-набор «золото», метрики качества и наблюдаемость",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-418.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-419",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "Тема 7. Онлайн-деплой и мульти-аренда",
+    "status": "Backlog",
+    "priority": "Low",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-419.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-456",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] Сравнить 4 реализации индекс/граф 1С: bsl-atlas, 1c-mcp-metacode, bsl-graph, mcp-1c",
+    "status": "Done",
+    "priority": "High",
+    "labels": [
+      "done"
+    ],
+    "parent_id": "HLE-414",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-456.md",
+    "attachments": [
+      {
+        "id": "773861cd-b769-4d72-9b90-bbc7c4b9d978",
+        "title": "Итоговый отчёт (result-HLE-456.md)",
+        "filename": "result-HLE-456.md",
+        "local_path": "docs/_source/linear/attachments/HLE-456/result-HLE-456.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/09e836c0-f2aa-4012-bb88-20fa7452465f/0decf886-5612-4175-b044-37cc63829e51",
+        "status": "ok"
+      },
+      {
+        "id": "40a6e1ec-e217-4eb8-9b9a-9f54665e96a9",
+        "title": "Заметки исследования (notes-HLE-456.md)",
+        "filename": "notes-HLE-456.md",
+        "local_path": "docs/_source/linear/attachments/HLE-456/notes-HLE-456.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/abd601ad-01e3-4dde-8901-06635a5b55b2/8f2d3441-1173-4a97-ae78-f384bef1763c",
+        "status": "ok"
+      }
+    ],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-457",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] Изучить cc-1c-skills: промт-инжиниринг и абстракции «как объяснять LLM устройство 1С»",
+    "status": "Done",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": "HLE-414",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-317",
+      "HLE-491"
+    ],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-457.md",
+    "attachments": [
+      {
+        "id": "173b1a56-99e4-48a4-9f4d-5186b211c3a4",
+        "title": "Результат: cc-1c-skills — промт-инжиниринг и абстракции",
+        "filename": "result-HLE-457.md",
+        "local_path": "docs/_source/linear/attachments/HLE-457/result-HLE-457.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/d3566f98-6dbf-462e-9550-1d2289a9bce9/8d9e8813-2095-4156-a265-3f96505e4a6f",
+        "status": "ok"
+      },
+      {
+        "id": "244a26d2-10f8-4e4c-adb5-d7e93c3a856e",
+        "title": "Заметки исследования: cc-1c-skills",
+        "filename": "notes-HLE-457.md",
+        "local_path": "docs/_source/linear/attachments/HLE-457/notes-HLE-457.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/32bbe8ca-e105-4cc3-aca3-36d757033d91/1bbabf71-352e-4008-a64a-68f0ce09dd5b",
+        "status": "ok"
+      }
+    ],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-458",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] Разобрать mini-ai-1c: состав MCP-серверов, набор инструментов, «поиск по конфигурации»",
+    "status": "Done",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": "HLE-414",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-456"
+    ],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-458.md",
+    "attachments": [
+      {
+        "id": "4a6ee293-5dcc-4531-ad3f-cc7e778fbc36",
+        "title": "result-HLE-458.md",
+        "filename": "result-HLE-458.md",
+        "local_path": "docs/_source/linear/attachments/HLE-458/result-HLE-458.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/c61d9399-ce4d-442e-af39-346b6dd5a706/0406bd87-3609-4a45-b428-c7fab8e8e2e0",
+        "status": "ok"
+      },
+      {
+        "id": "af447733-b515-4f01-9ae1-01d308cfa457",
+        "title": "notes-HLE-458.md",
+        "filename": "notes-HLE-458.md",
+        "local_path": "docs/_source/linear/attachments/HLE-458/notes-HLE-458.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/6672fed5-cb3f-4e0a-a9bb-ff7fb2551828/e4db0682-7cbc-4fb4-ac79-f244113df780",
+        "status": "ok"
+      }
+    ],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-459",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] Глубокий разбор графовых аналогов: 1c-mcp-metacode (Neo4j) + bsl-graph (NebulaGraph) — модель графа, обход, резолв имён",
+    "status": "Done",
+    "priority": "High",
+    "labels": [
+      "done"
+    ],
+    "parent_id": "HLE-414",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-456"
+    ],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-459.md",
+    "attachments": [
+      {
+        "id": "397b5227-270f-4053-9cd9-1e64ba88563b",
+        "title": "Результат: result-HLE-459.md",
+        "filename": "result-HLE-459.md",
+        "local_path": "docs/_source/linear/attachments/HLE-459/result-HLE-459.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/86401169-58e5-42f5-b0cc-0d651dd3d72f/b136d44d-dc5d-441e-a08d-22bc32a88005",
+        "status": "ok"
+      },
+      {
+        "id": "297a3bf9-262b-48ed-ae0f-023432b6fae0",
+        "title": "Заметки: notes-HLE-459.md",
+        "filename": "notes-HLE-459.md",
+        "local_path": "docs/_source/linear/attachments/HLE-459/notes-HLE-459.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/0bed1e8b-9392-4502-ac66-9e97b34ee113/84fdd666-35f0-4dc9-9a47-3d4bd124315f",
+        "status": "ok"
+      }
+    ],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-460",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] FSerg/mcp-1c-v1: chunking-стратегия и Qdrant-схема (только идеи, код не берём)",
+    "status": "Done",
+    "priority": "Medium",
+    "labels": [
+      "done"
+    ],
+    "parent_id": "HLE-414",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-494",
+      "HLE-491"
+    ],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-460.md",
+    "attachments": [
+      {
+        "id": "f4733ee3-5374-4367-a935-8c7ffb2ef9fc",
+        "title": "Результат: result-HLE-460.md",
+        "filename": "result-HLE-460.md",
+        "local_path": "docs/_source/linear/attachments/HLE-460/result-HLE-460.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/bf4c9efb-8176-410f-9d89-5adbfd25c6b9/0e5b7959-f3bb-405e-9865-4d30e2cdc083",
+        "status": "ok"
+      },
+      {
+        "id": "332ee7f6-f06c-4b47-9d1f-213cfcee46dd",
+        "title": "Заметки: notes-HLE-460.md",
+        "filename": "notes-HLE-460.md",
+        "local_path": "docs/_source/linear/attachments/HLE-460/notes-HLE-460.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/9ba97b88-37b0-42f0-b576-c22c0bc43c8f/ef6a6c17-c370-4a6d-8ef0-3f002649f75a",
+        "status": "ok"
+      }
+    ],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-461",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] comol/ai_rules_1c: архитектура агента, fallback-цепочка graph→metadata→grep, диспетчер MCP",
+    "status": "Done",
+    "priority": "High",
+    "labels": [
+      "done"
+    ],
+    "parent_id": "HLE-414",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-456"
+    ],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-461.md",
+    "attachments": [
+      {
+        "id": "238970c7-5777-43e8-a192-54ce76e6bf7d",
+        "title": "Итоговый отчёт (result-HLE-461.md)",
+        "filename": "result-HLE-461.md",
+        "local_path": "docs/_source/linear/attachments/HLE-461/result-HLE-461.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/67197141-de93-4766-b505-3194d65446cb/fafb1503-0639-49e1-b72e-79c811a8a07c",
+        "status": "ok"
+      },
+      {
+        "id": "61c424ca-7319-4c39-a971-0901a28316ce",
+        "title": "Заметки исследования (notes-HLE-461.md)",
+        "filename": "notes-HLE-461.md",
+        "local_path": "docs/_source/linear/attachments/HLE-461/notes-HLE-461.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/509d38fc-3212-41a9-b976-54074666d190/c5d86425-0a9e-4ab0-90e4-248fbe5b9200",
+        "status": "ok"
+      }
+    ],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-462",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] onec-help-mcp: гибридный поиск BM25+вектор (референс для поискового стека)",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": "HLE-415",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-462.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-463",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] Обёртки BSL LS в MCP: claude-code-bsl-lsp + mcp-bsl-lsp-bridge — что даёт и какой ценой",
+    "status": "Done",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": "HLE-414",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-463.md",
+    "attachments": [
+      {
+        "id": "4caab5d9-c7c9-4a2a-a243-9c985beaef34",
+        "title": "Результат: BSL LS обёртки — что даёт и какой ценой",
+        "filename": "result-HLE-463.md",
+        "local_path": "docs/_source/linear/attachments/HLE-463/result-HLE-463.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/42b677fb-6fe4-475f-94df-5261b016b913/b8144e89-8f2b-4107-bcfe-6cf7f7f4615b",
+        "status": "ok"
+      },
+      {
+        "id": "57fb8c00-3d26-4077-8119-597a1186dea5",
+        "title": "Заметки исследования: BSL LS обёртки",
+        "filename": "notes-HLE-463.md",
+        "local_path": "docs/_source/linear/attachments/HLE-463/notes-HLE-463.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/267624ed-19de-4628-b3b4-150f30b56191/6a700ed7-c91b-43da-ba7d-ad4c3c5052e2",
+        "status": "ok"
+      }
+    ],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-464",
+    "project": "Переписываем ТЗ",
+    "project_slug": "perepisyvaem-tz",
+    "title": "[Claude Code · read-only] Живые данные 1С: разобрать 1c_mcp, 1c-mcp-toolkit, 1c-log-checker, spring-mcp-1c-copilot, 1c-ai-sandbox — runtime-доступ к базе, и расклассифицировать А/Б",
+    "status": "Done",
+    "priority": "Medium",
+    "labels": [
+      "done"
+    ],
+    "parent_id": "HLE-414",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-491"
+    ],
+    "file": "docs/_source/linear/perepisyvaem-tz/HLE-464.md",
+    "attachments": [
+      {
+        "id": "11c29a44-086c-45eb-be9a-b67c9fab8dd6",
+        "title": "Итоговый отчёт",
+        "filename": "result-HLE-464.md",
+        "local_path": "docs/_source/linear/attachments/HLE-464/result-HLE-464.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/15b9b7b8-3021-4905-929f-192405cecb36/e5cb5606-b888-4ce1-aa8f-2dfd4cbdf3ed",
+        "status": "ok"
+      },
+      {
+        "id": "a7f9a775-9827-47a0-bef6-33c45ad1d4f3",
+        "title": "Заметки по 5 репозиториям",
+        "filename": "notes-HLE-464.md",
+        "local_path": "docs/_source/linear/attachments/HLE-464/notes-HLE-464.md",
+        "source_url": "https://uploads.linear.app/9526409c-8125-4523-97a7-306eeb9bb8da/fb9ad3b2-3739-4017-a825-eca07e592fff/ed4cfef8-a367-48a5-8db8-489fa71a4525",
+        "status": "ok"
+      }
+    ],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T16:30:00Z"
+  },
+  {
+    "issue_id": "HLE-292",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "1. Каркас проекта: структура репо, конфиг, разделение код/данные",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-341",
+      "HLE-313"
+    ],
+    "blocks": [
+      "HLE-342",
+      "HLE-336",
+      "HLE-337",
+      "HLE-332",
+      "HLE-333",
+      "HLE-315",
+      "HLE-303",
+      "HLE-298",
+      "HLE-297"
+    ],
+    "related_to": [
+      "HLE-321"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-292.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-295",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "2. ADR: фиксация стека (FastMCP, BGE-M3 гибрид, reranker, vector store)",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-341"
+    ],
+    "blocks": [
+      "HLE-342"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-295.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-297",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "3. Парсер XML-выгрузки конфигурации (структура + связи + встроенная справка)",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-342",
+      "HLE-336",
+      "HLE-332",
+      "HLE-316",
+      "HLE-317",
+      "HLE-292"
+    ],
+    "blocks": [
+      "HLE-343",
+      "HLE-302",
+      "HLE-299"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-297.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-298",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "4. Индексатор текстовой доки (офлайн-ИТС + платформа) с иерархией и OCR",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-342",
+      "HLE-336",
+      "HLE-332",
+      "HLE-316",
+      "HLE-292"
+    ],
+    "blocks": [
+      "HLE-343",
+      "HLE-302",
+      "HLE-299"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-298.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-299",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "5. Поисковый слой: гибрид + реранкер + полные разделы + сигнал полноты",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-343",
+      "HLE-337",
+      "HLE-298",
+      "HLE-303",
+      "HLE-297"
+    ],
+    "blocks": [
+      "HLE-344",
+      "HLE-338",
+      "HLE-305",
+      "HLE-308",
+      "HLE-300"
+    ],
+    "related_to": [
+      "HLE-334",
+      "HLE-335"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-299.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-300",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "6. MCP-сервер: инструменты с обязывающими описаниями (само-вызов без пинка)",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-344",
+      "HLE-299"
+    ],
+    "blocks": [
+      "HLE-345",
+      "HLE-339",
+      "HLE-311",
+      "HLE-309",
+      "HLE-301",
+      "HLE-304"
+    ],
+    "related_to": [
+      "HLE-335",
+      "HLE-332"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-300.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-301",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "7. Поведенческий контракт: системный промпт «спец, а не колл-центр»",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-345",
+      "HLE-304",
+      "HLE-300"
+    ],
+    "blocks": [
+      "HLE-346"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-301.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-302",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "8. CLI и оркестрация индексации (склонировал → указал пути → включил)",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-344",
+      "HLE-298",
+      "HLE-297"
+    ],
+    "blocks": [
+      "HLE-345",
+      "HLE-312",
+      "HLE-310",
+      "HLE-309",
+      "HLE-304"
+    ],
+    "related_to": [
+      "HLE-333",
+      "HLE-332"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-302.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-303",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "9. Менеджер модели BGE: ленивая загрузка + прогрев на healthcheck + выгрузка по простою",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-342",
+      "HLE-292"
+    ],
+    "blocks": [
+      "HLE-344",
+      "HLE-304",
+      "HLE-299"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-303.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-304",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "10. Онбординг через MCP: validate_path / save_config / get_progress / healthcheck",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-344",
+      "HLE-336",
+      "HLE-300",
+      "HLE-303",
+      "HLE-302"
+    ],
+    "blocks": [
+      "HLE-345",
+      "HLE-312",
+      "HLE-310",
+      "HLE-301"
+    ],
+    "related_to": [
+      "HLE-333",
+      "HLE-332"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-304.md",
+    "attachments": [],
+    "comments_count": 1,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-305",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "11. Экспериментальный режим: shadow-обкатка стратегий + сбор телеметрии",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-308",
+      "HLE-299"
+    ],
+    "blocks": [
+      "HLE-338",
+      "HLE-307",
+      "HLE-306"
+    ],
+    "related_to": [
+      "HLE-334",
+      "HLE-335"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-305.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-306",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "12. LLM-судья: Claude как основной арбитр (Cohere Command — второй голос)",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-308",
+      "HLE-305"
+    ],
+    "blocks": [
+      "HLE-307"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-306.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-307",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "13. Анализ телеметрии и финальный выбор стратегии (закрытие отложенных решений ADR)",
+    "status": "Backlog",
+    "priority": "Low",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-305",
+      "HLE-306"
+    ],
+    "blocks": [],
+    "related_to": [
+      "HLE-334"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-307.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-308",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "14. Cohere-адаптеры: Rerank v4 + Embed 4 + Command (переключаемые, условные по ключу)",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-346",
+      "HLE-299"
+    ],
+    "blocks": [
+      "HLE-306",
+      "HLE-305"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-308.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-309",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "15. Упаковка и установка: ручной JSON + .mcpb-бандл + скрипт подготовки данных",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-346",
+      "HLE-300",
+      "HLE-302"
+    ],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-309.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-310",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "16. Мониторинг релизов ERP и платформы (дайджест + подсказка переиндексации)",
+    "status": "Backlog",
+    "priority": "Low",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-302",
+      "HLE-304"
+    ],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-310.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-311",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "17. Механизм живых процедур: get_procedure + самоисцеление инструкций + отчёт админу",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-346",
+      "HLE-300"
+    ],
+    "blocks": [
+      "HLE-312"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-311.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-312",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "18. Ежемесячное обновление доков: ненавязчивое предложение + согласование переиндексации",
+    "status": "Backlog",
+    "priority": "Low",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-302",
+      "HLE-304",
+      "HLE-311"
+    ],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-312.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-313",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] 0a. Bootstrap: репозиторий, CI, тулинг, Devin-ревьювер, правила для агентов (образец — atman)",
+    "status": "In Progress",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [
+      "HLE-341",
+      "HLE-317",
+      "HLE-316",
+      "HLE-292"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-313.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-314",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] 0b. Согласовать с Sentry использование спонсорской подписки под новый проект",
+    "status": "Done",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [
+      "HLE-341",
+      "HLE-318",
+      "HLE-315"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-314.md",
+    "attachments": [],
+    "comments_count": 1,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-315",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "0c. Инструментация: логи + трейсинг + метрики + AI-мониторинг (Sentry, образец — atman)",
+    "status": "In Progress",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-319",
+      "HLE-314",
+      "HLE-292"
+    ],
+    "blocks": [],
+    "related_to": [
+      "HLE-333"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-315.md",
+    "attachments": [],
+    "comments_count": 2,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-316",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] 0e. Собрать реальные данные (как у пользователя) и зафиксировать пути",
+    "status": "In Progress",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-313",
+      "HLE-317"
+    ],
+    "blocks": [
+      "HLE-337",
+      "HLE-341",
+      "HLE-333",
+      "HLE-297",
+      "HLE-298"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-316.md",
+    "attachments": [],
+    "comments_count": 1,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-317",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] 0d. Изучить cc-1c-skills, завендорить спеки 1С, обучить следующих агентов",
+    "status": "In Progress",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-313"
+    ],
+    "blocks": [
+      "HLE-341",
+      "HLE-316",
+      "HLE-297"
+    ],
+    "related_to": [
+      "HLE-457"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-317.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-318",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] 0f. Настроить Sentry workflow + DSN в env (после согласования)",
+    "status": "In Progress",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-314"
+    ],
+    "blocks": [
+      "HLE-341",
+      "HLE-319"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-318.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-319",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "0g. Включить Sentry-ревью в обязательные проверки PR",
+    "status": "In Progress",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-318"
+    ],
+    "blocks": [
+      "HLE-341",
+      "HLE-315"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-319.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-320",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] Создать шаблон репо (repo-template) для всех будущих проектов",
+    "status": "In Progress",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-320.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-321",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "0h: Изучить agent-playbook и перенести полезное в правила проекта",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [
+      "HLE-341"
+    ],
+    "related_to": [
+      "HLE-292"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-321.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-322",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "Склонировать плейбук репо локально",
+    "status": "In Progress",
+    "priority": "No priority",
+    "labels": [],
+    "parent_id": "HLE-321",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-322.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-323",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "Изучить что натворил агент",
+    "status": "In Progress",
+    "priority": "No priority",
+    "labels": [],
+    "parent_id": "HLE-321",
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-323.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-324",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "0i: Adapter-агностичная архитектура MCP + install()",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [
+      "HLE-341"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-324.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-332",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "19. Document Registry: реестр файлов с хешами, статусами и историей индексации",
+    "status": "Canceled",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-292"
+    ],
+    "blocks": [
+      "HLE-298",
+      "HLE-297",
+      "HLE-333"
+    ],
+    "related_to": [
+      "HLE-302",
+      "HLE-304",
+      "HLE-300"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-332.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-333",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "20. Парсер личных документов: doc/docx/pdf/txt и др., рекурсия, OCR, healthcheck папки",
+    "status": "Canceled",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-292",
+      "HLE-332",
+      "HLE-316"
+    ],
+    "blocks": [],
+    "related_to": [
+      "HLE-302",
+      "HLE-315",
+      "HLE-304"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-333.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-334",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "21. Адаптивный размер контекста: cut-off по скорам реранкера вместо фиксированного top_k",
+    "status": "Canceled",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-307",
+      "HLE-305",
+      "HLE-299"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-334.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-335",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "22. Семантический кеш запросов: exact-match + semantic similarity (опционально)",
+    "status": "Canceled",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [],
+    "blocks": [],
+    "related_to": [
+      "HLE-305",
+      "HLE-300",
+      "HLE-299"
+    ],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-335.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-336",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "1a. Document Registry: реестр файлов с хешами, статусами и историей индексации",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-292"
+    ],
+    "blocks": [
+      "HLE-340",
+      "HLE-342",
+      "HLE-298",
+      "HLE-297",
+      "HLE-304",
+      "HLE-337"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-336.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-337",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "3a. Парсер личных документов: мульти-формат + LibreOffice + OCR + рекурсия + healthcheck папки",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-342",
+      "HLE-316",
+      "HLE-292",
+      "HLE-336"
+    ],
+    "blocks": [
+      "HLE-343",
+      "HLE-299"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-337.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-338",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "11a. Адаптивный размер контекста: cut-off по gap скоров реранкера вместо фиксированного top_k",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-305",
+      "HLE-299"
+    ],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-338.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-339",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "6a. Семантический кеш запросов: exact-match + semantic similarity (опционально)",
+    "status": "Backlog",
+    "priority": "Medium",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-346",
+      "HLE-300"
+    ],
+    "blocks": [],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-339.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-340",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "4a. PII-фильтр: маскировка персональных данных перед записью в индекс (Presidio + ru_core_news_sm)",
+    "status": "Backlog",
+    "priority": "High",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-336",
+      "HLE-342"
+    ],
+    "blocks": [
+      "HLE-343"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-340.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-341",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] КТ1: Проверка инфраструктуры (bootstrap готов)",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-324",
+      "HLE-321",
+      "HLE-317",
+      "HLE-318",
+      "HLE-319",
+      "HLE-316",
+      "HLE-314",
+      "HLE-313"
+    ],
+    "blocks": [
+      "HLE-295",
+      "HLE-292"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-341.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-342",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] КТ2: Каркас живой (конфиг + реестр запускаются)",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-336",
+      "HLE-295",
+      "HLE-292"
+    ],
+    "blocks": [
+      "HLE-303",
+      "HLE-340",
+      "HLE-337",
+      "HLE-298",
+      "HLE-297"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-342.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-343",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] КТ3: Индексация работает (данные в Qdrant, реестр живёт)",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-298",
+      "HLE-337",
+      "HLE-340",
+      "HLE-297"
+    ],
+    "blocks": [
+      "HLE-299"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-343.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-344",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] КТ4: Поиск работает (BGE + реранкер + чанки из Qdrant)",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-299",
+      "HLE-303"
+    ],
+    "blocks": [
+      "HLE-304",
+      "HLE-302",
+      "HLE-300"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-344.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-345",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] КТ5: Агент живой в Claude Desktop (MCP + онбординг + CLI работают)",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-300",
+      "HLE-302",
+      "HLE-304"
+    ],
+    "blocks": [
+      "HLE-301"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-345.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  },
+  {
+    "issue_id": "HLE-346",
+    "project": "Агент-консультант по 1С ERP",
+    "project_slug": "agent-konsultant-po-1s-erp",
+    "title": "[ТЫ] КТ6: Приёмка ядра — реальные вопросы по 1С, агент отвечает правильно",
+    "status": "Backlog",
+    "priority": "Urgent",
+    "labels": [],
+    "parent_id": null,
+    "blocked_by": [
+      "HLE-301"
+    ],
+    "blocks": [
+      "HLE-309",
+      "HLE-339",
+      "HLE-311",
+      "HLE-308"
+    ],
+    "related_to": [],
+    "file": "docs/_source/linear/agent-konsultant-po-1s-erp/HLE-346.md",
+    "attachments": [],
+    "comments_count": 0,
+    "fetched_at": "2026-05-27T00:00:00Z"
+  }
+]
