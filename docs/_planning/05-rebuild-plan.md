@@ -17,82 +17,104 @@
 
 ---
 
-## 1. Целевое дерево `docs/`
+## 1. Целевое дерево репозитория
 
-Структура опирается на [`_source/specs/_howto.md`](../_source/specs/_howto.md) и сами скачанные спецификации в [`_source/specs/`](../_source/specs/): arc42 (выборочные секции 1/3/4/5/6/8/9/12 + §2/§7/§10/§11 точечно), MADR 4.0.0 для ADR, C4 (Context + Container обязательно, Component точечно), Mermaid для всех диаграмм.
+Структура опирается на [`_source/specs/_howto.md`](../_source/specs/_howto.md) и сами скачанные спецификации в [`_source/specs/`](../_source/specs/): arc42 (выборочные секции 1/3/4/5/6/8/9/12 + §2/§7/§10/§11 точечно), MADR 4.0.0 для ADR, **C4 через Architecture-as-Code (Structurizr DSL)** для статичных диаграмм Context/Container/Component, Mermaid для runtime-сценариев (sequenceDiagram).
+
+**Главный сдвиг подхода (2026-05-27).** Раньше планировалось C4 через Mermaid внутри markdown-файлов. Решение: переходим на **Structurizr DSL** — единая текстовая модель в `workspace.dsl` в корне репо, из которой Structurizr Lite (Docker) рендерит views для уровней Context/Container/Component с auto-layout. Связь DSL ↔ ADR — через `properties { "adr-link" "..." }` на элементах DSL (см. ADR 0034). Mermaid остаётся для §6 Runtime View (sequenceDiagram читается лучше DSL Dynamic-views в git diff).
 
 ```
-docs/
-├── index.md                                # arc42 §1 Introduction & Goals + §4 Solution Strategy
-│                                           # + точка входа со схемой-картой документов и кратким индексом ADR;
-│                                           # сюда же растворены ключевые §2 Constraints (AGPL-3.0 от форка,
-│                                           # локально для Сергея/мамы, on-prem-first) — см. примечание ниже
-├── architecture/
-│   ├── 01-context.md                       # arc42 §3 Context and Scope + C4 Level 1 (System Context)
-│   ├── 02-containers.md                    # arc42 §5 Building Block View + C4 Level 2 (Container);
-│   │                                       # whitebox обзор + blackbox-таблица для каждого контейнера
-│   │                                       # (по шаблону arc42 §5); отдельные C4 Component поддиаграммы —
-│   │                                       # только для нетривиальных контейнеров (Азимут-ядро,
-│   │                                       # поисковый стек) внутри файла
-│   ├── 03-pipelines.md                     # arc42 §6 Runtime View — Mermaid sequenceDiagram по сценариям:
-│   │                                       # индексация, запрос, обновление, фолбэк (Р7), судья (Р3)
-│   ├── 04-blind-spots.md                   # arc42 §11 Risks & Technical Debt — слепые зоны bsl-atlas
-│   │                                       # (подписки/асинхрон/.epf/.erf/МенеджерВременныхТаблиц),
-│   │                                       # граница «доказуемо статически vs runtime»
-│   └── 05-crosscutting.md                  # arc42 §8 Crosscutting Concepts — анти-галлюцинации (Р1–Р7,
-│                                           # П1–П3), мониторинг/канарейка, безопасность/приватность,
-│                                           # лицензии/AGPL §13, правило источников (реш. 1.10);
-│                                           # сюда же растворены §2 Constraints (лицензионные/orgflow)
-├── decisions/                              # arc42 §9 — каталог MADR-ADR; локальный индекс в README;
-│   │                                       # подпапки по темам (фиксируем сразу, см. §3 этого документа)
-│   ├── README.md                           # индекс ADR с фильтрами по теме/статусу
-│   ├── anti-hallucinations/                # Р1–Р7 + П1–П3 (фон) + ADR-«надгробие» Р4
-│   │   ├── 0001-р1-metric-contradiction.md
-│   │   ├── 0002-р2-faithfulness-vs-relevance.md
-│   │   ├── 0003-р3-llm-judge-spans.md
-│   │   ├── 0004-р4-honest-deadend-retired.md
-│   │   ├── 0005-р5-server-controlled-retrieval.md
-│   │   ├── 0006-р6-source-hierarchy.md
-│   │   ├── 0007-р7-fallback-mode-switch.md
-│   │   ├── 0008-п1-groundedness-detector.md
-│   │   ├── 0009-п2-re-retrieval.md
-│   │   └── 0010-п3-query-sufficiency.md
-│   ├── foundation/                         # тема 1: фундамент (форк, имя, роль форка, MIT-донор,
-│   │   │                                   # миграция стека, клиент, модель, граница, лицензии)
-│   │   ├── 0011-fork-bsl-atlas-as-core.md
-│   │   ├── 0012-name-azimut.md
-│   │   ├── 0013-fork-role-code-engine.md
-│   │   ├── 0014-fserg-mcp-1c-as-reference-only.md
-│   │   ├── 0015-stack-migration-smoke-then-qdrant.md
-│   │   ├── 0016-onec-mcp-universal-deferred.md
-│   │   ├── 0017-mcp-bsl-platform-context-included.md
-│   │   ├── 0018-mcp-client-no-own-ui.md
-│   │   ├── 0019-cherry-studio-default-client.md
-│   │   ├── 0020-cloud-llm-via-adapter.md
-│   │   ├── 0021-default-model-deepseek-v4.md
-│   │   ├── 0022-boundary-fork-vs-own-code.md
-│   │   └── 0023-license-checklist-and-source-rule.md
-│   ├── code-processing/                    # тема 2: обработка кода 1С
-│   │   ├── 0024-code-chunking-deterministic-structural.md
-│   │   ├── 0025-resolve-same-named-procedures.md
-│   │   ├── 0026-code-search-routing.md
-│   │   └── 0027-port-feenlace-techniques-to-python.md
-│   └── open/                               # открытые/proposed (закрываются при работе над темами 5/7)
-│       ├── 0028-sentry-vs-agpl.md
-│       ├── 0029-multitenancy-qdrant-embedded-vs-server.md
-│       ├── 0030-multitenancy-canary-vs-watchdog.md
-│       ├── 0031-multitenancy-push-via-web-frontend.md
-│       ├── 0032-multitenancy-tenant-storage-isolation.md
-│       └── 0033-r1-contradiction-detection-mechanics.md
-├── glossary.md                             # arc42 §12 — термины 1С, проектные, технические (ISCF, BSL,
-│                                           # АГРЕГАТ, ПодпискаНаСобытие, МенеджерВременныхТаблиц, RRF,
-│                                           # Self-RAG, Faithfulness, BGE-M3, Cohere, AGPL §13, FastMCP, …)
-├── cases/                                  # эталонные кейсы (для eval и поведенческого контракта)
-│   └── 01-document-changed-account.md      # «почему документ сменил счёт» — 3 слоя (см. _resolutions.md #6)
-└── roadmap.md                              # фазы со ссылками на HLE-XXX: тема 1→2→3→4→5→6→7;
+azimuth/                                    # корень репо
+├── workspace.dsl                           # ⭐ Architecture-as-Code: единая C4-модель
+│                                           # (Context + Container + Component); см. ADR 0034.
+│                                           # Локальный просмотр: `docker run -it --rm -p 8080:8080
+│                                           # -v .:/usr/local/structurizr structurizr/lite`
+└── docs/
+    ├── index.md                            # arc42 §1 Introduction & Goals + §4 Solution Strategy
+    │                                       # + точка входа со схемой-картой документов и кратким
+    │                                       # индексом ADR; сюда же растворены ключевые §2 Constraints
+    │                                       # (AGPL-3.0 от форка, локально для Сергея/мамы, on-prem-first)
+    ├── architecture/
+    │   ├── index.md                        # 🧭 Путеводитель по архитектуре: краткое описание системы,
+    │   │                                   # ссылки на workspace.dsl и Structurizr Lite, правила
+    │   │                                   # архитектурного процесса, инструкция ИИ-агентам как читать
+    │   │                                   # workspace.dsl и куда дописывать новые компоненты
+    │   ├── 01-context.md                   # arc42 §3 Context and Scope; описание + ссылка на view
+    │   │                                   # `systemContext` в workspace.dsl
+    │   ├── 02-containers.md                # arc42 §5 Building Block View — whitebox-обзор +
+    │   │                                   # blackbox-таблица контейнеров (текст); сами C4-диаграммы
+    │   │                                   # (`container`, `component` для Азимут-ядра и MCP-оркестратора)
+    │   │                                   # живут в workspace.dsl, файл ссылается на views
+    │   ├── 03-pipelines.md                 # arc42 §6 Runtime View — Mermaid sequenceDiagram по сценариям:
+    │   │                                   # индексация, запрос, обновление, фолбэк (Р7), судья (Р3).
+    │   │                                   # Mermaid выбран вместо DSL Dynamic-views — лучше читается
+    │   │                                   # в git diff (см. ADR 0034 Consequences)
+    │   ├── 04-blind-spots.md               # arc42 §11 Risks & Technical Debt — слепые зоны bsl-atlas
+    │   │                                   # (подписки/асинхрон/.epf/.erf/МенеджерВременныхТаблиц),
+    │   │                                   # граница «доказуемо статически vs runtime»
+    │   ├── 05-crosscutting.md              # arc42 §8 Crosscutting Concepts — анти-галлюцинации (Р1–Р7,
+    │   │                                   # П1–П3), мониторинг/канарейка, безопасность/приватность,
+    │   │                                   # лицензии/AGPL §13, правило источников (реш. 1.10);
+    │   │                                   # сюда же растворены §2 Constraints (лицензионные/orgflow)
+    │   ├── adr/                            # arc42 §9 — каталог MADR-ADR; подпапки по темам
+    │   │   ├── README.md                   # индекс ADR с фильтрами по теме/статусу
+    │   │   ├── template.md                 # шаблон MADR + наши поля трассировки (linear-task, basis,
+    │   │   │                               # implemented-in — может ссылаться на DSL-элемент через
+    │   │   │                               # properties; related-to, supersedes/superseded-by).
+    │   │   │                               # НЕ ADR — это шаблон, не считается в нумерации
+    │   │   ├── anti-hallucinations/        # Р1–Р7 + П1–П3 (фон) + ADR-«надгробие» Р4
+    │   │   │   ├── 0001-р1-metric-contradiction.md
+    │   │   │   ├── 0002-р2-faithfulness-vs-relevance.md
+    │   │   │   ├── 0003-р3-llm-judge-spans.md
+    │   │   │   ├── 0004-р4-honest-deadend-retired.md
+    │   │   │   ├── 0005-р5-server-controlled-retrieval.md
+    │   │   │   ├── 0006-р6-source-hierarchy.md
+    │   │   │   ├── 0007-р7-fallback-mode-switch.md
+    │   │   │   ├── 0008-п1-groundedness-detector.md
+    │   │   │   ├── 0009-п2-re-retrieval.md
+    │   │   │   └── 0010-п3-query-sufficiency.md
+    │   │   ├── foundation/                 # тема 1: фундамент (форк, имя, роль форка, MIT-донор,
+    │   │   │   │                           # миграция стека, клиент, модель, граница, лицензии)
+    │   │   │   ├── 0011-fork-bsl-atlas-as-core.md
+    │   │   │   ├── 0012-name-azimut.md
+    │   │   │   ├── 0013-fork-role-code-engine.md
+    │   │   │   ├── 0014-fserg-mcp-1c-as-reference-only.md
+    │   │   │   ├── 0015-stack-migration-smoke-then-qdrant.md
+    │   │   │   ├── 0016-onec-mcp-universal-deferred.md
+    │   │   │   ├── 0017-mcp-bsl-platform-context-included.md
+    │   │   │   ├── 0018-mcp-client-no-own-ui.md
+    │   │   │   ├── 0019-cherry-studio-default-client.md
+    │   │   │   ├── 0020-cloud-llm-via-adapter.md
+    │   │   │   ├── 0021-default-model-deepseek-v4.md
+    │   │   │   ├── 0022-boundary-fork-vs-own-code.md
+    │   │   │   └── 0023-license-checklist-and-source-rule.md
+    │   │   ├── code-processing/            # тема 2: обработка кода 1С
+    │   │   │   ├── 0024-code-chunking-deterministic-structural.md
+    │   │   │   ├── 0025-resolve-same-named-procedures.md
+    │   │   │   ├── 0026-code-search-routing.md
+    │   │   │   └── 0027-port-feenlace-techniques-to-python.md
+    │   │   ├── tooling/                    # инструментарий и процесс
+    │   │   │   └── 0034-architecture-as-code-structurizr-dsl.md
+    │   │   └── open/                       # открытые/proposed (закрываются при работе над темами 5/7)
+    │   │       ├── 0028-sentry-vs-agpl.md
+    │   │       ├── 0029-multitenancy-qdrant-embedded-vs-server.md
+    │   │       ├── 0030-multitenancy-canary-vs-watchdog.md
+    │   │       ├── 0031-multitenancy-push-via-web-frontend.md
+    │   │       ├── 0032-multitenancy-tenant-storage-isolation.md
+    │   │       └── 0033-r1-contradiction-detection-mechanics.md
+    │   └── research/                       # исследования и открытые вопросы под референс из DSL
+    │       └── .gitkeep                    # пусто на старте; наполняется при работе над темами 3–7
+    ├── glossary.md                         # arc42 §12 — термины 1С, проектные, технические (ISCF, BSL,
+    │                                       # АГРЕГАТ, ПодпискаНаСобытие, МенеджерВременныхТаблиц, RRF,
+    │                                       # Self-RAG, Faithfulness, BGE-M3, Cohere, AGPL §13, FastMCP, …)
+    ├── cases/                              # эталонные кейсы (для eval и поведенческого контракта)
+    │   └── 01-document-changed-account.md  # «почему документ сменил счёт» — 3 слоя (см. _resolutions.md #6)
+    └── roadmap.md                          # фазы со ссылками на HLE-XXX: тема 1→2→3→4→5→6→7;
                                             # перечень открытых рисков (дымовой прогон, резолв одноимённых,
                                             # Sentry × AGPL); архив v1.x-декомпозиции
 ```
+
+**Что изменилось относительно прошлой версии плана.** (1) Добавлен `workspace.dsl` в корне репо как единый источник статичных C4-диаграмм. (2) `docs/decisions/` → `docs/architecture/adr/` (укладывается под arc42 §9 на одном уровне с другими секциями). (3) Появились `docs/architecture/index.md` (путеводитель для людей и ИИ-агентов) и `docs/architecture/research/` (исследования с трассировкой из DSL `properties`). (4) Добавлен ADR 0034 «Architecture-as-Code via Structurizr DSL» в новой подпапке `tooling/`. (5) `template.md` лежит рядом с подпапками ADR и **не считается** ADR (нумерация ADR не сдвигается). Итог: **34 ADR** в плане (было 33; +0034 Structurizr).
 
 **Соответствие arc42 — план (явный mapping):**
 
@@ -100,13 +122,13 @@ docs/
 |---|---|---|---|
 | §1 | Introduction and Goals | `index.md` | обязателен по `_howto.md`; есть |
 | §2 | Constraints | растворён в `index.md` («что НЕ меняется») + `architecture/05-crosscutting.md` (лицензии, AGPL-3.0) | по `_howto.md` «по обстоятельствам»; не выделен в отдельный файл (см. примечание ниже) |
-| §3 | Context and Scope | `architecture/01-context.md` | обязателен; есть |
+| §3 | Context and Scope | текст: `architecture/01-context.md`; диаграмма: `workspace.dsl` (view `systemContext`) | обязателен; разделение текста и DSL — по ADR 0034 |
 | §4 | Solution Strategy | `index.md` | обязателен; в «главном документе» |
-| §5 | Building Block View | `architecture/02-containers.md` | обязателен (mandatory по arc42); whitebox+blackbox-структура соблюдается внутри файла |
+| §5 | Building Block View | текст: `architecture/02-containers.md` (whitebox+blackbox); диаграммы: `workspace.dsl` (Structurizr DSL, views `container`/`component`) | обязателен по arc42; разделение текста и DSL — следствие ADR 0034 |
 | §6 | Runtime View | `architecture/03-pipelines.md` | обязателен; есть |
 | §7 | Deployment View | НЕ создаём сейчас (отложен до темы 7, HLE-419) | по обстоятельствам |
 | §8 | Crosscutting Concepts | `architecture/05-crosscutting.md` | обязателен; есть |
-| §9 | Architecture Decisions | `decisions/README.md` (индекс) + `decisions/**/*.md` (ADR в MADR) | обязателен; есть |
+| §9 | Architecture Decisions | `architecture/adr/README.md` (индекс) + `architecture/adr/**/*.md` (ADR в MADR) + `architecture/adr/template.md` | обязателен; есть |
 | §10 | Quality | НЕ создаём сейчас (появится при теме 6, HLE-418) | по обстоятельствам |
 | §11 | Risks and Technical Debt | `architecture/04-blind-spots.md` | по обстоятельствам; выделен из-за критичности слепых зон bsl-atlas |
 | §12 | Glossary | `glossary.md` | обязателен; есть |
@@ -120,10 +142,19 @@ docs/
 - `architecture/07-deployment.md` (arc42 §7) — не нужен до темы 7 (HLE-419). Когда дойдём — добавим.
 - `architecture/06-quality.md` (arc42 §10) — появится при работе над темой 6 (HLE-418, eval/метрики).
 - `architecture/00-constraints.md` (arc42 §2) — пока растворён в `index.md` и crosscutting; выделим, если разрастётся.
-- C4 Level 3 (Component) — только если внутри контейнера >2-3 нетривиальных компонента (правило из `_howto.md` §2 и c4model.com). Под кандидатами: Азимут-ядро (граф+чанкер+эмбеддер) и MCP-оркестратор (Р5+Р6+судья). Решаем при написании `02-containers.md`.
-- C4 Level 4 (Code), System Landscape, Dynamic — `_howto.md` явно говорит «не делаем».
+- C4 Level 3 (Component) — только если внутри контейнера >2-3 нетривиальных компонента (правило из `_howto.md` §2 и c4model.com). Под кандидатами: Азимут-ядро (граф+чанкер+эмбеддер) и MCP-оркестратор (Р5+Р6+судья). Решаем при описании в `workspace.dsl`, view `component` подключаем только для них.
+- C4 Level 4 (Code), System Landscape, Deployment — пока не делаем (Deployment — отложен до темы 7 вместе с arc42 §7).
+- **Mermaid C4Context/C4Container/C4Component** — мы их **НЕ** используем; статичные C4-диаграммы живут в `workspace.dsl` (ADR 0034). `_howto.md` §4 в этой части перекрыт ADR 0034. Mermaid остаётся для §6 Runtime (sequenceDiagram), flowchart-ов и крайних случаев одиночных диаграмм вне модели.
 
-**Где лежит arc42 §4 (Solution Strategy).** В `index.md`. По `_howto.md` секция живёт в «главном документе» — у нас это `index.md` (точка входа + intro + strategy + карта).
+**Где лежит arc42 §4 (Solution Strategy).** В `docs/index.md`. По `_howto.md` секция живёт в «главном документе» — у нас это `docs/index.md` (точка входа + intro + strategy + карта документов). `docs/architecture/index.md` — отдельный путеводитель по архитектуре (ссылка на `workspace.dsl`, ADR, research, инструкция ИИ-агентам — Шаг 5 из инструкции по Architecture-as-Code).
+
+**Локальная сборка/просмотр Structurizr.** Для рендера view'ев из `workspace.dsl` в браузере:
+
+```
+docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite
+```
+
+Открыть `http://localhost:8080`. Это инструмент разработчика, не часть CI (CI/линт DSL — отдельная задача, см. roadmap фазу 0).
 
 ---
 
@@ -233,17 +264,17 @@ docs/
 
 ## 3. Список ADR с шапками
 
-**Нумерация.** Сквозная по всем темам, 4 разряда (`NNNN`). Сейчас фиксируем 33 ADR (`0001`–`0033`); при работе над темами 3–7 нумерация продолжится с 0034.
+**Нумерация.** Сквозная по всем темам, 4 разряда (`NNNN`). Сейчас фиксируем 34 ADR (`0001`–`0034`); при работе над темами 3–7 нумерация продолжится с `0035`. `template.md` НЕ имеет номера — это шаблон, не ADR.
 
-**Файл и имя.** `docs/decisions/NNNN-kebab-case-title.md`. Подпапки внутри `decisions/` пока **не делаем** — 33 ADR в плоском списке читаются нормально; делим, если перевалит за ~50–60.
+**Файл и имя.** `docs/architecture/adr/<подпапка>/NNNN-kebab-case-title.md`. Подпапки: `anti-hallucinations/`, `foundation/`, `code-processing/`, `tooling/`, `open/`.
 
-**Поля шапки.** По `_howto.md` §3 + маппинг полей из HLE-493:
+**Поля шапки.** По `_howto.md` §3 + маппинг полей из HLE-493 + связь с DSL (ADR 0034):
 - `status` — `proposed` / `accepted` / `rejected` / `deprecated` / `superseded by NNNN`
 - `date` — дата принятия (для accepted) или открытия (для proposed)
 - `decision-makers` — обычно `[Сергей]`, для предложенных П1/П2/П3 — Сергей + согласование с агентом-консультантом
 - `linear-task` — задача Linear, в рамках которой принято
 - `basis` — на чём основано (HLE-XXX, файл в `_source/`)
-- `implemented-in` — компонент архитектуры (контейнер C4 или модуль): для решений уровня дизайна — `index.md §4` или ссылка на раздел `architecture/`
+- `implemented-in` — компонент архитектуры; для решений, привязанных к C4-элементу — ссылка на элемент в `workspace.dsl` (через `properties { "adr-link" "docs/architecture/adr/<...>" }` на обратной стороне); для решений уровня дизайна — `docs/index.md §4` или раздел в `docs/architecture/`
 - `related-to` — связанные ADR
 - `supersedes` / `superseded-by` — где применимо
 
@@ -289,7 +320,7 @@ docs/
 - **superseded-by:** 0007
 - **related-to:** [0007 (Р7)](#0007-р7-fallback-mode-switch)
 - **Заголовок:** «Честный тупик» как фолбэк (снято)
-- **Примечание:** короткий ADR-надгробие, чтобы при чтении decisions/ было видно, что Р4 не «потерялся». Тело: «Р4 предлагал «не нашёл — честно ответь не знаю». Признан недостаточным: пользователь остаётся без помощи. Заменён на Р7 (фолбэк = смена режима, дип-ресёрч с тем же контрактом).»
+- **Примечание:** короткий ADR-надгробие, чтобы при чтении `architecture/adr/anti-hallucinations/` было видно, что Р4 не «потерялся». Тело: «Р4 предлагал «не нашёл — честно ответь не знаю». Признан недостаточным: пользователь остаётся без помощи. Заменён на Р7 (фолбэк = смена режима, дип-ресёрч с тем же контрактом).»
 
 #### `0005-р5-server-controlled-retrieval.md`
 - **status:** `accepted`
@@ -592,23 +623,47 @@ docs/
 - **related-to:** [0001 (Р1)](#0001-р1-metric-contradiction), [0003 (Р3)](#0003-р3-llm-judge-spans)
 - **Заголовок:** Механика детектирования противоречивости (как технически детектировать, порог, поведение при множестве конфликтов)
 
+### 3.5 Инструментарий и процесс (подпапка `tooling/`)
+
+#### `0034-architecture-as-code-structurizr-dsl.md`
+- **status:** `accepted` (принято Сергеем 2026-05-27)
+- **date:** 2026-05-27
+- **decision-makers:** [Сергей]
+- **linear-task:** HLE-495
+- **basis:** инструкция Сергея в HLE-495 (Шаги 1–6 «Architecture as Code via Structurizr DSL + C4 Model»); `_source/specs/c4/c4model-diagrams.md` (4+3 типа диаграмм C4); `_source/specs/_howto.md` §2 (требования к нотации C4 — titles, legend, типы, технологии, протоколы); официальная документация Structurizr DSL и Structurizr Lite
+- **implemented-in:** `workspace.dsl` в корне репо; локальный просмотр через `structurizr/lite` (Docker, порт 8080); все статичные C4-views (`systemContext`, `container`, `component` для Азимут-ядра и MCP-оркестратора) — отсюда
+- **related-to:** [0022 (граница форк vs наш код)](#0022-boundary-fork-vs-own-code) — DSL описывает обе стороны границы; [0024 (чанкинг)](#0024-code-chunking-deterministic-structural), [0026 (роутинг)](#0026-code-search-routing) — компоненты Азимут-ядра/MCP-оркестратора с обратной ссылкой через `properties { "adr-link" ... }`
+- **Заголовок:** Architecture-as-Code через Structurizr DSL — единый источник статичных C4-диаграмм; Runtime (sequence) остаётся в Mermaid
+- **Краткое обоснование (для тела ADR при создании файла):**
+  - **Context:** до 2026-05-27 план предполагал C4-диаграммы напрямую через Mermaid C4Context/C4Container в markdown. Это даёт хорошее отображение в GitHub, но: (1) каждая диаграмма — копия модели (имена сущностей дублируются в разных файлах), (2) Mermaid C4 экспериментальный и не поддерживает legend, properties, layout, (3) нет машинно-читаемого источника для линковки ADR ↔ компонент.
+  - **Decision:** статичные C4 (System Context, Container, Component) — в одном файле `workspace.dsl` (Structurizr DSL). Каждый компонент DSL имеет `properties { "adr-link" "..." "open-issues" "..." }`, что даёт двустороннюю трассировку компонент ↔ ADR ↔ research.
+  - **Consequences:** + единый источник; + явная типизация (Person/SoftwareSystem/Container/Component); + auto-layout; + Component-view только под нужные контейнеры; + локальный просмотр одним docker run; − зависимость от Java-рантайма у того, кто хочет смотреть локально (Structurizr Lite в Docker — снимает); − чуть выше порог входа для людей, которые видят DSL впервые (компенсируется путеводителем `docs/architecture/index.md`).
+  - **Mermaid НЕ выбрасываем:** Runtime View (arc42 §6) — sequenceDiagram в `architecture/03-pipelines.md` (читается в git diff лучше DSL Dynamic-views; Structurizr Dynamic-views экспериментальный). Одиночные flowchart-ы вне модели — тоже Mermaid.
+  - **Confirmation:** workspace.dsl лежит в корне; `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite` поднимается без ошибок; views `systemContext`, `container`, `component` рендерятся; `properties { "adr-link" ... }` присутствует у ключевых элементов; CI-линт DSL (опционально) — отдельная задача roadmap.
+
 ---
 
 ## 4. Сводка для отчёта в Linear
 
-- **Целевых документов:** 10
-  - `index.md` (1) + `architecture/01..05` (5) + `decisions/README.md` (1, индекс) + `glossary.md` (1) + `cases/01-document-changed-account.md` (1) + `roadmap.md` (1).
-- **ADR в плане:** 33 (полный список с шапками — раздел 3), разложены по 4 подпапкам `decisions/{anti-hallucinations,foundation,code-processing,open}/`.
+- **Целевых артефактов:** 12
+  - `workspace.dsl` в корне репо (1, Structurizr DSL — единый источник статичных C4).
+  - `docs/index.md` (1, arc42 §1+§4 + точка входа) + `docs/architecture/index.md` (1, путеводитель по архитектуре и DSL).
+  - `docs/architecture/01..05` (5).
+  - `docs/architecture/adr/README.md` (1, индекс ADR) + `docs/architecture/adr/template.md` (1, шаблон MADR).
+  - `docs/glossary.md` (1) + `docs/cases/01-document-changed-account.md` (1) + `docs/roadmap.md` (1).
+- **ADR в плане:** 34 (полный список с шапками — раздел 3), разложены по 5 подпапкам `docs/architecture/adr/{anti-hallucinations,foundation,code-processing,tooling,open}/`.
   - `anti-hallucinations/` — 10 ADR (Р1, Р2, Р3, Р4 как «надгробие», Р5, Р6, Р7, П1, П2, П3).
   - `foundation/` — 13 ADR (реш. 1.1, имя «Азимут», 1.2, 1.3, 1.4, 1.5, 1.6, 1.7→superseded, 1.7a, 1.8, 1.8a, 1.9, 1.10).
   - `code-processing/` — 4 ADR (реш. 2.1, 2.2 proposed, 2.3 accepted после утверждения 2026-05-27, 2.4).
+  - `tooling/` — 1 ADR (0034 — Architecture-as-Code via Structurizr DSL, accepted 2026-05-27).
   - `open/` — 6 ADR со статусом `proposed/open` (Sentry × AGPL, 4 развилки мульти-аренды, механика Р1).
-  - **По статусам:** `accepted` — 25, `proposed` — 7 (П1, П2, П3, 0025 резолв одноимённых, 0028 Sentry, 0033 механика Р1) + 4 open для мульти-аренды (0029–0032), `superseded` — 2 (Р4 → Р7, 1.7 → 1.7a).
+  - **По статусам:** `accepted` — 26 (+0034 Structurizr DSL), `proposed` — 7 (П1, П2, П3, 0025 резолв одноимённых, 0028 Sentry, 0033 механика Р1) + 4 open для мульти-аренды (0029–0032), `superseded` — 2 (Р4 → Р7, 1.7 → 1.7a).
 - **Источников полностью покрыто:** все 17 страниц Notion + все 61 issue Linear (16 «Переписываем ТЗ» + 45 «Агент-консультант по 1С ERP») + все вложения (HLE-456..464/result+notes) + 4 проектных документа в `_project-docs/`. Спецификации (`_source/specs/`) и meta-летопись (`_crosscheck.md`, `_resolutions.md`, манифесты) явно помечены как «остаются в `_source/`, не мигрируются».
 - **Флаги для Сергея:**
   1. Перед архивированием `karta-zadach-i-arhitekturnye-resheniya-aktualno.md` (v1.x) — сверить с `design-system-v2`, чтобы не упустить требований.
   2. Темы 3–7 пока имеют только placeholder-и в `roadmap.md` + 5 open-ADR. Дополнительные ADR появятся при работе над HLE-415..419.
   3. ADR 0025 (резолв одноимённых) — `proposed`; алгоритм не написан, утверждаем вместе с реализацией при работе над темой 2 (HLE-414). ADR 0026 (роутинг graph→metadata→grep) утверждён 2026-05-27 (синтез HLE-461 = решение, переведён в `accepted`).
-  4. `decisions/` структурируется подпапками с самого начала: `anti-hallucinations/`, `foundation/`, `code-processing/`, `open/`. Нумерация ADR сквозная (`0001`–`0033`), не локальная по подпапкам — это убирает риск коллизий при переезде ADR между темами.
+  4. `docs/architecture/adr/` структурируется подпапками с самого начала: `anti-hallucinations/`, `foundation/`, `code-processing/`, `tooling/`, `open/`. Нумерация ADR сквозная (`0001`–`0034`), не локальная по подпапкам — это убирает риск коллизий при переезде ADR между темами. `template.md` лежит в `adr/` рядом с подпапками, без номера.
+  5. **Architecture-as-Code (Structurizr DSL)** введён ADR 0034 как новая практика: статичные C4 переезжают из Mermaid в `workspace.dsl`, Runtime sequence остаётся в Mermaid. Bootstrap (создание `workspace.dsl` с верхнеуровневой моделью + `docs/architecture/index.md` + `template.md` + пустых подпапок `adr/research/`) — первая задача roadmap-фазы 0 после утверждения плана.
 
 *Создано 2026-05-27 для HLE-495. После утверждения Сергеем — `Done`. Без утверждения — `In Review`.*
