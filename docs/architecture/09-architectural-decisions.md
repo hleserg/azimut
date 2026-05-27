@@ -20,6 +20,10 @@
 | 0008 | anti-hallucinations | proposed | [Детектор «relevance высокий / groundedness низкий» — 3 уровня действий](adr/anti-hallucinations/0008-п1-groundedness-detector.md) |
 | 0009 | anti-hallucinations | proposed | [Второй проход ретривера при неуверенности (открытый триггер)](adr/anti-hallucinations/0009-п2-re-retrieval.md) |
 | 0010 | anti-hallucinations | proposed | [Оценка достаточности запроса + подсказки агенту что переспросить](adr/anti-hallucinations/0010-п3-query-sufficiency.md) |
+| 0024 | code-processing | accepted | [Детерминированная структурная резка кода поверх Азимута](adr/code-processing/0024-code-chunking-deterministic-structural.md) |
+| 0025 | code-processing | proposed | [Алгоритм резолва одноимённых процедур — открытая инженерная задача](adr/code-processing/0025-resolve-same-named-procedures.md) |
+| 0026 | code-processing | accepted | [Роутинг поиска по коду — fallback-цепочка graph → metadata → grep](adr/code-processing/0026-code-search-routing.md) |
+| 0027 | code-processing | accepted | [Портировать техники `mcp-1c` (feenlace) в Python — не переписывать на Go](adr/code-processing/0027-port-feenlace-techniques-to-python.md) |
 | 0011 | foundation | accepted | [Основа — форк `bsl-atlas` (AGPL-3.0) как ядро понимания кода 1С](adr/foundation/0011-fork-bsl-atlas-as-core.md) |
 | 0012 | foundation | accepted | [Имя форка/проекта — «Азимут» / `azimuth`](adr/foundation/0012-name-azimut.md) |
 | 0013 | foundation | accepted | [Роль `bsl-atlas`: только «движок понимания кода» (берём парсер BSL + граф вызовов + каркас MCP + docker; меняем хранилище/эмбеддер/реранк; дописываем поведенческий контракт и оркестрацию)](adr/foundation/0013-fork-role-code-engine.md) |
@@ -33,10 +37,6 @@
 | 0021 | foundation | accepted | [Дефолт разговорной модели — DeepSeek V4 (Flash основной, Pro для тяжёлого кода); запас — Claude/Qwen/Yandex; финал валидируем eval-ом в теме 6](adr/foundation/0021-default-model-deepseek-v4.md) |
 | 0022 | foundation | accepted | [Граница «форк/готовые библиотеки vs наш код» — форк даёт понимание кода, библиотеки дают механику RAG, наш код — поведение, гарантии, оркестрацию](adr/foundation/0022-boundary-fork-vs-own-code.md) |
 | 0023 | foundation | accepted | [Лицензионный чек-лист OSS под AGPL-3.0 + правило источников («✅ проверено: <файл/url>» или «⚠️ предположение»)](adr/foundation/0023-license-checklist-and-source-rule.md) |
-| 0024 | code-processing | accepted | [Детерминированная структурная резка кода поверх Азимута](adr/code-processing/0024-code-chunking-deterministic-structural.md) |
-| 0025 | code-processing | proposed | [Алгоритм резолва одноимённых процедур — открытая инженерная задача](adr/code-processing/0025-resolve-same-named-procedures.md) |
-| 0026 | code-processing | accepted | [Роутинг поиска по коду — fallback-цепочка graph → metadata → grep](adr/code-processing/0026-code-search-routing.md) |
-| 0027 | code-processing | accepted | [Портировать техники `mcp-1c` (feenlace) в Python — не переписывать на Go](adr/code-processing/0027-port-feenlace-techniques-to-python.md) |
 | 0028 | open | proposed | [Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б](adr/open/0028-sentry-vs-agpl.md) |
 | 0029 | open | proposed | [Мульти-аренда: Qdrant embedded vs server — развилка по режиму деплоя](adr/open/0029-multitenancy-qdrant-embedded-vs-server.md) |
 | 0030 | open | proposed | [Канарейка-в-потоке vs фоновый сторож для VDS — как разбудить «протухшее в покое»](adr/open/0030-multitenancy-canary-vs-watchdog.md) |
