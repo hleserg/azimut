@@ -9,11 +9,8 @@
     "researches": "ok",
     "bsl_atlas_research_2026_05_25": "ok",
     "design_system_v2": "ok",
-    "design_system_v2_children_count": 11,
-    "duplicates": {
-      "HLE-460": ["36c0c905e626815bb3e1c6cdc12181bf", "36c0c905e626814385a2c7259a3d0c0c"],
-      "HLE-464": ["36c0c905e626812dbf6fc91762fd2166", "36c0c905e62681f58f19ffd3e0aa0a82"]
-    }
+    "design_system_v2_children_count": 9,
+    "duplicates_resolved": "2026-05-27 — архивные дубликаты HLE-460/HLE-464 удалены (см. _resolutions.md #4). Актуальные: hle-460-fserg-chunking-qdrant и hle-464-runtime-live-1c."
   },
   "pages": [
     {
@@ -138,18 +135,6 @@
       "status": "ok"
     },
     {
-      "title": "[АРХИВ ▸ дубликат HLE-460] FSerg/mcp-1c-v1 — chunking + Qdrant",
-      "notion_id": "36c0c905e626815bb3e1c6cdc12181bf",
-      "url": "https://www.notion.so/36c0c905e626815bb3e1c6cdc12181bf",
-      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
-      "file": "docs/_source/notion/hle-460-archive-duplicate-fserg-mcp-1c-v1--36c0c905e626815bb3e1c6cdc12181bf.md",
-      "comments_file": null,
-      "fetched_at": "2026-05-27T13:16:39Z",
-      "status": "ok",
-      "duplicate_of": "36c0c905e626814385a2c7259a3d0c0c",
-      "duplicate_topic": "HLE-460"
-    },
-    {
       "title": "Промт-инжиниринг и абстракции над XML (HLE-457, cc-1c-skills) — выводы для тем 5 и справочника типов",
       "notion_id": "36c0c905e62681299fccfc047aca85ce",
       "url": "https://www.notion.so/36c0c905e62681299fccfc047aca85ce",
@@ -158,18 +143,6 @@
       "comments_file": null,
       "fetched_at": "2026-05-27T13:16:39Z",
       "status": "ok"
-    },
-    {
-      "title": "[АРХИВ ▸ дубликат HLE-464] Живые данные 1С: 5 репо",
-      "notion_id": "36c0c905e626812dbf6fc91762fd2166",
-      "url": "https://www.notion.so/36c0c905e626812dbf6fc91762fd2166",
-      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
-      "file": "docs/_source/notion/hle-464-archive-duplicate-live-data--36c0c905e626812dbf6fc91762fd2166.md",
-      "comments_file": null,
-      "fetched_at": "2026-05-27T13:16:39Z",
-      "status": "ok",
-      "duplicate_of": "36c0c905e62681f58f19ffd3e0aa0a82",
-      "duplicate_topic": "HLE-464"
     },
     {
       "title": "Chunking + Qdrant-схема FSerg/mcp-1c-v1 (HLE-460) — идеи для тем 2–3 (лицензия MIT ✅)",
@@ -215,10 +188,11 @@
     }
   ],
   "summary": {
-    "total_pages": 19,
-    "ok": 19,
+    "total_pages": 17,
+    "ok": 17,
     "failed": 0,
     "discussions_found": 0,
-    "comments_files_saved": 0
+    "comments_files_saved": 0,
+    "note": "2026-05-27 — изначально было 19 страниц; 2 архивных дубликата (HLE-460/HLE-464) удалены по решению Сергея в _resolutions.md #4. _source/ теперь источник истины."
   }
 }
