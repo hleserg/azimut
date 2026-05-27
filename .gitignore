@@ -34,5 +34,6 @@ chroma_db/
 .DS_Store
 Thumbs.db
 
-# Structurizr runtime (логи, кеш, lock-файлы)
+# Structurizr runtime (логи, кеш, lock-файлы, сохранённый workspace)
 .structurizr/
+workspace.json
