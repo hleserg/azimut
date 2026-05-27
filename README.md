@@ -1,73 +1,36 @@
-# BSL Atlas
+# Азимут
 
-[![Docker Hub](https://img.shields.io/docker/v/armankudaibergenov/bsl-atlas?label=Docker%20Hub&logo=docker)](https://hub.docker.com/r/armankudaibergenov/bsl-atlas)
+ИИ-ассистент по коду 1С. MCP-сервер на базе форка [bsl-atlas](https://github.com/Arman-Kudaibergenov/bsl-atlas) (AGPL-3.0): понимает BSL-код, отвечает с проверкой достоверности, не галлюцинирует.
 
-Публичный MCP-сервер для быстрой индексации и поиска по исходникам 1С. Работает с XML/BSL-выгрузкой конфигурации или расширения и отдает структурный и, при необходимости, семантический поиск для AI-ассистентов.
+Работает локально — подключается к Cherry Studio, Claude Desktop или любому MCP-совместимому клиенту.
 
-## Что умеет
+## Что делает
 
-- искать функции, процедуры и модули через SQLite/FTS
-- искать объекты метаданных, реквизиты и связи
-- строить контекст по вызовам и структуре модулей
-- работать в `fast` режиме без внешних embedding API
-- переиндексировать проект после новой выгрузки
-
-## Режимы
-
-| Режим | Что дает | Что нужно |
-|------|----------|------------|
-| `fast` | быстрый структурный поиск | Docker и выгруженные исходники 1С |
-| `full` | структурный + семантический поиск | Docker, исходники и embedding backend/API key |
-
-`fast` — основной и рекомендуемый стартовый режим.
-
-## Важно: mount исходников обязателен
-
-Если вы запускаете `bsl-atlas` в Docker, контейнер обязан видеть реальные исходники проекта через bind mount `SOURCE_PATH -> /data/source`.
-
-- `SOURCE_PATH` нужен для индексации файлов
-- если bind mount настроен неверно, `/data/source` внутри контейнера может существовать, но будет пустым
-- в этом случае Atlas честно сообщит, что каталог исходников пустой
-
-Это отдельная тема от RLM: Atlas читает файлы проекта напрямую, поэтому без source mount индексировать нечего.
+- индексирует BSL-код конфигурации 1С (`DumpConfigToFiles`)
+- строит граф вызовов, режет на чанки детерминированно по структуре
+- ищет: граф → метаданные → grep (fallback-цепочка)
+- перед ответом проверяет faithfulness; при низкой уверенности переключается в режим дип-ресёрча
+- иерархия источников при конфликте: код → справка → ИТС
 
 ## Быстрый старт
 
-### 1. Выгрузите исходники 1С
-
-В конфигураторе используйте `Конфигурация -> Выгрузить конфигурацию в файлы` и укажите пустой каталог.
-
-### 2. Скачайте конфиги
-
 ```bash
-curl -O https://raw.githubusercontent.com/Arman-Kudaibergenov/bsl-atlas/master/docker-compose.yml
-curl -O https://raw.githubusercontent.com/Arman-Kudaibergenov/bsl-atlas/master/.env.example
+# Выгрузите конфигурацию 1С через Конфигуратор → «Выгрузить конфигурацию в файлы»
+
+# Скопируйте .env.example и укажите путь к исходникам
 cp .env.example .env
-```
+# SOURCE_PATH=/path/to/bsl-sources
 
-### 3. Заполните `.env`
-
-```env
-SOURCE_PATH=C:\bsl-src
-INDEXING_MODE=fast
-```
-
-Для `full` режима дополнительно укажите embedding provider и нужные ключи.
-
-### 4. Запустите контейнер
-
-```bash
+# Запуск
 docker compose up -d
 ```
 
-### 5. Подключите MCP в Claude
-
-Добавьте в `claude_desktop_config.json` или в `.mcp.json` проекта:
+Подключение к Claude Desktop / Cherry Studio — через `claude_desktop_config.json` или `.mcp.json`:
 
 ```json
 {
   "mcpServers": {
-    "bsl-atlas": {
+    "azimut": {
       "type": "http",
       "url": "http://localhost:8000/mcp"
     }
@@ -75,75 +38,36 @@ docker compose up -d
 }
 ```
 
-## Windows: что важно
+## Архитектура
 
-Docker Desktop на Windows часто ломается на путях с пробелами или кириллицей. Если реальный путь выглядит как `C:\1С\Выгрузки\МояКонфигурация`, лучше сначала сделать ASCII-алиас.
+Документация по arc42 + C4 (Structurizr DSL):
 
-```powershell
-cmd /c mklink /D C:\bsl-src "C:\1С\Выгрузки\МояКонфигурация"
+```
+docs/
+├── index.md                        # точка входа
+├── architecture/                   # 12 глав arc42 + глава 13 (Lead Manual)
+│   ├── adr/                        # архитектурные решения (MADR, 34 ADR)
+│   └── README.md                   # путеводитель по папке
+└── cases/                          # эталонные кейсы
+workspace.dsl                       # C4-модель (Context / Container / Component)
 ```
 
-После этого в `.env` используйте:
-
-```env
-SOURCE_PATH=C:\bsl-src
-```
-
-Если Atlas пишет, что `SOURCE_PATH` пустой, проблема почти всегда в bind mount, а не в самом приложении.
-
-## Поддерживаемые структуры
-
-Каталог исходников может выглядеть так:
-
-```text
-SOURCE_PATH/
-  cf/
-    Catalogs/
-    Documents/
-    CommonModules/
-```
-
-или так:
-
-```text
-SOURCE_PATH/
-  Catalogs/
-  Documents/
-  CommonModules/
-```
-
-или так:
-
-```text
-SOURCE_PATH/
-  cfe/
-    MyExtension/
-      Catalogs/
-      CommonModules/
-```
-
-## Основные инструменты
-
-- `search_function(name)` — найти функцию или процедуру по имени
-- `get_module_functions(path)` — список функций модуля
-- `get_function_context(name)` — контекст вызовов
-- `metadatasearch(query)` — поиск по объектам метаданных
-- `get_object_details(full_name)` — структура объекта
-- `codesearch(query)` — семантический поиск в `full` режиме
-- `helpsearch(query)` — поиск по help/knowledge слою в `full` режиме
-- `reindex(force_chromadb)` — переиндексация после изменений
-- `stats()` — статистика индекса
-
-## Переиндексация
-
-После новой выгрузки исходников:
+Просмотр C4-диаграмм локально:
 
 ```bash
-curl -X POST http://localhost:8000/reindex
+docker run --rm -p 8080:8080 \
+  -v .:/usr/local/structurizr \
+  --user $(id -u):$(id -g) \
+  structurizr/structurizr local
+# → http://localhost:8080
 ```
 
-## Embedding defaults
+## Статус
 
-- рекомендуемое семейство: `qwen3-embedding-4b`
-- OpenRouter: `qwen/qwen3-embedding-4b`
-- Ollama: `qwen3-embedding:4b`
+Активная разработка. Сейчас: фаза 0 — scaffold документации и архитектурные решения (ADR 0001–0034).
+
+Дорожная карта: [`docs/roadmap.md`](docs/roadmap.md) (создаётся в фазе 7).
+
+## Лицензия
+
+AGPL-3.0 — наследуется от форка bsl-atlas. См. [`LICENSE`](LICENSE) и [`COPYRIGHT`](COPYRIGHT).
