@@ -38,7 +38,7 @@ while IFS= read -r -d '' file; do
   filename="$(basename "$file")"
   if [[ "$filename" =~ ^([0-9]{4})- ]]; then
     NUM="${BASH_REMATCH[1]}"
-    NUM_DEC=$((10#$NUM))
+    NUM_DEC=$((10#$NUM))  # force decimal — avoids octal misparse of 008, 009, 034 etc.
     if (( NUM_DEC > MAX )); then
       MAX=$NUM_DEC
     fi
