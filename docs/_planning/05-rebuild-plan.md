@@ -19,17 +19,21 @@
 
 ## 1. Целевое дерево `docs/`
 
-Структура опирается на [`_source/specs/_howto.md`](../_source/specs/_howto.md): arc42 (выборочные секции 1/3/4/5/6/8/9/12), MADR для ADR, C4 (Context + Container обязательно, Component точечно), Mermaid для всех диаграмм.
+Структура опирается на [`_source/specs/_howto.md`](../_source/specs/_howto.md) и сами скачанные спецификации в [`_source/specs/`](../_source/specs/): arc42 (выборочные секции 1/3/4/5/6/8/9/12 + §2/§7/§10/§11 точечно), MADR 4.0.0 для ADR, C4 (Context + Container обязательно, Component точечно), Mermaid для всех диаграмм.
 
 ```
 docs/
 ├── index.md                                # arc42 §1 Introduction & Goals + §4 Solution Strategy
-│                                           # + точка входа со схемой-картой документов и кратким индексом ADR
+│                                           # + точка входа со схемой-картой документов и кратким индексом ADR;
+│                                           # сюда же растворены ключевые §2 Constraints (AGPL-3.0 от форка,
+│                                           # локально для Сергея/мамы, on-prem-first) — см. примечание ниже
 ├── architecture/
 │   ├── 01-context.md                       # arc42 §3 Context and Scope + C4 Level 1 (System Context)
 │   ├── 02-containers.md                    # arc42 §5 Building Block View + C4 Level 2 (Container);
-│   │                                       # отдельные C4 Component поддиаграммы — только для нетривиальных
-│   │                                       # контейнеров (Азимут-ядро, поисковый стек) внутри файла
+│   │                                       # whitebox обзор + blackbox-таблица для каждого контейнера
+│   │                                       # (по шаблону arc42 §5); отдельные C4 Component поддиаграммы —
+│   │                                       # только для нетривиальных контейнеров (Азимут-ядро,
+│   │                                       # поисковый стек) внутри файла
 │   ├── 03-pipelines.md                     # arc42 §6 Runtime View — Mermaid sequenceDiagram по сценариям:
 │   │                                       # индексация, запрос, обновление, фолбэк (Р7), судья (Р3)
 │   ├── 04-blind-spots.md                   # arc42 §11 Risks & Technical Debt — слепые зоны bsl-atlas
@@ -37,12 +41,49 @@ docs/
 │   │                                       # граница «доказуемо статически vs runtime»
 │   └── 05-crosscutting.md                  # arc42 §8 Crosscutting Concepts — анти-галлюцинации (Р1–Р7,
 │                                           # П1–П3), мониторинг/канарейка, безопасность/приватность,
-│                                           # лицензии/AGPL §13, правило источников (реш. 1.10)
-├── decisions/                              # arc42 §9 — каталог MADR-ADR; локальный индекс в README
+│                                           # лицензии/AGPL §13, правило источников (реш. 1.10);
+│                                           # сюда же растворены §2 Constraints (лицензионные/orgflow)
+├── decisions/                              # arc42 §9 — каталог MADR-ADR; локальный индекс в README;
+│   │                                       # подпапки по темам (фиксируем сразу, см. §3 этого документа)
 │   ├── README.md                           # индекс ADR с фильтрами по теме/статусу
-│   ├── 0001-р1-metric-contradiction.md
-│   ├── …                                   # см. раздел 3 этого документа
-│   └── 0033-r1-contradiction-detection-mechanics.md
+│   ├── anti-hallucinations/                # Р1–Р7 + П1–П3 (фон) + ADR-«надгробие» Р4
+│   │   ├── 0001-р1-metric-contradiction.md
+│   │   ├── 0002-р2-faithfulness-vs-relevance.md
+│   │   ├── 0003-р3-llm-judge-spans.md
+│   │   ├── 0004-р4-honest-deadend-retired.md
+│   │   ├── 0005-р5-server-controlled-retrieval.md
+│   │   ├── 0006-р6-source-hierarchy.md
+│   │   ├── 0007-р7-fallback-mode-switch.md
+│   │   ├── 0008-п1-groundedness-detector.md
+│   │   ├── 0009-п2-re-retrieval.md
+│   │   └── 0010-п3-query-sufficiency.md
+│   ├── foundation/                         # тема 1: фундамент (форк, имя, роль форка, MIT-донор,
+│   │   │                                   # миграция стека, клиент, модель, граница, лицензии)
+│   │   ├── 0011-fork-bsl-atlas-as-core.md
+│   │   ├── 0012-name-azimut.md
+│   │   ├── 0013-fork-role-code-engine.md
+│   │   ├── 0014-fserg-mcp-1c-as-reference-only.md
+│   │   ├── 0015-stack-migration-smoke-then-qdrant.md
+│   │   ├── 0016-onec-mcp-universal-deferred.md
+│   │   ├── 0017-mcp-bsl-platform-context-included.md
+│   │   ├── 0018-mcp-client-no-own-ui.md
+│   │   ├── 0019-cherry-studio-default-client.md
+│   │   ├── 0020-cloud-llm-via-adapter.md
+│   │   ├── 0021-default-model-deepseek-v4.md
+│   │   ├── 0022-boundary-fork-vs-own-code.md
+│   │   └── 0023-license-checklist-and-source-rule.md
+│   ├── code-processing/                    # тема 2: обработка кода 1С
+│   │   ├── 0024-code-chunking-deterministic-structural.md
+│   │   ├── 0025-resolve-same-named-procedures.md
+│   │   ├── 0026-code-search-routing.md
+│   │   └── 0027-port-feenlace-techniques-to-python.md
+│   └── open/                               # открытые/proposed (закрываются при работе над темами 5/7)
+│       ├── 0028-sentry-vs-agpl.md
+│       ├── 0029-multitenancy-qdrant-embedded-vs-server.md
+│       ├── 0030-multitenancy-canary-vs-watchdog.md
+│       ├── 0031-multitenancy-push-via-web-frontend.md
+│       ├── 0032-multitenancy-tenant-storage-isolation.md
+│       └── 0033-r1-contradiction-detection-mechanics.md
 ├── glossary.md                             # arc42 §12 — термины 1С, проектные, технические (ISCF, BSL,
 │                                           # АГРЕГАТ, ПодпискаНаСобытие, МенеджерВременныхТаблиц, RRF,
 │                                           # Self-RAG, Faithfulness, BGE-M3, Cohere, AGPL §13, FastMCP, …)
@@ -50,17 +91,39 @@ docs/
 │   └── 01-document-changed-account.md      # «почему документ сменил счёт» — 3 слоя (см. _resolutions.md #6)
 └── roadmap.md                              # фазы со ссылками на HLE-XXX: тема 1→2→3→4→5→6→7;
                                             # перечень открытых рисков (дымовой прогон, резолв одноимённых,
-                                            # Sentry × AGPL)
+                                            # Sentry × AGPL); архив v1.x-декомпозиции
 ```
+
+**Соответствие arc42 — план (явный mapping):**
+
+| arc42 § | Название | Файл в плане | Статус |
+|---|---|---|---|
+| §1 | Introduction and Goals | `index.md` | обязателен по `_howto.md`; есть |
+| §2 | Constraints | растворён в `index.md` («что НЕ меняется») + `architecture/05-crosscutting.md` (лицензии, AGPL-3.0) | по `_howto.md` «по обстоятельствам»; не выделен в отдельный файл (см. примечание ниже) |
+| §3 | Context and Scope | `architecture/01-context.md` | обязателен; есть |
+| §4 | Solution Strategy | `index.md` | обязателен; в «главном документе» |
+| §5 | Building Block View | `architecture/02-containers.md` | обязателен (mandatory по arc42); whitebox+blackbox-структура соблюдается внутри файла |
+| §6 | Runtime View | `architecture/03-pipelines.md` | обязателен; есть |
+| §7 | Deployment View | НЕ создаём сейчас (отложен до темы 7, HLE-419) | по обстоятельствам |
+| §8 | Crosscutting Concepts | `architecture/05-crosscutting.md` | обязателен; есть |
+| §9 | Architecture Decisions | `decisions/README.md` (индекс) + `decisions/**/*.md` (ADR в MADR) | обязателен; есть |
+| §10 | Quality | НЕ создаём сейчас (появится при теме 6, HLE-418) | по обстоятельствам |
+| §11 | Risks and Technical Debt | `architecture/04-blind-spots.md` | по обстоятельствам; выделен из-за критичности слепых зон bsl-atlas |
+| §12 | Glossary | `glossary.md` | обязателен; есть |
+
+**Примечание про §2 Constraints.** По arc42 секция допустима «по обстоятельствам». В моём плане Constraints растворены: технические (AGPL-3.0 от форка, Python ≥3.11, локальный запуск) — в `index.md` («Что НЕ меняется» из design-system-v2); лицензионные/orgflow (правило источников, телеметрия GDPR) — в `architecture/05-crosscutting.md`. Если при написании увидим, что constraints разрастаются и теряются — выделим отдельным файлом `architecture/00-constraints.md` (нумерация `00`, чтобы пройти перед §3). Пока — растворены.
+
+**Нумерация файлов `01..05` vs arc42-нумерация.** Я использую сквозную читаемую нумерацию (01-context, 02-containers, …), а не arc42-номера (3, 5, 6, 11, 8). Причина: arc42-нумерация рвётся (3→5→6→11→8) и сбивает читателя в файловом дереве. Соответствие даю явно таблицей выше. По спеке arc42 нумерация секций не обязательна для воспроизведения.
 
 **Что НЕ создаём сейчас (явно):**
 
-- `architecture/07-deployment.md` — arc42 §7 (Deployment View) не нужен до темы 7 (HLE-419). Когда дойдём — добавим.
-- `architecture/06-quality.md` — arc42 §10 (Quality) появится при работе над темой 6 (HLE-418, eval/метрики).
-- C4 Level 3 (Component) — только если внутри контейнера >2-3 нетривиальных компонента (правило из `_howto.md` §2). Под кандидатами: Азимут-ядро (граф+чанкер+эмбеддер) и MCP-оркестратор (Р5+Р6+судья). Решаем при написании `02-containers.md`.
+- `architecture/07-deployment.md` (arc42 §7) — не нужен до темы 7 (HLE-419). Когда дойдём — добавим.
+- `architecture/06-quality.md` (arc42 §10) — появится при работе над темой 6 (HLE-418, eval/метрики).
+- `architecture/00-constraints.md` (arc42 §2) — пока растворён в `index.md` и crosscutting; выделим, если разрастётся.
+- C4 Level 3 (Component) — только если внутри контейнера >2-3 нетривиальных компонента (правило из `_howto.md` §2 и c4model.com). Под кандидатами: Азимут-ядро (граф+чанкер+эмбеддер) и MCP-оркестратор (Р5+Р6+судья). Решаем при написании `02-containers.md`.
 - C4 Level 4 (Code), System Landscape, Dynamic — `_howto.md` явно говорит «не делаем».
 
-**Где лежит arc42 §4 (Solution Strategy).** В `index.md`. По `_howto.md` секция жирёт в «главный документ» — у нас это `index.md` (точка входа + intro + strategy + карта).
+**Где лежит arc42 §4 (Solution Strategy).** В `index.md`. По `_howto.md` секция живёт в «главном документе» — у нас это `index.md` (точка входа + intro + strategy + карта).
 
 ---
 
@@ -448,11 +511,11 @@ docs/
 - **Заголовок:** Алгоритм резолва одноимённых процедур (одинаковые имена в разных модулях) — открытый алгоритм поверх схемы из metacode (в открытом коде эту проблему не решил никто; готового не унаследуем)
 
 #### `0026-code-search-routing.md`
-- **status:** `proposed`
-- **date:** 2026-05-26
+- **status:** `accepted` (утверждено 2026-05-27, синтез HLE-461 = решение)
+- **date:** 2026-05-27
 - **decision-makers:** [Сергей]
 - **linear-task:** HLE-414
-- **basis:** `_source/notion/hle-461-search-routing--*.md`
+- **basis:** `_source/notion/hle-461-search-routing--*.md`; `_source/linear/perepisyvaem-tz/HLE-461.md` + `attachments/HLE-461/result-HLE-461.md`
 - **implemented-in:** `architecture/02-containers.md` §«Диспетчер MCP»; `architecture/03-pipelines.md` §«Запрос по коду»
 - **related-to:** [0005 (Р5)](#0005-р5-server-controlled-retrieval), [0024](#0024-code-chunking-deterministic-structural), [0025](#0025-resolve-same-named-procedures)
 - **Заголовок:** Роутинг поиска по коду — fallback-цепочка graph → metadata → grep (по образцу `comol/ai_rules_1c`)
@@ -535,16 +598,17 @@ docs/
 
 - **Целевых документов:** 10
   - `index.md` (1) + `architecture/01..05` (5) + `decisions/README.md` (1, индекс) + `glossary.md` (1) + `cases/01-document-changed-account.md` (1) + `roadmap.md` (1).
-- **ADR в плане:** 33 (полный список с шапками — раздел 3).
-  - Анти-галлюцинации/фон: 10 (Р1, Р2, Р3, Р4 как «надгробие», Р5, Р6, Р7, П1, П2, П3).
-  - Фундамент (тема 1): 13 (реш. 1.1, имя «Азимут», 1.2, 1.3, 1.4, 1.5, 1.6, 1.7→superseded, 1.7a, 1.8, 1.8a, 1.9, 1.10).
-  - Обработка кода (тема 2): 4 (реш. 2.1, 2.2, 2.3, 2.4).
-  - Открытые/proposed: 6 (Sentry × AGPL, 4 развилки мульти-аренды, механика Р1).
+- **ADR в плане:** 33 (полный список с шапками — раздел 3), разложены по 4 подпапкам `decisions/{anti-hallucinations,foundation,code-processing,open}/`.
+  - `anti-hallucinations/` — 10 ADR (Р1, Р2, Р3, Р4 как «надгробие», Р5, Р6, Р7, П1, П2, П3).
+  - `foundation/` — 13 ADR (реш. 1.1, имя «Азимут», 1.2, 1.3, 1.4, 1.5, 1.6, 1.7→superseded, 1.7a, 1.8, 1.8a, 1.9, 1.10).
+  - `code-processing/` — 4 ADR (реш. 2.1, 2.2 proposed, 2.3 accepted после утверждения 2026-05-27, 2.4).
+  - `open/` — 6 ADR со статусом `proposed/open` (Sentry × AGPL, 4 развилки мульти-аренды, механика Р1).
+  - **По статусам:** `accepted` — 25, `proposed` — 7 (П1, П2, П3, 0025 резолв одноимённых, 0028 Sentry, 0033 механика Р1) + 4 open для мульти-аренды (0029–0032), `superseded` — 2 (Р4 → Р7, 1.7 → 1.7a).
 - **Источников полностью покрыто:** все 17 страниц Notion + все 61 issue Linear (16 «Переписываем ТЗ» + 45 «Агент-консультант по 1С ERP») + все вложения (HLE-456..464/result+notes) + 4 проектных документа в `_project-docs/`. Спецификации (`_source/specs/`) и meta-летопись (`_crosscheck.md`, `_resolutions.md`, манифесты) явно помечены как «остаются в `_source/`, не мигрируются».
 - **Флаги для Сергея:**
   1. Перед архивированием `karta-zadach-i-arhitekturnye-resheniya-aktualno.md` (v1.x) — сверить с `design-system-v2`, чтобы не упустить требований.
   2. Темы 3–7 пока имеют только placeholder-и в `roadmap.md` + 5 open-ADR. Дополнительные ADR появятся при работе над HLE-415..419.
-  3. ADR 0025 (резолв одноимённых) и 0026 (роутинг поиска) — `proposed`; нуждаются в явном утверждении при работе над темой 2 (HLE-414).
-  4. Сейчас в `decisions/` плоский список 33 ADR. Подпапки (`decisions/foundation/`, `decisions/code-processing/`) добавляем, если станет >50–60.
+  3. ADR 0025 (резолв одноимённых) — `proposed`; алгоритм не написан, утверждаем вместе с реализацией при работе над темой 2 (HLE-414). ADR 0026 (роутинг graph→metadata→grep) утверждён 2026-05-27 (синтез HLE-461 = решение, переведён в `accepted`).
+  4. `decisions/` структурируется подпапками с самого начала: `anti-hallucinations/`, `foundation/`, `code-processing/`, `open/`. Нумерация ADR сквозная (`0001`–`0033`), не локальная по подпапкам — это убирает риск коллизий при переезде ADR между темами.
 
 *Создано 2026-05-27 для HLE-495. После утверждения Сергеем — `Done`. Без утверждения — `In Review`.*
