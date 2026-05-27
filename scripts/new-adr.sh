@@ -42,7 +42,6 @@ while IFS= read -r -d '' file; do
     if (( NUM_DEC > MAX )); then
       MAX=$NUM_DEC
     fi
-    fi
   fi
 done < <(find "$ADR_ROOT" -mindepth 2 -maxdepth 2 -name "[0-9][0-9][0-9][0-9]-*.md" -print0)
 
