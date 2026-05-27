@@ -38,10 +38,10 @@ while IFS= read -r -d '' file; do
   filename="$(basename "$file")"
   if [[ "$filename" =~ ^([0-9]{4})- ]]; then
     NUM="${BASH_REMATCH[1]}"
-    NUM_STRIPPED="${NUM#0}"   # strip leading zeros for arithmetic
-    NUM_STRIPPED="${NUM_STRIPPED:-0}"
-    if (( NUM_STRIPPED > MAX )); then
-      MAX=$NUM_STRIPPED
+    NUM_DEC=$((10#$NUM))
+    if (( NUM_DEC > MAX )); then
+      MAX=$NUM_DEC
+    fi
     fi
   fi
 done < <(find "$ADR_ROOT" -mindepth 2 -maxdepth 2 -name "[0-9][0-9][0-9][0-9]-*.md" -print0)
