@@ -1153,7 +1153,7 @@ Cross-platform (Bash + PowerShell — Сергей на Windows, агенты м
 
 ### 7.4 9 фаз реализации
 
-#### Фаза 0 — Scaffold (вручную: Сергей или один Claude Code, 1 PR)
+#### Фаза 0 — Scaffold (HLE-497) — вручную: Сергей или один Claude Code, 1 PR
 
 Артефакты: пустые папки (`docs/architecture/`, `architecture/adr/{5 подпапок}/`, `architecture/research/` с `.gitkeep`, `docs/cases/`, `.github/prompts/`); `docs/index.md` (мини-README); `docs/architecture/README.md` (путеводитель); 12 arc42-заглушек (заголовок + одна фраза «здесь пока нечего сказать, см. ADR <ссылка>»); `13-lead-operating-manual.md` по шаблону раздела 4.5; `adr/template.md`; 4 промпта в `.github/prompts/`; минимальный `workspace.dsl`.
 
@@ -1161,7 +1161,7 @@ Cross-platform (Bash + PowerShell — Сергей на Windows, агенты м
 
 **Зависимости:** —
 
-#### Фаза 0a — Автоматизация (вручную, НЕ master-агент — критический фундамент, 1 PR)
+#### Фаза 0a — Автоматизация (HLE-498) — вручную, НЕ master-агент (критический фундамент), 1 PR
 
 Артефакты: `AGENTS.md` (канонический) + `CLAUDE.md` + `.cursor/rules/main.mdc` в корне; 5 × мини-`AGENTS.md` в подпапках `adr/`; `scripts/new-adr.{sh,ps1}` + `scripts/update-adr-index.{sh,ps1}`.
 
@@ -1169,7 +1169,7 @@ Cross-platform (Bash + PowerShell — Сергей на Windows, агенты м
 
 **Зависимости:** Фаза 0.
 
-#### Фаза 1 — workspace.dsl с реальной C4-моделью (master-агент → sub-агент в worktree)
+#### Фаза 1 — workspace.dsl с реальной C4-моделью (HLE-499) — master-агент → sub-агент в worktree
 
 Артефакты: полный `workspace.dsl` — Person (Сергей, мама) → System azimuth + внешние; Container (Cherry/Claude/Azimuth Core/MCP Orchestrator/Qdrant/Sentry/DeepSeek-адаптер); Component для Azimuth Core (Chunker/Graph/Embedder/Reranker) и MCP Orchestrator (Server-Controlled Retrieval/Source Hierarchy/LLM Judge/Fallback/Contradiction Metric); `properties { "adr-link" "..." }` на ключевых элементах; views `systemContext`, `container`, `component AzimuthCore`, `component MCPOrchestrator`.
 
@@ -1177,49 +1177,49 @@ Cross-platform (Bash + PowerShell — Сергей на Windows, агенты м
 
 **DoD:** Structurizr Lite рендерит все views; adr-link properties расставлены.
 
-#### Фаза 2 — ADR anti-hallucinations (sub-агент в worktree, 1 PR)
+#### Фаза 2 — ADR anti-hallucinations (HLE-500) — sub-агент в worktree, 1 PR
 
 10 файлов в `adr/anti-hallucinations/` (Р1–Р7 + П1–П3 + Р4-надгробие). Источник: `_source/notion/decisions--*.md` + шапки плана 3.1.
 
-#### Фаза 3 — ADR foundation (sub-агент в worktree, 2 PR: 3a 0011–0017, 3b 0018–0023)
+#### Фаза 3 — ADR foundation — 3a (HLE-502, 0011–0017) + 3b (HLE-503, 0018–0023), sub-агент в worktree
 
 13 файлов в `adr/foundation/`. Источник: `_source/notion/design-system-v2--*.md` + шапки плана 3.2.
 
 **Параллельно:** sub-агент Linear-sync делает раздел 5.3 плана (5 child-issues по шлейфу HLE-413 + комментарий-сводка к HLE-413). Если Linear MCP подключён — напрямую; если нет — черновики в `_planning/_linear-sync-drafts.md` для ручной вставки.
 
-#### Фаза 4 — ADR code-processing (sub-агент в worktree, 1 PR)
+#### Фаза 4 — ADR code-processing (HLE-504) — sub-агент в worktree, 1 PR
 
 4 файла в `adr/code-processing/` (0024–0027). Источник: `_source/notion/hle-456..464` + шапки плана 3.3.
 
 **Параллельно:** sub-агент Linear-sync делает раздел 5.4 плана (diff формулировки HLE-414 + 4 child-issues + переписать description HLE-414).
 
-#### Фаза 5 — ADR open + tooling (sub-агент в worktree, 1 PR)
+#### Фаза 5 — ADR open + tooling (HLE-505) — sub-агент в worktree, 1 PR
 
 7 файлов: 6 open (0028–0033) + 0034 Structurizr. Источник: план разделы 3.4, 3.5.
 
 **Параллельно:** sub-агент Linear-sync делает раздел 5.5 плана (переписать description HLE-415..419, привязать к ADR и research'ам).
 
-#### Фаза 6 — Наполнение arc42-глав (master-агент разводит 3 sub-агента после фаз 1–5)
+#### Фаза 6 — Наполнение arc42-глав — master-агент разводит 3 sub-агента после фаз 1–5
 
 3 подфазы:
-- **6a:** главы 01-introduction, 02-constraints, 03-context, 04-strategy (верхнеуровневые).
-- **6b:** главы 05-building, 06-runtime, 07-deployment, 08-crosscutting (техническое сердце).
-- **6c:** главы 09-decisions-index (автогенерация через `./scripts/update-adr-index.sh`), 10-quality, 11-risks, 12-glossary.
+- **6a (HLE-506):** главы 01-introduction, 02-constraints, 03-context, 04-strategy (верхнеуровневые).
+- **6b (HLE-507):** главы 05-building, 06-runtime, 07-deployment, 08-crosscutting (техническое сердце).
+- **6c (HLE-508):** главы 09-decisions-index (автогенерация через `./scripts/update-adr-index.sh`), 10-quality, 11-risks, 12-glossary.
 
 Источники: план разделы 2 (карта переноса) + соответствующие ADR (заполненные в фазах 2–5).
 
-#### Фаза 7 — roadmap + кейсы (sub-агент, 1 PR; независимо от фаз 1–5)
+#### Фаза 7 — roadmap + кейсы (HLE-501) — sub-агент, 1 PR; независимо от фаз 1–5
 
 `docs/roadmap.md` (фазы HLE-413..419 + архив v1.x + 7 требований из v1.x-карты + риски) + `docs/cases/01-document-changed-account.md` (3-слойный кейс). Источники: `_source/_resolutions.md`, `solutions-registry-summary.md`, v1.x-карта.
 
-#### Фаза 8 — CI/CD bootstrap (sub-агент, 1–2 PR; отдельная Linear-задача, не HLE-495)
+#### Фаза 8 — CI/CD bootstrap — sub-агент, 1–2 PR; отдельные Linear-задачи **вне** HLE-495 (после его закрытия)
 
-- **8a:** `.github/workflows/structurizr-export.yml` (Mermaid-export через `structurizr/cli` — вариант А плана 4.1) + `scripts/validate-dsl.{sh,ps1}`.
-- **8b:** `.github/workflows/pr-architecture-review.yml` (запуск 3 промптов из `.github/prompts/` на каждом PR) + pre-commit hooks + опционально `scripts/sync-agent-rules.{sh,ps1}`.
+- **8a (HLE-510):** `.github/workflows/structurizr-export.yml` (Mermaid-export через `structurizr/cli` — вариант А плана 4.1) + `scripts/validate-dsl.{sh,ps1}`.
+- **8b (HLE-511):** `.github/workflows/pr-architecture-review.yml` (запуск 3 промптов из `.github/prompts/` на каждом PR) + pre-commit hooks + опционально `scripts/sync-agent-rules.{sh,ps1}`.
 
 Эта фаза идёт **после закрытия HLE-495** — отдельной задачей в roadmap фазы 0 (см. `docs/roadmap.md`).
 
-### 7.5 Фаза 9 — закрытие HLE-495 (создание followup-файла)
+### 7.5 Фаза 9 (HLE-509) — закрытие HLE-495 (создание followup-файла)
 
 Финальный шаг перед `Done` HLE-495 — то, что раздел 6.4 называет «последний шаг фазы 5 перестройки». Sub-агент создаёт `docs/_planning/06-post-rebuild-followup.md` по структуре из раздела 6.3 плана:
 - Раздел 1 (drift темы 1) — из материалов раздела 5.3 + PR'ов фазы 3.
@@ -1251,7 +1251,24 @@ Master не редактирует код напрямую (это работа 
 
 Где живёт master-промпт: в файле этой стратегии (раздел 7 целиком) + ссылка из `.github/prompts/master-orchestrator.md` (создаётся опционально в Фазе 0a или 8b).
 
-### 7.7 Принципы и антипаттерны
+### 7.7 Статус-протокол агентов (обязательно)
+
+Каждый sub-агент, работающий по Linear-issue одной из фаз 0..9, обязан:
+
+- **Взял задачу в работу** → переведи Linear-issue в `In Progress`.
+- **PR отправлен / нужна проверка Сергея** → переведи в `In Review`. `Done` ставит **только Сергей**, не агент.
+- **Master-агент, делегирующий sub-агенту** через `Agent` tool с `isolation: "worktree"`: ставит `In Progress` **в момент запуска sub-агента**, ставит `In Review` **в момент возврата результата от sub-агента** — а не батчем потом со своей задачей.
+- **Если у sub-агента свой Linear-issue** — sub-агент ведёт его сам. Master может только эскалировать в комментариях. Тогда у master свой issue (фаза 6, фаза 9) с собственным статус-циклом.
+- **Linear-sync sub-агенты** (параллельно с фазами 3a/4/5 по разделам 5.3/5.4/5.5) — также ведут свои issues в правильном статусе, не дожидаясь основной фазы.
+
+**Антипаттерны статусов:**
+- Sub-агент закончил работу, но статус issue остался `In Progress` (или вообще `Backlog`) — Сергей не видит готовности.
+- Master-агент ждёт окончания всех sub-агентов, чтобы потом «оптом» проставить статусы — теряется live-видимость прогресса.
+- Агент сам ставит `Done` — нельзя, это право Сергея.
+
+Это правило **дублируется в каждом Linear-issue** соответствующей фазы (через секцию «Статус-протокол» в description) и **в `AGENTS.md`** (Фаза 0a) — чтобы каждый агент видел его независимо от того, откуда стартовал.
+
+### 7.8 Принципы и антипаттерны
 
 **Принципы:**
 - Один батч = один источник в контексте.
@@ -1267,14 +1284,33 @@ Master не редактирует код напрямую (это работа 
 - Запуск master-агента до Фазы 0a (не сможет читать `AGENTS.md` и не будет знать как разводить).
 - Перенумерация ADR при добавлении новых тем — сквозная нумерация 0001+ остаётся, тема определяется подпапкой.
 
-### 7.8 Рекомендованный порядок (карта тиков)
+### 7.9 Рекомендованный порядок (карта тиков)
 
-1. **Фаза 0** (scaffold) — Сергей или Claude Code лично.
-2. **Фаза 0a** (Слой 1 + Слой 2) — Сергей или Claude Code лично; критический фундамент.
-3. **Параллельный залп через master-агента:** фазы 1, 2, 3a, 3b, 4, 5, 7 — каждая в отдельном worktree-sub-агенте. Linear-sync sub-агенты на 3, 4, 5 — рядом.
-4. **Фаза 6** (arc42-главы) — три подфазы 6a/6b/6c после фаз 1–5.
-5. **Фаза 9** (post-rebuild followup + закрытие HLE-495) — финал.
-6. **Фаза 8** (CI/CD) — отдельной задачей после HLE-495.
+| Шаг | Фаза | Linear-issue | Кто исполняет | Зависимости |
+|---|---|---|---|---|
+| 1 | 0 — scaffold | HLE-497 | Сергей или Claude Code лично | — |
+| 2 | 0a — AGENTS.md + scripts | HLE-498 | Сергей или Claude Code лично | HLE-497 |
+| 3 | 1 — workspace.dsl | HLE-499 | master → sub в worktree | HLE-498 |
+| 3 | 2 — ADR anti-hallucinations | HLE-500 | master → sub в worktree | HLE-498 |
+| 3 | 3a — ADR foundation 0011–0017 | HLE-502 | master → sub в worktree (+ Linear-sync sub-агент HLE-413 шлейф) | HLE-498 |
+| 3 | 3b — ADR foundation 0018–0023 | HLE-503 | master → sub в worktree | HLE-498 |
+| 3 | 4 — ADR code-processing | HLE-504 | master → sub в worktree (+ Linear-sync sub-агент HLE-414) | HLE-498 |
+| 3 | 5 — ADR open + tooling | HLE-505 | master → sub в worktree (+ Linear-sync sub-агент HLE-415..419 rewrite) | HLE-498 |
+| 3 | 7 — roadmap + кейсы | HLE-501 | master → sub в worktree | HLE-497 |
+| 4 | 6a — arc42 01..04 | HLE-506 | master → sub в worktree | HLE-499, HLE-502, HLE-503 |
+| 4 | 6b — arc42 05..08 | HLE-507 | master → sub в worktree | HLE-499, HLE-500, HLE-502, HLE-503, HLE-504 |
+| 4 | 6c — arc42 09..12 | HLE-508 | master → sub в worktree | HLE-498, HLE-500, HLE-502, HLE-503, HLE-504, HLE-505 |
+| 5 | 9 — followup + закрытие HLE-495 | HLE-509 | master → sub в worktree | HLE-501, HLE-506, HLE-507, HLE-508 |
+| **после HLE-495** | 8a — CI/CD structurizr-export | HLE-510 | sub-агент (без master) | HLE-499 |
+| **после HLE-495** | 8b — CI/CD PR-review + pre-commit | HLE-511 | sub-агент (без master) | HLE-498, HLE-510 |
+
+**Шаг 3** — параллельный залп: фазы 1, 2, 3a, 3b, 4, 5, 7 идут одновременно через master-агента. Каждая в своём worktree, чтобы git-конфликты были невозможны.
+
+**Шаг 4** — три подфазы arc42, можно параллельно или последовательно. После завершения 1–5 master запускает их.
+
+**Шаг 5** — фаза 9, последняя в HLE-495.
+
+**После HLE-495** — фазы 8a и 8b (CI/CD) уже не блокируют закрытие основной задачи, делаются отдельно в roadmap фазы 0.
 
 ---
 
