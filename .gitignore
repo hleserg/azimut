@@ -33,3 +33,6 @@ chroma_db/
 # OS
 .DS_Store
 Thumbs.db
+
+# Structurizr runtime (логи, кеш, lock-файлы)
+.structurizr/

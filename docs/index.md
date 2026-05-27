@@ -9,7 +9,7 @@
 | Что ищешь | Куда идти |
 |---|---|
 | Архитектура (arc42, 12 глав + глава 13) | [`docs/architecture/`](architecture/README.md) |
-| C4-диаграммы (Context / Container / Component) | [`workspace.dsl`](../workspace.dsl) → `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite` |
+| C4-диаграммы (Context / Container / Component) | [`workspace.dsl`](../workspace.dsl) → `docker run --rm -p 8080:8080 -v .:/usr/local/structurizr --user $(id -u):$(id -g) structurizr/structurizr local` |
 | Архитектурные решения (ADR, MADR) | [`docs/architecture/adr/`](architecture/adr/) |
 | Эталонные кейсы | [`docs/cases/`](cases/) |
 | Промпты для ИИ-агентов и ревьюера | [`.github/prompts/`](../.github/prompts/) |
@@ -19,7 +19,7 @@
 ## Быстрый старт Structurizr Lite
 
 ```bash
-docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite
+docker run --rm -p 8080:8080 -v .:/usr/local/structurizr --user $(id -u):$(id -g) structurizr/structurizr local
 ```
 
 Открыть `http://localhost:8080`.

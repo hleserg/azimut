@@ -28,7 +28,7 @@
 
 Просмотр локально:
 ```bash
-docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite
+docker run --rm -p 8080:8080 -v .:/usr/local/structurizr --user $(id -u):$(id -g) structurizr/structurizr local
 ```
 Открыть `http://localhost:8080`.
 
