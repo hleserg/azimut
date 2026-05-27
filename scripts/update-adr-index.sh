@@ -37,6 +37,7 @@ while IFS= read -r -d '' file; do
   in_frontmatter=0
   found_first=0
   while IFS= read -r line; do
+    line="${line%$'\r'}"  # strip trailing CR from CRLF files (Windows checkouts)
     if [[ "$line" == "---" ]]; then
       if (( found_first == 0 )); then
         found_first=1
@@ -56,6 +57,7 @@ while IFS= read -r -d '' file; do
 
   # Extract H1 title (first line starting with "# ")
   while IFS= read -r line; do
+    line="${line%$'\r'}"  # strip trailing CR from CRLF files (Windows checkouts)
     if [[ "$line" =~ ^#[[:space:]](.+)$ ]]; then
       title="${BASH_REMATCH[1]}"
       break
@@ -83,6 +85,7 @@ done
 TMPFILE="$(mktemp)"
 in_block=0
 while IFS= read -r line; do
+  line="${line%$'\r'}"  # strip trailing CR from CRLF files (Windows checkouts)
   if [[ "$line" == "$START_MARKER" ]]; then
     printf '%s\n' "$line" >> "$TMPFILE"
     printf '%b' "$TABLE" >> "$TMPFILE"

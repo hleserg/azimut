@@ -27,6 +27,9 @@ Get-ChildItem -Path $AdrRoot -Recurse -Depth 1 -Filter '*.md' |
         $File      = $_
         $FileName  = $File.Name
         $Subfolder = $File.Directory.Name
+        # Re-match here: $Matches is overwritten by later regex inside this block
+        # AND by any other -match call upstream, so we cannot rely on Where-Object's capture.
+        if ($FileName -notmatch '^(\d{4})-') { return }
         $Num       = $Matches[1]
 
         # Extract status from frontmatter
@@ -92,5 +95,7 @@ foreach ($Line in $IndexContent) {
     }
 }
 
-[System.IO.File]::WriteAllLines($IndexFile, $Output, [System.Text.Encoding]::UTF8)
+# UTF-8 without BOM, to avoid diff-ping-pong with the bash version
+$Utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllLines($IndexFile, $Output, $Utf8NoBom)
 Write-Host "Updated: $IndexFile ($($Rows.Count) ADR entries)"
