@@ -10,6 +10,16 @@
 <!-- ADR-INDEX:START -->
 | № | Тема | Статус | Заголовок |
 |---|---|---|---|
+| 0001 | anti-hallucinations | accepted | [Метрика противоречивости источников ПЕРЕД выдачей](adr/anti-hallucinations/0001-р1-metric-contradiction.md) |
+| 0002 | anti-hallucinations | accepted | [Faithfulness и relevance ретривера — разные метрики](adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md) |
+| 0003 | anti-hallucinations | accepted | [LLM-судья со спан-привязкой (Claude как арбитр)](adr/anti-hallucinations/0003-р3-llm-judge-spans.md) |
+| 0004 | anti-hallucinations | superseded by 0007 | [«Честный тупик» как фолбэк (снято)](adr/anti-hallucinations/0004-р4-honest-deadend-retired.md) |
+| 0005 | anti-hallucinations | accepted | [Контроль ретривинга — на сервере (планка релевантности, триггер добора, потолок окна)](adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md) |
+| 0006 | anti-hallucinations | accepted | [Иерархия источников при конфликте: код → справка → ИТС](adr/anti-hallucinations/0006-р6-source-hierarchy.md) |
+| 0007 | anti-hallucinations | accepted | [Фолбэк = смена режима (дип-ресёрч в интернете с тем же контрактом)](adr/anti-hallucinations/0007-р7-fallback-mode-switch.md) |
+| 0008 | anti-hallucinations | proposed | [Детектор «relevance высокий / groundedness низкий» — 3 уровня действий](adr/anti-hallucinations/0008-п1-groundedness-detector.md) |
+| 0009 | anti-hallucinations | proposed | [Второй проход ретривера при неуверенности (открытый триггер)](adr/anti-hallucinations/0009-п2-re-retrieval.md) |
+| 0010 | anti-hallucinations | proposed | [Оценка достаточности запроса + подсказки агенту что переспросить](adr/anti-hallucinations/0010-п3-query-sufficiency.md) |
 | 0011 | foundation | accepted | [Основа — форк `bsl-atlas` (AGPL-3.0) как ядро понимания кода 1С](adr/foundation/0011-fork-bsl-atlas-as-core.md) |
 | 0012 | foundation | accepted | [Имя форка/проекта — «Азимут» / `azimuth`](adr/foundation/0012-name-azimut.md) |
 | 0013 | foundation | accepted | [Роль `bsl-atlas`: только «движок понимания кода» (берём парсер BSL + граф вызовов + каркас MCP + docker; меняем хранилище/эмбеддер/реранк; дописываем поведенческий контракт и оркестрацию)](adr/foundation/0013-fork-role-code-engine.md) |
