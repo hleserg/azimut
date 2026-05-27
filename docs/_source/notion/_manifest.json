@@ -1,0 +1,224 @@
+{
+  "fetched_at": "2026-05-27T13:16:39Z",
+  "root_hub": "36b0c905e626819eaca7ed0875cb6f8e",
+  "checklist": {
+    "decisions": "ok",
+    "runbook": "ok",
+    "questions": "ok",
+    "iscf_under_questions": "ok",
+    "researches": "ok",
+    "bsl_atlas_research_2026_05_25": "ok",
+    "design_system_v2": "ok",
+    "design_system_v2_children_count": 11,
+    "duplicates": {
+      "HLE-460": ["36c0c905e626815bb3e1c6cdc12181bf", "36c0c905e626814385a2c7259a3d0c0c"],
+      "HLE-464": ["36c0c905e626812dbf6fc91762fd2166", "36c0c905e62681f58f19ffd3e0aa0a82"]
+    }
+  },
+  "pages": [
+    {
+      "title": "🤖 1С-ассистент — Агент-консультант по 1С ERP",
+      "notion_id": "36b0c905e626819eaca7ed0875cb6f8e",
+      "url": "https://www.notion.so/36b0c905e626819eaca7ed0875cb6f8e",
+      "parent_id": null,
+      "file": "docs/_source/notion/hub-1c-assistent--36b0c905e626819eaca7ed0875cb6f8e.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Решения (decisions) — борьба с галлюцинациями и поиск",
+      "notion_id": "36b0c905e62681019228dfcc7ec2a1cb",
+      "url": "https://www.notion.so/36b0c905e62681019228dfcc7ec2a1cb",
+      "parent_id": "36b0c905e626819eaca7ed0875cb6f8e",
+      "file": "docs/_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Операционное руководство (runbook) — для руководителя",
+      "notion_id": "36b0c905e626810ba536fdd4c8242a9b",
+      "url": "https://www.notion.so/36b0c905e626810ba536fdd4c8242a9b",
+      "parent_id": "36b0c905e626819eaca7ed0875cb6f8e",
+      "file": "docs/_source/notion/runbook--36b0c905e626810ba536fdd4c8242a9b.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Открытые вопросы (questions) — сводный список",
+      "notion_id": "36b0c905e62681a48975d4a2315fbce9",
+      "url": "https://www.notion.so/36b0c905e62681a48975d4a2315fbce9",
+      "parent_id": "36b0c905e626819eaca7ed0875cb6f8e",
+      "file": "docs/_source/notion/questions--36b0c905e62681a48975d4a2315fbce9.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Анализ формата базы 1С:ИТС (ISCF) — разведка 25.05.2026",
+      "notion_id": "36b0c905e626810f918dc4d33a7513a2",
+      "url": "https://www.notion.so/36b0c905e626810f918dc4d33a7513a2",
+      "parent_id": "36b0c905e62681a48975d4a2315fbce9",
+      "file": "docs/_source/notion/iscf-analysis--36b0c905e626810f918dc4d33a7513a2.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Исследования",
+      "notion_id": "36b0c905e62680969facf6d2acc2f695",
+      "url": "https://www.notion.so/36b0c905e62680969facf6d2acc2f695",
+      "parent_id": "36b0c905e626819eaca7ed0875cb6f8e",
+      "file": "docs/_source/notion/researches--36b0c905e62680969facf6d2acc2f695.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok",
+      "notes": "Страница содержит file-attachment (RAG_dlya_1C_ERP_obzor.md) — Notion MCP file-блок сохранён как `<file src=…>` в markdown, бинарник вложения через MCP не скачать."
+    },
+    {
+      "title": "🔍 Исследование: опенсорсные компоненты для форка bsl-atlas — 25.05.2026",
+      "notion_id": "36b0c905e626814fa52ce80b248c4311",
+      "url": "https://www.notion.so/36b0c905e626814fa52ce80b248c4311",
+      "parent_id": "36b0c905e626819eaca7ed0875cb6f8e",
+      "file": "docs/_source/notion/bsl-atlas-opensource-research--36b0c905e626814fa52ce80b248c4311.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Дизайн системы 2.0",
+      "notion_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "url": "https://www.notion.so/36b0c905e626813491fcf7e9ccf2046e",
+      "parent_id": "36b0c905e626819eaca7ed0875cb6f8e",
+      "file": "docs/_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Разбор графовых аналогов (HLE-459) — выводы для реш. 2.2",
+      "notion_id": "36c0c905e62681a8b351c0b629af870e",
+      "url": "https://www.notion.so/36c0c905e62681a8b351c0b629af870e",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-459-graph-analogs--36c0c905e62681a8b351c0b629af870e.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Роутинг поиска по коду (HLE-461) — выводы для реш. 2.3",
+      "notion_id": "36c0c905e62681a7a509cad5c7408cfd",
+      "url": "https://www.notion.so/36c0c905e62681a7a509cad5c7408cfd",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-461-search-routing--36c0c905e62681a7a509cad5c7408cfd.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Сравнение 4 реализаций индекс/граф (HLE-456) — финал 2.2 + реш. 2.4",
+      "notion_id": "36c0c905e626817a9727ee1708e2d8c2",
+      "url": "https://www.notion.so/36c0c905e626817a9727ee1708e2d8c2",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-456-four-implementations--36c0c905e626817a9727ee1708e2d8c2.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "Обёртки BSL LS в MCP (HLE-463) — выводы для реестра доноров",
+      "notion_id": "36c0c905e626813689ade4d5112deae1",
+      "url": "https://www.notion.so/36c0c905e626813689ade4d5112deae1",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-463-bsl-ls-wrappers--36c0c905e626813689ade4d5112deae1.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "[АРХИВ ▸ дубликат HLE-460] FSerg/mcp-1c-v1 — chunking + Qdrant",
+      "notion_id": "36c0c905e626815bb3e1c6cdc12181bf",
+      "url": "https://www.notion.so/36c0c905e626815bb3e1c6cdc12181bf",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-460-archive-duplicate-fserg-mcp-1c-v1--36c0c905e626815bb3e1c6cdc12181bf.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok",
+      "duplicate_of": "36c0c905e626814385a2c7259a3d0c0c",
+      "duplicate_topic": "HLE-460"
+    },
+    {
+      "title": "Промт-инжиниринг и абстракции над XML (HLE-457, cc-1c-skills) — выводы для тем 5 и справочника типов",
+      "notion_id": "36c0c905e62681299fccfc047aca85ce",
+      "url": "https://www.notion.so/36c0c905e62681299fccfc047aca85ce",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-457-prompt-engineering-xml--36c0c905e62681299fccfc047aca85ce.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "[АРХИВ ▸ дубликат HLE-464] Живые данные 1С: 5 репо",
+      "notion_id": "36c0c905e626812dbf6fc91762fd2166",
+      "url": "https://www.notion.so/36c0c905e626812dbf6fc91762fd2166",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-464-archive-duplicate-live-data--36c0c905e626812dbf6fc91762fd2166.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok",
+      "duplicate_of": "36c0c905e62681f58f19ffd3e0aa0a82",
+      "duplicate_topic": "HLE-464"
+    },
+    {
+      "title": "Chunking + Qdrant-схема FSerg/mcp-1c-v1 (HLE-460) — идеи для тем 2–3 (лицензия MIT ✅)",
+      "notion_id": "36c0c905e626814385a2c7259a3d0c0c",
+      "url": "https://www.notion.so/36c0c905e626814385a2c7259a3d0c0c",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-460-fserg-chunking-qdrant--36c0c905e626814385a2c7259a3d0c0c.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok",
+      "duplicate_topic": "HLE-460"
+    },
+    {
+      "title": "Runtime-доступ к живой базе 1С — 5 репо (HLE-464) — тема 7",
+      "notion_id": "36c0c905e62681f58f19ffd3e0aa0a82",
+      "url": "https://www.notion.so/36c0c905e62681f58f19ffd3e0aa0a82",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-464-runtime-live-1c--36c0c905e62681f58f19ffd3e0aa0a82.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok",
+      "duplicate_topic": "HLE-464"
+    },
+    {
+      "title": "Конкуренты mini-ai-1c / 1c-buddy / EDT-MCP (HLE-458) — нарезка инструментов, темы 2/7/17",
+      "notion_id": "36c0c905e62681499a08c8777a6ed838",
+      "url": "https://www.notion.so/36c0c905e62681499a08c8777a6ed838",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/hle-458-mini-ai-1c-competitors--36c0c905e62681499a08c8777a6ed838.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    },
+    {
+      "title": "📊 Сводный реестр решений + оценки 1–10 (свод по всем страницам, 2026-05-26)",
+      "notion_id": "36c0c905e62681348458ca15b2d3d412",
+      "url": "https://www.notion.so/36c0c905e62681348458ca15b2d3d412",
+      "parent_id": "36b0c905e626813491fcf7e9ccf2046e",
+      "file": "docs/_source/notion/solutions-registry-summary--36c0c905e62681348458ca15b2d3d412.md",
+      "comments_file": null,
+      "fetched_at": "2026-05-27T13:16:39Z",
+      "status": "ok"
+    }
+  ],
+  "summary": {
+    "total_pages": 19,
+    "ok": 19,
+    "failed": 0,
+    "discussions_found": 0,
+    "comments_files_saved": 0
+  }
+}
