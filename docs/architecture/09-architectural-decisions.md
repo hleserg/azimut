@@ -33,4 +33,8 @@
 | 0021 | foundation | accepted | [Дефолт разговорной модели — DeepSeek V4 (Flash основной, Pro для тяжёлого кода); запас — Claude/Qwen/Yandex; финал валидируем eval-ом в теме 6](adr/foundation/0021-default-model-deepseek-v4.md) |
 | 0022 | foundation | accepted | [Граница «форк/готовые библиотеки vs наш код» — форк даёт понимание кода, библиотеки дают механику RAG, наш код — поведение, гарантии, оркестрацию](adr/foundation/0022-boundary-fork-vs-own-code.md) |
 | 0023 | foundation | accepted | [Лицензионный чек-лист OSS под AGPL-3.0 + правило источников («✅ проверено: <файл/url>» или «⚠️ предположение»)](adr/foundation/0023-license-checklist-and-source-rule.md) |
+| 0024 | code-processing | accepted | [Детерминированная структурная резка кода поверх Азимута](adr/code-processing/0024-code-chunking-deterministic-structural.md) |
+| 0025 | code-processing | proposed | [Алгоритм резолва одноимённых процедур — открытая инженерная задача](adr/code-processing/0025-resolve-same-named-procedures.md) |
+| 0026 | code-processing | accepted | [Роутинг поиска по коду — fallback-цепочка graph → metadata → grep](adr/code-processing/0026-code-search-routing.md) |
+| 0027 | code-processing | accepted | [Портировать техники `mcp-1c` (feenlace) в Python — не переписывать на Go](adr/code-processing/0027-port-feenlace-techniques-to-python.md) |
 <!-- ADR-INDEX:END -->
