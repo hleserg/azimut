@@ -17,4 +17,10 @@
 | 0015 | foundation | accepted | [Миграция стека: гибрид по времени — один дымовой прогон `bsl-atlas` на ChromaDB, затем сразу Qdrant+BGE-M3 (ни строчки нового кода под Chroma)](adr/foundation/0015-stack-migration-smoke-then-qdrant.md) |
 | 0016 | foundation | accepted | [MCP-шлюз `onec-mcp-universal` — отложен до темы 7 (на локальном сценарии не нужен; Claude Desktop тянет несколько MCP-серверов напрямую)](adr/foundation/0016-onec-mcp-universal-deferred.md) |
 | 0017 | foundation | accepted | [`alkoleft/mcp-bsl-platform-context` берём в фундамент (drop-in вторым MCP, MIT, бесплатно)](adr/foundation/0017-mcp-bsl-platform-context-included.md) |
+| 0018 | foundation | superseded by 0019 | [UX и клиент — свой UI не строим, берём готовый MCP-клиент с облачной разговорной моделью](adr/foundation/0018-mcp-client-no-own-ui.md) |
+| 0019 | foundation | accepted | [Дефолт-клиент по ролям: Cherry Studio (мама/Сергей-everyday) + Claude Desktop (Сергей-премиум дома) + mini-ai-1c (Сергей-захват кода)](adr/foundation/0019-cherry-studio-default-client.md) |
+| 0020 | foundation | accepted | [Разговорная модель — облачная и подключаемая через адаптер; внутри MCP-сервера нет разговорной LLM; лёгкие модели (BGE/реранкер/судья) — локально по умолчанию, грант Cohere — опциональный апгрейд](adr/foundation/0020-cloud-llm-via-adapter.md) |
+| 0021 | foundation | accepted | [Дефолт разговорной модели — DeepSeek V4 (Flash основной, Pro для тяжёлого кода); запас — Claude/Qwen/Yandex; финал валидируем eval-ом в теме 6](adr/foundation/0021-default-model-deepseek-v4.md) |
+| 0022 | foundation | accepted | [Граница «форк/готовые библиотеки vs наш код» — форк даёт понимание кода, библиотеки дают механику RAG, наш код — поведение, гарантии, оркестрацию](adr/foundation/0022-boundary-fork-vs-own-code.md) |
+| 0023 | foundation | accepted | [Лицензионный чек-лист OSS под AGPL-3.0 + правило источников («✅ проверено: <файл/url>» или «⚠️ предположение»)](adr/foundation/0023-license-checklist-and-source-rule.md) |
 <!-- ADR-INDEX:END -->
