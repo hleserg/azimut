@@ -1,0 +1,72 @@
+graph LR
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Container View: Азимут"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    1["<div style='font-weight: bold'>Сергей</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Лид-разработчик; основной<br />пользователь системы на<br />ежедневной основе.</div>"]
+    style 1 fill:#08427b,stroke:#052e56,color:#ffffff
+    2["<div style='font-weight: bold'>Мама</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Бухгалтер / 1С-оператор;<br />конечный<br />пользователь-нетехник.</div>"]
+    style 2 fill:#08427b,stroke:#052e56,color:#ffffff
+    3["<div style='font-weight: bold'>Платформа 1С</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Конфигурации ERP/Бухгалтерия;<br />источник BSL-кода и<br />метаданных через<br />DumpConfigToFiles.</div>"]
+    style 3 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    4["<div style='font-weight: bold'>DeepSeek</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Облачная разговорная модель<br />(дефолт): DeepSeek V4 Flash<br />(обычный код) / Pro (тяжёлый<br />код); ADR 0021.</div>"]
+    style 4 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    5["<div style='font-weight: bold'>Claude (Anthropic)</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Облачная LLM для LLM-судьи и<br />Сергея-премиум; Anthropic<br />API; ADR 0021.</div>"]
+    style 5 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    6["<div style='font-weight: bold'>ИТС / Портал платформы</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Справочные материалы 1С;<br />третий уровень иерархии<br />источников (Р6, ADR 0006).</div>"]
+    style 6 fill:#999999,stroke:#6b6b6b,color:#ffffff
+
+    subgraph 7 ["Азимут"]
+      style 7 fill:#ffffff,stroke:#0b4884,color:#0b4884
+
+      10["<div style='font-weight: bold'>mini-ai-1c</div><div style='font-size: 70%; margin-top: 0px'>[Container: Desktop App]</div><div style='font-size: 80%; margin-top:10px'>Клиент Сергея для захвата<br />BSL-кода непосредственно из<br />Конфигуратора 1С (ADR 0019).</div>"]
+      style 10 fill:#999999,stroke:#6b6b6b,color:#ffffff
+      11["<div style='font-weight: bold'>mcp-bsl-platform-context</div><div style='font-size: 70%; margin-top: 0px'>[Container: TypeScript / MCP]</div><div style='font-size: 80%; margin-top:10px'>Drop-in MCP-сервер:<br />справочник платформы 1С (MIT,<br />alkoleft). Второй MCP рядом с<br />Азимутом (ADR 0017).</div>"]
+      style 11 fill:#999999,stroke:#6b6b6b,color:#ffffff
+      12["<div style='font-weight: bold'>Sentry / GlitchTip</div><div style='font-size: 70%; margin-top: 0px'>[Container: Sentry / GlitchTip]</div><div style='font-size: 80%; margin-top:10px'>Мониторинг ошибок и<br />распределённая трассировка.<br />Выбор между Sentry SaaS и<br />self-hosted GlitchTip открыт<br />(ADR 0028).</div>"]
+      style 12 fill:#999999,stroke:#6b6b6b,color:#ffffff
+      13["<div style='font-weight: bold'>MCP-оркестратор</div><div style='font-size: 70%; margin-top: 0px'>[Container: Python / FastMCP]</div><div style='font-size: 80%; margin-top:10px'>Принимает MCP-запросы<br />клиентов; управляет<br />ретривингом, иерархией<br />источников, LLM-судьёй,<br />фолбэком. Граница форк vs наш<br />код (ADR 0022).</div>"]
+      style 13 fill:#438dd5,stroke:#2e6295,color:#ffffff
+      20["<div style='font-weight: bold'>Азимут-ядро</div><div style='font-size: 70%; margin-top: 0px'>[Container: Python / bsl-atlas fork]</div><div style='font-size: 80%; margin-top:10px'>Форк bsl-atlas: парсер BSL,<br />граф вызовов, чанкер,<br />эмбеддер, реранкер. Роль<br />форка — только «движок<br />понимания кода» (ADR 0013).</div>"]
+      style 20 fill:#438dd5,stroke:#2e6295,color:#ffffff
+      25[("<div style='font-weight: bold'>Qdrant</div><div style='font-size: 70%; margin-top: 0px'>[Container: Qdrant]</div><div style='font-size: 80%; margin-top:10px'>Векторное хранилище чанков и<br />метаданных. Embedded локально<br />или server-mode на VDS (ADR<br />0029 open).</div>")]
+      style 25 fill:#438dd5,stroke:#2e6295,color:#ffffff
+      26["<div style='font-weight: bold'>Adapter-слой LLM</div><div style='font-size: 70%; margin-top: 0px'>[Container: Python]</div><div style='font-size: 80%; margin-top:10px'>Абстракция над разговорной<br />облачной LLM; дефолт —<br />DeepSeek V4; запас —<br />Claude/Qwen/Yandex. Финал<br />валидируем eval-ом в теме 6<br />(ADR 0020, 0021).</div>"]
+      style 26 fill:#438dd5,stroke:#2e6295,color:#ffffff
+      8["<div style='font-weight: bold'>Cherry Studio</div><div style='font-size: 70%; margin-top: 0px'>[Container: Electron App]</div><div style='font-size: 80%; margin-top:10px'>MCP-клиент по умолчанию для<br />Мамы и Сергея-everyday;<br />подключается к<br />MCP-оркестратору через<br />JSON-RPC (ADR 0019).</div>"]
+      style 8 fill:#999999,stroke:#6b6b6b,color:#ffffff
+      9["<div style='font-weight: bold'>Claude Desktop</div><div style='font-size: 70%; margin-top: 0px'>[Container: Desktop App]</div><div style='font-size: 80%; margin-top:10px'>MCP-клиент для Сергея-премиум<br />дома; поддерживает несколько<br />MCP-серверов параллельно (ADR<br />0019).</div>"]
+      style 9 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    end
+
+    1-. "<div>использует everyday</div><div style='font-size: 70%'>[Desktop GUI]</div>" .->8
+    1-. "<div>использует для сложного кода</div><div style='font-size: 70%'>[Desktop GUI]</div>" .->9
+    1-. "<div>захватывает код из<br />Конфигуратора</div><div style='font-size: 70%'>[Desktop GUI]</div>" .->10
+    2-. "<div>задаёт вопросы по 1С</div><div style='font-size: 70%'>[Desktop GUI]</div>" .->8
+    8-. "<div>вызывает инструменты via</div><div style='font-size: 70%'>[MCP / JSON-RPC]</div>" .->13
+    9-. "<div>вызывает инструменты via</div><div style='font-size: 70%'>[MCP / JSON-RPC]</div>" .->13
+    10-. "<div>вызывает инструменты via</div><div style='font-size: 70%'>[MCP / JSON-RPC]</div>" .->13
+    13-. "<div>запрашивает индекс кода via</div><div style='font-size: 70%'>[Python API]</div>" .->20
+    13-. "<div>читает векторы и метаданные<br />via</div><div style='font-size: 70%'>[HTTP / Qdrant API]</div>" .->25
+    13-. "<div>генерирует ответ и фолбэк via</div><div style='font-size: 70%'>[HTTPS / JSON]</div>" .->26
+    13-. "<div>запрашивает справку платформы<br />1С via</div><div style='font-size: 70%'>[MCP / JSON-RPC]</div>" .->11
+    13-. "<div>отправляет трассировки и<br />ошибки via</div><div style='font-size: 70%'>[HTTPS / Sentry SDK]</div>" .->12
+    13-. "<div>ищет справочные материалы<br />(Р6, ADR 0006) via</div><div style='font-size: 70%'>[HTTPS]</div>" .->6
+    13-. "<div>арбитрирует через LLM-судью<br />via</div><div style='font-size: 70%'>[HTTPS / Anthropic API]</div>" .->5
+    20-. "<div>читает и сохраняет векторы<br />via</div><div style='font-size: 70%'>[HTTP / gRPC]</div>" .->25
+    26-. "<div>генерирует текст via</div><div style='font-size: 70%'>[HTTPS / OpenAI-compatible API]</div>" .->4
+    3-. "<div>передаёт BSL-код и метаданные<br />via</div><div style='font-size: 70%'>[DumpConfigToFiles / File system]</div>" .->20
+    20-. "<div>возвращает реранкированные<br />результаты via</div><div style='font-size: 70%'>[in-process]</div>" .->13
+
+  click 8 href "../../docs/architecture/adr/foundation/0019-cherry-studio-default-client.md" "_blank"
+  click 9 href "../../docs/architecture/adr/foundation/0019-cherry-studio-default-client.md" "_blank"
+  click 10 href "../../docs/architecture/adr/foundation/0019-cherry-studio-default-client.md" "_blank"
+  click 11 href "../../docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md" "_blank"
+  click 12 href "../../docs/architecture/adr/open/0028-sentry-vs-agpl.md" "_blank"
+  click 13 href "../../docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md" "_blank"
+  click 20 href "../../docs/architecture/adr/foundation/0013-fork-role-code-engine.md" "_blank"
+  click 25 href "../../docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md" "_blank"
+  click 26 href "../../docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md" "_blank"
+
+  end

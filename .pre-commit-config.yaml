@@ -6,6 +6,11 @@
 # Хуки:
 #   - validate-dsl       — проверка workspace.dsl (требует scripts/validate-dsl.sh из HLE-510).
 #                           Пока скрипта нет — хук молча пропускает; станет активным после Фазы 8a.
+#   - validate-arch      — проверка соответствия кода и workspace.dsl (HLE-528):
+#                           metadata completeness + docker-compose vs DSL + src/ dirs vs DSL.
+#                           Требует Docker. Без Docker — молча пропускает.
+#   - export-mermaid     — экспорт workspace.dsl в Mermaid (.mmd) в docs/diagrams/ (HLE-528).
+#                           Автоматически стейджит сгенерированные файлы. Требует Docker.
 #   - validate-madr      — проверка MADR-структуры изменённых ADR (Python, кросс-платформенно).
 #   - update-adr-index   — авто-пересборка индекса главы 9 при правке любого ADR.
 
@@ -21,6 +26,29 @@ repos:
         description: >-
           Запускает scripts/validate-dsl.sh / .ps1 (из Фазы 8a, HLE-510), если он есть.
           До завершения 8a — печатает предупреждение и пропускает.
+
+      - id: validate-arch
+        name: Validate architecture (code vs workspace.dsl)
+        entry: python scripts/validate_arch.py
+        language: system
+        files: ^(workspace\.dsl|docker-compose\.yml|src/.*)$
+        pass_filenames: false
+        description: >-
+          Экспортирует workspace.dsl в JSON и проверяет:
+          (1) все контейнеры/компоненты имеют technology и description;
+          (2) сервисы docker-compose.yml упомянуты в DSL;
+          (3) директории src/ упомянуты в DSL.
+          Требует Docker; без Docker — пропускает.
+
+      - id: export-mermaid
+        name: Export workspace.dsl to Mermaid diagrams
+        entry: python scripts/run_export_mermaid.py
+        language: system
+        files: ^workspace\.dsl$
+        pass_filenames: false
+        description: >-
+          При изменении workspace.dsl генерирует structurizr-*.mmd в docs/diagrams/
+          и автоматически стейджит их. Требует Docker; без Docker — пропускает.
 
       - id: validate-madr
         name: Validate ADR frontmatter (MADR)

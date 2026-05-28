@@ -1,0 +1,42 @@
+graph LR
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Component View: Азимут - Азимут-ядро"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    subgraph 7 ["Азимут"]
+      style 7 fill:#ffffff,stroke:#0b4884,color:#0b4884
+
+      subgraph 20 ["Азимут-ядро"]
+        style 20 fill:#ffffff,stroke:#2e6295,color:#2e6295
+
+        21["<div style='font-weight: bold'>Чанкер</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Детерминированная структурная<br />резка: функция = чанк (≤<br />порога); блоки<br />Если/Цикл/Попытка/Область с<br />шапкой контекста. LLM для<br />резки не используем (ADR<br />0024).</div>"]
+        style 21 fill:#85bbf0,stroke:#5d82a8,color:#000000
+        22["<div style='font-weight: bold'>Граф вызовов</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Построение графа BSL-вызовов;<br />резолв одноимённых процедур —<br />открытая инженерная задача<br />(ADR 0025 proposed).</div>"]
+        style 22 fill:#85bbf0,stroke:#5d82a8,color:#000000
+        23["<div style='font-weight: bold'>Эмбеддер</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Векторизация чанков: BGE-M3<br />локально по умолчанию; Cohere<br />Embed опционально через<br />адаптер (ADR 0020).</div>"]
+        style 23 fill:#85bbf0,stroke:#5d82a8,color:#000000
+        24["<div style='font-weight: bold'>Реранкер</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Реранкинг результатов перед<br />выдачей: BGE-reranker<br />локально; Cohere Rerank<br />опционально. Faithfulness vs<br />relevance (ADR 0002).</div>"]
+        style 24 fill:#85bbf0,stroke:#5d82a8,color:#000000
+      end
+
+      13["<div style='font-weight: bold'>MCP-оркестратор</div><div style='font-size: 70%; margin-top: 0px'>[Container: Python / FastMCP]</div><div style='font-size: 80%; margin-top:10px'>Принимает MCP-запросы<br />клиентов; управляет<br />ретривингом, иерархией<br />источников, LLM-судьёй,<br />фолбэком. Граница форк vs наш<br />код (ADR 0022).</div>"]
+      style 13 fill:#438dd5,stroke:#2e6295,color:#ffffff
+      25[("<div style='font-weight: bold'>Qdrant</div><div style='font-size: 70%; margin-top: 0px'>[Container: Qdrant]</div><div style='font-size: 80%; margin-top:10px'>Векторное хранилище чанков и<br />метаданных. Embedded локально<br />или server-mode на VDS (ADR<br />0029 open).</div>")]
+      style 25 fill:#438dd5,stroke:#2e6295,color:#ffffff
+    end
+
+    13-. "<div>читает векторы и метаданные<br />via</div><div style='font-size: 70%'>[HTTP / Qdrant API]</div>" .->25
+    21-. "<div>передаёт чанки с контекстом<br />via</div><div style='font-size: 70%'>[in-process]</div>" .->22
+    22-. "<div>передаёт обогащённые чанки<br />via</div><div style='font-size: 70%'>[in-process]</div>" .->23
+    23-. "<div>сохраняет векторы via</div><div style='font-size: 70%'>[HTTP / Qdrant API]</div>" .->25
+    24-. "<div>возвращает реранкированные<br />результаты via</div><div style='font-size: 70%'>[in-process]</div>" .->13
+
+  click 13 href "../../docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md" "_blank"
+  click 21 href "../../docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md" "_blank"
+  click 22 href "../../docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md" "_blank"
+  click 23 href "../../docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md" "_blank"
+  click 24 href "../../docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md" "_blank"
+  click 25 href "../../docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md" "_blank"
+
+  end
