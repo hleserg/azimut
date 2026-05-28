@@ -20,6 +20,11 @@
   (основной ADR компонента) в статусе `proposed`. Поле `open-issues` не влияет —
   открытые подвопросы есть почти везде, иначе все элементы окажутся «жёлтыми»
   и тег потеряет смысл. Конвенция зафиксирована в HLE-541.
+- **При добавлении нового элемента (softwareSystem / container / component)
+  не пиши `url` и `tags "Proposed"` руками** — пиши только
+  `properties { "adr-link" "..." }`. Скрипт `scripts/sync_arch_metadata.py`
+  (HLE-547) проставит `url` (на секцию в `_state.md`) и `tags "Proposed"`
+  по статусу ADR. Pre-commit прогонит автоматически при `git commit`.
 
 ---
 

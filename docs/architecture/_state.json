@@ -1028,7 +1028,8 @@
           "technology": "Qdrant",
           "description": "Векторное хранилище чанков и метаданных. Embedded локально или server-mode на VDS (ADR 0029 open).",
           "tags": [
-            "Database"
+            "Database",
+            "Proposed"
           ],
           "adr_link": {
             "path": "docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md",
