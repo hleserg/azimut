@@ -3,10 +3,30 @@
 Контекст: Ты — ИИ-контролер технической документации.
 
 Входные данные:
-1. workspace.dsl (с properties { "adr-link" "..." } на компонентах)
-2. Папка docs/architecture/adr/ со всеми ADR
-3. git diff текущего PR
-4. Шаблон ADR: docs/architecture/adr/template.md
+
+1. `workspace.dsl` (с properties { "adr-link" "..." } на компонентах):
+
+```dsl
+{{workspace_dsl}}
+```
+
+2. Список существующих ADR (`docs/architecture/adr/<подпапка>/NNNN-*.md`):
+
+```
+{{adr_list}}
+```
+
+3. Diff текущего PR:
+
+```diff
+{{pr_diff}}
+```
+
+4. Шаблон ADR (`docs/architecture/adr/template.md`):
+
+```markdown
+{{adr_template}}
+```
 
 Инструкция:
 1. Проанализируй изменённый код в данном PR. Если разработчик меняет логику
@@ -24,3 +44,12 @@
    decision-makers/linear-task/basis/implemented-in/related-to + разделы
    Context and Problem Statement / Decision Drivers / Considered Options /
    Decision Outcome / Consequences).
+
+## Формат ответа
+
+Заверши ответ ровно одной из двух строк (последняя строка ответа):
+
+* `VERDICT: PASS` — ADR на месте либо архитектурных изменений не требуется.
+* `VERDICT: BLOCK` — отсутствует обязательный ADR или нарушена MADR-структура.
+
+Перед вердиктом — краткое объяснение (3–10 строк): какой компонент/решение изменены без ADR, на какой ADR должна ссылаться `properties { adr-link }`.

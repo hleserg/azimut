@@ -1,0 +1,44 @@
+# Pre-commit hooks для Азимута. См. https://pre-commit.com.
+#
+# Установка:    pre-commit install
+# Ручной прогон: pre-commit run --all-files
+#
+# Хуки:
+#   - validate-dsl       — проверка workspace.dsl (требует scripts/validate-dsl.sh из HLE-510).
+#                           Пока скрипта нет — хук молча пропускает; станет активным после Фазы 8a.
+#   - validate-madr      — проверка MADR-структуры изменённых ADR (Python, кросс-платформенно).
+#   - update-adr-index   — авто-пересборка индекса главы 9 при правке любого ADR.
+
+repos:
+  - repo: local
+    hooks:
+      - id: validate-dsl
+        name: Validate workspace.dsl (Structurizr)
+        entry: python scripts/run_validate_dsl.py
+        language: system
+        files: ^workspace\.dsl$
+        pass_filenames: false
+        description: >-
+          Запускает scripts/validate-dsl.sh / .ps1 (из Фазы 8a, HLE-510), если он есть.
+          До завершения 8a — печатает предупреждение и пропускает.
+
+      - id: validate-madr
+        name: Validate ADR frontmatter (MADR)
+        entry: python scripts/validate-madr.py
+        language: system
+        files: ^docs/architecture/adr/[^/]+/[0-9]{4}-.+\.md$
+        description: >-
+          Проверяет, что у каждого ADR заполнен обязательный frontmatter
+          (status / date / decision-makers / linear-task / basis) и есть
+          разделы Context and Problem Statement / Decision Outcome.
+
+      - id: update-adr-index
+        name: Update ADR index in chapter 09
+        entry: python scripts/run_update_adr_index.py
+        language: system
+        files: ^docs/architecture/adr/[^/]+/[0-9]{4}-.+\.md$
+        pass_filenames: false
+        description: >-
+          После правки ADR пересобирает таблицу в
+          docs/architecture/09-architectural-decisions.md между маркерами
+          ADR-INDEX:START/END и автоматически стейджит результат.
