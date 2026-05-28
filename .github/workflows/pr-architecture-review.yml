@@ -1,0 +1,53 @@
+name: PR Architecture Review
+
+# Запускает три ИИ-промпта из .github/prompts/ на каждом не-draft PR:
+# 1) pr-architecture-lint — соответствие workspace.dsl
+# 2) pr-adr-check         — наличие ADR для архитектурных изменений
+# 3) pr-lead-manual-check — обновление главы 13 при инфраструктурных правках
+#
+# DoD из docs/_planning/05-rebuild-plan.md §4.2: PR блокируется, если хоть
+# один промпт вернул VERDICT: BLOCK. Зависит от секрета ANTHROPIC_API_KEY.
+# Модель — Sonnet 4.6 (не Opus): проверки шаблонные, Opus тут избыточен.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  architecture-review:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        prompt:
+          - pr-architecture-lint
+          - pr-adr-check
+          - pr-lead-manual-check
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --quiet 'anthropic>=0.40'
+
+      - name: Run ${{ matrix.prompt }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python .github/scripts/pr_review.py "${{ matrix.prompt }}"
