@@ -9,7 +9,7 @@ set -euo pipefail
 
 REPO_URL="${REPO_URL:-git@github.com:hleserg/azimut.git}"
 REPO_DIR="${REPO_DIR:-$HOME/azimut}"
-BRANCH="${BRANCH:-docs/source-extraction}"
+BRANCH="${BRANCH:-master}"
 CONTAINER_NAME="azimuth-arch"
 COMPOSE_PROFILE="diagrams"
 COMPOSE_SERVICE="structurizr"
