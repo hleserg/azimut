@@ -20,6 +20,7 @@
 **Использует:**
   - → **Cherry Studio** [Desktop GUI] — задаёт вопросы по 1С
 
+<a id="softwaresystem-платформа-1с"></a>
 ## SoftwareSystem: Платформа 1С
 
 Конфигурации ERP/Бухгалтерия; источник BSL-кода и метаданных через DumpConfigToFiles.
@@ -33,6 +34,7 @@
   - → **Азимут-ядро** [DumpConfigToFiles / File system] — передаёт BSL-код и метаданные
   - → **Азимут** [DumpConfigToFiles / File system] — передаёт BSL-код и метаданные
 
+<a id="softwaresystem-deepseek"></a>
 ## SoftwareSystem: DeepSeek
 
 Облачная разговорная модель (дефолт): DeepSeek V4 Flash (обычный код) / Pro (тяжёлый код); ADR 0021.
@@ -42,6 +44,7 @@
 - **ADR**: —
 - **Open issues**: —
 
+<a id="softwaresystem-claude-anthropic"></a>
 ## SoftwareSystem: Claude (Anthropic)
 
 Облачная LLM для LLM-судьи и Сергея-премиум; Anthropic API; ADR 0021.
@@ -51,6 +54,7 @@
 - **ADR**: —
 - **Open issues**: —
 
+<a id="softwaresystem-итс-портал-платформы"></a>
 ## SoftwareSystem: ИТС / Портал платформы
 
 Справочные материалы 1С; третий уровень иерархии источников (Р6, ADR 0006).
@@ -60,6 +64,7 @@
 - **ADR**: —
 - **Open issues**: —
 
+<a id="softwaresystem-cherry-studio"></a>
 ## SoftwareSystem: Cherry Studio
 
 MCP-клиент по умолчанию для Мамы и Сергея-everyday; подключается к MCP-оркестратору по JSON-RPC (ADR 0019).
@@ -73,6 +78,7 @@ MCP-клиент по умолчанию для Мамы и Сергея-everyda
   - → **MCP-оркестратор** [MCP / JSON-RPC] — вызывает инструменты
   - → **Азимут** [MCP / JSON-RPC] — вызывает инструменты
 
+<a id="softwaresystem-claude-desktop"></a>
 ## SoftwareSystem: Claude Desktop
 
 MCP-клиент для Сергея-премиум дома; поддерживает несколько MCP-серверов параллельно (ADR 0019).
@@ -86,6 +92,7 @@ MCP-клиент для Сергея-премиум дома; поддержив
   - → **MCP-оркестратор** [MCP / JSON-RPC] — вызывает инструменты
   - → **Азимут** [MCP / JSON-RPC] — вызывает инструменты
 
+<a id="softwaresystem-mini-ai-1c"></a>
 ## SoftwareSystem: mini-ai-1c
 
 Клиент Сергея для захвата BSL-кода непосредственно из Конфигуратора 1С (ADR 0019).
@@ -99,6 +106,7 @@ MCP-клиент для Сергея-премиум дома; поддержив
   - → **MCP-оркестратор** [MCP / JSON-RPC] — вызывает инструменты
   - → **Азимут** [MCP / JSON-RPC] — вызывает инструменты
 
+<a id="softwaresystem-mcp-bsl-platform-context"></a>
 ## SoftwareSystem: mcp-bsl-platform-context
 
 Drop-in MCP-сервер: справочник платформы 1С (MIT, alkoleft). Второй MCP-сервер рядом с Азимутом (ADR 0017).
@@ -108,6 +116,7 @@ Drop-in MCP-сервер: справочник платформы 1С (MIT, alko
 - **ADR**: [`0017-mcp-bsl-platform-context-included.md`](../docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md) — `alkoleft/mcp-bsl-platform-context` берём в фундамент (drop-in вторым MCP, MIT, бесплатно) *(accepted)*
 - **Open issues**: —
 
+<a id="softwaresystem-sentry-glitchtip"></a>
 ## SoftwareSystem: Sentry / GlitchTip
 
 Мониторинг ошибок и распределённая трассировка. Выбор между Sentry SaaS и self-hosted GlitchTip открыт (ADR 0028).
@@ -117,6 +126,7 @@ Drop-in MCP-сервер: справочник платформы 1С (MIT, alko
 - **ADR**: [`0028-sentry-vs-agpl.md`](../docs/architecture/adr/open/0028-sentry-vs-agpl.md) — Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б *(proposed)*
 - **Open issues**: [`0028-sentry-vs-agpl.md`](../docs/architecture/adr/open/0028-sentry-vs-agpl.md) — Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б *(proposed)*
 
+<a id="softwaresystem-азимут"></a>
 ## SoftwareSystem: Азимут
 
 MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, анти-галлюцинации. Форк bsl-atlas под AGPL-3.0 (ADR 0011).
@@ -131,6 +141,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - → **ИТС / Портал платформы** [HTTPS] — ищет справочные материалы (Р6, ADR 0006)
   - → **Claude (Anthropic)** [HTTPS / Anthropic API] — арбитрирует качество ответа
 
+<a id="container-mcp-оркестратор"></a>
 ### Container: MCP-оркестратор
 
 - **Технология**: `Python / FastMCP`
@@ -153,6 +164,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - ← **Азимут-ядро** [in-process] — возвращает реранкированные результаты
   - ← **Реранкер** [in-process] — возвращает реранкированные результаты
 
+<a id="component-query-sufficiency-gate"></a>
 #### Component: Query Sufficiency Gate ⚠️ **proposed**
 
 - **Технология**: `Python`
@@ -165,6 +177,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - (нет)
 
+<a id="component-server-controlled-retrieval"></a>
 #### Component: Server-Controlled Retrieval
 
 - **Технология**: `Python`
@@ -177,6 +190,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - ← **Query Sufficiency Gate** [in-process] — пропускает только осмысленные запросы
   - ← **Re-Retrieval Controller** [in-process] — запрашивает повтор в рамках бюджета окна
 
+<a id="component-route-dispatcher"></a>
 #### Component: Route Dispatcher
 
 - **Технология**: `Python`
@@ -192,6 +206,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - ← **Азимут-ядро** [in-process] — возвращает реранкированные результаты
   - ← **Реранкер** [in-process] — возвращает реранкированные результаты
 
+<a id="component-source-hierarchy"></a>
 #### Component: Source Hierarchy
 
 - **Технология**: `Python`
@@ -203,6 +218,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - (нет)
 
+<a id="component-contradiction-metric"></a>
 #### Component: Contradiction Metric
 
 - **Технология**: `Python`
@@ -214,6 +230,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - ← **Source Hierarchy** [in-process] — передаёт результаты на проверку
 
+<a id="component-llm-judge"></a>
 #### Component: LLM Judge
 
 - **Технология**: `Python / Claude API`
@@ -226,6 +243,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - ← **Contradiction Metric** [in-process] — передаёт спорные случаи арбитру
 
+<a id="component-groundedness-detector"></a>
 #### Component: Groundedness Detector ⚠️ **proposed**
 
 - **Технология**: `Python`
@@ -239,6 +257,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - ← **LLM Judge** [in-process] — передаёт сигнал недогрунтованности
 
+<a id="component-re-retrieval-controller"></a>
 #### Component: Re-Retrieval Controller ⚠️ **proposed**
 
 - **Технология**: `Python`
@@ -252,6 +271,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - ← **Groundedness Detector** [in-process] — триггерит повторный проход (уровень 1)
 
+<a id="component-fallback-mode"></a>
 #### Component: Fallback Mode
 
 - **Технология**: `Python`
@@ -263,6 +283,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - ← **Re-Retrieval Controller** [in-process] — переключает в дип-ресёрч после N исчерпанных повторов (Р7, ADR 0007/0009)
 
+<a id="container-азимут-ядро"></a>
 ### Container: Азимут-ядро
 
 - **Технология**: `Python / bsl-atlas fork`
@@ -278,6 +299,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - ← **MCP-оркестратор** [Python API] — запрашивает индекс кода
   - ← **Route Dispatcher** [Python API] — маршрутизирует поиск (graph → metadata → grep)
 
+<a id="component-чанкер"></a>
 #### Component: Чанкер
 
 - **Технология**: `Python`
@@ -289,6 +311,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - (нет)
 
+<a id="component-индексатор"></a>
 #### Component: Индексатор
 
 - **Технология**: `Python`
@@ -300,6 +323,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - ← **Чанкер** [in-process] — передаёт чанки на индексацию
 
+<a id="component-граф-вызовов"></a>
 #### Component: Граф вызовов
 
 - **Технология**: `Python`
@@ -311,6 +335,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - ← **Индексатор** [in-process] — передаёт обогащённый поток
 
+<a id="component-same-named-resolver"></a>
 #### Component: Same-Named Resolver ⚠️ **proposed**
 
 - **Технология**: `Python`
@@ -323,6 +348,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - ← **Граф вызовов** [in-process] — передаёт calls(callee_id NULL) на резолв
 
+<a id="component-bsl-synonyms-ru-en"></a>
 #### Component: BSL Synonyms RU↔EN
 
 - **Технология**: `Python`
@@ -335,6 +361,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - ← **MCP-оркестратор** [Python API] — нормализует запрос рус↔англ
   - ← **Route Dispatcher** [Python API] — нормализует запрос рус↔англ
 
+<a id="component-эмбеддер"></a>
 #### Component: Эмбеддер
 
 - **Технология**: `Python`
@@ -347,6 +374,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - ← **Same-Named Resolver** [in-process] — передаёт resolved-чанки на векторизацию
   - ← **BSL Synonyms RU↔EN** [in-process] — предоставляет словарь синонимов
 
+<a id="component-реранкер"></a>
 #### Component: Реранкер
 
 - **Технология**: `Python`
@@ -359,11 +387,12 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
 - **Входящие**:
   - (нет)
 
+<a id="container-qdrant"></a>
 ### Container: Qdrant
 
 - **Технология**: `Qdrant`
 - **Описание**: Векторное хранилище чанков и метаданных. Embedded локально или server-mode на VDS (ADR 0029 open).
-- **Tags**: `Database`
+- **Tags**: `Database, Proposed`
 - **ADR**: [`0029-multitenancy-qdrant-embedded-vs-server.md`](../docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md) — Мульти-аренда: Qdrant embedded vs server — развилка по режиму деплоя *(proposed)*
 - **Open issues**: —
 - **Исходящие**:
@@ -373,6 +402,7 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - ← **Азимут-ядро** [HTTP / gRPC] — читает и сохраняет векторы
   - ← **Эмбеддер** [HTTP / Qdrant API] — сохраняет векторы
 
+<a id="container-adapter-слой-llm"></a>
 ### Container: Adapter-слой LLM
 
 - **Технология**: `Python`

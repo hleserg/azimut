@@ -70,3 +70,14 @@ repos:
           После правки ADR пересобирает таблицу в
           docs/architecture/09-architectural-decisions.md между маркерами
           ADR-INDEX:START/END и автоматически стейджит результат.
+
+      - id: sync-arch-metadata
+        name: Sync url + Proposed tags in workspace.dsl
+        entry: python scripts/sync_arch_metadata.py
+        language: system
+        files: ^(workspace\.dsl|docs/architecture/adr/[^/]+/[0-9]{4}-.+\.md)$
+        pass_filenames: false
+        description: >-
+          Авто-фикс «красивостей» на C4-элементах (HLE-547):
+          url ведёт на _state.md секцию компонента; tags "Proposed"
+          ставится/снимается по статусу adr-link ADR. Идемпотентный.

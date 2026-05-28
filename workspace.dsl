@@ -29,21 +29,21 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
         # ── Внешние MCP-клиенты (ADR 0019) — отдельные softwareSystem ────────────
         cherryStudio = softwareSystem "Cherry Studio" "MCP-клиент по умолчанию для Мамы и Сергея-everyday; подключается к MCP-оркестратору по JSON-RPC (ADR 0019)." {
             tags "External"
-            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md"
+            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#softwaresystem-cherry-studio"
             properties {
                 "adr-link" "docs/architecture/adr/foundation/0019-cherry-studio-default-client.md"
             }
         }
         claudeDesktop = softwareSystem "Claude Desktop" "MCP-клиент для Сергея-премиум дома; поддерживает несколько MCP-серверов параллельно (ADR 0019)." {
             tags "External"
-            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md"
+            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#softwaresystem-claude-desktop"
             properties {
                 "adr-link" "docs/architecture/adr/foundation/0019-cherry-studio-default-client.md"
             }
         }
         miniAi1c = softwareSystem "mini-ai-1c" "Клиент Сергея для захвата BSL-кода непосредственно из Конфигуратора 1С (ADR 0019)." {
             tags "External"
-            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md"
+            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#softwaresystem-mini-ai-1c"
             properties {
                 "adr-link" "docs/architecture/adr/foundation/0019-cherry-studio-default-client.md"
             }
@@ -52,7 +52,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
         # ── Внешний MCP-сервер платформы 1С (ADR 0017) ───────────────────────────
         bslPlatformMcp = softwareSystem "mcp-bsl-platform-context" "Drop-in MCP-сервер: справочник платформы 1С (MIT, alkoleft). Второй MCP-сервер рядом с Азимутом (ADR 0017)." {
             tags "External"
-            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md"
+            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#softwaresystem-mcp-bsl-platform-context"
             properties {
                 "adr-link" "docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md"
             }
@@ -61,7 +61,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
         # ── Внешний мониторинг (ADR 0028 open) ───────────────────────────────────
         sentry = softwareSystem "Sentry / GlitchTip" "Мониторинг ошибок и распределённая трассировка. Выбор между Sentry SaaS и self-hosted GlitchTip открыт (ADR 0028)." {
             tags "External" "Proposed"
-            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0028-sentry-vs-agpl.md"
+            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#softwaresystem-sentry-glitchtip"
             properties {
                 "adr-link" "docs/architecture/adr/open/0028-sentry-vs-agpl.md"
                 "open-issues" "docs/architecture/adr/open/0028-sentry-vs-agpl.md"
@@ -70,7 +70,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
         # ── Основная система ────────────────────────────────────────────────────
         azimuth = softwareSystem "Азимут" "MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, анти-галлюцинации. Форк bsl-atlas под AGPL-3.0 (ADR 0011)." {
-            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md"
+            url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#softwaresystem-азимут"
             properties {
                 "adr-link" "docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md"
             }
@@ -84,7 +84,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
             # ── MCP-оркестратор (наш ключевой код) ──────────────────────────────
             mcpOrchestrator = container "MCP-оркестратор" "Принимает MCP-запросы клиентов; управляет ретривингом, иерархией источников, LLM-судьёй, фолбэком. Граница форк vs наш код (ADR 0022)." "Python / FastMCP" {
-                url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md"
+                url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#container-mcp-оркестратор"
                 properties {
                     "adr-link" "docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md"
                     "open-issues" "docs/architecture/adr/open/0028-sentry-vs-agpl.md"
@@ -92,7 +92,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
                 querySufficiency = component "Query Sufficiency Gate" "Три механики на сервере: гейт «слишком общий запрос», подсказки агенту на основе индекса, проверка дрейфа переформулировки (П3, ADR 0010 proposed)." "Python" {
                     tags "Proposed"
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0010-п3-query-sufficiency.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-query-sufficiency-gate"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0010-п3-query-sufficiency.md"
                         "open-issues" "docs/architecture/adr/anti-hallucinations/0010-п3-query-sufficiency.md"
@@ -100,21 +100,21 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
                 }
 
                 serverControlledRetrieval = component "Server-Controlled Retrieval" "Контроль ретривинга на стороне сервера: планка релевантности, триггер добора, потолок окна контекста (Р5, ADR 0005)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-server-controlled-retrieval"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md"
                     }
                 }
 
                 routeDispatcher = component "Route Dispatcher" "Диспетчер поиска по коду: fallback-цепочка graph → metadata → grep по образцу comol/ai_rules_1c. Код: src/search/ (ADR 0026)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0026-code-search-routing.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-route-dispatcher"
                     properties {
                         "adr-link" "docs/architecture/adr/code-processing/0026-code-search-routing.md"
                     }
                 }
 
                 sourceHierarchy = component "Source Hierarchy" "Иерархия источников при конфликте: код → справка → ИТС. Применяет метрику противоречивости (Р6, ADR 0006)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0006-р6-source-hierarchy.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-source-hierarchy"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0006-р6-source-hierarchy.md"
                         "open-issues" "docs/architecture/adr/open/0033-r1-contradiction-detection-mechanics.md"
@@ -122,7 +122,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
                 }
 
                 contradictionMetric = component "Contradiction Metric" "Метрика противоречивости источников ПЕРЕД выдачей ответа. Механика детектирования открыта (Р1, ADR 0001; см. ADR 0033)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0001-р1-metric-contradiction.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-contradiction-metric"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0001-р1-metric-contradiction.md"
                         "open-issues" "docs/architecture/adr/open/0033-r1-contradiction-detection-mechanics.md"
@@ -130,7 +130,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
                 }
 
                 llmJudge = component "LLM Judge" "LLM-судья со спан-привязкой: арбитрирует faithfulness и groundedness ответа через Claude API (Р3, ADR 0003)." "Python / Claude API" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-llm-judge"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md"
                     }
@@ -138,7 +138,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
                 groundednessDetector = component "Groundedness Detector" "Три уровня реакции на сигнал LLM-судьи: блок-и-возврат / плашка «частично из общих знаний» / лог в Sentry (П1, ADR 0008 proposed)." "Python" {
                     tags "Proposed"
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-groundedness-detector"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md"
                         "open-issues" "docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md"
@@ -147,7 +147,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
                 reRetrieval = component "Re-Retrieval Controller" "Второй проход ретривера по переформулированному запросу. Инициатор — агент, исполнитель — сервер; гейт N повторов на запрос (П2, ADR 0009 proposed)." "Python" {
                     tags "Proposed"
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-re-retrieval-controller"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md"
                         "open-issues" "docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md"
@@ -155,7 +155,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
                 }
 
                 fallbackMode = component "Fallback Mode" "Фолбэк = смена режима (дип-ресёрч с тем же контрактом); заменил «честный тупик» Р4. (Р7, ADR 0007)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-fallback-mode"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md"
                     }
@@ -164,28 +164,28 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
             # ── Азимут-ядро (форк bsl-atlas, наш ключевой код) ──────────────────
             azimuthCore = container "Азимут-ядро" "Форк bsl-atlas: парсер BSL, чанкер, индексатор, граф вызовов, резолвер, эмбеддер, реранкер. Роль форка — только «движок понимания кода» (ADR 0013)." "Python / bsl-atlas fork" {
-                url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0013-fork-role-code-engine.md"
+                url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#container-азимут-ядро"
                 properties {
                     "adr-link" "docs/architecture/adr/foundation/0013-fork-role-code-engine.md"
                     "open-issues" "docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md"
                 }
 
                 chunker = component "Чанкер" "Детерминированная структурная резка: функция = чанк (≤ порога); блоки Если/Цикл/Попытка/Область с шапкой контекста; запросы режутся по `|;`, ВТ помечаются. LLM не используем. Код: src/parsers/ (ADR 0024)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-чанкер"
                     properties {
                         "adr-link" "docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md"
                     }
                 }
 
                 indexer = component "Индексатор" "Инкрементальная индексация: manifest-diff {path: mtime+size}, дисковый кеш по SHA-256, шардирование по cpu_count(), GC-tuning на этапе batch. Код: src/indexer/ (ADR 0027)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0027-port-feenlace-techniques-to-python.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-индексатор"
                     properties {
                         "adr-link" "docs/architecture/adr/code-processing/0027-port-feenlace-techniques-to-python.md"
                     }
                 }
 
                 graph = component "Граф вызовов" "Построение графа BSL-вызовов; типизация процедур/функций; рёбра событие→обработчик достраиваем поверх metacode-подхода. SQLite-таблицы routines/calls. Код: src/storage/." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0013-fork-role-code-engine.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-граф-вызовов"
                     properties {
                         "adr-link" "docs/architecture/adr/foundation/0013-fork-role-code-engine.md"
                     }
@@ -193,7 +193,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
                 resolver = component "Same-Named Resolver" "Резолв одноимённых процедур: routines + calls(callee_id NULL) → пост-проход. Алгоритм не написан — главный технический риск темы 2 (ADR 0025 proposed)." "Python" {
                     tags "Proposed"
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-same-named-resolver"
                     properties {
                         "adr-link" "docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md"
                         "open-issues" "docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md"
@@ -201,21 +201,21 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
                 }
 
                 bslSynonyms = component "BSL Synonyms RU↔EN" "Анализатор синонимов BSL: СтрНайти↔StrFind, ~40 ключевых слов + ~180 функций. Подключается к Embedder и Route Dispatcher для нормализации запросов (ADR 0027)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0027-port-feenlace-techniques-to-python.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-bsl-synonyms-ru-en"
                     properties {
                         "adr-link" "docs/architecture/adr/code-processing/0027-port-feenlace-techniques-to-python.md"
                     }
                 }
 
                 embedder = component "Эмбеддер" "Векторизация чанков: BGE-M3 локально по умолчанию; Cohere Embed опционально через адаптер (ADR 0020)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-эмбеддер"
                     properties {
                         "adr-link" "docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md"
                     }
                 }
 
                 reranker = component "Реранкер" "Реранкинг результатов перед выдачей: BGE-reranker локально; Cohere Rerank опционально. Faithfulness vs relevance (ADR 0002)." "Python" {
-                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md"
+                    url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#component-реранкер"
                     properties {
                         "adr-link" "docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md"
                     }
@@ -224,8 +224,8 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
             # ── Векторное хранилище (ContainerDb) ───────────────────────────────
             qdrant = container "Qdrant" "Векторное хранилище чанков и метаданных. Embedded локально или server-mode на VDS (ADR 0029 open)." "Qdrant" {
-                tags "Database"
-                url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md"
+                tags "Database" "Proposed"
+                url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#container-qdrant"
                 properties {
                     "adr-link" "docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md"
                 }
@@ -233,7 +233,7 @@ workspace "Азимут" "ИИ-ассистент по коду 1С на баз�
 
             # ── Adapter-слой LLM (наш код, ADR 0020/0021) ───────────────────────
             llmAdapter = container "Adapter-слой LLM" "Абстракция над разговорной облачной LLM; дефолт — DeepSeek V4; запас — Claude/Qwen/Yandex. Финал валидируем eval-ом в теме 6 (ADR 0020, 0021)." "Python" {
-                url "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md"
+                url "https://github.com/hleserg/azimut/blob/master/docs/architecture/_state.md#container-adapter-слой-llm"
                 properties {
                     "adr-link" "docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md"
                     "open-issues" "docs/architecture/adr/foundation/0021-default-model-deepseek-v4.md"

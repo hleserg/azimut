@@ -228,6 +228,24 @@ def _adr_md(adr: dict | None) -> str:
 REPO_ROOT_REL = ".."  # links from docs/architecture/_state.md go up one level
 
 
+def slug(name: str) -> str:
+    """Детерминированный slug для anchor: lowercase, non-word chars → -.
+
+    Кириллица сохраняется (Python re.UNICODE — `\\w` включает её).
+    Используется в _state.md как `<a id="<kind>-<slug>">` и в
+    workspace.dsl как `url ".../_state.md#<kind>-<slug>"` (HLE-547).
+    """
+    s = name.lower()
+    s = re.sub(r"[^\w-]+", "-", s, flags=re.UNICODE)
+    s = re.sub(r"-+", "-", s)
+    return s.strip("-")
+
+
+def anchor(kind: str, name: str) -> str:
+    """Anchor id: `<kind-prefix>-<slug>`. `kind` = 'softwaresystem'/'container'/'component'."""
+    return f"{kind}-{slug(name)}"
+
+
 def _rel_md(direction: str, rels: list[dict]) -> str:
     if not rels:
         return "  - (нет)\n"
@@ -259,6 +277,7 @@ def render_markdown(state: dict) -> str:
                 out.append("\n")
 
     for sys_ in state["softwareSystems"]:
+        out.append(f'<a id="{anchor("softwaresystem", sys_["name"])}"></a>\n')
         out.append(f"## SoftwareSystem: {sys_['name']}\n\n")
         out.append(f"{sys_['description']}\n\n")
         if sys_["tags"]:
@@ -271,6 +290,7 @@ def render_markdown(state: dict) -> str:
             out.append("\n")
 
         for c in sys_["containers"]:
+            out.append(f'<a id="{anchor("container", c["name"])}"></a>\n')
             out.append(f"### Container: {c['name']}\n\n")
             out.append(f"- **Технология**: `{c['technology']}`\n")
             out.append(f"- **Описание**: {c['description']}\n")
@@ -286,6 +306,7 @@ def render_markdown(state: dict) -> str:
 
             for k in c["components"]:
                 proposed = " ⚠️ **proposed**" if "Proposed" in k["tags"] else ""
+                out.append(f'<a id="{anchor("component", k["name"])}"></a>\n')
                 out.append(f"#### Component: {k['name']}{proposed}\n\n")
                 out.append(f"- **Технология**: `{k['technology']}`\n")
                 out.append(f"- **Описание**: {k['description']}\n")
