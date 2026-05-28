@@ -1,0 +1,1119 @@
+{
+  "generated_at": "2026-05-28",
+  "workspace_name": "Азимут",
+  "people": [
+    {
+      "name": "Сергей",
+      "description": "Лид-разработчик; основной пользователь системы на ежедневной основе.",
+      "outgoing": [
+        {
+          "to": "Cherry Studio",
+          "description": "использует everyday",
+          "technology": "Desktop GUI"
+        },
+        {
+          "to": "Claude Desktop",
+          "description": "использует для сложного кода",
+          "technology": "Desktop GUI"
+        },
+        {
+          "to": "mini-ai-1c",
+          "description": "захватывает код из Конфигуратора",
+          "technology": "Desktop GUI"
+        }
+      ]
+    },
+    {
+      "name": "Мама",
+      "description": "Бухгалтер / 1С-оператор; конечный пользователь-нетехник.",
+      "outgoing": [
+        {
+          "to": "Cherry Studio",
+          "description": "задаёт вопросы по 1С",
+          "technology": "Desktop GUI"
+        }
+      ]
+    }
+  ],
+  "softwareSystems": [
+    {
+      "name": "Платформа 1С",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "Конфигурации ERP/Бухгалтерия; источник BSL-кода и метаданных через DumpConfigToFiles.",
+      "tags": [
+        "External"
+      ],
+      "adr_link": null,
+      "open_issues": null,
+      "outgoing": [
+        {
+          "to": "Азимут-ядро",
+          "description": "передаёт BSL-код и метаданные",
+          "technology": "DumpConfigToFiles / File system"
+        },
+        {
+          "to": "Азимут",
+          "description": "передаёт BSL-код и метаданные",
+          "technology": "DumpConfigToFiles / File system"
+        }
+      ],
+      "incoming": [],
+      "containers": []
+    },
+    {
+      "name": "DeepSeek",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "Облачная разговорная модель (дефолт): DeepSeek V4 Flash (обычный код) / Pro (тяжёлый код); ADR 0021.",
+      "tags": [
+        "External"
+      ],
+      "adr_link": null,
+      "open_issues": null,
+      "outgoing": [],
+      "incoming": [
+        {
+          "from": "Азимут",
+          "description": "генерирует текст",
+          "technology": "HTTPS / OpenAI-compatible API"
+        },
+        {
+          "from": "Adapter-слой LLM",
+          "description": "генерирует текст",
+          "technology": "HTTPS / OpenAI-compatible API"
+        }
+      ],
+      "containers": []
+    },
+    {
+      "name": "Claude (Anthropic)",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "Облачная LLM для LLM-судьи и Сергея-премиум; Anthropic API; ADR 0021.",
+      "tags": [
+        "External"
+      ],
+      "adr_link": null,
+      "open_issues": null,
+      "outgoing": [],
+      "incoming": [
+        {
+          "from": "Азимут",
+          "description": "арбитрирует качество ответа",
+          "technology": "HTTPS / Anthropic API"
+        },
+        {
+          "from": "MCP-оркестратор",
+          "description": "арбитрирует качество ответа",
+          "technology": "HTTPS / Anthropic API"
+        },
+        {
+          "from": "LLM Judge",
+          "description": "арбитрирует качество ответа",
+          "technology": "HTTPS / Anthropic API"
+        },
+        {
+          "from": "Adapter-слой LLM",
+          "description": "генерирует текст в премиум-режиме (Сергей-премиум)",
+          "technology": "HTTPS / Anthropic API"
+        }
+      ],
+      "containers": []
+    },
+    {
+      "name": "ИТС / Портал платформы",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "Справочные материалы 1С; третий уровень иерархии источников (Р6, ADR 0006).",
+      "tags": [
+        "External"
+      ],
+      "adr_link": null,
+      "open_issues": null,
+      "outgoing": [],
+      "incoming": [
+        {
+          "from": "Азимут",
+          "description": "ищет справочные материалы (Р6, ADR 0006)",
+          "technology": "HTTPS"
+        },
+        {
+          "from": "MCP-оркестратор",
+          "description": "ищет справочные материалы (Р6, ADR 0006)",
+          "technology": "HTTPS"
+        }
+      ],
+      "containers": []
+    },
+    {
+      "name": "Cherry Studio",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "MCP-клиент по умолчанию для Мамы и Сергея-everyday; подключается к MCP-оркестратору по JSON-RPC (ADR 0019).",
+      "tags": [
+        "External"
+      ],
+      "adr_link": {
+        "path": "docs/architecture/adr/foundation/0019-cherry-studio-default-client.md",
+        "status": "accepted",
+        "title": "Дефолт-клиент по ролям: Cherry Studio (мама/Сергей-everyday) + Claude Desktop (Сергей-премиум дома) + mini-ai-1c (Сергей-захват кода)"
+      },
+      "open_issues": null,
+      "outgoing": [
+        {
+          "to": "MCP-оркестратор",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        },
+        {
+          "to": "Азимут",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        }
+      ],
+      "incoming": [
+        {
+          "from": "Сергей",
+          "description": "использует everyday",
+          "technology": "Desktop GUI"
+        },
+        {
+          "from": "Мама",
+          "description": "задаёт вопросы по 1С",
+          "technology": "Desktop GUI"
+        }
+      ],
+      "containers": []
+    },
+    {
+      "name": "Claude Desktop",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "MCP-клиент для Сергея-премиум дома; поддерживает несколько MCP-серверов параллельно (ADR 0019).",
+      "tags": [
+        "External"
+      ],
+      "adr_link": {
+        "path": "docs/architecture/adr/foundation/0019-cherry-studio-default-client.md",
+        "status": "accepted",
+        "title": "Дефолт-клиент по ролям: Cherry Studio (мама/Сергей-everyday) + Claude Desktop (Сергей-премиум дома) + mini-ai-1c (Сергей-захват кода)"
+      },
+      "open_issues": null,
+      "outgoing": [
+        {
+          "to": "MCP-оркестратор",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        },
+        {
+          "to": "Азимут",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        }
+      ],
+      "incoming": [
+        {
+          "from": "Сергей",
+          "description": "использует для сложного кода",
+          "technology": "Desktop GUI"
+        }
+      ],
+      "containers": []
+    },
+    {
+      "name": "mini-ai-1c",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "Клиент Сергея для захвата BSL-кода непосредственно из Конфигуратора 1С (ADR 0019).",
+      "tags": [
+        "External"
+      ],
+      "adr_link": {
+        "path": "docs/architecture/adr/foundation/0019-cherry-studio-default-client.md",
+        "status": "accepted",
+        "title": "Дефолт-клиент по ролям: Cherry Studio (мама/Сергей-everyday) + Claude Desktop (Сергей-премиум дома) + mini-ai-1c (Сергей-захват кода)"
+      },
+      "open_issues": null,
+      "outgoing": [
+        {
+          "to": "MCP-оркестратор",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        },
+        {
+          "to": "Азимут",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        }
+      ],
+      "incoming": [
+        {
+          "from": "Сергей",
+          "description": "захватывает код из Конфигуратора",
+          "technology": "Desktop GUI"
+        }
+      ],
+      "containers": []
+    },
+    {
+      "name": "mcp-bsl-platform-context",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "Drop-in MCP-сервер: справочник платформы 1С (MIT, alkoleft). Второй MCP-сервер рядом с Азимутом (ADR 0017).",
+      "tags": [
+        "External"
+      ],
+      "adr_link": {
+        "path": "docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md",
+        "status": "accepted",
+        "title": "`alkoleft/mcp-bsl-platform-context` берём в фундамент (drop-in вторым MCP, MIT, бесплатно)"
+      },
+      "open_issues": null,
+      "outgoing": [],
+      "incoming": [
+        {
+          "from": "Азимут",
+          "description": "запрашивает справку платформы 1С",
+          "technology": "MCP / JSON-RPC"
+        },
+        {
+          "from": "MCP-оркестратор",
+          "description": "запрашивает справку платформы 1С",
+          "technology": "MCP / JSON-RPC"
+        }
+      ],
+      "containers": []
+    },
+    {
+      "name": "Sentry / GlitchTip",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "Мониторинг ошибок и распределённая трассировка. Выбор между Sentry SaaS и self-hosted GlitchTip открыт (ADR 0028).",
+      "tags": [
+        "External",
+        "Proposed"
+      ],
+      "adr_link": {
+        "path": "docs/architecture/adr/open/0028-sentry-vs-agpl.md",
+        "status": "proposed",
+        "title": "Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б"
+      },
+      "open_issues": {
+        "path": "docs/architecture/adr/open/0028-sentry-vs-agpl.md",
+        "status": "proposed",
+        "title": "Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б"
+      },
+      "outgoing": [],
+      "incoming": [
+        {
+          "from": "Азимут",
+          "description": "отправляет трассировки и ошибки",
+          "technology": "HTTPS / Sentry SDK"
+        },
+        {
+          "from": "MCP-оркестратор",
+          "description": "отправляет трассировки и ошибки",
+          "technology": "HTTPS / Sentry SDK"
+        },
+        {
+          "from": "Groundedness Detector",
+          "description": "лог уровней 2/3",
+          "technology": "HTTPS / Sentry SDK"
+        }
+      ],
+      "containers": []
+    },
+    {
+      "name": "Азимут",
+      "kind": "softwareSystem",
+      "technology": "",
+      "description": "MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, анти-галлюцинации. Форк bsl-atlas под AGPL-3.0 (ADR 0011).",
+      "tags": [],
+      "adr_link": {
+        "path": "docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md",
+        "status": "accepted",
+        "title": "Основа — форк `bsl-atlas` (AGPL-3.0) как ядро понимания кода 1С"
+      },
+      "open_issues": null,
+      "outgoing": [
+        {
+          "to": "DeepSeek",
+          "description": "генерирует текст",
+          "technology": "HTTPS / OpenAI-compatible API"
+        },
+        {
+          "to": "mcp-bsl-platform-context",
+          "description": "запрашивает справку платформы 1С",
+          "technology": "MCP / JSON-RPC"
+        },
+        {
+          "to": "Sentry / GlitchTip",
+          "description": "отправляет трассировки и ошибки",
+          "technology": "HTTPS / Sentry SDK"
+        },
+        {
+          "to": "ИТС / Портал платформы",
+          "description": "ищет справочные материалы (Р6, ADR 0006)",
+          "technology": "HTTPS"
+        },
+        {
+          "to": "Claude (Anthropic)",
+          "description": "арбитрирует качество ответа",
+          "technology": "HTTPS / Anthropic API"
+        }
+      ],
+      "incoming": [
+        {
+          "from": "Платформа 1С",
+          "description": "передаёт BSL-код и метаданные",
+          "technology": "DumpConfigToFiles / File system"
+        },
+        {
+          "from": "Cherry Studio",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        },
+        {
+          "from": "Claude Desktop",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        },
+        {
+          "from": "mini-ai-1c",
+          "description": "вызывает инструменты",
+          "technology": "MCP / JSON-RPC"
+        }
+      ],
+      "containers": [
+        {
+          "name": "MCP-оркестратор",
+          "kind": "container",
+          "technology": "Python / FastMCP",
+          "description": "Принимает MCP-запросы клиентов; управляет ретривингом, иерархией источников, LLM-судьёй, фолбэком. Граница форк vs наш код (ADR 0022).",
+          "tags": [],
+          "adr_link": {
+            "path": "docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md",
+            "status": "accepted",
+            "title": "Граница «форк/готовые библиотеки vs наш код» — форк даёт понимание кода, библиотеки дают механику RAG, наш код — поведение, гарантии, оркестрацию"
+          },
+          "open_issues": {
+            "path": "docs/architecture/adr/open/0028-sentry-vs-agpl.md",
+            "status": "proposed",
+            "title": "Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б"
+          },
+          "outgoing": [
+            {
+              "to": "Азимут-ядро",
+              "description": "запрашивает индекс кода",
+              "technology": "Python API"
+            },
+            {
+              "to": "Qdrant",
+              "description": "читает векторы и метаданные",
+              "technology": "HTTP / Qdrant API"
+            },
+            {
+              "to": "Adapter-слой LLM",
+              "description": "генерирует ответ и фолбэк",
+              "technology": "HTTPS / JSON"
+            },
+            {
+              "to": "mcp-bsl-platform-context",
+              "description": "запрашивает справку платформы 1С",
+              "technology": "MCP / JSON-RPC"
+            },
+            {
+              "to": "Sentry / GlitchTip",
+              "description": "отправляет трассировки и ошибки",
+              "technology": "HTTPS / Sentry SDK"
+            },
+            {
+              "to": "ИТС / Портал платформы",
+              "description": "ищет справочные материалы (Р6, ADR 0006)",
+              "technology": "HTTPS"
+            },
+            {
+              "to": "BSL Synonyms RU↔EN",
+              "description": "нормализует запрос рус↔англ",
+              "technology": "Python API"
+            },
+            {
+              "to": "Claude (Anthropic)",
+              "description": "арбитрирует качество ответа",
+              "technology": "HTTPS / Anthropic API"
+            }
+          ],
+          "incoming": [
+            {
+              "from": "Cherry Studio",
+              "description": "вызывает инструменты",
+              "technology": "MCP / JSON-RPC"
+            },
+            {
+              "from": "Claude Desktop",
+              "description": "вызывает инструменты",
+              "technology": "MCP / JSON-RPC"
+            },
+            {
+              "from": "mini-ai-1c",
+              "description": "вызывает инструменты",
+              "technology": "MCP / JSON-RPC"
+            },
+            {
+              "from": "Азимут-ядро",
+              "description": "возвращает реранкированные результаты",
+              "technology": "in-process"
+            },
+            {
+              "from": "Реранкер",
+              "description": "возвращает реранкированные результаты",
+              "technology": "in-process"
+            }
+          ],
+          "components": [
+            {
+              "name": "Query Sufficiency Gate",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Три механики на сервере: гейт «слишком общий запрос», подсказки агенту на основе индекса, проверка дрейфа переформулировки (П3, ADR 0010 proposed).",
+              "tags": [
+                "Proposed"
+              ],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0010-п3-query-sufficiency.md",
+                "status": "proposed",
+                "title": "Оценка достаточности запроса + подсказки агенту что переспросить"
+              },
+              "open_issues": {
+                "path": "docs/architecture/adr/anti-hallucinations/0010-п3-query-sufficiency.md",
+                "status": "proposed",
+                "title": "Оценка достаточности запроса + подсказки агенту что переспросить"
+              },
+              "outgoing": [
+                {
+                  "to": "Server-Controlled Retrieval",
+                  "description": "пропускает только осмысленные запросы",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": []
+            },
+            {
+              "name": "Server-Controlled Retrieval",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Контроль ретривинга на стороне сервера: планка релевантности, триггер добора, потолок окна контекста (Р5, ADR 0005).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md",
+                "status": "accepted",
+                "title": "Контроль ретривинга — на сервере (планка релевантности, триггер добора, потолок окна)"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Route Dispatcher",
+                  "description": "триггерит добор у диспетчера",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Query Sufficiency Gate",
+                  "description": "пропускает только осмысленные запросы",
+                  "technology": "in-process"
+                },
+                {
+                  "from": "Re-Retrieval Controller",
+                  "description": "запрашивает повтор в рамках бюджета окна",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "Route Dispatcher",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Диспетчер поиска по коду: fallback-цепочка graph → metadata → grep по образцу comol/ai_rules_1c. Код: src/search/ (ADR 0026).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/code-processing/0026-code-search-routing.md",
+                "status": "accepted",
+                "title": "Роутинг поиска по коду — fallback-цепочка graph → metadata → grep"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Азимут-ядро",
+                  "description": "маршрутизирует поиск (graph → metadata → grep)",
+                  "technology": "Python API"
+                },
+                {
+                  "to": "BSL Synonyms RU↔EN",
+                  "description": "нормализует запрос рус↔англ",
+                  "technology": "Python API"
+                },
+                {
+                  "to": "Adapter-слой LLM",
+                  "description": "запрашивает синтез ответа через разговорную модель (ADR 0021)",
+                  "technology": "Python API"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Server-Controlled Retrieval",
+                  "description": "триггерит добор у диспетчера",
+                  "technology": "in-process"
+                },
+                {
+                  "from": "Азимут-ядро",
+                  "description": "возвращает реранкированные результаты",
+                  "technology": "in-process"
+                },
+                {
+                  "from": "Реранкер",
+                  "description": "возвращает реранкированные результаты",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "Source Hierarchy",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Иерархия источников при конфликте: код → справка → ИТС. Применяет метрику противоречивости (Р6, ADR 0006).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0006-р6-source-hierarchy.md",
+                "status": "accepted",
+                "title": "Иерархия источников при конфликте: код → справка → ИТС"
+              },
+              "open_issues": {
+                "path": "docs/architecture/adr/open/0033-r1-contradiction-detection-mechanics.md",
+                "status": "proposed",
+                "title": "Механика детектирования противоречивости — как технически детектировать, порог, поведение при множестве конфликтов"
+              },
+              "outgoing": [
+                {
+                  "to": "Contradiction Metric",
+                  "description": "передаёт результаты на проверку",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": []
+            },
+            {
+              "name": "Contradiction Metric",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Метрика противоречивости источников ПЕРЕД выдачей ответа. Механика детектирования открыта (Р1, ADR 0001; см. ADR 0033).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0001-р1-metric-contradiction.md",
+                "status": "accepted",
+                "title": "Метрика противоречивости источников ПЕРЕД выдачей"
+              },
+              "open_issues": {
+                "path": "docs/architecture/adr/open/0033-r1-contradiction-detection-mechanics.md",
+                "status": "proposed",
+                "title": "Механика детектирования противоречивости — как технически детектировать, порог, поведение при множестве конфликтов"
+              },
+              "outgoing": [
+                {
+                  "to": "LLM Judge",
+                  "description": "передаёт спорные случаи арбитру",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Source Hierarchy",
+                  "description": "передаёт результаты на проверку",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "LLM Judge",
+              "kind": "component",
+              "technology": "Python / Claude API",
+              "description": "LLM-судья со спан-привязкой: арбитрирует faithfulness и groundedness ответа через Claude API (Р3, ADR 0003).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md",
+                "status": "accepted",
+                "title": "LLM-судья со спан-привязкой (Claude как арбитр)"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Claude (Anthropic)",
+                  "description": "арбитрирует качество ответа",
+                  "technology": "HTTPS / Anthropic API"
+                },
+                {
+                  "to": "Groundedness Detector",
+                  "description": "передаёт сигнал недогрунтованности",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Contradiction Metric",
+                  "description": "передаёт спорные случаи арбитру",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "Groundedness Detector",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Три уровня реакции на сигнал LLM-судьи: блок-и-возврат / плашка «частично из общих знаний» / лог в Sentry (П1, ADR 0008 proposed).",
+              "tags": [
+                "Proposed"
+              ],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md",
+                "status": "proposed",
+                "title": "Детектор «relevance высокий / groundedness низкий» — 3 уровня действий"
+              },
+              "open_issues": {
+                "path": "docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md",
+                "status": "proposed",
+                "title": "Детектор «relevance высокий / groundedness низкий» — 3 уровня действий"
+              },
+              "outgoing": [
+                {
+                  "to": "Re-Retrieval Controller",
+                  "description": "триггерит повторный проход (уровень 1)",
+                  "technology": "in-process"
+                },
+                {
+                  "to": "Sentry / GlitchTip",
+                  "description": "лог уровней 2/3",
+                  "technology": "HTTPS / Sentry SDK"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "LLM Judge",
+                  "description": "передаёт сигнал недогрунтованности",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "Re-Retrieval Controller",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Второй проход ретривера по переформулированному запросу. Инициатор — агент, исполнитель — сервер; гейт N повторов на запрос (П2, ADR 0009 proposed).",
+              "tags": [
+                "Proposed"
+              ],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md",
+                "status": "proposed",
+                "title": "Второй проход ретривера при неуверенности (открытый триггер)"
+              },
+              "open_issues": {
+                "path": "docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md",
+                "status": "proposed",
+                "title": "Второй проход ретривера при неуверенности (открытый триггер)"
+              },
+              "outgoing": [
+                {
+                  "to": "Server-Controlled Retrieval",
+                  "description": "запрашивает повтор в рамках бюджета окна",
+                  "technology": "in-process"
+                },
+                {
+                  "to": "Fallback Mode",
+                  "description": "переключает в дип-ресёрч после N исчерпанных повторов (Р7, ADR 0007/0009)",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Groundedness Detector",
+                  "description": "триггерит повторный проход (уровень 1)",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "Fallback Mode",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Фолбэк = смена режима (дип-ресёрч с тем же контрактом); заменил «честный тупик» Р4. (Р7, ADR 0007).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md",
+                "status": "accepted",
+                "title": "Фолбэк = смена режима (дип-ресёрч в интернете с тем же контрактом)"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Adapter-слой LLM",
+                  "description": "инициирует дип-ресёрч",
+                  "technology": "Python API"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Re-Retrieval Controller",
+                  "description": "переключает в дип-ресёрч после N исчерпанных повторов (Р7, ADR 0007/0009)",
+                  "technology": "in-process"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Азимут-ядро",
+          "kind": "container",
+          "technology": "Python / bsl-atlas fork",
+          "description": "Форк bsl-atlas: парсер BSL, чанкер, индексатор, граф вызовов, резолвер, эмбеддер, реранкер. Роль форка — только «движок понимания кода» (ADR 0013).",
+          "tags": [],
+          "adr_link": {
+            "path": "docs/architecture/adr/foundation/0013-fork-role-code-engine.md",
+            "status": "accepted",
+            "title": "Роль `bsl-atlas`: только «движок понимания кода» (берём парсер BSL + граф вызовов + каркас MCP + docker; меняем хранилище/эмбеддер/реранк; дописываем поведенческий контракт и оркестрацию)"
+          },
+          "open_issues": {
+            "path": "docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md",
+            "status": "proposed",
+            "title": "Алгоритм резолва одноимённых процедур — открытая инженерная задача"
+          },
+          "outgoing": [
+            {
+              "to": "Qdrant",
+              "description": "читает и сохраняет векторы",
+              "technology": "HTTP / gRPC"
+            },
+            {
+              "to": "Route Dispatcher",
+              "description": "возвращает реранкированные результаты",
+              "technology": "in-process"
+            },
+            {
+              "to": "MCP-оркестратор",
+              "description": "возвращает реранкированные результаты",
+              "technology": "in-process"
+            }
+          ],
+          "incoming": [
+            {
+              "from": "Платформа 1С",
+              "description": "передаёт BSL-код и метаданные",
+              "technology": "DumpConfigToFiles / File system"
+            },
+            {
+              "from": "MCP-оркестратор",
+              "description": "запрашивает индекс кода",
+              "technology": "Python API"
+            },
+            {
+              "from": "Route Dispatcher",
+              "description": "маршрутизирует поиск (graph → metadata → grep)",
+              "technology": "Python API"
+            }
+          ],
+          "components": [
+            {
+              "name": "Чанкер",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Детерминированная структурная резка: функция = чанк (≤ порога); блоки Если/Цикл/Попытка/Область с шапкой контекста; запросы режутся по `|;`, ВТ помечаются. LLM не используем. Код: src/parsers/ (ADR 0024).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md",
+                "status": "accepted",
+                "title": "Детерминированная структурная резка кода поверх Азимута"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Индексатор",
+                  "description": "передаёт чанки на индексацию",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": []
+            },
+            {
+              "name": "Индексатор",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Инкрементальная индексация: manifest-diff {path: mtime+size}, дисковый кеш по SHA-256, шардирование по cpu_count(), GC-tuning на этапе batch. Код: src/indexer/ (ADR 0027).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/code-processing/0027-port-feenlace-techniques-to-python.md",
+                "status": "accepted",
+                "title": "Портировать техники `mcp-1c` (feenlace) в Python — не переписывать на Go"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Граф вызовов",
+                  "description": "передаёт обогащённый поток",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Чанкер",
+                  "description": "передаёт чанки на индексацию",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "Граф вызовов",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Построение графа BSL-вызовов; типизация процедур/функций; рёбра событие→обработчик достраиваем поверх metacode-подхода. SQLite-таблицы routines/calls. Код: src/storage/.",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/foundation/0013-fork-role-code-engine.md",
+                "status": "accepted",
+                "title": "Роль `bsl-atlas`: только «движок понимания кода» (берём парсер BSL + граф вызовов + каркас MCP + docker; меняем хранилище/эмбеддер/реранк; дописываем поведенческий контракт и оркестрацию)"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Same-Named Resolver",
+                  "description": "передаёт calls(callee_id NULL) на резолв",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Индексатор",
+                  "description": "передаёт обогащённый поток",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "Same-Named Resolver",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Резолв одноимённых процедур: routines + calls(callee_id NULL) → пост-проход. Алгоритм не написан — главный технический риск темы 2 (ADR 0025 proposed).",
+              "tags": [
+                "Proposed"
+              ],
+              "adr_link": {
+                "path": "docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md",
+                "status": "proposed",
+                "title": "Алгоритм резолва одноимённых процедур — открытая инженерная задача"
+              },
+              "open_issues": {
+                "path": "docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md",
+                "status": "proposed",
+                "title": "Алгоритм резолва одноимённых процедур — открытая инженерная задача"
+              },
+              "outgoing": [
+                {
+                  "to": "Эмбеддер",
+                  "description": "передаёт resolved-чанки на векторизацию",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Граф вызовов",
+                  "description": "передаёт calls(callee_id NULL) на резолв",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "BSL Synonyms RU↔EN",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Анализатор синонимов BSL: СтрНайти↔StrFind, ~40 ключевых слов + ~180 функций. Подключается к Embedder и Route Dispatcher для нормализации запросов (ADR 0027).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/code-processing/0027-port-feenlace-techniques-to-python.md",
+                "status": "accepted",
+                "title": "Портировать техники `mcp-1c` (feenlace) в Python — не переписывать на Go"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Эмбеддер",
+                  "description": "предоставляет словарь синонимов",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "MCP-оркестратор",
+                  "description": "нормализует запрос рус↔англ",
+                  "technology": "Python API"
+                },
+                {
+                  "from": "Route Dispatcher",
+                  "description": "нормализует запрос рус↔англ",
+                  "technology": "Python API"
+                }
+              ]
+            },
+            {
+              "name": "Эмбеддер",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Векторизация чанков: BGE-M3 локально по умолчанию; Cohere Embed опционально через адаптер (ADR 0020).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md",
+                "status": "accepted",
+                "title": "Разговорная модель — облачная и подключаемая через адаптер; внутри MCP-сервера нет разговорной LLM; лёгкие модели (BGE/реранкер/судья) — локально по умолчанию, грант Cohere — опциональный апгрейд"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Qdrant",
+                  "description": "сохраняет векторы",
+                  "technology": "HTTP / Qdrant API"
+                }
+              ],
+              "incoming": [
+                {
+                  "from": "Same-Named Resolver",
+                  "description": "передаёт resolved-чанки на векторизацию",
+                  "technology": "in-process"
+                },
+                {
+                  "from": "BSL Synonyms RU↔EN",
+                  "description": "предоставляет словарь синонимов",
+                  "technology": "in-process"
+                }
+              ]
+            },
+            {
+              "name": "Реранкер",
+              "kind": "component",
+              "technology": "Python",
+              "description": "Реранкинг результатов перед выдачей: BGE-reranker локально; Cohere Rerank опционально. Faithfulness vs relevance (ADR 0002).",
+              "tags": [],
+              "adr_link": {
+                "path": "docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md",
+                "status": "accepted",
+                "title": "Faithfulness и relevance ретривера — разные метрики"
+              },
+              "open_issues": null,
+              "outgoing": [
+                {
+                  "to": "Route Dispatcher",
+                  "description": "возвращает реранкированные результаты",
+                  "technology": "in-process"
+                },
+                {
+                  "to": "MCP-оркестратор",
+                  "description": "возвращает реранкированные результаты",
+                  "technology": "in-process"
+                }
+              ],
+              "incoming": []
+            }
+          ]
+        },
+        {
+          "name": "Qdrant",
+          "kind": "container",
+          "technology": "Qdrant",
+          "description": "Векторное хранилище чанков и метаданных. Embedded локально или server-mode на VDS (ADR 0029 open).",
+          "tags": [
+            "Database"
+          ],
+          "adr_link": {
+            "path": "docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md",
+            "status": "proposed",
+            "title": "Мульти-аренда: Qdrant embedded vs server — развилка по режиму деплоя"
+          },
+          "open_issues": null,
+          "outgoing": [],
+          "incoming": [
+            {
+              "from": "MCP-оркестратор",
+              "description": "читает векторы и метаданные",
+              "technology": "HTTP / Qdrant API"
+            },
+            {
+              "from": "Азимут-ядро",
+              "description": "читает и сохраняет векторы",
+              "technology": "HTTP / gRPC"
+            },
+            {
+              "from": "Эмбеддер",
+              "description": "сохраняет векторы",
+              "technology": "HTTP / Qdrant API"
+            }
+          ],
+          "components": []
+        },
+        {
+          "name": "Adapter-слой LLM",
+          "kind": "container",
+          "technology": "Python",
+          "description": "Абстракция над разговорной облачной LLM; дефолт — DeepSeek V4; запас — Claude/Qwen/Yandex. Финал валидируем eval-ом в теме 6 (ADR 0020, 0021).",
+          "tags": [],
+          "adr_link": {
+            "path": "docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md",
+            "status": "accepted",
+            "title": "Разговорная модель — облачная и подключаемая через адаптер; внутри MCP-сервера нет разговорной LLM; лёгкие модели (BGE/реранкер/судья) — локально по умолчанию, грант Cohere — опциональный апгрейд"
+          },
+          "open_issues": {
+            "path": "docs/architecture/adr/foundation/0021-default-model-deepseek-v4.md",
+            "status": "accepted",
+            "title": "Дефолт разговорной модели — DeepSeek V4 (Flash основной, Pro для тяжёлого кода); запас — Claude/Qwen/Yandex; финал валидируем eval-ом в теме 6"
+          },
+          "outgoing": [
+            {
+              "to": "DeepSeek",
+              "description": "генерирует текст",
+              "technology": "HTTPS / OpenAI-compatible API"
+            },
+            {
+              "to": "Claude (Anthropic)",
+              "description": "генерирует текст в премиум-режиме (Сергей-премиум)",
+              "technology": "HTTPS / Anthropic API"
+            }
+          ],
+          "incoming": [
+            {
+              "from": "MCP-оркестратор",
+              "description": "генерирует ответ и фолбэк",
+              "technology": "HTTPS / JSON"
+            },
+            {
+              "from": "Route Dispatcher",
+              "description": "запрашивает синтез ответа через разговорную модель (ADR 0021)",
+              "technology": "Python API"
+            },
+            {
+              "from": "Fallback Mode",
+              "description": "инициирует дип-ресёрч",
+              "technology": "Python API"
+            }
+          ],
+          "components": []
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "people": 2,
+    "softwareSystems": 10,
+    "containers": 4,
+    "components": 16,
+    "adr_total": 35,
+    "adr_proposed": 11,
+    "adr_accepted": 22,
+    "adr_superseded": 0
+  }
+}
