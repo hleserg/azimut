@@ -2,7 +2,7 @@
 
 > Фазы реализации v2.0, открытые риски, 7 требований из v1.x-карты и архив старой декомпозиции.
 >
-> **Источники:** [план 05-rebuild-plan.md](../docs/_planning/05-rebuild-plan.md) §7.4; [`_source/notion/solutions-registry-summary--*.md`](./_source/notion/solutions-registry-summary--36b0c905e62681148d5a3d7e74d6e487.md); [`_source/linear/attachments/_project-docs/karta-zadach-i-arhitekturnye-resheniya-aktualno.md`](./_source/linear/attachments/_project-docs/karta-zadach-i-arhitekturnye-resheniya-aktualno.md).
+> **Источники:** [план 05-rebuild-plan.md](_planning/05-rebuild-plan.md) §7.4; [`_source/notion/solutions-registry-summary--*.md`](_source/notion/solutions-registry-summary--36c0c905e62681348458ca15b2d3d412.md); [`_source/linear/attachments/_project-docs/karta-zadach-i-arhitekturnye-resheniya-aktualno.md`](_source/linear/attachments/_project-docs/karta-zadach-i-arhitekturnye-resheniya-aktualno.md).
 >
 > Этот файл — **справочный артефакт**. Не блокирует ни одну рабочую фазу. Обновляется Сергеем при изменении статуса фаз или открытии новых рисков.
 
@@ -82,7 +82,7 @@
 **Что:** разбор формата ИТС (ISCF: `Data.cab` + `Data.dir`); OCR для сканов; мультимодальный RAG (скриншоты интерфейса, схемы); парсер личных документов (txt/md/pdf/docx/doc/odt/pptx/csv/xml/json/html/eml).
 
 **Известные переменные:**
-- ISCF — проприетарный архив; разведка от 25.05.2026 в [`_source/notion/iscf-analysis--*.md`](./_source/notion/); нужен Python-парсер или готовый инструмент сообщества 1С.
+- ISCF — проприетарный архив; разведка от 25.05.2026 в [`_source/notion/iscf-analysis--*.md`](_source/notion/); нужен Python-парсер или готовый инструмент сообщества 1С.
 - XML-выгрузка (`Конфигуратор → XML`) vs `DumpConfigToFiles` — **два разных источника**; оба нужны при индексации (ADR [0024](architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md) флаг 2.6 #1 из плана). ADR по этому вопросу — при работе над темой 2/4.
 - LibreOffice headless — конвертация `.doc`/`.odt` → текст.
 
@@ -135,7 +135,7 @@
 
 ## 2. Открытые риски
 
-Три главных риска тянут оценки ADR вниз (по [`_source/notion/solutions-registry-summary--*.md`](./_source/notion/solutions-registry-summary--36b0c905e62681148d5a3d7e74d6e487.md), раздел «Открытые риски»):
+Три главных риска тянут оценки ADR вниз (по [`_source/notion/solutions-registry-summary--*.md`](_source/notion/solutions-registry-summary--36c0c905e62681348458ca15b2d3d412.md), раздел «Открытые риски»):
 
 ### Риск 1: Дымовой прогон `bsl-atlas` на реальной ERP не выполнен
 
@@ -159,7 +159,7 @@
 
 ## 3. 7 требований из v1.x-карты
 
-Требования из [`_source/linear/attachments/_project-docs/karta-zadach-i-arhitekturnye-resheniya-aktualno.md`](./_source/linear/attachments/_project-docs/karta-zadach-i-arhitekturnye-resheniya-aktualno.md). В v2.0 они не аннулированы — обсуждаем при открытии соответствующих тем (HLE-415..419). Здесь — для памяти, чтобы не потерять при пересборке.
+Требования из [`_source/linear/attachments/_project-docs/karta-zadach-i-arhitekturnye-resheniya-aktualno.md`](_source/linear/attachments/_project-docs/karta-zadach-i-arhitekturnye-resheniya-aktualno.md). В v2.0 они не аннулированы — обсуждаем при открытии соответствующих тем (HLE-415..419). Здесь — для памяти, чтобы не потерять при пересборке.
 
 | № | Требование | Тема v2.0 |
 |---|---|---|
@@ -179,7 +179,7 @@
 
 Проект «Агент-консультант по 1С ERP» — 45 issues HLE-292..346. **Не мигрируем дословно** — декомпозиция v1.x пересобирается заново под v2.0 (форк bsl-atlas + готовые библиотеки). Здесь — ссылки как «исторический контекст»: при работе над темами 3–7 сверяться, чтобы не упустить конкретных требований.
 
-Полные файлы: [`_source/linear/agent-konsultant-po-1s-erp/`](./_source/linear/agent-konsultant-po-1s-erp/).
+Полные файлы: [`_source/linear/agent-konsultant-po-1s-erp/`](_source/linear/agent-konsultant-po-1s-erp/).
 
 ### 4.1 Основная декомпозиция (18 задач, HLE-292..312)
 
