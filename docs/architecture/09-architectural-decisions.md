@@ -44,5 +44,6 @@
 | 0031 | open | proposed | [Push к пользователю через веб-морду — замена отсутствующего push в MCP](adr/open/0031-multitenancy-push-via-web-frontend.md) |
 | 0032 | open | proposed | [Изоляция файлового хранилища по тенантам — `/data/{tenant_id}/...` + JWT-инъекция](adr/open/0032-multitenancy-tenant-storage-isolation.md) |
 | 0033 | open | proposed | [Механика детектирования противоречивости — как технически детектировать, порог, поведение при множестве конфликтов](adr/open/0033-r1-contradiction-detection-mechanics.md) |
+| 0035 | open | proposed | [XML-выгрузка конфигурации как второй источник данных](adr/open/0035-xml-configuration-export-as-second-source.md) |
 | 0034 | tooling | accepted | [Architecture-as-Code через Structurizr DSL — единый источник статичных C4-диаграмм](adr/tooling/0034-architecture-as-code-structurizr-dsl.md) |
 <!-- ADR-INDEX:END -->
