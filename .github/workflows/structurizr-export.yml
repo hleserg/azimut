@@ -1,0 +1,59 @@
+name: Structurizr Export
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - workspace.dsl
+  pull_request:
+    paths:
+      - workspace.dsl
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate DSL
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate workspace.dsl
+        run: ./scripts/validate-dsl.sh
+
+  export:
+    name: Export Mermaid Diagrams
+    runs-on: ubuntu-latest
+    needs: validate
+    # Only run on push to master or manual dispatch — not on PRs
+    if: github.event_name != 'pull_request'
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Use default GITHUB_TOKEN — commits with [skip ci] won't re-trigger workflow
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Export Mermaid diagrams
+        run: |
+          mkdir -p docs/architecture/diagrams
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/usr/local/structurizr" \
+            structurizr/cli export \
+              -workspace workspace.dsl \
+              -format mermaid \
+              -output docs/architecture/diagrams/
+
+      - name: Commit diagrams if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/architecture/diagrams/
+          if git diff --staged --quiet; then
+            echo "Diagrams unchanged — nothing to commit."
+          else
+            git commit -m "chore: update Mermaid diagrams from workspace.dsl [skip ci]"
+            git push
+          fi
