@@ -1,6 +1,6 @@
-# bigPC Bootstrap — Structurizr Lite в LAN через WSL + portproxy
+# bigPC Bootstrap — Structurizr (on-prem, local-режим) в LAN через WSL + portproxy
 
-Поднимает архитектурный портал [Structurizr Lite](https://docs.structurizr.com/lite) на bigPC, доступный по `http://bigPC:8080` из локальной сети. После настройки всё восстанавливается автоматически после перезагрузки.
+Поднимает архитектурный портал [Structurizr](https://docs.structurizr.com/onpremises) (on-prem, local-режим) на bigPC, доступный по `http://bigPC:8080` из локальной сети. После настройки всё восстанавливается автоматически после перезагрузки.
 
 Соответствует **варианту Б** из [`docs/_planning/05-rebuild-plan.md`](../../docs/_planning/05-rebuild-plan.md) раздел 4.1.
 
@@ -8,7 +8,7 @@
 
 | Скрипт | Где запускать | Что делает |
 |---|---|---|
-| [`setup-wsl.sh`](./setup-wsl.sh) | **WSL** на bigPC (любой пользователь, sudo для `apt`/Docker) | Ставит Docker (если нет), клонирует/обновляет репо, запускает контейнер `azimuth-arch` со Structurizr Lite в режиме `--restart=unless-stopped` |
+| [`setup-wsl.sh`](./setup-wsl.sh) | **WSL** на bigPC (любой пользователь, sudo для `apt`/Docker) | Ставит Docker (если нет), клонирует/обновляет репо, запускает контейнер `azimuth-arch` со Structurizr (on-prem, local-режим) в режиме `--restart=unless-stopped` |
 | [`setup-windows.ps1`](./setup-windows.ps1) | **Windows PowerShell от админа** на bigPC | Создаёт `C:\scripts\wsl-portproxy.ps1`, firewall rule на TCP 8080, Scheduled Task «WSL Portproxy 8080» (запуск при логоне), запускает task сразу |
 | [`wsl-portproxy.ps1`](./wsl-portproxy.ps1) | Вызывается Scheduled Task'ом, **руками запускать не надо** | Получает текущий WSL IP, переустанавливает `netsh portproxy` 8080 → WSL:8080 |
 
@@ -70,7 +70,7 @@ cd \\wsl.localhost\Ubuntu\home\<твой-юзер>\azimut\scripts\bigpc\
 Скрипт:
 
 1. Создаст `C:\scripts\wsl-portproxy.ps1`.
-2. Добавит inbound firewall rule «Structurizr Lite 8080» (TCP 8080, профили Private+Domain).
+2. Добавит inbound firewall rule «Structurizr (on-prem, local-режим) 8080» (TCP 8080, профили Private+Domain).
 3. Зарегистрирует Scheduled Task «WSL Portproxy 8080» (триггер — At Logon, RunLevel Highest).
 4. Запустит task сразу.
 5. Покажет вывод `netsh interface portproxy show all`.
@@ -85,7 +85,7 @@ Test-NetConnection bigPC -Port 8080
 # http://bigPC:8080
 ```
 
-Должна открыться страница Structurizr Lite с моделью из `workspace.dsl` (если он уже в репо — Фаза 1 / HLE-499 плана).
+Должна открыться страница Structurizr (on-prem, local-режим) с моделью из `workspace.dsl` (если он уже в репо — Фаза 1 / HLE-499 плана).
 
 ## Жизненный цикл
 
@@ -100,7 +100,7 @@ Test-NetConnection bigPC -Port 8080
 
 ### Обновление модели `workspace.dsl`
 
-Structurizr Lite watch'ит volume и подхватывает изменения без рестарта:
+Structurizr (on-prem, local-режим) watch'ит volume и подхватывает изменения без рестарта:
 
 ```bash
 cd ~/azimut
@@ -117,7 +117,7 @@ git pull
 | Контейнер не работает | WSL: `docker ps -a \| grep azimuth-arch`; `docker logs azimuth-arch` |
 | Portproxy не работает | Windows: `netsh interface portproxy show all` |
 | WSL IP сменился, доступ потерян | Windows (от админа): `Start-ScheduledTask -TaskName "WSL Portproxy 8080"` |
-| Firewall блокирует | Windows: `Get-NetFirewallRule -DisplayName "Structurizr Lite 8080"` |
+| Firewall блокирует | Windows: `Get-NetFirewallRule -DisplayName "Structurizr (on-prem, local-режим) 8080"` |
 | Из LAN не открывается | С другой машины: `Test-NetConnection bigPC -Port 8080` |
 | Task падает с exit 1 | Windows: `Get-ScheduledTaskInfo -TaskName "WSL Portproxy 8080"` — посмотри `LastTaskResult` |
 
@@ -133,7 +133,7 @@ docker stop azimuth-arch && docker rm azimuth-arch
 
 ```powershell
 Unregister-ScheduledTask -TaskName "WSL Portproxy 8080" -Confirm:$false
-Remove-NetFirewallRule -DisplayName "Structurizr Lite 8080"
+Remove-NetFirewallRule -DisplayName "Structurizr (on-prem, local-режим) 8080"
 Remove-Item C:\scripts\wsl-portproxy.ps1
 netsh interface portproxy delete v4tov4 listenport=8080 listenaddress=0.0.0.0
 ```

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# bigPC WSL bootstrap: Docker + Structurizr Lite в режиме демона.
+# bigPC WSL bootstrap: Docker + Structurizr (on-prem, local-режим) в режиме демона.
 # Запускать в WSL на bigPC. Идемпотентный — можно запускать многократно.
 #
 # Документация: scripts/bigpc/README.md
@@ -11,7 +11,7 @@ REPO_URL="${REPO_URL:-git@github.com:hleserg/azimut.git}"
 REPO_DIR="${REPO_DIR:-$HOME/azimut}"
 BRANCH="${BRANCH:-docs/source-extraction}"
 CONTAINER_NAME="azimuth-arch"
-IMAGE="structurizr/lite"
+IMAGE="structurizr/structurizr"
 
 log() { printf '\n\033[1;36m==>\033[0m %s\n' "$*"; }
 warn() { printf '\n\033[1;33m[!]\033[0m %s\n' "$*"; }
@@ -82,7 +82,7 @@ docker run -d \
   --name "$CONTAINER_NAME" \
   -p 8080:8080 \
   -v "$REPO_DIR:/usr/local/structurizr" \
-  "$IMAGE"
+  "$IMAGE" local
 
 # 6. Verify
 sleep 3
@@ -99,7 +99,7 @@ azimuth-arch is RUNNING.
 - Logs:                         docker logs -f azimuth-arch
 - Stop:                         docker stop azimuth-arch
 - Update DSL on bigPC:          cd ~/azimut && git pull
-  (Structurizr Lite watches volume — picks up changes automatically.)
+  (Structurizr watches volume — picks up changes automatically.)
 ============================================================
 EOF
 else

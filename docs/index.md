@@ -16,7 +16,7 @@
 | Операционный регламент Лида | [`docs/architecture/13-lead-operating-manual.md`](architecture/13-lead-operating-manual.md) |
 | Как написана документация | [`docs/_source/specs/_howto.md`](_source/specs/_howto.md) |
 
-## Быстрый старт Structurizr Lite
+## Быстрый старт Structurizr (on-prem, local-режим)
 
 ```bash
 docker run --rm -p 8080:8080 -v .:/usr/local/structurizr --user $(id -u):$(id -g) structurizr/structurizr local
