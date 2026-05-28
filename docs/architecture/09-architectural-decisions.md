@@ -2,7 +2,7 @@
 
 > arc42 §9 — индекс ADR по темам и статусам. Сами ADR — в [`adr/`](adr/).
 
-Каждое решение оформлено по формату **MADR** (Markdown Architectural Decision Records): `Context and Problem Statement` → `Decision Drivers` → `Considered Options` → `Decision Outcome` → `Consequences`. Читать стоит именно в этом порядке: контекст объясняет «почему вообще», drivers — «что важно», outcome — «что выбрано и почему», consequences — «что теряем и как проверяем». Шаблон: [`adr/template.md`](adr/template.md).
+Каждое решение оформлено по формату **MADR** (Markdown Architectural Decision Records): `Context and Problem Statement` → `Decision Drivers` → `Considered Options` → `Decision Outcome` → `Consequences`. Читать стоит именно в этом порядке: контекст объясняет «почему вообще», drivers — «что важно», outcome — «что выбрано и почему», consequences — «что теряем и как проверяем». Шаблон: [`adr/template.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/template.md).
 
 Статусы: **accepted** — решение принято и действует; **proposed** — открытая инженерная задача, решение ещё не зафиксировано; **superseded by XXXX** — отозвано и заменено другим ADR (ссылка на новое — в тексте исходного). ADR не удаляются — история важна.
 
@@ -11,39 +11,39 @@
 <!-- ADR-INDEX:START -->
 | № | Тема | Статус | Заголовок |
 |---|---|---|---|
-| 0001 | anti-hallucinations | accepted | [Метрика противоречивости источников ПЕРЕД выдачей](adr/anti-hallucinations/0001-р1-metric-contradiction.md) |
-| 0002 | anti-hallucinations | accepted | [Faithfulness и relevance ретривера — разные метрики](adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md) |
-| 0003 | anti-hallucinations | accepted | [LLM-судья со спан-привязкой (Claude как арбитр)](adr/anti-hallucinations/0003-р3-llm-judge-spans.md) |
-| 0004 | anti-hallucinations | superseded by 0007 | [«Честный тупик» как фолбэк (снято)](adr/anti-hallucinations/0004-р4-honest-deadend-retired.md) |
-| 0005 | anti-hallucinations | accepted | [Контроль ретривинга — на сервере (планка релевантности, триггер добора, потолок окна)](adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md) |
-| 0006 | anti-hallucinations | accepted | [Иерархия источников при конфликте: код → справка → ИТС](adr/anti-hallucinations/0006-р6-source-hierarchy.md) |
-| 0007 | anti-hallucinations | accepted | [Фолбэк = смена режима (дип-ресёрч в интернете с тем же контрактом)](adr/anti-hallucinations/0007-р7-fallback-mode-switch.md) |
-| 0008 | anti-hallucinations | proposed | [Детектор «relevance высокий / groundedness низкий» — 3 уровня действий](adr/anti-hallucinations/0008-п1-groundedness-detector.md) |
-| 0009 | anti-hallucinations | proposed | [Второй проход ретривера при неуверенности (открытый триггер)](adr/anti-hallucinations/0009-п2-re-retrieval.md) |
-| 0010 | anti-hallucinations | proposed | [Оценка достаточности запроса + подсказки агенту что переспросить](adr/anti-hallucinations/0010-п3-query-sufficiency.md) |
-| 0024 | code-processing | accepted | [Детерминированная структурная резка кода поверх Азимута](adr/code-processing/0024-code-chunking-deterministic-structural.md) |
-| 0025 | code-processing | proposed | [Алгоритм резолва одноимённых процедур — открытая инженерная задача](adr/code-processing/0025-resolve-same-named-procedures.md) |
-| 0026 | code-processing | accepted | [Роутинг поиска по коду — fallback-цепочка graph → metadata → grep](adr/code-processing/0026-code-search-routing.md) |
-| 0027 | code-processing | accepted | [Портировать техники `mcp-1c` (feenlace) в Python — не переписывать на Go](adr/code-processing/0027-port-feenlace-techniques-to-python.md) |
-| 0011 | foundation | accepted | [Основа — форк `bsl-atlas` (AGPL-3.0) как ядро понимания кода 1С](adr/foundation/0011-fork-bsl-atlas-as-core.md) |
-| 0012 | foundation | accepted | [Имя форка/проекта — «Азимут» / `azimuth`](adr/foundation/0012-name-azimut.md) |
-| 0013 | foundation | accepted | [Роль `bsl-atlas`: только «движок понимания кода» (берём парсер BSL + граф вызовов + каркас MCP + docker; меняем хранилище/эмбеддер/реранк; дописываем поведенческий контракт и оркестрацию)](adr/foundation/0013-fork-role-code-engine.md) |
-| 0014 | foundation | accepted | [`FSerg/mcp-1c-v1` — референс архитектуры, не кодовая основа (берём идеи payload-схемы и RRF, код не копируем)](adr/foundation/0014-fserg-mcp-1c-as-reference-only.md) |
-| 0015 | foundation | accepted | [Миграция стека: гибрид по времени — один дымовой прогон `bsl-atlas` на ChromaDB, затем сразу Qdrant+BGE-M3 (ни строчки нового кода под Chroma)](adr/foundation/0015-stack-migration-smoke-then-qdrant.md) |
-| 0016 | foundation | accepted | [MCP-шлюз `onec-mcp-universal` — отложен до темы 7 (на локальном сценарии не нужен; Claude Desktop тянет несколько MCP-серверов напрямую)](adr/foundation/0016-onec-mcp-universal-deferred.md) |
-| 0017 | foundation | accepted | [`alkoleft/mcp-bsl-platform-context` берём в фундамент (drop-in вторым MCP, MIT, бесплатно)](adr/foundation/0017-mcp-bsl-platform-context-included.md) |
-| 0018 | foundation | superseded by 0019 | [UX и клиент — свой UI не строим, берём готовый MCP-клиент с облачной разговорной моделью](adr/foundation/0018-mcp-client-no-own-ui.md) |
-| 0019 | foundation | accepted | [Дефолт-клиент по ролям: Cherry Studio (мама/Сергей-everyday) + Claude Desktop (Сергей-премиум дома) + mini-ai-1c (Сергей-захват кода)](adr/foundation/0019-cherry-studio-default-client.md) |
-| 0020 | foundation | accepted | [Разговорная модель — облачная и подключаемая через адаптер; внутри MCP-сервера нет разговорной LLM; лёгкие модели (BGE/реранкер/судья) — локально по умолчанию, грант Cohere — опциональный апгрейд](adr/foundation/0020-cloud-llm-via-adapter.md) |
-| 0021 | foundation | accepted | [Дефолт разговорной модели — DeepSeek V4 (Flash основной, Pro для тяжёлого кода); запас — Claude/Qwen/Yandex; финал валидируем eval-ом в теме 6](adr/foundation/0021-default-model-deepseek-v4.md) |
-| 0022 | foundation | accepted | [Граница «форк/готовые библиотеки vs наш код» — форк даёт понимание кода, библиотеки дают механику RAG, наш код — поведение, гарантии, оркестрацию](adr/foundation/0022-boundary-fork-vs-own-code.md) |
-| 0023 | foundation | accepted | [Лицензионный чек-лист OSS под AGPL-3.0 + правило источников («✅ проверено: <файл/url>» или «⚠️ предположение»)](adr/foundation/0023-license-checklist-and-source-rule.md) |
-| 0028 | open | proposed | [Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б](adr/open/0028-sentry-vs-agpl.md) |
-| 0029 | open | proposed | [Мульти-аренда: Qdrant embedded vs server — развилка по режиму деплоя](adr/open/0029-multitenancy-qdrant-embedded-vs-server.md) |
-| 0030 | open | proposed | [Канарейка-в-потоке vs фоновый сторож для VDS — как разбудить «протухшее в покое»](adr/open/0030-multitenancy-canary-vs-watchdog.md) |
-| 0031 | open | proposed | [Push к пользователю через веб-морду — замена отсутствующего push в MCP](adr/open/0031-multitenancy-push-via-web-frontend.md) |
-| 0032 | open | proposed | [Изоляция файлового хранилища по тенантам — `/data/{tenant_id}/...` + JWT-инъекция](adr/open/0032-multitenancy-tenant-storage-isolation.md) |
-| 0033 | open | proposed | [Механика детектирования противоречивости — как технически детектировать, порог, поведение при множестве конфликтов](adr/open/0033-r1-contradiction-detection-mechanics.md) |
-| 0035 | open | proposed | [XML-выгрузка конфигурации как второй источник данных](adr/open/0035-xml-configuration-export-as-second-source.md) |
-| 0034 | tooling | accepted | [Architecture-as-Code через Structurizr DSL — единый источник статичных C4-диаграмм](adr/tooling/0034-architecture-as-code-structurizr-dsl.md) |
+| 0001 | anti-hallucinations | accepted | [Метрика противоречивости источников ПЕРЕД выдачей](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0001-р1-metric-contradiction.md) |
+| 0002 | anti-hallucinations | accepted | [Faithfulness и relevance ретривера — разные метрики](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md) |
+| 0003 | anti-hallucinations | accepted | [LLM-судья со спан-привязкой (Claude как арбитр)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md) |
+| 0004 | anti-hallucinations | superseded by 0007 | [«Честный тупик» как фолбэк (снято)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0004-р4-honest-deadend-retired.md) |
+| 0005 | anti-hallucinations | accepted | [Контроль ретривинга — на сервере (планка релевантности, триггер добора, потолок окна)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md) |
+| 0006 | anti-hallucinations | accepted | [Иерархия источников при конфликте: код → справка → ИТС](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0006-р6-source-hierarchy.md) |
+| 0007 | anti-hallucinations | accepted | [Фолбэк = смена режима (дип-ресёрч в интернете с тем же контрактом)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md) |
+| 0008 | anti-hallucinations | proposed | [Детектор «relevance высокий / groundedness низкий» — 3 уровня действий](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md) |
+| 0009 | anti-hallucinations | proposed | [Второй проход ретривера при неуверенности (открытый триггер)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md) |
+| 0010 | anti-hallucinations | proposed | [Оценка достаточности запроса + подсказки агенту что переспросить](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0010-п3-query-sufficiency.md) |
+| 0024 | code-processing | accepted | [Детерминированная структурная резка кода поверх Азимута](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md) |
+| 0025 | code-processing | proposed | [Алгоритм резолва одноимённых процедур — открытая инженерная задача](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md) |
+| 0026 | code-processing | accepted | [Роутинг поиска по коду — fallback-цепочка graph → metadata → grep](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0026-code-search-routing.md) |
+| 0027 | code-processing | accepted | [Портировать техники `mcp-1c` (feenlace) в Python — не переписывать на Go](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0027-port-feenlace-techniques-to-python.md) |
+| 0011 | foundation | accepted | [Основа — форк `bsl-atlas` (AGPL-3.0) как ядро понимания кода 1С](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md) |
+| 0012 | foundation | accepted | [Имя форка/проекта — «Азимут» / `azimuth`](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0012-name-azimut.md) |
+| 0013 | foundation | accepted | [Роль `bsl-atlas`: только «движок понимания кода» (берём парсер BSL + граф вызовов + каркас MCP + docker; меняем хранилище/эмбеддер/реранк; дописываем поведенческий контракт и оркестрацию)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0013-fork-role-code-engine.md) |
+| 0014 | foundation | accepted | [`FSerg/mcp-1c-v1` — референс архитектуры, не кодовая основа (берём идеи payload-схемы и RRF, код не копируем)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0014-fserg-mcp-1c-as-reference-only.md) |
+| 0015 | foundation | accepted | [Миграция стека: гибрид по времени — один дымовой прогон `bsl-atlas` на ChromaDB, затем сразу Qdrant+BGE-M3 (ни строчки нового кода под Chroma)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0015-stack-migration-smoke-then-qdrant.md) |
+| 0016 | foundation | accepted | [MCP-шлюз `onec-mcp-universal` — отложен до темы 7 (на локальном сценарии не нужен; Claude Desktop тянет несколько MCP-серверов напрямую)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0016-onec-mcp-universal-deferred.md) |
+| 0017 | foundation | accepted | [`alkoleft/mcp-bsl-platform-context` берём в фундамент (drop-in вторым MCP, MIT, бесплатно)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md) |
+| 0018 | foundation | superseded by 0019 | [UX и клиент — свой UI не строим, берём готовый MCP-клиент с облачной разговорной моделью](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0018-mcp-client-no-own-ui.md) |
+| 0019 | foundation | accepted | [Дефолт-клиент по ролям: Cherry Studio (мама/Сергей-everyday) + Claude Desktop (Сергей-премиум дома) + mini-ai-1c (Сергей-захват кода)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md) |
+| 0020 | foundation | accepted | [Разговорная модель — облачная и подключаемая через адаптер; внутри MCP-сервера нет разговорной LLM; лёгкие модели (BGE/реранкер/судья) — локально по умолчанию, грант Cohere — опциональный апгрейд](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md) |
+| 0021 | foundation | accepted | [Дефолт разговорной модели — DeepSeek V4 (Flash основной, Pro для тяжёлого кода); запас — Claude/Qwen/Yandex; финал валидируем eval-ом в теме 6](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0021-default-model-deepseek-v4.md) |
+| 0022 | foundation | accepted | [Граница «форк/готовые библиотеки vs наш код» — форк даёт понимание кода, библиотеки дают механику RAG, наш код — поведение, гарантии, оркестрацию](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md) |
+| 0023 | foundation | accepted | [Лицензионный чек-лист OSS под AGPL-3.0 + правило источников («✅ проверено: <файл/url>» или «⚠️ предположение»)](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0023-license-checklist-and-source-rule.md) |
+| 0028 | open | proposed | [Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0028-sentry-vs-agpl.md) |
+| 0029 | open | proposed | [Мульти-аренда: Qdrant embedded vs server — развилка по режиму деплоя](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md) |
+| 0030 | open | proposed | [Канарейка-в-потоке vs фоновый сторож для VDS — как разбудить «протухшее в покое»](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0030-multitenancy-canary-vs-watchdog.md) |
+| 0031 | open | proposed | [Push к пользователю через веб-морду — замена отсутствующего push в MCP](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0031-multitenancy-push-via-web-frontend.md) |
+| 0032 | open | proposed | [Изоляция файлового хранилища по тенантам — `/data/{tenant_id}/...` + JWT-инъекция](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0032-multitenancy-tenant-storage-isolation.md) |
+| 0033 | open | proposed | [Механика детектирования противоречивости — как технически детектировать, порог, поведение при множестве конфликтов](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0033-r1-contradiction-detection-mechanics.md) |
+| 0035 | open | proposed | [XML-выгрузка конфигурации как второй источник данных](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0035-xml-configuration-export-as-second-source.md) |
+| 0034 | tooling | accepted | [Architecture-as-Code через Structurizr DSL — единый источник статичных C4-диаграмм](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/tooling/0034-architecture-as-code-structurizr-dsl.md) |
 <!-- ADR-INDEX:END -->

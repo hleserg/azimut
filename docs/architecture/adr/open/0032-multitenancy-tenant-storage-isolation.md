@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-419"
 basis: "`docs/_source/notion/bsl-atlas-opensource-research--36b0c905e626814fa52ce80b248c4311.md` Пробел 9; `docs/_source/notion/questions--36b0c905e62681a48975d4a2315fbce9.md` §«Изоляция файлового хранилища»; `docs/_source/_resolutions.md` #9"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Хранилище»; `docs/architecture/08-cross-cutting-concepts.md` §«Безопасность/изоляция»"
-related-to: "[0029](0029-multitenancy-qdrant-embedded-vs-server.md), [0023](../foundation/0023-license-checklist-and-source-rule.md)"
+related-to: "[0029](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md), [0023](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0023-license-checklist-and-source-rule.md)"
 supersedes: ""
 superseded-by: ""
 ---

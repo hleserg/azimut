@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-419"
 basis: "`docs/_source/notion/questions--36b0c905e62681a48975d4a2315fbce9.md` §«Влияние мульти-аренды на ранее принятые решения»; `docs/_source/_resolutions.md` #9"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Веб-морда» (тема 7)"
-related-to: "[0019](../foundation/0019-cherry-studio-default-client.md), [0029](0029-multitenancy-qdrant-embedded-vs-server.md), [0030](0030-multitenancy-canary-vs-watchdog.md)"
+related-to: "[0019](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md), [0029](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md), [0030](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0030-multitenancy-canary-vs-watchdog.md)"
 supersedes: ""
 superseded-by: ""
 ---

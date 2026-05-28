@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "_source/notion/design-system-v2--*.md реш. 1.10; LICENSE (AGPL-3.0); COPYRIGHT"
 implemented-in: "docs/architecture/08-cross-cutting-concepts.md §«Лицензии и атрибуция»; CI (pip-licenses или аналог)"
-related-to: "[0011](0011-fork-bsl-atlas-as-core.md), [0014](0014-fserg-mcp-1c-as-reference-only.md), [0028](../open/0028-sentry-vs-agpl.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0014](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0014-fserg-mcp-1c-as-reference-only.md), [0028](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0028-sentry-vs-agpl.md)"
 supersedes: ""
 superseded-by: ""
 ---
@@ -107,7 +107,7 @@ Chosen option: "Формализованный чек-лист в ADR + pip-lice
 
 Реш. 1.10 из `_source/notion/design-system-v2--*.md`.
 Исправление ошибки «FSerg без лицензии» → `_source/_resolutions.md` #3.
-Форк bsl-atlas → ADR [0011](0011-fork-bsl-atlas-as-core.md).
-FSerg как референс, не зависимость → ADR [0014](0014-fserg-mcp-1c-as-reference-only.md).
-Sentry × AGPL → ADR [0028](../open/0028-sentry-vs-agpl.md).
+Форк bsl-atlas → ADR [0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md).
+FSerg как референс, не зависимость → ADR [0014](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0014-fserg-mcp-1c-as-reference-only.md).
+Sentry × AGPL → ADR [0028](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0028-sentry-vs-agpl.md).
 Конкурентный анализ лицензий (mini-ai-1c / 1c-buddy / EDT-MCP) → `_source/notion/hle-458-mini-ai-1c-competitors--*.md`.

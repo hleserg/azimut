@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "_source/notion/design-system-v2--*.md реш. 1.8a"
 implemented-in: "docs/architecture/05-building-block-view.md §«Adapter-слой»; конфиг llm.provider"
-related-to: "[0020](0020-cloud-llm-via-adapter.md), [0019](0019-cherry-studio-default-client.md)"
+related-to: "[0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md), [0019](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md)"
 supersedes: ""
 superseded-by: ""
 ---
@@ -14,7 +14,7 @@ superseded-by: ""
 
 ## Context and Problem Statement
 
-ADR [0020](0020-cloud-llm-via-adapter.md) определил, что разговорная LLM облачная и
+ADR [0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md) определил, что разговорная LLM облачная и
 подключается через адаптер. Теперь нужно выбрать конкретный дефолт: какую модель
 настраиваем для мамы и Сергея-everyday «из коробки», какую используем для тяжёлых
 задач, и что делаем, если основная модель недоступна.
@@ -101,6 +101,6 @@ Chosen option: "DeepSeek V4 Flash как основной, DeepSeek V4 Pro дл�
 ## More Information
 
 Реш. 1.8a из `_source/notion/design-system-v2--*.md`.
-Адаптерный слой → ADR [0020](0020-cloud-llm-via-adapter.md).
-Клиент Cherry Studio, через который DeepSeek подключается → ADR [0019](0019-cherry-studio-default-client.md).
+Адаптерный слой → ADR [0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md).
+Клиент Cherry Studio, через который DeepSeek подключается → ADR [0019](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md).
 Финальная валидация — eval-харнесс, тема 6 HLE-420.

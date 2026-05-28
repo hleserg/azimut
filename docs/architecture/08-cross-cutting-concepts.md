@@ -12,13 +12,13 @@
 
 | ID | Принцип | Суть | ADR |
 |---|---|---|---|
-| Р1 | Метрика противоречивости | Считать противоречия между чанками ДО генерации; не блокировать выдачу, но логировать в Sentry (`contradiction_count`) | [0001](adr/anti-hallucinations/0001-р1-metric-contradiction.md) |
-| Р2 | Faithfulness vs relevance | Реранкер балансирует два сигнала: релевантность запроса и верность источнику | [0002](adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md) |
-| Р3 | LLM-судья со спан-привязкой | После генерации — Claude API арбитрирует faithfulness + groundedness; при недостаточном score — сигнал на добор | [0003](adr/anti-hallucinations/0003-р3-llm-judge-spans.md) |
-| Р4 | ~~Честный тупик~~ | **Снят** — заменён на Р7. «Ответить не знаю» без альтернативы = бесполезно | [0004](adr/anti-hallucinations/0004-р4-honest-deadend-retired.md) |
-| Р5 | Server-controlled retrieval | Планка релевантности, триггер добора, потолок окна контекста — на стороне сервера, не агента | [0005](adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md) |
-| Р6 | Иерархия источников | При конфликте: **код > справка 1С > ИТС**. Метрика противоречивости (Р1) применяется до этой иерархии | [0006](adr/anti-hallucinations/0006-р6-source-hierarchy.md) |
-| Р7 | Фолбэк = смена режима | Если локальный индекс не набирает релевантности → дип-ресёрч в интернете с явной пометкой «не из локального индекса» | [0007](adr/anti-hallucinations/0007-р7-fallback-mode-switch.md) |
+| Р1 | Метрика противоречивости | Считать противоречия между чанками ДО генерации; не блокировать выдачу, но логировать в Sentry (`contradiction_count`) | [0001](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0001-р1-metric-contradiction.md) |
+| Р2 | Faithfulness vs relevance | Реранкер балансирует два сигнала: релевантность запроса и верность источнику | [0002](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md) |
+| Р3 | LLM-судья со спан-привязкой | После генерации — Claude API арбитрирует faithfulness + groundedness; при недостаточном score — сигнал на добор | [0003](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md) |
+| Р4 | ~~Честный тупик~~ | **Снят** — заменён на Р7. «Ответить не знаю» без альтернативы = бесполезно | [0004](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0004-р4-honest-deadend-retired.md) |
+| Р5 | Server-controlled retrieval | Планка релевантности, триггер добора, потолок окна контекста — на стороне сервера, не агента | [0005](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md) |
+| Р6 | Иерархия источников | При конфликте: **код > справка 1С > ИТС**. Метрика противоречивости (Р1) применяется до этой иерархии | [0006](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0006-р6-source-hierarchy.md) |
+| Р7 | Фолбэк = смена режима | Если локальный индекс не набирает релевантности → дип-ресёрч в интернете с явной пометкой «не из локального индекса» | [0007](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md) |
 
 ✅ проверено: ADR 0001–0007 (статусы и тексты)
 
@@ -26,15 +26,15 @@
 
 | ID | Принцип | Суть | ADR | Блокер |
 |---|---|---|---|---|
-| П1 | Детектор groundedness | 3 уровня реакции на сигнал судьи: «стенка» (блок) / «плашка» / «канарейка» (лог) | [0008](adr/anti-hallucinations/0008-п1-groundedness-detector.md) | Пороги не откалиброваны |
-| П2 | Повторный ретривинг | Второй проход ретривера с переформулированным запросом при недостаточном score | [0009](adr/anti-hallucinations/0009-п2-re-retrieval.md) | Механика открыта |
-| П3 | Оценка достаточности запроса | Перед ретривингом — оценить, достаточно ли запрос специфичен | [0010](adr/anti-hallucinations/0010-п3-query-sufficiency.md) | Механика открыта |
+| П1 | Детектор groundedness | 3 уровня реакции на сигнал судьи: «стенка» (блок) / «плашка» / «канарейка» (лог) | [0008](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md) | Пороги не откалиброваны |
+| П2 | Повторный ретривинг | Второй проход ретривера с переформулированным запросом при недостаточном score | [0009](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md) | Механика открыта |
+| П3 | Оценка достаточности запроса | Перед ретривингом — оценить, достаточно ли запрос специфичен | [0010](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0010-п3-query-sufficiency.md) | Механика открыта |
 
 ### Открытый хвост Р1
 
 Механика детектирования противоречий (как технически считать «противоречие», какой порог) не закрыта.
 Выделена в отдельный открытый ADR 0033.
-✅ проверено: ADR 0001 §Consequences; [ADR 0033](adr/open/0033-r1-contradiction-detection-mechanics.md) status=proposed
+✅ проверено: ADR 0001 §Consequences; [ADR 0033](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0033-r1-contradiction-detection-mechanics.md) status=proposed
 
 ---
 
@@ -63,7 +63,7 @@
 - **Исключён**: self-hosted Sentry (`getsentry/self-hosted`) — требует 16 GB RAM, несовместимо с локальным деплоем. ✅ проверено: ADR 0028 §«План Б2»
 
 Задачи HLE-315/318/319 в Hold до закрытия ADR 0028.
-✅ проверено: [ADR 0028](adr/open/0028-sentry-vs-agpl.md)
+✅ проверено: [ADR 0028](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0028-sentry-vs-agpl.md)
 
 ---
 
@@ -95,7 +95,7 @@
 
 ### Лицензионный чек-лист (сводка)
 
-Полный чек-лист — в [ADR 0023](adr/foundation/0023-license-checklist-and-source-rule.md). Ключевые записи:
+Полный чек-лист — в [ADR 0023](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0023-license-checklist-and-source-rule.md). Ключевые записи:
 
 | Компонент | Лицензия | Статус |
 |---|---|---|
@@ -120,7 +120,7 @@
 
 Утверждения без маркера считаются предположениями при ревью. Маркер относится только к проверяемым фактам: ADR-ссылки, лицензии, технические характеристики. Общеизвестные технологические факты (Python — интерпретируемый язык) маркировать не нужно.
 
-✅ проверено: [ADR 0023](adr/foundation/0023-license-checklist-and-source-rule.md) §«Правило источников»
+✅ проверено: [ADR 0023](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0023-license-checklist-and-source-rule.md) §«Правило источников»
 
 ---
 
@@ -128,7 +128,7 @@
 
 ### ADR-процесс
 
-Любое архитектурное решение фиксируется в [MADR](adr/template.md)-формате:
+Любое архитектурное решение фиксируется в [MADR](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/template.md)-формате:
 1. Создать через `./scripts/new-adr.sh <подпапка> <kebab-title>`
 2. Обновить `workspace.dsl` если изменилась архитектура (workspace.dsl — единственный источник истины для C4)
 3. Обновить индекс: `./scripts/update-adr-index.sh`

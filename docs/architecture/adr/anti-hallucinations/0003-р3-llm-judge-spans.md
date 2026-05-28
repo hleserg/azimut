@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417; HLE-306 (LLM-судья из v1.x)"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md §Р3"
 implemented-in: "docs/architecture/05-building-block-view.md §«LLM-судья» (отдельный контейнер); docs/architecture/06-runtime-view.md §«Запрос → судья»"
-related-to: "[0002](./0002-р2-faithfulness-vs-relevance.md), [0008](./0008-п1-groundedness-detector.md)"
+related-to: "[0002](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md), [0008](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md)"
 supersedes: ""
 superseded-by: ""
 ---

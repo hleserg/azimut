@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "`_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md` реш. 1.4"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Хранилище»; `roadmap.md` фаза 2 (дымовой прогон → миграция)"
-related-to: "[0011](0011-fork-bsl-atlas-as-core.md), [0014](0014-fserg-mcp-1c-as-reference-only.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0014](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0014-fserg-mcp-1c-as-reference-only.md)"
 supersedes: ""
 superseded-by: ""
 ---

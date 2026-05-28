@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "`_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md` реш. 1.5"
 implemented-in: "— (отложено до темы 7, HLE-419)"
-related-to: "[0029](0029-multitenancy-qdrant-embedded-vs-server.md), [0032](0032-multitenancy-tenant-storage-isolation.md)"
+related-to: "[0029](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0029-multitenancy-qdrant-embedded-vs-server.md), [0032](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0032-multitenancy-tenant-storage-isolation.md)"
 supersedes: ""
 superseded-by: ""
 ---

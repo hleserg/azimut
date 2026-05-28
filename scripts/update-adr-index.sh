@@ -75,10 +75,13 @@ TABLE=""
 TABLE+="| № | Тема | Статус | Заголовок |\n"
 TABLE+="|---|---|---|---|\n"
 
+# Absolute GitHub URL (HLE-546): чтобы ссылки работали и в Structurizr
+# Documentation tab (там relative .md → пустая страница), и на GitHub web.
+GH_BASE="https://github.com/hleserg/azimut/blob/master/docs/architecture"
 for row in "${ROWS[@]}"; do
   IFS='|' read -r num subfolder status title filename <<< "$row"
-  rel_path="adr/${subfolder}/${filename}"
-  TABLE+="| ${num} | ${subfolder} | ${status} | [${title}](${rel_path}) |\n"
+  url="${GH_BASE}/adr/${subfolder}/${filename}"
+  TABLE+="| ${num} | ${subfolder} | ${status} | [${title}](${url}) |\n"
 done
 
 # Replace content between markers in index file

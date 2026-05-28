@@ -58,7 +58,7 @@
 2. **Уровень 2 (частичная статика):** Если счёт подтягивается через подписку на событие (СЗ-01), цепочка рвётся — агент видит узел подписки, но не её обработчик.
 3. **Уровень 3 (runtime):** Если счёт определяется алгоритмом через `МенеджерВременныхТаблиц` с данными регистров — это живые данные базы; статический анализ принципиально не отвечает.
 
-Подробный разбор: [`docs/cases/01-document-changed-account.md`](../cases/01-document-changed-account.md).
+Подробный разбор: [`docs/cases/01-document-changed-account.md`](https://github.com/hleserg/azimut/blob/master/docs/cases/01-document-changed-account.md).
 
 Правило проекта: **агент явно называет уровень своего ответа**. Если вопрос уходит в уровни 2–3, поведенческий контракт (§8) требует сообщить об ограничении, а не выдавать догадку.
 
@@ -68,7 +68,7 @@
 
 | Риск | Связанный ADR | Статус |
 |---|---|---|
-| Дымовой прогон `bsl-atlas` на реальной ERP не проводился — допущение «парсит наш объём» не верифицировано | [ADR 0011](adr/foundation/0011-fork-bsl-atlas-as-core.md), [0015](adr/foundation/0015-stack-migration-smoke-then-qdrant.md), [0024](adr/code-processing/0024-code-chunking-deterministic-structural.md) | ⚠️ Открыт — блокирует финализацию стека |
-| Алгоритм резолва одноимённых процедур не реализован — `callee_id=NULL` для неразрешённых | [ADR 0025](adr/code-processing/0025-resolve-same-named-procedures.md) | ⚠️ proposed — главный нерешённый тех. риск темы 2 |
-| Конфликт AGPL × Sentry for Open Source — ждём ответ команды Sentry | [ADR 0028](adr/open/0028-sentry-vs-agpl.md) | ⚠️ proposed — план Б зафиксирован в ADR |
+| Дымовой прогон `bsl-atlas` на реальной ERP не проводился — допущение «парсит наш объём» не верифицировано | [ADR 0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0015](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0015-stack-migration-smoke-then-qdrant.md), [0024](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md) | ⚠️ Открыт — блокирует финализацию стека |
+| Алгоритм резолва одноимённых процедур не реализован — `callee_id=NULL` для неразрешённых | [ADR 0025](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md) | ⚠️ proposed — главный нерешённый тех. риск темы 2 |
+| Конфликт AGPL × Sentry for Open Source — ждём ответ команды Sentry | [ADR 0028](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0028-sentry-vs-agpl.md) | ⚠️ proposed — план Б зафиксирован в ADR |
 | Мульти-арендная архитектура (Qdrant embedded vs server, изоляция тенантов, push) | [ADR 0029–0032](adr/open/) | ⚠️ proposed — отложено до темы 7 |

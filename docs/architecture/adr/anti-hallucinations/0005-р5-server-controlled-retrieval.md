@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417; HLE-299 (поисковый слой из v1.x)"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md §Р5"
 implemented-in: "docs/architecture/05-building-block-view.md §«MCP-сервер: контроль ретривинга»; docs/architecture/06-runtime-view.md §«Запрос → добор → ответ»"
-related-to: "[0006](./0006-р6-source-hierarchy.md), [0009](./0009-п2-re-retrieval.md), [0010](./0010-п3-query-sufficiency.md)"
+related-to: "[0006](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0006-р6-source-hierarchy.md), [0009](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md), [0010](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0010-п3-query-sufficiency.md)"
 supersedes: ""
 superseded-by: ""
 ---

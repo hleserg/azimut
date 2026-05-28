@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "`_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md` реш. 1.2"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Азимут-ядро»; `workspace.dsl` Container «Азимут-ядро»; граница «форк vs наш код» подробно в ADR 0022"
-related-to: "[0011](0011-fork-bsl-atlas-as-core.md), [0015](0015-stack-migration-smoke-then-qdrant.md), [0022](0022-boundary-fork-vs-own-code.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0015](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0015-stack-migration-smoke-then-qdrant.md), [0022](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md)"
 supersedes: ""
 superseded-by: ""
 ---

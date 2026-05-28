@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md §Р7"
 implemented-in: "docs/architecture/06-runtime-view.md §«Фолбэк-сценарий: дип-ресёрч»"
-related-to: "[0004](./0004-р4-honest-deadend-retired.md)"
+related-to: "[0004](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0004-р4-honest-deadend-retired.md)"
 supersedes: "0004"
 superseded-by: ""
 ---

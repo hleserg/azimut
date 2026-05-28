@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "`_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md` §«Название проекта/форка»"
 implemented-in: "README репо; `COPYRIGHT` в корне репо"
-related-to: "[0011](0011-fork-bsl-atlas-as-core.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md)"
 supersedes: ""
 superseded-by: ""
 ---

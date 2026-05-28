@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413, HLE-516"
 basis: "`_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md` реш. 1.3; `_source/notion/hle-460-fserg-chunking-qdrant--36c0c905e626814385a2c7259a3d0c0c.md` (MIT подтверждён); `_source/_resolutions.md` §#3"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Хранилище» (payload-схема и RRF — лекало из FSerg)"
-related-to: "[0024](../code-processing/0024-code-chunking-deterministic-structural.md)"
+related-to: "[0024](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md)"
 supersedes: ""
 superseded-by: ""
 ---

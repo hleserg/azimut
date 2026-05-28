@@ -8,19 +8,19 @@
 
 | Файл | arc42 § | За что отвечает |
 |---|---|---|
-| [`01-introduction-and-goals.md`](01-introduction-and-goals.md) | §1 | Назначение, стейкхолдеры, top quality goals |
-| [`02-architecture-constraints.md`](02-architecture-constraints.md) | §2 | Технические и организационные ограничения |
-| [`03-context-and-scope.md`](03-context-and-scope.md) | §3 | Контекст и границы системы; C4 systemContext |
-| [`04-solution-strategy.md`](04-solution-strategy.md) | §4 | Ключевые архитектурные решения одним списком |
-| [`05-building-block-view.md`](05-building-block-view.md) | §5 | Структура: контейнеры, компоненты; C4 views |
-| [`06-runtime-view.md`](06-runtime-view.md) | §6 | Поведение в ключевых сценариях (Mermaid sequence) |
-| [`07-deployment-view.md`](07-deployment-view.md) | §7 | Развёртывание; локальный и VDS-сценарий |
-| [`08-cross-cutting-concepts.md`](08-cross-cutting-concepts.md) | §8 | Сквозные концепции: анти-галлюцинации, безопасность, лицензии |
-| [`09-architectural-decisions.md`](09-architectural-decisions.md) | §9 | Индекс ADR по темам и статусам (автогенерация) |
-| [`10-quality-requirements.md`](10-quality-requirements.md) | §10 | NFR: faithfulness, latency, отказоустойчивость |
-| [`11-technical-risks.md`](11-technical-risks.md) | §11 | Технические риски и слепые зоны |
-| [`12-glossary.md`](12-glossary.md) | §12 | Термины 1С, проектные, технические |
-| [`13-lead-operating-manual.md`](13-lead-operating-manual.md) | (наше) | Регламент Лида: чек-листы, метрики, триаж, LLM-протокол |
+| [`01-introduction-and-goals.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/01-introduction-and-goals.md) | §1 | Назначение, стейкхолдеры, top quality goals |
+| [`02-architecture-constraints.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/02-architecture-constraints.md) | §2 | Технические и организационные ограничения |
+| [`03-context-and-scope.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/03-context-and-scope.md) | §3 | Контекст и границы системы; C4 systemContext |
+| [`04-solution-strategy.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/04-solution-strategy.md) | §4 | Ключевые архитектурные решения одним списком |
+| [`05-building-block-view.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/05-building-block-view.md) | §5 | Структура: контейнеры, компоненты; C4 views |
+| [`06-runtime-view.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/06-runtime-view.md) | §6 | Поведение в ключевых сценариях (Mermaid sequence) |
+| [`07-deployment-view.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/07-deployment-view.md) | §7 | Развёртывание; локальный и VDS-сценарий |
+| [`08-cross-cutting-concepts.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/08-cross-cutting-concepts.md) | §8 | Сквозные концепции: анти-галлюцинации, безопасность, лицензии |
+| [`09-architectural-decisions.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/09-architectural-decisions.md) | §9 | Индекс ADR по темам и статусам (автогенерация) |
+| [`10-quality-requirements.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/10-quality-requirements.md) | §10 | NFR: faithfulness, latency, отказоустойчивость |
+| [`11-technical-risks.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/11-technical-risks.md) | §11 | Технические риски и слепые зоны |
+| [`12-glossary.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/12-glossary.md) | §12 | Термины 1С, проектные, технические |
+| [`13-lead-operating-manual.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/13-lead-operating-manual.md) | (наше) | Регламент Лида: чек-листы, метрики, триаж, LLM-протокол |
 
 ## Где живут C4-диаграммы
 
@@ -46,7 +46,7 @@ Mermaid остаётся для §6 Runtime View (sequenceDiagram читаетс
 | [`adr/tooling/`](adr/tooling/) | Инструментарий и процесс | 0034 |
 | [`adr/open/`](adr/open/) | Открытые вопросы (proposed/open) | 0028–0033 |
 
-Шаблон нового ADR: [`adr/template.md`](adr/template.md).
+Шаблон нового ADR: [`adr/template.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/template.md).
 
 Генерация нового ADR:
 ```bash

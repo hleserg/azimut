@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md §Р6"
 implemented-in: "docs/architecture/05-building-block-view.md §«MCP-сервер: иерархия источников»; docs/architecture/08-cross-cutting-concepts.md"
-related-to: "[0001](./0001-р1-metric-contradiction.md), [0005](./0005-р5-server-controlled-retrieval.md)"
+related-to: "[0001](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0001-р1-metric-contradiction.md), [0005](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md)"
 supersedes: ""
 superseded-by: ""
 ---

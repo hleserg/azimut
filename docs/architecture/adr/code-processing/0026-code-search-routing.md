@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-414"
 basis: "`_source/notion/hle-461-search-routing--36c0c905e62681a7a509cad5c7408cfd.md` (разбор `comol/ai_rules_1c`, fallback-цепочка); `_source/linear/perepisyvaem-tz/HLE-461.md` + `attachments/HLE-461/result-HLE-461.md`"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Диспетчер MCP»; `docs/architecture/06-runtime-view.md` §«Запрос по коду»"
-related-to: "[0005](../anti-hallucinations/0005-p5-server-controlled-retrieval.md), [0024](0024-code-chunking-deterministic-structural.md), [0025](0025-resolve-same-named-procedures.md)"
+related-to: "[0005](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0005-p5-server-controlled-retrieval.md), [0024](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md), [0025](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0025-resolve-same-named-procedures.md)"
 supersedes: ""
 superseded-by: ""
 ---

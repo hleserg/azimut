@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-495"
 basis: "Инструкция Сергея в HLE-495 (Шаги 1–6 «Architecture as Code via Structurizr DSL + C4 Model»); `docs/_source/specs/c4/c4model-diagrams.md`; `docs/_source/specs/_howto.md` §2; документация Structurizr DSL и Structurizr (on-prem, local-режим)"
 implemented-in: "`workspace.dsl` в корне репо; локальный просмотр через `docker compose --profile diagrams up -d structurizr-proxy` (см. `docker-compose.yml`, порт 8080)"
-related-to: "[0022](../foundation/0022-boundary-fork-vs-own-code.md), [0024](../code-processing/0024-code-chunking-deterministic-structural.md), [0026](../code-processing/0026-code-search-routing.md)"
+related-to: "[0022](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md), [0024](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md), [0026](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0026-code-search-routing.md)"
 supersedes: ""
 superseded-by: ""
 ---
