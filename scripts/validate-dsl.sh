@@ -3,7 +3,13 @@
 #   1. Structurizr CLI syntax check (via Docker)
 #   2. All "adr-link" properties point to existing files
 # Exit code 0 = all checks passed; 1 = any check failed.
+# Requires: bash 4+ (mapfile), Docker
 set -euo pipefail
+
+if [ "${BASH_VERSINFO[0]}" -lt 4 ]; then
+    echo "ERROR: bash 4+ required (found ${BASH_VERSION}). On macOS: brew install bash" >&2
+    exit 1
+fi
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO_ROOT"
@@ -32,7 +38,7 @@ mapfile -t ADR_PATHS < <(
         || true
 )
 
-for link_path in "${ADR_PATHS[@]}"; do
+for link_path in "${ADR_PATHS[@]+"${ADR_PATHS[@]}"}"; do
     if [ ! -f "$REPO_ROOT/$link_path" ]; then
         echo "    FAIL: adr-link not found: $link_path"
         ADR_ERRORS=$((ADR_ERRORS + 1))
