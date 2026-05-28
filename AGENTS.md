@@ -11,7 +11,7 @@
 **`workspace.dsl`** в корне репо — единственный источник правды для статичных C4-диаграмм
 (Context / Container / Component). Фиксируется ADR 0034.
 
-- Просмотр локально: `docker compose --profile diagrams up -d structurizr` (остановить: `docker compose --profile diagrams down`)
+- Просмотр локально: `docker compose --profile diagrams up -d structurizr-proxy` (остановить: `docker compose --profile diagrams down`)
 - Открыть `http://localhost:8080`
 - Перед изменением `workspace.dsl` — прочитать `_source/specs/c4/` (C4-спека).
 - Mermaid `sequenceDiagram` — только для §6 Runtime View (он лучше читается в git diff).

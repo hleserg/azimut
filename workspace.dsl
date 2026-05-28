@@ -1,5 +1,5 @@
 workspace "Азимут" "ИИ-ассистент по коду 1С на базе форка bsl-atlas (ADR 0034)" {
-    # Запуск: docker compose --profile diagrams up -d structurizr   (см. docker-compose.yml, HLE-537)
+    # Запуск: docker compose --profile diagrams up -d structurizr-proxy   (см. docker-compose.yml, HLE-537)
 
     !identifiers hierarchical
 

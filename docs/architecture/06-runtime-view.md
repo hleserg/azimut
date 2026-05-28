@@ -7,7 +7,7 @@
 > - IDE с Mermaid-плагином (VS Code + Markdown Preview Mermaid Support, JetBrains встроенно)
 > - Любой markdown-viewer с Mermaid (Obsidian, Typora и т.п.)
 >
-> Structurizr-viewer (`docker compose --profile diagrams up -d structurizr`) — только для C4 views из `workspace.dsl`. Runtime-сценарии живут здесь как Mermaid намеренно (ADR 0034: «Mermaid `sequenceDiagram` — только для §6, лучше читается в git diff»).
+> Structurizr-viewer (`docker compose --profile diagrams up -d structurizr-proxy`) — только для C4 views из `workspace.dsl`. Runtime-сценарии живут здесь как Mermaid намеренно (ADR 0034: «Mermaid `sequenceDiagram` — только для §6, лучше читается в git diff»).
 
 ---
 

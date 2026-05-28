@@ -56,16 +56,34 @@ services:
 
   # Локальный viewer C4-диаграмм (workspace.dsl, ADR 0034).
   # Только под профилем "diagrams" — обычный `docker compose up` его не поднимает.
-  # Запуск:   docker compose --profile diagrams up -d structurizr
+  # Запуск:   docker compose --profile diagrams up -d
   # Останов:  docker compose --profile diagrams down
+  #
+  # Архитектура (HLE-545):
+  #   client → structurizr-proxy (nginx :8080) → structurizr (:8080, only docker-net)
+  # Подмена Host: localhost в nginx нужна, потому что `structurizr local`
+  # hard-кодит проверку Host header и режет все не-localhost запросы.
   structurizr:
     image: structurizr/structurizr
     container_name: azimuth-arch
     profiles: ["diagrams"]
     command: ["local"]
-    ports:
-      - "8080:8080"
+    # Внешний port mapping убран — клиенты ходят только через structurizr-proxy.
+    expose:
+      - "8080"
     volumes:
       - .:/usr/local/structurizr
     user: "${UID:-1000}:${GID:-1000}"
+    restart: unless-stopped
+
+  structurizr-proxy:
+    image: nginx:1.27-alpine
+    container_name: azimuth-arch-proxy
+    profiles: ["diagrams"]
+    depends_on:
+      - structurizr
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./compose/structurizr-nginx.conf:/etc/nginx/conf.d/default.conf:ro
     restart: unless-stopped

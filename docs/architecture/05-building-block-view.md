@@ -2,7 +2,7 @@
 
 > arc42 §5 — иерархия строительных блоков: системный контекст → контейнеры → компоненты.
 > Диаграммы — в [`workspace.dsl`](../../workspace.dsl) (Structurizr DSL, ADR 0034). Статичные C4-схемы в Mermaid не создаются.
-> Запуск: `docker compose --profile diagrams up -d structurizr` (остановить: `docker compose --profile diagrams down`)
+> Запуск: `docker compose --profile diagrams up -d structurizr-proxy` (остановить: `docker compose --profile diagrams down`)
 
 ---
 
