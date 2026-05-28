@@ -2,11 +2,11 @@
 
 > arc42 §3 — кто и через что взаимодействует с Азимутом снаружи; что внутри, что нет. C4 System Context описан в [`workspace.dsl`](../../workspace.dsl), view `systemContext` (ADR [0034](adr/tooling/0034-architecture-as-code-structurizr-dsl.md)).
 >
-> Локальный просмотр C4-диаграммы:
+> Локальный просмотр C4-диаграммы (compose-профиль `diagrams`):
 > ```bash
-> docker run --rm -p 8080:8080 -v .:/usr/local/structurizr --user $(id -u):$(id -g) structurizr/structurizr
+> docker compose --profile diagrams up -d structurizr
 > ```
-> Открыть `http://localhost:8080` → view `systemContext`.
+> Открыть `http://localhost:8080` → view `systemContext`. Остановить: `docker compose --profile diagrams down`.
 
 ## 3.1 Бизнес-контекст: цепочка взаимодействия
 

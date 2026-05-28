@@ -53,3 +53,19 @@ services:
       timeout: 10s
       retries: 20
       start_period: 120s
+
+  # Локальный viewer C4-диаграмм (workspace.dsl, ADR 0034).
+  # Только под профилем "diagrams" — обычный `docker compose up` его не поднимает.
+  # Запуск:   docker compose --profile diagrams up -d structurizr
+  # Останов:  docker compose --profile diagrams down
+  structurizr:
+    image: structurizr/structurizr
+    container_name: azimuth-arch
+    profiles: ["diagrams"]
+    command: ["local"]
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/local/structurizr
+    user: "${UID:-1000}:${GID:-1000}"
+    restart: unless-stopped

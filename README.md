@@ -52,14 +52,12 @@ docs/
 workspace.dsl                       # C4-модель (Context / Container / Component)
 ```
 
-Просмотр C4-диаграмм локально:
+Просмотр C4-диаграмм локально (compose-профиль `diagrams`, см. `docker-compose.yml`):
 
 ```bash
-docker run --rm -p 8080:8080 \
-  -v .:/usr/local/structurizr \
-  --user $(id -u):$(id -g) \
-  structurizr/structurizr
+docker compose --profile diagrams up -d structurizr
 # → http://localhost:8080
+docker compose --profile diagrams down
 ```
 
 ## Статус

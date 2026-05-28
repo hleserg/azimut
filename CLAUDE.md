@@ -20,8 +20,9 @@ See [AGENTS.md](AGENTS.md) for all project rules (ADR process, DoD, commit stand
 # Обновить индекс ADR в 09-architectural-decisions.md
 ./scripts/update-adr-index.sh
 
-# Запустить Structurizr для просмотра архитектурных диаграмм
-docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/structurizr
+# Поднять локальный viewer C4-диаграмм (compose-профиль "diagrams")
+docker compose --profile diagrams up -d structurizr     # → http://localhost:8080
+docker compose --profile diagrams down                  # остановить
 ```
 
 **Статус-протокол:** при начале работы → `In Progress`; PR готов → `In Review`. `Done` ставит только Сергей.
