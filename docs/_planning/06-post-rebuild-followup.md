@@ -27,17 +27,19 @@
 
 ## 1. Drift темы 1 (HLE-413) от research'ей
 
+> **Closed 2026-05-28.** Все 5 child-issues (HLE-513..517) Done. Детали — в [§6 Что закрыто](#6-что-закрыто-history).
+
 Тема 1 закрыта 2026-05-26 как `Done` (10 решений 1.1–1.10 + название «Азимут»). После закрытия выполнены research'и HLE-456..464 и сверка HLE-494. Ниже — 5 точек drift'а, по которым нужны child-issues. **Сам HLE-413 НЕ переоткрывается** — все 10 решений в силе, шлейф — это уточнения текста ADR.
 
 | # | ADR(s) к правке | Drift | Source | Priority | Child-issue (draft → Linear) |
 |---|---|---|---|---|---|
-| 1.1 | ADR 0013, ADR 0011 (foundation) | Добавить решение «для v1 — tree-sitter-bsl (MIT), BSL LS/mdclasses deferred» в тело ADR; сейчас живёт только в Notion-странице синтеза | HLE-463 | Medium | [`07-linear-sync-drafts.md` §3.1](./07-linear-sync-drafts.md#31-тема-1-шлейф-добавить-bsl-ls-deferred--tree-sitter-для-v1-в-adr-00130011) → [HLE-513](https://linear.app/hleserg/issue/HLE-513) ✅ |
-| 1.2 | ADR 0013, ADR 0022 (foundation) — либо новый ADR 0035 | Добавить **runtime-слой** (доступ к живой 1С). Текущая «роль форка = движок понимания кода» покрывает только статику. Развилка: расширить 0013/0022 или новый ADR | HLE-464 | **High** | [`07-linear-sync-drafts.md` §3.2](./07-linear-sync-drafts.md#32-тема-1-шлейф-добавить-runtime-слой-в-adr-00130022) → [HLE-514](https://linear.app/hleserg/issue/HLE-514) ✅ |
-| 1.3 | ADR 0011, ADR 0024 | **XML-выгрузка конфигурации vs DumpConfigToFiles** — нужны оба источника (XML для структуры объектов, текстовая для модулей BSL). В ADR не отражено. | Флаг 2.6 #1 плана + v1.x HLE-297 | **High** | [`07-linear-sync-drafts.md` §3.3](./07-linear-sync-drafts.md#33-тема-1-шлейф-xml-выгрузка-vs-dumpconfigtofiles-в-adr-00110024) → [HLE-515](https://linear.app/hleserg/issue/HLE-515) ✅ |
-| 1.4 | ADR 0014 (foundation) | Конкретизировать «что заимствуем у FSerg»: payload-схема Qdrant + RRF-слияние. Сейчас «берём идеи, не код» — слишком общо. | HLE-460 | Low | [`07-linear-sync-drafts.md` §3.4](./07-linear-sync-drafts.md#34-тема-1-шлейф-конкретизировать-состав-заимствуемого-у-fserg-в-adr-0014) → [HLE-516](https://linear.app/hleserg/issue/HLE-516) ✅ |
-| 1.5 | ADR 0011 (foundation) | Уточнить состав заимствуемого из bsl-atlas: парсер BSL, vector_indexer.py, граф вызовов, каркас MCP, docker — что берём; хранилище/эмбеддер/реранк/контракт — что переделываем. | HLE-456 | Low | [`07-linear-sync-drafts.md` §3.5](./07-linear-sync-drafts.md#35-тема-1-шлейф-уточнить-состав-заимствуемого-из-bsl-atlas-в-adr-0011) → [HLE-517](https://linear.app/hleserg/issue/HLE-517) ✅ |
+| 1.1 | ADR 0013, ADR 0011 (foundation) | Добавить решение «для v1 — tree-sitter-bsl (MIT), BSL LS/mdclasses deferred» в тело ADR; сейчас живёт только в Notion-странице синтеза | HLE-463 | Medium | [`07-linear-sync-drafts.md` §3.1](./_archive/07-linear-sync-drafts.md#31-тема-1-шлейф-добавить-bsl-ls-deferred--tree-sitter-для-v1-в-adr-00130011) → [HLE-513](https://linear.app/hleserg/issue/HLE-513) ✅ |
+| 1.2 | ADR 0013, ADR 0022 (foundation) — либо новый ADR 0035 | Добавить **runtime-слой** (доступ к живой 1С). Текущая «роль форка = движок понимания кода» покрывает только статику. Развилка: расширить 0013/0022 или новый ADR | HLE-464 | **High** | [`07-linear-sync-drafts.md` §3.2](./_archive/07-linear-sync-drafts.md#32-тема-1-шлейф-добавить-runtime-слой-в-adr-00130022) → [HLE-514](https://linear.app/hleserg/issue/HLE-514) ✅ |
+| 1.3 | ADR 0011, ADR 0024 | **XML-выгрузка конфигурации vs DumpConfigToFiles** — нужны оба источника (XML для структуры объектов, текстовая для модулей BSL). В ADR не отражено. | Флаг 2.6 #1 плана + v1.x HLE-297 | **High** | [`07-linear-sync-drafts.md` §3.3](./_archive/07-linear-sync-drafts.md#33-тема-1-шлейф-xml-выгрузка-vs-dumpconfigtofiles-в-adr-00110024) → [HLE-515](https://linear.app/hleserg/issue/HLE-515) ✅ |
+| 1.4 | ADR 0014 (foundation) | Конкретизировать «что заимствуем у FSerg»: payload-схема Qdrant + RRF-слияние. Сейчас «берём идеи, не код» — слишком общо. | HLE-460 | Low | [`07-linear-sync-drafts.md` §3.4](./_archive/07-linear-sync-drafts.md#34-тема-1-шлейф-конкретизировать-состав-заимствуемого-у-fserg-в-adr-0014) → [HLE-516](https://linear.app/hleserg/issue/HLE-516) ✅ |
+| 1.5 | ADR 0011 (foundation) | Уточнить состав заимствуемого из bsl-atlas: парсер BSL, vector_indexer.py, граф вызовов, каркас MCP, docker — что берём; хранилище/эмбеддер/реранк/контракт — что переделываем. | HLE-456 | Low | [`07-linear-sync-drafts.md` §3.5](./_archive/07-linear-sync-drafts.md#35-тема-1-шлейф-уточнить-состав-заимствуемого-из-bsl-atlas-в-adr-0011) → [HLE-517](https://linear.app/hleserg/issue/HLE-517) ✅ |
 
-**Комментарий к HLE-413** (закладка для применения в Linear): [`07-linear-sync-drafts.md` §1](./07-linear-sync-drafts.md#1-комментарий-к-hle-413-тема-1-done-с-шлейфом).
+**Комментарий к HLE-413** (закладка для применения в Linear): [`07-linear-sync-drafts.md` §1](./_archive/07-linear-sync-drafts.md#1-комментарий-к-hle-413-тема-1-done-с-шлейфом).
 
 **Когда закрывается раздел 1:** после закрытия всех 5 child-issues выше (или явного решения «отменить как избыточное»). После закрытия раздел переезжает в [§6 Что закрыто](#6-что-закрыто-history).
 
@@ -49,7 +51,7 @@
 
 ### 2.1 Diff формулировки
 
-Полный построчный diff «10 вопросов исходной HLE-414 vs текущее понимание» — в [`07-linear-sync-drafts.md` §2.1](./07-linear-sync-drafts.md#21-diff-вопросы-темы-2-в-исходной-hle-414-vs-текущее-понимание). Существенных drift'ов — 5:
+Полный построчный diff «10 вопросов исходной HLE-414 vs текущее понимание» — в [`07-linear-sync-drafts.md` §2.1](./_archive/07-linear-sync-drafts.md#21-diff-вопросы-темы-2-в-исходной-hle-414-vs-текущее-понимание). Существенных drift'ов — 5:
 
 - **Вопрос 2 (граф вызовов):** резолв одноимённых — открытая инженерная задача (HLE-459), никто в open source не решил. См. child-issue 2.2 #1 ниже.
 - **Вопрос 5 (сбор кода):** XML-выгрузка vs DumpConfigToFiles — пересечение с child-issue **1.3 темы 1**.
@@ -61,12 +63,12 @@
 
 | # | ADR | Что | Priority | Child-issue (draft → Linear) |
 |---|---|---|---|---|
-| 2.2.1 | ADR 0025 (proposed) | Алгоритм резолва одноимённых процедур (открытая инженерная задача, никто не решил) | **High** (блокирует закрытие темы 2) | [`07-linear-sync-drafts.md` §4.1](./07-linear-sync-drafts.md#41-тема-2-алгоритм-резолва-одноимённых-процедур-adr-0025) → [HLE-522](https://linear.app/hleserg/issue/HLE-522) ✅ |
-| 2.2.2 | ADR 0026 (accepted, не валидирован) | Боевая проверка graph→metadata→grep на реальной ERP | **High** (валидация свежепринятого) | [`07-linear-sync-drafts.md` §4.2](./07-linear-sync-drafts.md#42-тема-2-боевая-проверка-graphmetadatagrep-на-реальной-erp-adr-0026) → [HLE-523](https://linear.app/hleserg/issue/HLE-523) ✅ |
-| 2.2.3 | ADR 0027 (принцип accepted, без списка) | Инвентарь техник из feenlace для портирования в Python | Medium | [`07-linear-sync-drafts.md` §4.3](./07-linear-sync-drafts.md#43-тема-2-список-техник-из-feenlace-для-портирования-в-python-adr-0027) → [HLE-524](https://linear.app/hleserg/issue/HLE-524) ✅ |
-| 2.2.4 | ADR 0015 (открытый риск) | Дымовой прогон bsl-atlas на ChromaDB перед миграцией Qdrant | Medium (валидирует фундаментальное решение темы 1) | [`07-linear-sync-drafts.md` §4.4](./07-linear-sync-drafts.md#44-тема-2-дымовой-прогон-bsl-atlas-на-chromadb-перед-миграцией-qdrant-adr-0015) → [HLE-525](https://linear.app/hleserg/issue/HLE-525) ✅ |
+| 2.2.1 | ADR 0025 (proposed) | Алгоритм резолва одноимённых процедур (открытая инженерная задача, никто не решил) | **High** (блокирует закрытие темы 2) | [`07-linear-sync-drafts.md` §4.1](./_archive/07-linear-sync-drafts.md#41-тема-2-алгоритм-резолва-одноимённых-процедур-adr-0025) → [HLE-522](https://linear.app/hleserg/issue/HLE-522) ✅ |
+| 2.2.2 | ADR 0026 (accepted, не валидирован) | Боевая проверка graph→metadata→grep на реальной ERP | **High** (валидация свежепринятого) | [`07-linear-sync-drafts.md` §4.2](./_archive/07-linear-sync-drafts.md#42-тема-2-боевая-проверка-graphmetadatagrep-на-реальной-erp-adr-0026) → [HLE-523](https://linear.app/hleserg/issue/HLE-523) ✅ |
+| 2.2.3 | ADR 0027 (принцип accepted, без списка) | Инвентарь техник из feenlace для портирования в Python | Medium | [`07-linear-sync-drafts.md` §4.3](./_archive/07-linear-sync-drafts.md#43-тема-2-список-техник-из-feenlace-для-портирования-в-python-adr-0027) → [HLE-524](https://linear.app/hleserg/issue/HLE-524) ✅ |
+| 2.2.4 | ADR 0015 (открытый риск) | Дымовой прогон bsl-atlas на ChromaDB перед миграцией Qdrant | Medium (валидирует фундаментальное решение темы 1) | [`07-linear-sync-drafts.md` §4.4](./_archive/07-linear-sync-drafts.md#44-тема-2-дымовой-прогон-bsl-atlas-на-chromadb-перед-миграцией-qdrant-adr-0015) → [HLE-525](https://linear.app/hleserg/issue/HLE-525) ✅ |
 
-**Комментарий к HLE-414** + **переписанный description**: [`07-linear-sync-drafts.md` §2.2](./07-linear-sync-drafts.md#22-комментарий-к-hle-414) и [§5.0](./07-linear-sync-drafts.md#50-hle-414-тема-2--обработка-кода--переписанный-description).
+**Комментарий к HLE-414** + **переписанный description**: [`07-linear-sync-drafts.md` §2.2](./_archive/07-linear-sync-drafts.md#22-комментарий-к-hle-414) и [§5.0](./_archive/07-linear-sync-drafts.md#50-hle-414-тема-2--обработка-кода--переписанный-description).
 
 **Когда закрывается раздел 2:** после закрытия всех 4 child-issues + закрытия child-issue 1.3 (XML-выгрузка) + перевода ADR 0025 в `accepted`. Тогда HLE-414 переходит в `Done`.
 
@@ -101,11 +103,11 @@
 
 ## 4. Pointer к темам 3–7
 
-Темы 3–7 (HLE-415..419) сейчас в `Backlog`. После перестройки их description переписаны (см. [`07-linear-sync-drafts.md` §5.1–5.5](./07-linear-sync-drafts.md#5-переписанные-description-hle-414419)) с учётом research'ей. При открытии каждой темы — первый шаг работы агента: прочитать соответствующую секцию ниже и попасть в актуальный контекст.
+Темы 3–7 (HLE-415..419) сейчас в `Backlog`. После перестройки их description переписаны (см. [`07-linear-sync-drafts.md` §5.1–5.5](./_archive/07-linear-sync-drafts.md#5-переписанные-description-hle-414419)) с учётом research'ей. При открытии каждой темы — первый шаг работы агента: прочитать соответствующую секцию ниже и попасть в актуальный контекст.
 
 ### 4.1 Тема 3 (HLE-415, поисковый стек)
 
-- **Переписанный description:** [`07-linear-sync-drafts.md` §5.1](./07-linear-sync-drafts.md#51-hle-415-тема-3--поисковый-стек--переписанный-description)
+- **Переписанный description:** [`07-linear-sync-drafts.md` §5.1](./_archive/07-linear-sync-drafts.md#51-hle-415-тема-3--поисковый-стек--переписанный-description)
 - **Зависит от:** child-issue **1.4** (FSerg payload-схема — используется как стартовый шаблон).
 - **Открытые вопросы темы 3** (placeholder, наполняется при открытии):
   - BGE-M3 как дефолт (подтвердить) + план A/B FRIDA/USER-bge-m3/GigaEmbeddings.
@@ -116,7 +118,7 @@
 
 ### 4.2 Тема 4 (HLE-416, приём документации)
 
-- **Переписанный description:** [`07-linear-sync-drafts.md` §5.2](./07-linear-sync-drafts.md#52-hle-416-тема-4--приём-документации--переписанный-description)
+- **Переписанный description:** [`07-linear-sync-drafts.md` §5.2](./_archive/07-linear-sync-drafts.md#52-hle-416-тема-4--приём-документации--переписанный-description)
 - **Зависит от:** child-issue **1.3** (XML-выгрузка как отдельный источник) + **1.2** (runtime-слой как источник live-данных).
 - **Открытые вопросы темы 4:**
   - Парсер ISCF (свой Python vs готовый).
@@ -126,7 +128,7 @@
 
 ### 4.3 Тема 5 (HLE-417, анти-галлюцинации)
 
-- **Переписанный description:** [`07-linear-sync-drafts.md` §5.3](./07-linear-sync-drafts.md#53-hle-417-тема-5--анти-галлюцинации--переписанный-description)
+- **Переписанный description:** [`07-linear-sync-drafts.md` §5.3](./_archive/07-linear-sync-drafts.md#53-hle-417-тема-5--анти-галлюцинации--переписанный-description)
 - **Зависит от:** child-issue **1.2** (runtime-слой — навык «не в коде» подкреплён runtime).
 - **Открытые ADR темы 5** (финализируются здесь):
   - ADR 0008 — П1 (groundedness detector, 3 слоя) — `proposed`.
@@ -136,7 +138,7 @@
 
 ### 4.4 Тема 6 (HLE-418, eval и метрики)
 
-- **Переписанный description:** [`07-linear-sync-drafts.md` §5.4](./07-linear-sync-drafts.md#54-hle-418-тема-6--eval-и-метрики--переписанный-description)
+- **Переписанный description:** [`07-linear-sync-drafts.md` §5.4](./_archive/07-linear-sync-drafts.md#54-hle-418-тема-6--eval-и-метрики--переписанный-description)
 - **Зависит от:** ADR 0028 (Sentry × AGPL — стек наблюдаемости).
 - **Открытые вопросы темы 6:**
   - Источники золота + владелец + частота прогона.
@@ -147,7 +149,7 @@
 
 ### 4.5 Тема 7 (HLE-419, online + multi-tenancy)
 
-- **Переписанный description:** [`07-linear-sync-drafts.md` §5.5](./07-linear-sync-drafts.md#55-hle-419-тема-7--online--multi-tenancy--переписанный-description)
+- **Переписанный description:** [`07-linear-sync-drafts.md` §5.5](./_archive/07-linear-sync-drafts.md#55-hle-419-тема-7--online--multi-tenancy--переписанный-description)
 - **Зависит от:** child-issue **1.2** (runtime-слой — изоляция в мульти-аренде).
 - **Открытые ADR темы 7** (5 open + 1 proposed, финализируются здесь):
   - ADR 0028 — Sentry × AGPL — `proposed`.
@@ -167,32 +169,32 @@
 
 | # | Title (draft) | Priority | Linear ID | Applied | Source draft |
 |---|---|---|---|---|---|
-| 1.1 | Тема 1, шлейф: добавить BSL LS deferred + tree-sitter для v1 в ADR 0013/0011 | Medium | HLE-513 | 2026-05-28 | [`07§3.1`](./07-linear-sync-drafts.md#31-тема-1-шлейф-добавить-bsl-ls-deferred--tree-sitter-для-v1-в-adr-00130011) |
-| 1.2 | Тема 1, шлейф: добавить runtime-слой в ADR 0013/0022 либо открыть новый ADR | **High** | HLE-514 | 2026-05-28 | [`07§3.2`](./07-linear-sync-drafts.md#32-тема-1-шлейф-добавить-runtime-слой-в-adr-00130022) |
-| 1.3 | Тема 1, шлейф: XML-выгрузка vs DumpConfigToFiles в ADR 0011/0024 | **High** | HLE-515 | 2026-05-28 | [`07§3.3`](./07-linear-sync-drafts.md#33-тема-1-шлейф-xml-выгрузка-vs-dumpconfigtofiles-в-adr-00110024) |
-| 1.4 | Тема 1, шлейф: конкретизировать состав заимствуемого у FSerg в ADR 0014 | Low | HLE-516 | 2026-05-28 | [`07§3.4`](./07-linear-sync-drafts.md#34-тема-1-шлейф-конкретизировать-состав-заимствуемого-у-fserg-в-adr-0014) |
-| 1.5 | Тема 1, шлейф: уточнить состав заимствуемого из bsl-atlas в ADR 0011 | Low | HLE-517 | 2026-05-28 | [`07§3.5`](./07-linear-sync-drafts.md#35-тема-1-шлейф-уточнить-состав-заимствуемого-из-bsl-atlas-в-adr-0011) |
+| 1.1 | Тема 1, шлейф: добавить BSL LS deferred + tree-sitter для v1 в ADR 0013/0011 | Medium | HLE-513 | 2026-05-28 | [`07§3.1`](./_archive/07-linear-sync-drafts.md#31-тема-1-шлейф-добавить-bsl-ls-deferred--tree-sitter-для-v1-в-adr-00130011) |
+| 1.2 | Тема 1, шлейф: добавить runtime-слой в ADR 0013/0022 либо открыть новый ADR | **High** | HLE-514 | 2026-05-28 | [`07§3.2`](./_archive/07-linear-sync-drafts.md#32-тема-1-шлейф-добавить-runtime-слой-в-adr-00130022) |
+| 1.3 | Тема 1, шлейф: XML-выгрузка vs DumpConfigToFiles в ADR 0011/0024 | **High** | HLE-515 | 2026-05-28 | [`07§3.3`](./_archive/07-linear-sync-drafts.md#33-тема-1-шлейф-xml-выгрузка-vs-dumpconfigtofiles-в-adr-00110024) |
+| 1.4 | Тема 1, шлейф: конкретизировать состав заимствуемого у FSerg в ADR 0014 | Low | HLE-516 | 2026-05-28 | [`07§3.4`](./_archive/07-linear-sync-drafts.md#34-тема-1-шлейф-конкретизировать-состав-заимствуемого-у-fserg-в-adr-0014) |
+| 1.5 | Тема 1, шлейф: уточнить состав заимствуемого из bsl-atlas в ADR 0011 | Low | HLE-517 | 2026-05-28 | [`07§3.5`](./_archive/07-linear-sync-drafts.md#35-тема-1-шлейф-уточнить-состав-заимствуемого-из-bsl-atlas-в-adr-0011) |
 
 ### 5.2 Child-issues по теме 2 (4 штуки, parent: HLE-414)
 
 | # | Title (draft) | Priority | Linear ID | Applied | Source draft |
 |---|---|---|---|---|---|
-| 2.1 | Тема 2: алгоритм резолва одноимённых процедур (ADR 0025) | **High** | HLE-522 | 2026-05-28 | [`07§4.1`](./07-linear-sync-drafts.md#41-тема-2-алгоритм-резолва-одноимённых-процедур-adr-0025) |
-| 2.2 | Тема 2: боевая проверка graph→metadata→grep на реальной ERP (ADR 0026) | **High** | HLE-523 | 2026-05-28 | [`07§4.2`](./07-linear-sync-drafts.md#42-тема-2-боевая-проверка-graphmetadatagrep-на-реальной-erp-adr-0026) |
-| 2.3 | Тема 2: инвентарь техник feenlace для портирования в Python (ADR 0027) | Medium | HLE-524 | 2026-05-28 | [`07§4.3`](./07-linear-sync-drafts.md#43-тема-2-список-техник-из-feenlace-для-портирования-в-python-adr-0027) |
-| 2.4 | Тема 2: дымовой прогон bsl-atlas на ChromaDB (ADR 0015) | Medium | HLE-525 | 2026-05-28 | [`07§4.4`](./07-linear-sync-drafts.md#44-тема-2-дымовой-прогон-bsl-atlas-на-chromadb-перед-миграцией-qdrant-adr-0015) |
+| 2.1 | Тема 2: алгоритм резолва одноимённых процедур (ADR 0025) | **High** | HLE-522 | 2026-05-28 | [`07§4.1`](./_archive/07-linear-sync-drafts.md#41-тема-2-алгоритм-резолва-одноимённых-процедур-adr-0025) |
+| 2.2 | Тема 2: боевая проверка graph→metadata→grep на реальной ERP (ADR 0026) | **High** | HLE-523 | 2026-05-28 | [`07§4.2`](./_archive/07-linear-sync-drafts.md#42-тема-2-боевая-проверка-graphmetadatagrep-на-реальной-erp-adr-0026) |
+| 2.3 | Тема 2: инвентарь техник feenlace для портирования в Python (ADR 0027) | Medium | HLE-524 | 2026-05-28 | [`07§4.3`](./_archive/07-linear-sync-drafts.md#43-тема-2-список-техник-из-feenlace-для-портирования-в-python-adr-0027) |
+| 2.4 | Тема 2: дымовой прогон bsl-atlas на ChromaDB (ADR 0015) | Medium | HLE-525 | 2026-05-28 | [`07§4.4`](./_archive/07-linear-sync-drafts.md#44-тема-2-дымовой-прогон-bsl-atlas-на-chromadb-перед-миграцией-qdrant-adr-0015) |
 
 ### 5.3 Комментарии и переписанные description
 
 | Issue | Операция | Applied | Source draft |
 |---|---|---|---|
-| HLE-413 | Комментарий «Done с шлейфом» (со списком child-issues 1.1–1.5) | 2026-05-28 | [`07§1`](./07-linear-sync-drafts.md#1-комментарий-к-hle-413-тема-1-done-с-шлейфом) |
-| HLE-414 | Комментарий «diff формулировки» + переписанный description | 2026-05-28 | [`07§2.2`](./07-linear-sync-drafts.md#22-комментарий-к-hle-414) + [`07§5.0`](./07-linear-sync-drafts.md#50-hle-414-тема-2--обработка-кода--переписанный-description) |
-| HLE-415 | Переписанный description (тема 3) | 2026-05-28 | [`07§5.1`](./07-linear-sync-drafts.md#51-hle-415-тема-3--поисковый-стек--переписанный-description) |
-| HLE-416 | Переписанный description (тема 4) | 2026-05-28 | [`07§5.2`](./07-linear-sync-drafts.md#52-hle-416-тема-4--приём-документации--переписанный-description) |
-| HLE-417 | Переписанный description (тема 5) | 2026-05-28 | [`07§5.3`](./07-linear-sync-drafts.md#53-hle-417-тема-5--анти-галлюцинации--переписанный-description) |
-| HLE-418 | Переписанный description (тема 6) | 2026-05-28 | [`07§5.4`](./07-linear-sync-drafts.md#54-hle-418-тема-6--eval-и-метрики--переписанный-description) |
-| HLE-419 | Переписанный description (тема 7) | 2026-05-28 | [`07§5.5`](./07-linear-sync-drafts.md#55-hle-419-тема-7--online--multi-tenancy--переписанный-description) |
+| HLE-413 | Комментарий «Done с шлейфом» (со списком child-issues 1.1–1.5) | 2026-05-28 | [`07§1`](./_archive/07-linear-sync-drafts.md#1-комментарий-к-hle-413-тема-1-done-с-шлейфом) |
+| HLE-414 | Комментарий «diff формулировки» + переписанный description | 2026-05-28 | [`07§2.2`](./_archive/07-linear-sync-drafts.md#22-комментарий-к-hle-414) + [`07§5.0`](./_archive/07-linear-sync-drafts.md#50-hle-414-тема-2--обработка-кода--переписанный-description) |
+| HLE-415 | Переписанный description (тема 3) | 2026-05-28 | [`07§5.1`](./_archive/07-linear-sync-drafts.md#51-hle-415-тема-3--поисковый-стек--переписанный-description) |
+| HLE-416 | Переписанный description (тема 4) | 2026-05-28 | [`07§5.2`](./_archive/07-linear-sync-drafts.md#52-hle-416-тема-4--приём-документации--переписанный-description) |
+| HLE-417 | Переписанный description (тема 5) | 2026-05-28 | [`07§5.3`](./_archive/07-linear-sync-drafts.md#53-hle-417-тема-5--анти-галлюцинации--переписанный-description) |
+| HLE-418 | Переписанный description (тема 6) | 2026-05-28 | [`07§5.4`](./_archive/07-linear-sync-drafts.md#54-hle-418-тема-6--eval-и-метрики--переписанный-description) |
+| HLE-419 | Переписанный description (тема 7) | 2026-05-28 | [`07§5.5`](./_archive/07-linear-sync-drafts.md#55-hle-419-тема-7--online--multi-tenancy--переписанный-description) |
 
 ### 5.4 Технический момент: подключение Linear MCP
 
