@@ -2,10 +2,11 @@
 
 > arc42 §9 — индекс ADR по темам и статусам. Сами ADR — в [`adr/`](adr/).
 
-Этот файл автогенерируется командой `./scripts/update-adr-index.sh` из фронтматтеров ADR-файлов.
+Каждое решение оформлено по формату **MADR** (Markdown Architectural Decision Records): `Context and Problem Statement` → `Decision Drivers` → `Considered Options` → `Decision Outcome` → `Consequences`. Читать стоит именно в этом порядке: контекст объясняет «почему вообще», drivers — «что важно», outcome — «что выбрано и почему», consequences — «что теряем и как проверяем». Шаблон: [`adr/template.md`](adr/template.md).
 
-Шаблон ADR: [`adr/template.md`](adr/template.md).
-Все ADR (34 штуки, нумерация 0001–0034): см. [`adr/`](adr/) с подпапками `anti-hallucinations/`, `foundation/`, `code-processing/`, `tooling/`, `open/`.
+Статусы: **accepted** — решение принято и действует; **proposed** — открытая инженерная задача, решение ещё не зафиксировано; **superseded by XXXX** — отозвано и заменено другим ADR (ссылка на новое — в тексте исходного). ADR не удаляются — история важна.
+
+Индекс автогенерируется командой `./scripts/update-adr-index.sh` из фронтматтеров ADR-файлов. Подпапки: `anti-hallucinations/` (0001–0010), `foundation/` (0011–0023), `code-processing/` (0024–0027), `open/` (0028–0033), `tooling/` (0034). Всего — 34 ADR.
 
 <!-- ADR-INDEX:START -->
 | № | Тема | Статус | Заголовок |
