@@ -1,69 +1,99 @@
 /* compose/structurizr-custom.css — оверрайды CSS Structurizr Local (HLE-557).
- * Инжектируется nginx-sidecar'ом перед </head> на всех HTML-страницах.
+ * Инжектируется nginx-sidecar как <link rel="stylesheet"> перед </body>
+ * (загружается ПОСЛЕ structurizr-dark.css, который добавляется через JS).
  *
- * Цель: сделать читаемыми code-блоки и менее агрессивным inline-код
- * в Documentation tab при dark-теме.
+ * Цель:
+ *   1. Inline `<code>` в Documentation — dark фон, светлый текст
+ *      (не «вырвиглазная белая плашка» из дефолта `body.dark code`).
+ *   2. Code-блоки `<pre><code>` — тёмный читаемый фон, светлый текст.
+ *   3. Killer для hljs-spans внутри `<pre>` — Structurizr auto-detect'ит
+ *      ASCII-art как YAML и красит цветами «строк»/«ключевых слов»,
+ *      что только мешает читать. Сбрасываем в inherit (один цвет).
+ *
+ * IMPORTANT: Structurizr-dark.css имеет `body.dark code { ... }` со
+ * specificity 0,0,1,2. Чтобы перебить — нужны селекторы со specificity
+ * **≥ 0,0,1,3**. Используем `body.dark <element>` или `html body.dark`.
  */
 
-/* ── Code blocks (```mermaid sequenceDiagram, ```bash и т.д.) ─────────────── */
-pre,
-pre code {
-    background-color: #1e1e1e !important;
-    color: #e4e6eb !important;
-    border-radius: 6px;
-    border: 1px solid #2d2d2d !important;
-    line-height: 1.5;
-    overflow-x: auto;
+
+/* ── 1. Inline `<code>` — dark, читаемый ──────────────────────────────── */
+/* selector spec: 0,0,1,3 (html + body.dark + code) — бьёт `body.dark code` */
+html body.dark code,
+html body.dark a code,
+html body.dark p code,
+html body.dark li code,
+html body.dark td code,
+html body.dark th code,
+html body.dark div code {
+    background-color: #2a2d33 !important;
+    color: #d8d8d8 !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-size: 0.92em !important;
+    font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, monospace !important;
+    border: none !important;
 }
 
-pre {
+/* link-blue для code внутри <a> — отличает clickable от plain. */
+html body.dark a code,
+html body.dark a:link code,
+html body.dark a:visited code {
+    color: #9ec5ff !important;
+}
+
+
+/* ── 2. Code-блоки `<pre>` / `<pre><code>` ────────────────────────────── */
+/* Перебиваем `body.dark pre`, `body.dark .hljs` Structurizr-dark.css. */
+html body.dark pre,
+html body.dark pre code,
+html body.dark pre code.hljs,
+html body.dark code.hljs,
+html body.dark .hljs {
+    background-color: #1e1e1e !important;
+    color: #e4e6eb !important;
+    border: 1px solid #2d2d2d !important;
+    border-radius: 6px !important;
+    line-height: 1.5 !important;
+    overflow-x: auto !important;
+}
+
+html body.dark pre {
     padding: 1em !important;
     margin: 1em 0 !important;
 }
 
-pre code {
-    border: none !important;
+html body.dark pre code,
+html body.dark pre code.hljs {
     padding: 0 !important;
-    font-size: 0.9em;
+    border: none !important;
+    font-size: 0.9em !important;
 }
 
-/* ── Inline code (`workspace.dsl`, `sequenceDiagram` плашки) ──────────────── */
-/* Цель: dark-friendly — тёмный фон, но текст ДОСТАТОЧНО светлый чтобы
- * читался везде (включая table cells, где Structurizr CSS делает inline-code
- * особенно dim).
- *
- * Высокая специфичность `html body ... code` нужна, чтобы перебить
- * `body.dark .documentation code` штатной темы.
- */
-/* НЕ white-overlay (это даёт "белую плашку" в dark-теме — режет),
- * а ТЁМНЫЙ фон чуть светлее основного + светлый текст для контраста. */
-html body code,
-html body table code,
-html body td code,
-html body th code,
-html body p code,
-html body li code {
-    background-color: #2a2d33 !important;   /* dark, чуть светлее основного фона */
-    color: #d8d8d8 !important;              /* светлый — читается */
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 0.92em;
-    font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, monospace;
+
+/* ── 3. Kill hljs syntax-highlight spans внутри <pre> ────────────────── */
+/* Structurizr/hljs автодетектят язык в безязыковых fenced-code блоках
+ * (e.g. ASCII-art в §3.1 определился как yaml), внутри добавляют
+ * <span class="hljs-string">, <span class="hljs-keyword"> и т.д. с яркими
+ * цветами. Для не-кода это только мешает — выкатываем в inherit. */
+html body.dark pre [class^="hljs-"],
+html body.dark pre [class*=" hljs-"],
+html body.dark code.hljs [class^="hljs-"],
+html body.dark code.hljs [class*=" hljs-"] {
+    color: inherit !important;
+    background-color: transparent !important;
+    font-weight: inherit !important;
+    font-style: inherit !important;
 }
 
-/* Внутри ссылок — чуть ярче для отличия от обычного inline-кода. */
-html body a code {
-    color: #9ec5ff !important;              /* link-blue, привычный для ссылки */
-}
 
-/* Light-theme — мягкий github-style. */
-body:not(.dark) code {
+/* ── 4. Light-theme — мягкий github-style (если когда-нибудь включат) ── */
+html body:not(.dark) code {
     background-color: rgba(0, 0, 0, 0.06) !important;
     color: #24292e !important;
 }
 
-body:not(.dark) pre,
-body:not(.dark) pre code {
+html body:not(.dark) pre,
+html body:not(.dark) pre code {
     background-color: #f6f8fa !important;
     color: #24292e !important;
     border: 1px solid #d0d7de !important;
