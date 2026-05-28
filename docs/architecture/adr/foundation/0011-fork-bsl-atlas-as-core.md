@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "`_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md` реш. 1.1; `_source/notion/bsl-atlas-opensource-research--36b0c905e626814fa52ce80b248c4311.md`; `LICENSE` в корне репо (AGPL-3.0)"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Азимут-ядро»; `workspace.dsl` softwareSystem «Азимут»"
-related-to: "[0012](0012-name-azimut.md), [0013](0013-fork-role-code-engine.md), [0015](0015-stack-migration-smoke-then-qdrant.md)"
+related-to: "[0012](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0012-name-azimut.md), [0013](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0013-fork-role-code-engine.md), [0015](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0015-stack-migration-smoke-then-qdrant.md)"
 supersedes: ""
 superseded-by: ""
 ---

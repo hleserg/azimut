@@ -56,7 +56,9 @@ Get-ChildItem -Path $AdrRoot -Recurse -Depth 1 -Filter '*.md' |
             $Title = ($FileName -replace '^\d+-', '') -replace '-', ' '
         }
 
-        $RelPath = "adr/$Subfolder/$FileName"
+        # Absolute GitHub URL (HLE-546): Structurizr Documentation tab
+        # не резолвит relative .md ссылки. Absolute github работает и там, и на GitHub web.
+        $RelPath = "https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/$Subfolder/$FileName"
         $Rows += [PSCustomObject]@{
             Num       = $Num
             Subfolder = $Subfolder

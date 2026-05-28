@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-418"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md §Р2"
 implemented-in: "docs/architecture/08-cross-cutting-concepts.md §«Метрики качества»; docs/architecture/10-quality-requirements.md; eval-харнесс (RAGAS) + LLM-судья (ADR 0003)"
-related-to: "[0003](./0003-р3-llm-judge-spans.md), [0008](./0008-п1-groundedness-detector.md)"
+related-to: "[0003](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md), [0008](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md)"
 supersedes: ""
 superseded-by: ""
 ---

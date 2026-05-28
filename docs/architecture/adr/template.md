@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-XXX"
 basis: "ссылка на _source/notion/*.md или _source/linear/*.md или HLE-XXX"
 implemented-in: "docs/architecture/NN-*.md §«...»; workspace.dsl Container/Component «...»"
-related-to: "[NNNN](../подпапка/NNNN-kebab-title.md)"
+related-to: "[NNNN](https://github.com/hleserg/azimut/blob/master/docs/architecture/подпапка/NNNN-kebab-title.md)"
 supersedes: ""
 superseded-by: ""
 ---

@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417"
 basis: "`docs/_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md` Р1 (открытый хвост); `docs/_source/_resolutions.md` #11"
 implemented-in: "`docs/architecture/08-cross-cutting-concepts.md` §«Метрика противоречивости» — детальная механика"
-related-to: "[0001](../anti-hallucinations/0001-р1-metric-contradiction.md), [0003](../anti-hallucinations/0003-р3-llm-judge-spans.md)"
+related-to: "[0001](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0001-р1-metric-contradiction.md), [0003](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md)"
 supersedes: ""
 superseded-by: ""
 ---

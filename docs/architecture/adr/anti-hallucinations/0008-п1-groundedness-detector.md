@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md §П1"
 implemented-in: "docs/architecture/05-building-block-view.md §«LLM-судья» (3 уровня действий)"
-related-to: "[0002](./0002-р2-faithfulness-vs-relevance.md), [0003](./0003-р3-llm-judge-spans.md)"
+related-to: "[0002](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md), [0003](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md)"
 supersedes: ""
 superseded-by: ""
 ---

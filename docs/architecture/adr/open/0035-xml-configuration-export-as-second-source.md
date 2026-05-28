@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-515"
 basis: "`docs/_planning/05-rebuild-plan.md` §2.6, флаг #1; `_source/notion/design-system-v2--*.md` реш. 1.1/1.2"
 implemented-in: ""
-related-to: "[0011](../foundation/0011-fork-bsl-atlas-as-core.md), [0024](../code-processing/0024-code-chunking-deterministic-structural.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0024](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md)"
 supersedes: ""
 superseded-by: ""
 ---

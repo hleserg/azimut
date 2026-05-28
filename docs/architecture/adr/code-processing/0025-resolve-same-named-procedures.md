@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-414"
 basis: "`_source/notion/hle-459-graph-analogs--36c0c905e62681a8b351c0b629af870e.md` (разбор metacode + bsl-graph); `_source/notion/hle-456-four-implementations--36c0c905e626817a9727ee1708e2d8c2.md` (SQLite-схема + вывод «алгоритм нашей инженерной задачи»)"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Граф вызовов»; наш код (запланировано — открытая инженерная задача)"
-related-to: "[0011](../foundation/0011-fork-bsl-atlas-as-core.md), [0024](0024-code-chunking-deterministic-structural.md), [0026](0026-code-search-routing.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0024](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md), [0026](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0026-code-search-routing.md)"
 supersedes: ""
 superseded-by: ""
 ---

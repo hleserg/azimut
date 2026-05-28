@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413, HLE-314, HLE-318, HLE-319"
 basis: "`docs/_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md` §«Конфликт AGPL × Sentry for Open Source»; `docs/_source/linear/agent-konsultant-po-1s-erp/HLE-314.md`"
 implemented-in: "`docs/architecture/08-cross-cutting-concepts.md` §«Мониторинг» (план Б — GlitchTip/self-host Sentry/Prometheus+Grafana)"
-related-to: "[0011](../foundation/0011-fork-bsl-atlas-as-core.md), [0023](../foundation/0023-license-checklist-and-source-rule.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0023](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0023-license-checklist-and-source-rule.md)"
 supersedes: ""
 superseded-by: ""
 ---

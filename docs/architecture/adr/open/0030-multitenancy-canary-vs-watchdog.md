@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-419"
 basis: "`docs/_source/notion/questions--36b0c905e62681a48975d4a2315fbce9.md` §«Влияние мульти-аренды на ранее принятые решения»; `docs/_source/_resolutions.md` #9"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Мониторинг релизов»; `docs/architecture/06-runtime-view.md` §«Обновление»"
-related-to: "[0029](0029-multitenancy-qdrant-embedded-vs-server.md), [0031](0031-multitenancy-push-via-web-frontend.md), [0032](0032-multitenancy-tenant-storage-isolation.md)"
+related-to: "[0029](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md), [0031](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0031-multitenancy-push-via-web-frontend.md), [0032](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0032-multitenancy-tenant-storage-isolation.md)"
 supersedes: ""
 superseded-by: ""
 ---

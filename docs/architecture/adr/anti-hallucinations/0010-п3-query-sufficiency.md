@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md §П3"
 implemented-in: "docs/architecture/05-building-block-view.md §«MCP-сервер: оценка запроса»"
-related-to: "[0005](./0005-р5-server-controlled-retrieval.md), [0009](./0009-п2-re-retrieval.md)"
+related-to: "[0005](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0005-р5-server-controlled-retrieval.md), [0009](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0009-п2-re-retrieval.md)"
 supersedes: ""
 superseded-by: ""
 ---

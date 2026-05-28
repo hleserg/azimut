@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-419"
 basis: "`docs/_source/notion/questions--36b0c905e62681a48975d4a2315fbce9.md` §«Влияние мульти-аренды на ранее принятые решения»; `docs/_source/_resolutions.md` #9"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Хранилище» (выбор режима по конфигурации)"
-related-to: "[0015](../foundation/0015-stack-migration-smoke-then-qdrant.md), [0030](0030-multitenancy-canary-vs-watchdog.md), [0031](0031-multitenancy-push-via-web-frontend.md), [0032](0032-multitenancy-tenant-storage-isolation.md)"
+related-to: "[0015](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0015-stack-migration-smoke-then-qdrant.md), [0030](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0030-multitenancy-canary-vs-watchdog.md), [0031](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0031-multitenancy-push-via-web-frontend.md), [0032](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0032-multitenancy-tenant-storage-isolation.md)"
 supersedes: ""
 superseded-by: ""
 ---

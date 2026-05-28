@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md §Р1; _source/_resolutions.md #11 (открытый хвост)"
 implemented-in: "docs/architecture/08-cross-cutting-concepts.md §«Метрика противоречивости»; MCP-сервер (Р5, ADR 0005)"
-related-to: "[0006](./0006-р6-source-hierarchy.md), [0033](../open/0033-r1-contradiction-detection-mechanics.md)"
+related-to: "[0006](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0006-р6-source-hierarchy.md), [0033](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0033-r1-contradiction-detection-mechanics.md)"
 supersedes: ""
 superseded-by: ""
 ---

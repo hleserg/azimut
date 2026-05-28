@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-414"
 basis: "`_source/notion/design-system-v2--36b0c905e626813491fcf7e9ccf2046e.md` реш. 2.1 (раздел «📂 Что bsl-atlas реально делает»); `_source/notion/hle-456-four-implementations--36c0c905e626817a9727ee1708e2d8c2.md` (факты из `bsl-atlas` `vector_indexer.py`); `_source/notion/hle-460-fserg-chunking-qdrant--36c0c905e626814385a2c7259a3d0c0c.md`"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Чанкер»; `docs/architecture/06-runtime-view.md` §«Индексация»"
-related-to: "[0011](../foundation/0011-fork-bsl-atlas-as-core.md), [0013](../foundation/0013-fork-role-code-engine.md), [0027](0027-port-feenlace-techniques-to-python.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0013](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0013-fork-role-code-engine.md), [0027](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0027-port-feenlace-techniques-to-python.md)"
 supersedes: ""
 superseded-by: ""
 ---

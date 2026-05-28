@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-417"
 basis: "_source/notion/decisions--36b0c905e62681019228dfcc7ec2a1cb.md (явная пометка «Р4 снят 2026-05-26 — заменён на Р7»); _source/_resolutions.md #10"
 implemented-in: "—"
-related-to: "[0007](./0007-р7-fallback-mode-switch.md)"
+related-to: "[0007](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md)"
 supersedes: ""
 superseded-by: "0007"
 ---

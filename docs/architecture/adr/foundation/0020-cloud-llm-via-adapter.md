@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "_source/notion/design-system-v2--*.md реш. 1.8"
 implemented-in: "docs/architecture/05-building-block-view.md §«Adapter-слой к разговорной модели»"
-related-to: "[0021](0021-default-model-deepseek-v4.md), [0008](../anti-hallucinations/0008-п1-groundedness-detector.md)"
+related-to: "[0021](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0021-default-model-deepseek-v4.md), [0008](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md)"
 supersedes: ""
 superseded-by: ""
 ---
@@ -79,6 +79,6 @@ Chosen option: "Разговорная LLM снаружи, адаптер к н�
 ## More Information
 
 Реш. 1.8 из `_source/notion/design-system-v2--*.md`.
-Конкретная дефолт-модель → ADR [0021](0021-default-model-deepseek-v4.md).
-Антигаллюцинационные ворота Р5/Р6 → ADR [0008](../anti-hallucinations/0008-п1-groundedness-detector.md) и тема 5 (HLE-417).
+Конкретная дефолт-модель → ADR [0021](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0021-default-model-deepseek-v4.md).
+Антигаллюцинационные ворота Р5/Р6 → ADR [0008](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0008-п1-groundedness-detector.md) и тема 5 (HLE-417).
 Граф Cohere-гранта: `_source/notion/design-system-v2--*.md` реш. 1.8 §«Cohere».

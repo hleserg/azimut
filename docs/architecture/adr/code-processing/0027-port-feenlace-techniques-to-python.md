@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-414"
 basis: "`_source/notion/hle-456-four-implementations--36c0c905e626817a9727ee1708e2d8c2.md` (реш. 2.4 после правки); `_source/_resolutions.md` #2 (переформулировка «Go → Python» от 2026-05-27); `_source/notion/solutions-registry-summary--*.md` (противоречие №3)"
 implemented-in: "`docs/architecture/05-building-block-view.md` §«Индексатор» (техники: GC-off-аналог, шардирование, кеш по SHA, манифест-diff, BSL-синонимы)"
-related-to: "[0011](../foundation/0011-fork-bsl-atlas-as-core.md), [0022](../foundation/0022-boundary-fork-vs-own-code.md), [0024](0024-code-chunking-deterministic-structural.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0022](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0022-boundary-fork-vs-own-code.md), [0024](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md)"
 supersedes: ""
 superseded-by: ""
 ---

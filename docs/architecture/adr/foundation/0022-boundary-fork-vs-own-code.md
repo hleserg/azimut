@@ -5,7 +5,7 @@ decision-makers: "[Сергей]"
 linear-task: "HLE-413"
 basis: "_source/notion/design-system-v2--*.md реш. 1.9"
 implemented-in: "docs/architecture/05-building-block-view.md (вся структура); docs/architecture/04-solution-strategy.md (краткая фиксация)"
-related-to: "[0011](0011-fork-bsl-atlas-as-core.md), [0013](0013-fork-role-code-engine.md), [0017](0017-mcp-bsl-platform-context-included.md), [0014](0014-fserg-mcp-1c-as-reference-only.md)"
+related-to: "[0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0013](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0013-fork-role-code-engine.md), [0017](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md), [0014](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0014-fserg-mcp-1c-as-reference-only.md)"
 supersedes: ""
 superseded-by: ""
 ---
@@ -22,10 +22,10 @@ superseded-by: ""
 
 ## Decision Drivers
 
-* Форк bsl-atlas — основной движок понимания кода (ADR [0011](0011-fork-bsl-atlas-as-core.md), [0013](0013-fork-role-code-engine.md)); нельзя класть в него поведение Азимута
+* Форк bsl-atlas — основной движок понимания кода (ADR [0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0013](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0013-fork-role-code-engine.md)); нельзя класть в него поведение Азимута
 * Готовые библиотеки (BGE-M3, Qdrant, реранкеры) — проверенные компоненты RAG; не переписываем
 * Поведенческий контракт (Р5 — контроль поиска, Р6 — иерархия источников) должен жить в нашем коде — только так его можно тестировать и гарантировать
-* Адаптер к разговорной LLM (ADR [0020](0020-cloud-llm-via-adapter.md)) — наш код, не библиотека
+* Адаптер к разговорной LLM (ADR [0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md)) — наш код, не библиотека
 * При обновлении форка или библиотеки наш код не должен ломаться
 
 ## Considered Options
@@ -48,7 +48,7 @@ Chosen option: "Явная трёхзонная граница", because это 
 
 ### Зона 2 — Готовые библиотеки (зависимости, не форки)
 
-Что входит: BGE-M3 (эмбеддинги), Qdrant (векторное хранилище), реранкеры (cross-encoder/Cohere), [alkoleft/mcp-bsl-platform-context](../foundation/0017-mcp-bsl-platform-context-included.md) (справочник платформы), Docling / аналог (парсинг документов).
+Что входит: BGE-M3 (эмбеддинги), Qdrant (векторное хранилище), реранкеры (cross-encoder/Cohere), [alkoleft/mcp-bsl-platform-context](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md) (справочник платформы), Docling / аналог (парсинг документов).
 
 Правило: подключаем как pip/docker-зависимость. Не форкаем без причины. При критическом баге — патч поверх, не форк.
 
@@ -58,7 +58,7 @@ Chosen option: "Явная трёхзонная граница", because это 
 - Поведенческий контракт (правила ответа, тональность, ограничения)
 - Р5 — контроль поиска (server-controlled retrieval: сервер решает, что искать)
 - Р6 — иерархия источников (код > документация > LLM-знания)
-- LLM-адаптер (интерфейс к разговорной модели, ADR [0020](0020-cloud-llm-via-adapter.md))
+- LLM-адаптер (интерфейс к разговорной модели, ADR [0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md))
 - Оркестрация MCP-инструментов
 - Eval-харнесс (тема 6)
 
@@ -98,8 +98,8 @@ Chosen option: "Явная трёхзонная граница", because это 
 ## More Information
 
 Реш. 1.9 из `_source/notion/design-system-v2--*.md`.
-Форк как движок кода → ADR [0011](0011-fork-bsl-atlas-as-core.md), [0013](0013-fork-role-code-engine.md).
-Справочник платформы как библиотека → ADR [0017](0017-mcp-bsl-platform-context-included.md).
-FSerg/mcp-1c-v1 — референс техник (не зависимость) → ADR [0014](0014-fserg-mcp-1c-as-reference-only.md).
-Адаптер к LLM (зона 3) → ADR [0020](0020-cloud-llm-via-adapter.md).
+Форк как движок кода → ADR [0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0013](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0013-fork-role-code-engine.md).
+Справочник платформы как библиотека → ADR [0017](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md).
+FSerg/mcp-1c-v1 — референс техник (не зависимость) → ADR [0014](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0014-fserg-mcp-1c-as-reference-only.md).
+Адаптер к LLM (зона 3) → ADR [0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md).
 Runtime-доступ к живой 1С (расширение зоны 2/3) → открытый вопрос ADR 0013/0022, HLE-464.

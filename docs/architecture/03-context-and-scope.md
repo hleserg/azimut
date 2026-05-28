@@ -1,6 +1,6 @@
 # 3. Контекст и границы системы (Context and Scope)
 
-> arc42 §3 — кто и через что взаимодействует с Азимутом снаружи; что внутри, что нет. C4 System Context описан в [`workspace.dsl`](../../workspace.dsl), view `systemContext` (ADR [0034](adr/tooling/0034-architecture-as-code-structurizr-dsl.md)).
+> arc42 §3 — кто и через что взаимодействует с Азимутом снаружи; что внутри, что нет. C4 System Context описан в [`workspace.dsl`](../../workspace.dsl), view `systemContext` (ADR [0034](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/tooling/0034-architecture-as-code-structurizr-dsl.md)).
 >
 > Локальный просмотр C4-диаграммы (compose-профиль `diagrams`):
 > ```bash
@@ -43,22 +43,22 @@
 | **Сергей** (лид-разработчик) | Cherry Studio everyday; Claude Desktop дома (премиум, eval-эталон); mini-ai-1c — для захвата кода из Конфигуратора | Ежедневная работа с конфигурацией ERP, тяжёлый разбор кода, проверки гипотез | `person serg` |
 | **Мама** (бухгалтер) | Cherry Studio (чат, без захвата кода) | Вопросы по типовой ERP в стиле «как сделать X» | `person mama` |
 
-См. [`01-introduction-and-goals.md`](01-introduction-and-goals.md) §1.2 — детальные ожидания стейкхолдеров.
+См. [`01-introduction-and-goals.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/01-introduction-and-goals.md) §1.2 — детальные ожидания стейкхолдеров.
 
 ### Внешние системы
 
 | Внешняя система | Что от неё нужно | Протокол / формат | DSL-элемент | ADR |
 |---|---|---|---|---|
-| **Платформа 1С** | Текстовая выгрузка конфигурации `DumpConfigToFiles` (`*.bsl` + метаданные) + расширения + внешние обработки (`.epf/.erf`) | Файловая система, локальная папка | `softwareSystem onecPlatform` | [0011](adr/foundation/0011-fork-bsl-atlas-as-core.md), [0024](adr/code-processing/0024-code-chunking-deterministic-structural.md) |
-| **DeepSeek (облачная LLM)** | Разговорная генерация (Flash основной режим, Pro — тяжёлый код); работает из РФ без VPN | HTTPS, OpenAI-compatible API | `softwareSystem deepSeekLLM` | [0020](adr/foundation/0020-cloud-llm-via-adapter.md), [0021](adr/foundation/0021-default-model-deepseek-v4.md) |
-| **Claude (Anthropic)** | LLM-судья со спан-привязкой; Сергей-премиум дома (Claude Desktop по подписке) | HTTPS, Anthropic API | `softwareSystem claudeLLM` | [0003](adr/anti-hallucinations/0003-р3-llm-judge-spans.md), [0019](adr/foundation/0019-cherry-studio-default-client.md), [0020](adr/foundation/0020-cloud-llm-via-adapter.md) |
-| **ИТС / Портал платформы 1С** | Справочные материалы — третий уровень иерархии источников (после кода и встроенной справки конфы) | HTTPS / офлайн-копия | `softwareSystem its` | [0006](adr/anti-hallucinations/0006-р6-source-hierarchy.md) |
-| **`mcp-bsl-platform-context`** (alkoleft, MIT) | Справочник синтаксиса платформы из `shcntx_ru.hbk` — drop-in MCP-сервер рядом с Азимутом | MCP / JSON-RPC | `container bslPlatformMcp` (как Container_Ext) | [0017](adr/foundation/0017-mcp-bsl-platform-context-included.md) |
-| **Sentry / GlitchTip** | Канарейка / распределённая трассировка; выбор между Sentry SaaS и self-hosted GlitchTip открыт (Sentry × AGPL — конфликт) | HTTPS / Sentry SDK | `container sentry` (как Container_Ext) | [0028 open](adr/open/0028-sentry-vs-agpl.md) |
+| **Платформа 1С** | Текстовая выгрузка конфигурации `DumpConfigToFiles` (`*.bsl` + метаданные) + расширения + внешние обработки (`.epf/.erf`) | Файловая система, локальная папка | `softwareSystem onecPlatform` | [0011](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0011-fork-bsl-atlas-as-core.md), [0024](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/code-processing/0024-code-chunking-deterministic-structural.md) |
+| **DeepSeek (облачная LLM)** | Разговорная генерация (Flash основной режим, Pro — тяжёлый код); работает из РФ без VPN | HTTPS, OpenAI-compatible API | `softwareSystem deepSeekLLM` | [0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md), [0021](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0021-default-model-deepseek-v4.md) |
+| **Claude (Anthropic)** | LLM-судья со спан-привязкой; Сергей-премиум дома (Claude Desktop по подписке) | HTTPS, Anthropic API | `softwareSystem claudeLLM` | [0003](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md), [0019](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md), [0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md) |
+| **ИТС / Портал платформы 1С** | Справочные материалы — третий уровень иерархии источников (после кода и встроенной справки конфы) | HTTPS / офлайн-копия | `softwareSystem its` | [0006](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0006-р6-source-hierarchy.md) |
+| **`mcp-bsl-platform-context`** (alkoleft, MIT) | Справочник синтаксиса платформы из `shcntx_ru.hbk` — drop-in MCP-сервер рядом с Азимутом | MCP / JSON-RPC | `container bslPlatformMcp` (как Container_Ext) | [0017](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0017-mcp-bsl-platform-context-included.md) |
+| **Sentry / GlitchTip** | Канарейка / распределённая трассировка; выбор между Sentry SaaS и self-hosted GlitchTip открыт (Sentry × AGPL — конфликт) | HTTPS / Sentry SDK | `container sentry` (как Container_Ext) | [0028 open](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0028-sentry-vs-agpl.md) |
 
 ### MCP-клиенты как граничные контейнеры
 
-В C4-модели три клиента ([ADR 0019](adr/foundation/0019-cherry-studio-default-client.md)) описаны как контейнеры внутри `softwareSystem azimuth`, но помечены `tags "External"` (Container_Ext) — это сторонние приложения, которыми пользователь владеет, а не наш код:
+В C4-модели три клиента ([ADR 0019](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md)) описаны как контейнеры внутри `softwareSystem azimuth`, но помечены `tags "External"` (Container_Ext) — это сторонние приложения, которыми пользователь владеет, а не наш код:
 
 - `container cherryStudio` — Cherry Studio (AGPL-3.0 + dual licensing) — дефолт для мамы и Сергея-everyday.
 - `container claudeDesktop` — Claude Desktop — Сергей-премиум дома (подписка, не API).
@@ -68,12 +68,12 @@
 
 Сознательные ограничения, которые формируют границу — каждое привязано к ADR:
 
-1. **Не генерирует ответ самостоятельно.** Разговорной LLM внутри MCP-сервера нет; «мозг разговора» — это модель клиента, подключённая через адаптер ([ADR 0020](adr/foundation/0020-cloud-llm-via-adapter.md), реш. 1.8). MCP отдаёт контекст + поведенческий контракт; финальную реплику собирает клиент.
-2. **Не лезет в облачные данные без маски PII.** Перед отправкой запроса в облачную LLM применяется PII-фильтр; персональные данные маскируются. Прототип + локальный сценарий + DeepSeek/Claude — допустимы; коммерческие тенанты (152-ФЗ) — отдельная тема 7 (см. [`02-architecture-constraints.md`](02-architecture-constraints.md) §2.2 O5).
-3. **Не пишет код в 1С (read-only).** Азимут читает выгрузку конфигурации и работает с индексом. Изменения в базу 1С не вносит. Runtime-доступ к живой 1С (5 репо из [HLE-464](https://linear.app/hleserg/issue/HLE-464)) — это отдельная развилка темы 7 ([`11-technical-risks.md`](11-technical-risks.md), [ADR 0029](adr/open/0029-multitenancy-qdrant-embedded-vs-server.md)–[0032](adr/open/0032-multitenancy-tenant-storage-isolation.md)).
-4. **Не выдумывает паттерны 1С.** Любое утверждение о коде 1С — либо подтверждённый факт из исходников, либо помечено «не знаю, надо проверить» ([`02-architecture-constraints.md`](02-architecture-constraints.md) §2.2 O2).
-5. **Не строит свой UI.** Веб-морда и собственные интерфейсы — кандидаты на тему 7 ([ADR 0018](adr/foundation/0018-mcp-client-no-own-ui.md)). На локальном сценарии клиент — Cherry Studio / Claude Desktop / mini-ai-1c.
-6. **Не агрегирует MCP-серверы через шлюз.** На локальном сценарии Cherry Studio / Claude Desktop сами подключают несколько MCP-серверов (Азимут + mcp-bsl-platform-context) — без шлюза `onec-mcp-universal` ([ADR 0016](adr/foundation/0016-onec-mcp-universal-deferred.md)). Шлюз вернётся к рассмотрению в теме 7.
+1. **Не генерирует ответ самостоятельно.** Разговорной LLM внутри MCP-сервера нет; «мозг разговора» — это модель клиента, подключённая через адаптер ([ADR 0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md), реш. 1.8). MCP отдаёт контекст + поведенческий контракт; финальную реплику собирает клиент.
+2. **Не лезет в облачные данные без маски PII.** Перед отправкой запроса в облачную LLM применяется PII-фильтр; персональные данные маскируются. Прототип + локальный сценарий + DeepSeek/Claude — допустимы; коммерческие тенанты (152-ФЗ) — отдельная тема 7 (см. [`02-architecture-constraints.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/02-architecture-constraints.md) §2.2 O5).
+3. **Не пишет код в 1С (read-only).** Азимут читает выгрузку конфигурации и работает с индексом. Изменения в базу 1С не вносит. Runtime-доступ к живой 1С (5 репо из [HLE-464](https://linear.app/hleserg/issue/HLE-464)) — это отдельная развилка темы 7 ([`11-technical-risks.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/11-technical-risks.md), [ADR 0029](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0029-multitenancy-qdrant-embedded-vs-server.md)–[0032](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/open/0032-multitenancy-tenant-storage-isolation.md)).
+4. **Не выдумывает паттерны 1С.** Любое утверждение о коде 1С — либо подтверждённый факт из исходников, либо помечено «не знаю, надо проверить» ([`02-architecture-constraints.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/02-architecture-constraints.md) §2.2 O2).
+5. **Не строит свой UI.** Веб-морда и собственные интерфейсы — кандидаты на тему 7 ([ADR 0018](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0018-mcp-client-no-own-ui.md)). На локальном сценарии клиент — Cherry Studio / Claude Desktop / mini-ai-1c.
+6. **Не агрегирует MCP-серверы через шлюз.** На локальном сценарии Cherry Studio / Claude Desktop сами подключают несколько MCP-серверов (Азимут + mcp-bsl-platform-context) — без шлюза `onec-mcp-universal` ([ADR 0016](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0016-onec-mcp-universal-deferred.md)). Шлюз вернётся к рассмотрению в теме 7.
 
 ## 3.4 Технический контекст: интерфейсы
 
@@ -90,4 +90,4 @@
 | Платформа 1С → Азимут-ядро | Файловая система (`DumpConfigToFiles`) | `onecPlatform -> azimuth.azimuthCore` |
 | Все компоненты → Sentry | HTTPS / Sentry SDK | `azimuth.mcpOrchestrator -> azimuth.sentry` |
 
-Уровни глубже (Container и Component) — в [`05-building-block-view.md`](05-building-block-view.md) + views `container`, `componentAzimuthCore`, `componentMCPOrchestrator` в [`workspace.dsl`](../../workspace.dsl).
+Уровни глубже (Container и Component) — в [`05-building-block-view.md`](https://github.com/hleserg/azimut/blob/master/docs/architecture/05-building-block-view.md) + views `container`, `componentAzimuthCore`, `componentMCPOrchestrator` в [`workspace.dsl`](../../workspace.dsl).

@@ -13,8 +13,8 @@
 |---|---|
 | **Цель** | Ответ агента опирается на факты из извлечённых чанков, а не на внутреннее знание модели |
 | **Стимул** | Пользователь задаёт вопрос по коду конфигурации 1С |
-| **Реакция** | MCP-сервер возвращает ответ с атрибуцией источников (спан-привязка, [ADR 0003](adr/anti-hallucinations/0003-р3-llm-judge-spans.md)) |
-| **Критерий** | `faithfulness` (RAGAS) ≥ **0.80** при активном реранкере (Cohere Rerank v4 или BGE-reranker-v2-m3); `context_relevance` считается отдельно ([ADR 0002](adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md)) |
+| **Реакция** | MCP-сервер возвращает ответ с атрибуцией источников (спан-привязка, [ADR 0003](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0003-р3-llm-judge-spans.md)) |
+| **Критерий** | `faithfulness` (RAGAS) ≥ **0.80** при активном реранкере (Cohere Rerank v4 или BGE-reranker-v2-m3); `context_relevance` считается отдельно ([ADR 0002](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0002-р2-faithfulness-vs-relevance.md)) |
 
 > Пороги финально калибруются eval-харнессом (тема 6, HLE-418). Число 0.80 — baseline; исследовательские отчёты видели 0.85–0.90 как целевой потолок после настройки.
 
@@ -27,7 +27,7 @@
 | **Цель** | Пользователь не прерывает диалог из-за долгого ожидания |
 | **Стимул** | Запрос по коду поступает в MCP-сервер (исключая фолбэк/дип-ресёрч) |
 | **Реакция** | Первый содержательный токен ответа доставлен клиенту |
-| **Критерий** | P95 Time-to-first-token ≤ **5 секунд** на машине с SSD и ≥ 8 GB RAM; охватывает граф + реранк + генерацию через DeepSeek Flash ([ADR 0021](adr/foundation/0021-default-model-deepseek-v4.md)) |
+| **Критерий** | P95 Time-to-first-token ≤ **5 секунд** на машине с SSD и ≥ 8 GB RAM; охватывает граф + реранк + генерацию через DeepSeek Flash ([ADR 0021](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0021-default-model-deepseek-v4.md)) |
 
 ---
 
@@ -38,7 +38,7 @@
 | **Цель** | Нетехнический пользователь разворачивает систему без ручной настройки окружения |
 | **Стимул** | Пользователь скачивает репозиторий и запускает одну команду |
 | **Реакция** | Cherry Studio + MCP-сервер Азимут + Qdrant поднимаются и готовы к работе |
-| **Критерий** | `docker compose up` — единственный шаг после клонирования; Java, Node, Go — не требуются на хосте; конфигурация Cherry Studio преднастроена в поставке ([ADR 0019](adr/foundation/0019-cherry-studio-default-client.md)) |
+| **Критерий** | `docker compose up` — единственный шаг после клонирования; Java, Node, Go — не требуются на хосте; конфигурация Cherry Studio преднастроена в поставке ([ADR 0019](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0019-cherry-studio-default-client.md)) |
 
 ---
 
@@ -48,5 +48,5 @@
 |---|---|
 | **Цель** | Система продолжает отвечать пользователю при недоступности основной облачной модели |
 | **Стимул** | Облачная LLM (DeepSeek / Claude / Qwen) возвращает ошибку или таймаут |
-| **Реакция** | MCP-сервер активирует режим Р7: переключается на дип-ресёрч в интернете, помечает ответ «из интернета, не из локального индекса» ([ADR 0007](adr/anti-hallucinations/0007-р7-fallback-mode-switch.md)) |
+| **Реакция** | MCP-сервер активирует режим Р7: переключается на дип-ресёрч в интернете, помечает ответ «из интернета, не из локального индекса» ([ADR 0007](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md)) |
 | **Критерий** | Фолбэк срабатывает за ≤ **5 секунд** после первой ошибки API; метрика `fallback_triggered` в Sentry логируется отдельно от штатного `low_relevance` |
