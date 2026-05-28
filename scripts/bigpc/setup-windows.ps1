@@ -23,7 +23,7 @@ $scriptsDir      = 'C:\scripts'
 $workerName      = 'wsl-portproxy.ps1'
 $workerSrc       = Join-Path $PSScriptRoot $workerName
 $workerDst       = Join-Path $scriptsDir $workerName
-$firewallName    = 'Structurizr Lite 8080'
+$firewallName    = 'Structurizr 8080'
 $taskName        = 'WSL Portproxy 8080'
 
 if (-not (Test-Path $workerSrc)) {

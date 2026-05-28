@@ -25,7 +25,7 @@
 
 Структура опирается на [`_source/specs/_howto.md`](../_source/specs/_howto.md) и сами скачанные спецификации в [`_source/specs/`](../_source/specs/): arc42 (выборочные секции 1/3/4/5/6/8/9/12 + §2/§7/§10/§11 точечно), MADR 4.0.0 для ADR, **C4 через Architecture-as-Code (Structurizr DSL)** для статичных диаграмм Context/Container/Component, Mermaid для runtime-сценариев (sequenceDiagram).
 
-**Главный сдвиг подхода (2026-05-27).** Раньше планировалось C4 через Mermaid внутри markdown-файлов. Решение: переходим на **Structurizr DSL** — единая текстовая модель в `workspace.dsl` в корне репо, из которой Structurizr Lite (Docker) рендерит views для уровней Context/Container/Component с auto-layout. Связь DSL ↔ ADR — через `properties { "adr-link" "..." }` на элементах DSL (см. ADR 0034). Mermaid остаётся для §6 Runtime View (sequenceDiagram читается лучше DSL Dynamic-views в git diff).
+**Главный сдвиг подхода (2026-05-27).** Раньше планировалось C4 через Mermaid внутри markdown-файлов. Решение: переходим на **Structurizr DSL** — единая текстовая модель в `workspace.dsl` в корне репо, из которой Structurizr (on-prem, local-режим) (Docker) рендерит views для уровней Context/Container/Component с auto-layout. Связь DSL ↔ ADR — через `properties { "adr-link" "..." }` на элементах DSL (см. ADR 0034). Mermaid остаётся для §6 Runtime View (sequenceDiagram читается лучше DSL Dynamic-views в git diff).
 
 ```
 azimuth/                                            # корень репо
@@ -34,7 +34,7 @@ azimuth/                                            # корень репо
 │                                                   # Properties { adr-link / open-issues } на элементах
 │                                                   # дают трассировку: компонент ↔ ADR ↔ research.
 │                                                   # Локальный просмотр: `docker run -it --rm -p 8080:8080
-│                                                   # -v .:/usr/local/structurizr structurizr/lite`
+│                                                   # -v .:/usr/local/structurizr structurizr/structurizr local`
 ├── .github/
 │   └── prompts/                                    # ⭐ Промпты для ИИ-агентов (PR-ревьюер + ресерч)
 │       ├── pr-architecture-lint.md                 # промпт 1: архитектурный линтер
@@ -46,7 +46,7 @@ azimuth/                                            # корень репо
     │                                               # «начни с docs/architecture/01-introduction-and-goals.md»
     ├── architecture/                               # arc42 — полный 12-главный шаблон + глава 13
     │   ├── README.md                               # 🧭 путеводитель: как читать эту папку,
-    │   │                                           # ссылка на workspace.dsl и Structurizr Lite,
+    │   │                                           # ссылка на workspace.dsl и Structurizr (on-prem, local-режим),
     │   │                                           # инструкция ИИ-агентам куда дописывать новое
     │   ├── 01-introduction-and-goals.md            # arc42 §1: назначение, стейкхолдеры (Сергей, мама,
     │   │                                           # будущий публичный OSS), top quality goals
@@ -158,10 +158,10 @@ azimuth/                                            # корень репо
 
 **Что изменилось относительно прошлой версии (после расширения 2026-05-27 вечером):**
 
-1. **arc42 — 5 файлов → 12 + глава 13.** Раньше `01-context`, `02-containers`, `03-pipelines`, `04-blind-spots`, `05-crosscutting`. Теперь — полный шаблон arc42 (`01..12`) + наша 13-я глава `lead-operating-manual.md` (регламент Сергея). Главная мотивация — четкое назначение каждой главы упрощает работу ИИ-агентов (они знают, куда класть требования к безопасности, ограничения и т.д.) и автогенерацию документации Structurizr Lite, который встраивает arc42-главы в свой портал.
+1. **arc42 — 5 файлов → 12 + глава 13.** Раньше `01-context`, `02-containers`, `03-pipelines`, `04-blind-spots`, `05-crosscutting`. Теперь — полный шаблон arc42 (`01..12`) + наша 13-я глава `lead-operating-manual.md` (регламент Сергея). Главная мотивация — четкое назначение каждой главы упрощает работу ИИ-агентов (они знают, куда класть требования к безопасности, ограничения и т.д.) и автогенерацию документации Structurizr (on-prem, local-режим), который встраивает arc42-главы в свой портал.
 2. **`docs/index.md`** теперь — короткий мини-README. Точка входа для людей и ИИ-агентов — `docs/architecture/01-introduction-and-goals.md`.
 3. **`docs/architecture/README.md`** заменяет ранее планировавшийся `architecture/index.md` — путеводитель + инструкция ИИ-агентам.
-4. **§2 Constraints, §7 Deployment, §10 Quality — теперь отдельные файлы.** Раньше §2 был «растворён», §7 и §10 — «отложены». Сейчас под полную arc42-схему — отдельные файлы заводим сразу (даже если содержимое минимально), потому что (а) шаблон arc42 предполагает, (б) Structurizr Lite ожидает фиксированные имена для встраивания, (в) ИИ-агент знает, куда дописать новое требование.
+4. **§2 Constraints, §7 Deployment, §10 Quality — теперь отдельные файлы.** Раньше §2 был «растворён», §7 и §10 — «отложены». Сейчас под полную arc42-схему — отдельные файлы заводим сразу (даже если содержимое минимально), потому что (а) шаблон arc42 предполагает, (б) Structurizr (on-prem, local-режим) ожидает фиксированные имена для встраивания, (в) ИИ-агент знает, куда дописать новое требование.
 5. **§9 Architectural Decisions** — теперь это глава-обзор `09-architectural-decisions.md` со ссылкой на `adr/` (индекс по темам/статусам). Сами ADR — в `adr/<подпапка>/`.
 6. **`docs/glossary.md`** удаляется как отдельный артефакт — переезжает в `architecture/12-glossary.md` (так и должно по arc42).
 7. **Новый раздел `.github/prompts/`** — промпты для ИИ-агента-ревьюера (3 промпта: архитектурный линтер, ADR-контролер, контроль главы 13) + промпт для протокола ресерчей с LLM. Содержание — в разделе 4 этого плана.
@@ -186,7 +186,7 @@ azimuth/                                            # корень репо
 | §12 | `architecture/12-glossary.md` | термины 1С + проектные + технические; 25+ BSL entry-points | обязателен |
 | §13 (наше) | `architecture/13-lead-operating-manual.md` | регламент Сергея: чек-листы, метрики, триаж алертов, LLM-протокол, пул задач лида | наше расширение; обязательно дополняется ИИ-агентами при добавлении сервисов |
 
-**Зачем полный arc42, если многие главы пусты на старте.** (а) ИИ-агентам нужен предсказуемый адрес для каждого вида знания (требование безопасности → §8; ограничение → §2; нефункциональное требование → §10). (б) Structurizr Lite встраивает Markdown-главы рядом со схемами по фиксированным именам — пустые заголовки сигнализируют «здесь будет дописано», а не «об этом не подумали». (в) Когда глава пуста — пишем одну фразу «здесь пока нечего сказать, см. ADR <ссылка>» (правило из `_howto.md` §1).
+**Зачем полный arc42, если многие главы пусты на старте.** (а) ИИ-агентам нужен предсказуемый адрес для каждого вида знания (требование безопасности → §8; ограничение → §2; нефункциональное требование → §10). (б) Structurizr (on-prem, local-режим) встраивает Markdown-главы рядом со схемами по фиксированным именам — пустые заголовки сигнализируют «здесь будет дописано», а не «об этом не подумали». (в) Когда глава пуста — пишем одну фразу «здесь пока нечего сказать, см. ADR <ссылка>» (правило из `_howto.md` §1).
 
 **Нумерация файлов и arc42-номера совпадают.** `01..12` в именах файлов = arc42 §1..§12. Глава 13 — наше расширение, идёт следом по той же логике.
 
@@ -201,12 +201,12 @@ azimuth/                                            # корень репо
 
 - arc42 §4 (Solution Strategy) — в `docs/architecture/04-solution-strategy.md` (отдельный файл, не в `docs/index.md`).
 - `docs/index.md` — короткий мини-README со ссылкой на `docs/architecture/01-introduction-and-goals.md`.
-- `docs/architecture/README.md` — путеводитель по папке: как читать, ссылки на `workspace.dsl` и Structurizr Lite, инструкция для ИИ-агентов куда дописывать новое.
+- `docs/architecture/README.md` — путеводитель по папке: как читать, ссылки на `workspace.dsl` и Structurizr (on-prem, local-режим), инструкция для ИИ-агентов куда дописывать новое.
 
 **Локальная сборка/просмотр Structurizr.** Для рендера view'ев из `workspace.dsl` в браузере:
 
 ```
-docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite
+docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/structurizr local
 ```
 
 Открыть `http://localhost:8080`. Это инструмент разработчика. Автоматический рендер для PR/main — два варианта в разделе 4.1 (CI/CD).
@@ -685,16 +685,16 @@ docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite
 - **date:** 2026-05-27
 - **decision-makers:** [Сергей]
 - **linear-task:** HLE-495
-- **basis:** инструкция Сергея в HLE-495 (Шаги 1–6 «Architecture as Code via Structurizr DSL + C4 Model»); `_source/specs/c4/c4model-diagrams.md` (4+3 типа диаграмм C4); `_source/specs/_howto.md` §2 (требования к нотации C4 — titles, legend, типы, технологии, протоколы); официальная документация Structurizr DSL и Structurizr Lite
-- **implemented-in:** `workspace.dsl` в корне репо; локальный просмотр через `structurizr/lite` (Docker, порт 8080); все статичные C4-views (`systemContext`, `container`, `component` для Азимут-ядра и MCP-оркестратора) — отсюда
+- **basis:** инструкция Сергея в HLE-495 (Шаги 1–6 «Architecture as Code via Structurizr DSL + C4 Model»); `_source/specs/c4/c4model-diagrams.md` (4+3 типа диаграмм C4); `_source/specs/_howto.md` §2 (требования к нотации C4 — titles, legend, типы, технологии, протоколы); официальная документация Structurizr DSL и Structurizr (on-prem, local-режим)
+- **implemented-in:** `workspace.dsl` в корне репо; локальный просмотр через `structurizr/structurizr local` (Docker, порт 8080); все статичные C4-views (`systemContext`, `container`, `component` для Азимут-ядра и MCP-оркестратора) — отсюда
 - **related-to:** [0022 (граница форк vs наш код)](#0022-boundary-fork-vs-own-code) — DSL описывает обе стороны границы; [0024 (чанкинг)](#0024-code-chunking-deterministic-structural), [0026 (роутинг)](#0026-code-search-routing) — компоненты Азимут-ядра/MCP-оркестратора с обратной ссылкой через `properties { "adr-link" ... }`
 - **Заголовок:** Architecture-as-Code через Structurizr DSL — единый источник статичных C4-диаграмм; Runtime (sequence) остаётся в Mermaid
 - **Краткое обоснование (для тела ADR при создании файла):**
   - **Context:** до 2026-05-27 план предполагал C4-диаграммы напрямую через Mermaid C4Context/C4Container в markdown. Это даёт хорошее отображение в GitHub, но: (1) каждая диаграмма — копия модели (имена сущностей дублируются в разных файлах), (2) Mermaid C4 экспериментальный и не поддерживает legend, properties, layout, (3) нет машинно-читаемого источника для линковки ADR ↔ компонент.
   - **Decision:** статичные C4 (System Context, Container, Component) — в одном файле `workspace.dsl` (Structurizr DSL). Каждый компонент DSL имеет `properties { "adr-link" "..." "open-issues" "..." }`, что даёт двустороннюю трассировку компонент ↔ ADR ↔ research.
-  - **Consequences:** + единый источник; + явная типизация (Person/SoftwareSystem/Container/Component); + auto-layout; + Component-view только под нужные контейнеры; + локальный просмотр одним docker run; − зависимость от Java-рантайма у того, кто хочет смотреть локально (Structurizr Lite в Docker — снимает); − чуть выше порог входа для людей, которые видят DSL впервые (компенсируется путеводителем `docs/architecture/README.md`).
+  - **Consequences:** + единый источник; + явная типизация (Person/SoftwareSystem/Container/Component); + auto-layout; + Component-view только под нужные контейнеры; + локальный просмотр одним docker run; − зависимость от Java-рантайма у того, кто хочет смотреть локально (Structurizr (on-prem, local-режим) в Docker — снимает); − чуть выше порог входа для людей, которые видят DSL впервые (компенсируется путеводителем `docs/architecture/README.md`).
   - **Mermaid НЕ выбрасываем:** Runtime View (arc42 §6) — sequenceDiagram в `architecture/06-runtime-view.md` (читается в git diff лучше DSL Dynamic-views; Structurizr Dynamic-views экспериментальный). Одиночные flowchart-ы вне модели — тоже Mermaid.
-  - **Confirmation:** workspace.dsl лежит в корне; `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite` поднимается без ошибок; views `systemContext`, `container`, `component` рендерятся; `properties { "adr-link" ... }` присутствует у ключевых элементов; CI-линт DSL (опционально) — отдельная задача roadmap.
+  - **Confirmation:** workspace.dsl лежит в корне; `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/structurizr local` поднимается без ошибок; views `systemContext`, `container`, `component` рендерятся; `properties { "adr-link" ... }` присутствует у ключевых элементов; CI-линт DSL (опционально) — отдельная задача roadmap.
 
 ---
 
@@ -712,13 +712,13 @@ docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite
 - Триггер: push в `main` (или PR-preview через workflow_dispatch).
 - Результат: коммит-бот пишет обновлённый markdown с Mermaid-диаграммами.
 
-**Вариант Б — Корпоративный портал (Structurizr Lite в Docker-демоне).** Самый красивый. Внутренний сервер (или машина Сергея) держит `structurizr/lite` в `-d` режиме; webhook из GitHub дёргает `git pull` в смонтированной папке при пуше в `main`. Результат: постоянный внутренний URL (например, `http://arch.azimuth.local`), где интерактивные C4-views, клики «провалиться внутрь», ссылки на ADR через `properties`, навигация по arc42-главам как у portal/encyclopedia.
+**Вариант Б — Корпоративный портал (Structurizr (on-prem, local-режим) в Docker-демоне).** Самый красивый. Внутренний сервер (или машина Сергея) держит `structurizr/structurizr local` в `-d` режиме; webhook из GitHub дёргает `git pull` в смонтированной папке при пуше в `main`. Результат: постоянный внутренний URL (например, `http://arch.azimuth.local`), где интерактивные C4-views, клики «провалиться внутрь», ссылки на ADR через `properties`, навигация по arc42-главам как у portal/encyclopedia.
 
-- Команда (демон): `docker run -d -p 8080:8080 -v /opt/azimuth:/usr/local/structurizr structurizr/lite`
+- Команда (демон): `docker run -d -p 8080:8080 -v /opt/azimuth:/usr/local/structurizr structurizr/structurizr local`
 - Webhook GitHub → cron `git -C /opt/azimuth pull` (каждые N минут) или прямой webhook.
 - Этот вариант актуален, когда дойдём до темы 7 (HLE-419) и появится VDS.
 
-**Конкретные задачи для roadmap фазы 0:** (1) добавить GitHub Action `structurizr-export.yml` с шагом `structurizr/cli export -format mermaid`; (2) после стабилизации — поднять Structurizr Lite в Docker-демоне (Б). Обе задачи — отдельные ADR при реализации (ADR 0035/0036 уйдут на это, нумерация продолжится с 0035).
+**Конкретные задачи для roadmap фазы 0:** (1) добавить GitHub Action `structurizr-export.yml` с шагом `structurizr/cli export -format mermaid`; (2) после стабилизации — поднять Structurizr (on-prem, local-режим) в Docker-демоне (Б). Обе задачи — отдельные ADR при реализации (ADR 0035/0036 уйдут на это, нумерация продолжится с 0035).
 
 ### 4.2 Definition of Done — workspace.dsl как обязательная часть
 
@@ -1157,7 +1157,7 @@ Cross-platform (Bash + PowerShell — Сергей на Windows, агенты м
 
 Артефакты: пустые папки (`docs/architecture/`, `architecture/adr/{5 подпапок}/`, `architecture/research/` с `.gitkeep`, `docs/cases/`, `.github/prompts/`); `docs/index.md` (мини-README); `docs/architecture/README.md` (путеводитель); 12 arc42-заглушек (заголовок + одна фраза «здесь пока нечего сказать, см. ADR <ссылка>»); `13-lead-operating-manual.md` по шаблону раздела 4.5; `adr/template.md`; 4 промпта в `.github/prompts/`; минимальный `workspace.dsl`.
 
-**DoD:** PR создан; `docker run structurizr/lite` поднимает пустую модель без ошибок.
+**DoD:** PR создан; `docker run structurizr/structurizr local` поднимает пустую модель без ошибок.
 
 **Зависимости:** —
 
@@ -1175,7 +1175,7 @@ Cross-platform (Bash + PowerShell — Сергей на Windows, агенты м
 
 **Источники sub-агента:** план разделы 1, 3; шапки ADR 0011–0023; `_source/specs/c4/`.
 
-**DoD:** Structurizr Lite рендерит все views; adr-link properties расставлены.
+**DoD:** Structurizr (on-prem, local-режим) рендерит все views; adr-link properties расставлены.
 
 #### Фаза 2 — ADR anti-hallucinations (HLE-500) — sub-агент в worktree, 1 PR
 
@@ -1240,7 +1240,7 @@ Cross-platform (Bash + PowerShell — Сергей на Windows, агенты м
 3. Для каждой спавнит sub-агента через `Agent` tool с:
    - `subagent_type: "general-purpose"`;
    - `isolation: "worktree"` — изолированная копия репо;
-   - `prompt` с узкой инструкцией: какая фаза, какие источники, DoD, команды (`./scripts/new-adr.sh`, проверка через Structurizr Lite).
+   - `prompt` с узкой инструкцией: какая фаза, какие источники, DoD, команды (`./scripts/new-adr.sh`, проверка через Structurizr (on-prem, local-режим)).
 4. На фазах 3, 4, 5 — параллельно спавнит **второго sub-агента** для Linear-sync (раздел 5.3/5.4/5.5).
 5. Ждёт результатов (foreground или background).
 6. По каждой завершённой фазе sub-агент возвращает: путь к worktree, краткий отчёт, дополнения в surprises log.
@@ -1274,7 +1274,7 @@ Master не редактирует код напрямую (это работа 
 - Один батч = один источник в контексте.
 - Шапки ADR из плана раздел 3 обязательны.
 - Параллельность через worktree (фазы 2–5, 7 параллельно; 6 после 1–5; 9 в конце).
-- DoD единый: PR + Structurizr Lite рендерит (если трогается DSL) + Linear-sync sub-агент (где применимо) + Сергей утверждает.
+- DoD единый: PR + Structurizr (on-prem, local-режим) рендерит (если трогается DSL) + Linear-sync sub-агент (где применимо) + Сергей утверждает.
 
 **Антипаттерны:**
 - Один агент на весь план — контекст не вместит.
@@ -1348,8 +1348,8 @@ Master не редактирует код напрямую (это работа 
   3. ADR 0025 (резолв одноимённых) — `proposed`; алгоритм не написан, утверждаем вместе с реализацией при работе над темой 2 (HLE-414). ADR 0026 (роутинг graph→metadata→grep) утверждён 2026-05-27 (синтез HLE-461 = решение, переведён в `accepted`).
   4. `docs/architecture/adr/` структурируется подпапками с самого начала: `anti-hallucinations/`, `foundation/`, `code-processing/`, `tooling/`, `open/`. Нумерация ADR сквозная (`0001`–`0034`), не локальная по подпапкам — это убирает риск коллизий при переезде ADR между темами. `template.md` лежит в `adr/` рядом с подпапками, без номера.
   5. **Architecture-as-Code (Structurizr DSL)** введён ADR 0034 как новая практика: статичные C4 переезжают из Mermaid в `workspace.dsl`, Runtime sequence остаётся в Mermaid. Bootstrap (создание `workspace.dsl` с верхнеуровневой моделью + `docs/architecture/README.md` + 12 arc42-глав + `13-lead-operating-manual.md` по шаблону из раздела 4.5 + `template.md` + пустые подпапки `adr/research/` + 4 промпта в `.github/prompts/`) — первая задача roadmap-фазы 0 после утверждения плана.
-  6. **Полный arc42 (12 глав) + наша глава 13.** Подробности — раздел 1 mapping таблицей. Это апгрейд относительно ранней версии плана (раньше 5 файлов). Мотивация — предсказуемое место для каждого вида знания (важно для ИИ-агентов и Structurizr Lite, который встраивает arc42-главы в портал).
-  7. **Раздел 4 «Процесс и автоматизация»** — DoD, CI/CD (вариант А — Mermaid-генерация в GitHub Actions / вариант Б — постоянный Structurizr Lite), 3 PR-промпта и протокол LLM-ресерчей, шаблон главы 13. Это не ADR, а операционное руководство.
+  6. **Полный arc42 (12 глав) + наша глава 13.** Подробности — раздел 1 mapping таблицей. Это апгрейд относительно ранней версии плана (раньше 5 файлов). Мотивация — предсказуемое место для каждого вида знания (важно для ИИ-агентов и Structurizr (on-prem, local-режим), который встраивает arc42-главы в портал).
+  7. **Раздел 4 «Процесс и автоматизация»** — DoD, CI/CD (вариант А — Mermaid-генерация в GitHub Actions / вариант Б — постоянный Structurizr (on-prem, local-режим)), 3 PR-промпта и протокол LLM-ресерчей, шаблон главы 13. Это не ADR, а операционное руководство.
   8. **Раздел 5 «Параллельная активность: синхронизация Linear»** — переписать description HLE-413..419 с учётом research'ей; открыть 9 child-issues (5 по теме 1, 4 по теме 2); HLE-413 пометить «Done с шлейфом» комментарием, HLE-414 оставить `In Progress` с переписанным description. Исполнение зависит от подключения Linear MCP (раздел 5.6) — на момент исполнения проверить.
   9. **Раздел 6 «Post-rebuild followup-файл»** — `docs/_planning/06-post-rebuild-followup.md` создаётся последним шагом фазы 9 (см. раздел 7.5) как единый реестр хвостов: drift темы 1, открытые вопросы темы 2, surprises log, pointer к темам 3–7, Linear-sync index. Растворяется по мере закрытия. Глава 13 раздел 5 «Пул задач Лида» получает permanent-пункт «раз в спринт проверять `06-post-rebuild-followup.md`» до момента, когда followup закроется.
   10. **Раздел 7 «Стратегия реализации»** — 9 фаз технического исполнения плана (0 scaffold → 0a автоматизация → 1 DSL → 2–5 ADR-батчи → 6 arc42-главы → 7 roadmap+кейсы → 8 CI/CD после HLE-495 → 9 followup-файл и закрытие HLE-495); Слои 1 (`AGENTS.md`/`CLAUDE.md`/`.cursor/rules/main.mdc` + 5 мини-AGENTS в подпапках adr) и 2 (`scripts/new-adr.{sh,ps1}`, `scripts/update-adr-index.{sh,ps1}`); master-агент через `Agent` tool с `isolation: "worktree"` разводит параллельные фазы 1, 2, 3a/3b, 4, 5, 7. Фазы 0 и 0a — вручную (Сергей или один Claude Code), не master-агентом.

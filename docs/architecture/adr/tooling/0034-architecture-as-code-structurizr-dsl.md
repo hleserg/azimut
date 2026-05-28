@@ -3,8 +3,8 @@ status: "accepted"
 date: 2026-05-27
 decision-makers: "[Сергей]"
 linear-task: "HLE-495"
-basis: "Инструкция Сергея в HLE-495 (Шаги 1–6 «Architecture as Code via Structurizr DSL + C4 Model»); `docs/_source/specs/c4/c4model-diagrams.md`; `docs/_source/specs/_howto.md` §2; документация Structurizr DSL и Structurizr Lite"
-implemented-in: "`workspace.dsl` в корне репо; локальный просмотр через `structurizr/lite` (Docker, порт 8080)"
+basis: "Инструкция Сергея в HLE-495 (Шаги 1–6 «Architecture as Code via Structurizr DSL + C4 Model»); `docs/_source/specs/c4/c4model-diagrams.md`; `docs/_source/specs/_howto.md` §2; документация Structurizr DSL и Structurizr (on-prem, local-режим)"
+implemented-in: "`workspace.dsl` в корне репо; локальный просмотр через `structurizr/structurizr local` (Docker, порт 8080)"
 related-to: "[0022](../foundation/0022-boundary-fork-vs-own-code.md), [0024](../code-processing/0024-code-chunking-deterministic-structural.md), [0026](../code-processing/0026-code-search-routing.md)"
 supersedes: ""
 superseded-by: ""
@@ -27,7 +27,7 @@ superseded-by: ""
 
 ## Considered Options
 
-* **Structurizr DSL в `workspace.dsl`** — единый файл, рендеринг через Structurizr Lite (Docker).
+* **Structurizr DSL в `workspace.dsl`** — единый файл, рендеринг через Structurizr (on-prem, local-режим) (Docker).
 * **Mermaid C4 в Markdown** — диаграммы в месте использования, нативный рендер GitHub.
 * **PlantUML C4** — матурная, широко используемая нотация; требует Java/PlantUML сервер.
 * **draw.io / Lucidchart** — визуальные редакторы, бинарные или XML файлы.
@@ -42,21 +42,21 @@ Chosen option: **«Structurizr DSL в `workspace.dsl`»**, because только 
 * Good, because явная типизация (`Person`/`SoftwareSystem`/`Container`/`Component`) — ИИ-агент не угадывает, что что значит.
 * Good, because `properties { "adr-link" "..." }` на компонентах — ИИ-ревьюер (промпт 2 из `04-process.md`) может проверить, что каждый компонент имеет ADR.
 * Good, because auto-layout из коробки; Component-view только под нужные контейнеры.
-* Good, because `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite` — один командный запуск, интерактивный UI в браузере.
-* Bad, because зависимость от Java-рантайма у того, кто хочет смотреть без Docker (снимается Structurizr Lite в Docker).
+* Good, because `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/structurizr local` — один командный запуск, интерактивный UI в браузере.
+* Bad, because зависимость от Java-рантайма у того, кто хочет смотреть без Docker (снимается Structurizr (on-prem, local-режим) в Docker).
 * Bad, because порог входа для людей, первый раз видящих DSL — компенсируется путеводителем `docs/architecture/README.md`.
 * Bad, because DSL Dynamic-views (runtime-сценарии) экспериментальные — поэтому Runtime View остаётся Mermaid.
 
 ### Confirmation
 
-`workspace.dsl` лежит в корне репо; `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite` поднимается без ошибок; views `systemContext`, `container`, `component` рендерятся; `properties { "adr-link" ... }` присутствует у ключевых элементов (Азимут-ядро, MCP-оркестратор, Qdrant, LLM-судья); CI-линт DSL — отдельная задача roadmap (ADR 0035/0036).
+`workspace.dsl` лежит в корне репо; `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/structurizr local` поднимается без ошибок; views `systemContext`, `container`, `component` рендерятся; `properties { "adr-link" ... }` присутствует у ключевых элементов (Азимут-ядро, MCP-оркестратор, Qdrant, LLM-судья); CI-линт DSL — отдельная задача roadmap (ADR 0035/0036).
 
 ## Pros and Cons of the Options
 
 ### Structurizr DSL
 
 * Good, because единственный инструмент с нативной поддержкой `properties` для трассировки ADR.
-* Good, because Structurizr Lite — open-source, self-hosted, без vendor lock-in (⚠️ лицензия: Structurizr Lite — проверить по файлу перед production-использованием).
+* Good, because Structurizr (on-prem, local-режим) — open-source, self-hosted, без vendor lock-in (⚠️ лицензия: Structurizr (on-prem, local-режим) — проверить по файлу перед production-использованием).
 * Good, because экспорт в Mermaid/PlantUML через `structurizr/cli export` — для CI/CD рендеринга.
 * Bad, because DSL-файл растёт вместе с архитектурой; нужна дисциплина форматирования.
 
@@ -84,8 +84,8 @@ Chosen option: **«Structurizr DSL в `workspace.dsl`»**, because только 
 ## More Information
 
 * `docs/_planning/05-rebuild-plan.md` §3.5 — подробное обоснование и контекст принятия решения.
-* `docs/_planning/05-rebuild-plan.md` §4.1 — два варианта CI/CD-рендеринга (Mermaid-экспорт через GitHub Actions / Structurizr Lite как внутренний сервер).
+* `docs/_planning/05-rebuild-plan.md` §4.1 — два варианта CI/CD-рендеринга (Mermaid-экспорт через GitHub Actions / Structurizr (on-prem, local-режим) как внутренний сервер).
 * `docs/_planning/05-rebuild-plan.md` §4.2 — DoD: workspace.dsl как обязательная часть PR.
 * ADR 0022 — граница «форк vs наш код»: DSL описывает обе стороны границы.
 * ADR 0024, ADR 0026 — компоненты Азимут-ядра/MCP-оркестратора; имеют `properties { "adr-link" }` в workspace.dsl.
-* Локальный просмотр: `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/lite` → открыть `http://localhost:8080`.
+* Локальный просмотр: `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/structurizr local` → открыть `http://localhost:8080`.
