@@ -31,11 +31,11 @@
 
 | # | ADR(s) к правке | Drift | Source | Priority | Child-issue (draft → Linear) |
 |---|---|---|---|---|---|
-| 1.1 | ADR 0013, ADR 0011 (foundation) | Добавить решение «для v1 — tree-sitter-bsl (MIT), BSL LS/mdclasses deferred» в тело ADR; сейчас живёт только в Notion-странице синтеза | HLE-463 | Medium | [`07-linear-sync-drafts.md` §3.1](./07-linear-sync-drafts.md#31-тема-1-шлейф-добавить-bsl-ls-deferred--tree-sitter-для-v1-в-adr-00130011) → HLE-? |
-| 1.2 | ADR 0013, ADR 0022 (foundation) — либо новый ADR 0035 | Добавить **runtime-слой** (доступ к живой 1С). Текущая «роль форка = движок понимания кода» покрывает только статику. Развилка: расширить 0013/0022 или новый ADR | HLE-464 | **High** | [`07-linear-sync-drafts.md` §3.2](./07-linear-sync-drafts.md#32-тема-1-шлейф-добавить-runtime-слой-в-adr-00130022) → HLE-? |
-| 1.3 | ADR 0011, ADR 0024 | **XML-выгрузка конфигурации vs DumpConfigToFiles** — нужны оба источника (XML для структуры объектов, текстовая для модулей BSL). В ADR не отражено. | Флаг 2.6 #1 плана + v1.x HLE-297 | **High** | [`07-linear-sync-drafts.md` §3.3](./07-linear-sync-drafts.md#33-тема-1-шлейф-xml-выгрузка-vs-dumpconfigtofiles-в-adr-00110024) → HLE-? |
-| 1.4 | ADR 0014 (foundation) | Конкретизировать «что заимствуем у FSerg»: payload-схема Qdrant + RRF-слияние. Сейчас «берём идеи, не код» — слишком общо. | HLE-460 | Low | [`07-linear-sync-drafts.md` §3.4](./07-linear-sync-drafts.md#34-тема-1-шлейф-конкретизировать-состав-заимствуемого-у-fserg-в-adr-0014) → HLE-? |
-| 1.5 | ADR 0011 (foundation) | Уточнить состав заимствуемого из bsl-atlas: парсер BSL, vector_indexer.py, граф вызовов, каркас MCP, docker — что берём; хранилище/эмбеддер/реранк/контракт — что переделываем. | HLE-456 | Low | [`07-linear-sync-drafts.md` §3.5](./07-linear-sync-drafts.md#35-тема-1-шлейф-уточнить-состав-заимствуемого-из-bsl-atlas-в-adr-0011) → HLE-? |
+| 1.1 | ADR 0013, ADR 0011 (foundation) | Добавить решение «для v1 — tree-sitter-bsl (MIT), BSL LS/mdclasses deferred» в тело ADR; сейчас живёт только в Notion-странице синтеза | HLE-463 | Medium | [`07-linear-sync-drafts.md` §3.1](./07-linear-sync-drafts.md#31-тема-1-шлейф-добавить-bsl-ls-deferred--tree-sitter-для-v1-в-adr-00130011) → [HLE-513](https://linear.app/hleserg/issue/HLE-513) ✅ |
+| 1.2 | ADR 0013, ADR 0022 (foundation) — либо новый ADR 0035 | Добавить **runtime-слой** (доступ к живой 1С). Текущая «роль форка = движок понимания кода» покрывает только статику. Развилка: расширить 0013/0022 или новый ADR | HLE-464 | **High** | [`07-linear-sync-drafts.md` §3.2](./07-linear-sync-drafts.md#32-тема-1-шлейф-добавить-runtime-слой-в-adr-00130022) → [HLE-514](https://linear.app/hleserg/issue/HLE-514) ✅ |
+| 1.3 | ADR 0011, ADR 0024 | **XML-выгрузка конфигурации vs DumpConfigToFiles** — нужны оба источника (XML для структуры объектов, текстовая для модулей BSL). В ADR не отражено. | Флаг 2.6 #1 плана + v1.x HLE-297 | **High** | [`07-linear-sync-drafts.md` §3.3](./07-linear-sync-drafts.md#33-тема-1-шлейф-xml-выгрузка-vs-dumpconfigtofiles-в-adr-00110024) → [HLE-515](https://linear.app/hleserg/issue/HLE-515) ✅ |
+| 1.4 | ADR 0014 (foundation) | Конкретизировать «что заимствуем у FSerg»: payload-схема Qdrant + RRF-слияние. Сейчас «берём идеи, не код» — слишком общо. | HLE-460 | Low | [`07-linear-sync-drafts.md` §3.4](./07-linear-sync-drafts.md#34-тема-1-шлейф-конкретизировать-состав-заимствуемого-у-fserg-в-adr-0014) → [HLE-516](https://linear.app/hleserg/issue/HLE-516) ✅ |
+| 1.5 | ADR 0011 (foundation) | Уточнить состав заимствуемого из bsl-atlas: парсер BSL, vector_indexer.py, граф вызовов, каркас MCP, docker — что берём; хранилище/эмбеддер/реранк/контракт — что переделываем. | HLE-456 | Low | [`07-linear-sync-drafts.md` §3.5](./07-linear-sync-drafts.md#35-тема-1-шлейф-уточнить-состав-заимствуемого-из-bsl-atlas-в-adr-0011) → [HLE-517](https://linear.app/hleserg/issue/HLE-517) ✅ |
 
 **Комментарий к HLE-413** (закладка для применения в Linear): [`07-linear-sync-drafts.md` §1](./07-linear-sync-drafts.md#1-комментарий-к-hle-413-тема-1-done-с-шлейфом).
 
@@ -167,11 +167,11 @@
 
 | # | Title (draft) | Priority | Linear ID | Applied | Source draft |
 |---|---|---|---|---|---|
-| 1.1 | Тема 1, шлейф: добавить BSL LS deferred + tree-sitter для v1 в ADR 0013/0011 | Medium | HLE-? | — | [`07§3.1`](./07-linear-sync-drafts.md#31-тема-1-шлейф-добавить-bsl-ls-deferred--tree-sitter-для-v1-в-adr-00130011) |
-| 1.2 | Тема 1, шлейф: добавить runtime-слой в ADR 0013/0022 либо открыть новый ADR | **High** | HLE-? | — | [`07§3.2`](./07-linear-sync-drafts.md#32-тема-1-шлейф-добавить-runtime-слой-в-adr-00130022) |
-| 1.3 | Тема 1, шлейф: XML-выгрузка vs DumpConfigToFiles в ADR 0011/0024 | **High** | HLE-? | — | [`07§3.3`](./07-linear-sync-drafts.md#33-тема-1-шлейф-xml-выгрузка-vs-dumpconfigtofiles-в-adr-00110024) |
-| 1.4 | Тема 1, шлейф: конкретизировать состав заимствуемого у FSerg в ADR 0014 | Low | HLE-? | — | [`07§3.4`](./07-linear-sync-drafts.md#34-тема-1-шлейф-конкретизировать-состав-заимствуемого-у-fserg-в-adr-0014) |
-| 1.5 | Тема 1, шлейф: уточнить состав заимствуемого из bsl-atlas в ADR 0011 | Low | HLE-? | — | [`07§3.5`](./07-linear-sync-drafts.md#35-тема-1-шлейф-уточнить-состав-заимствуемого-из-bsl-atlas-в-adr-0011) |
+| 1.1 | Тема 1, шлейф: добавить BSL LS deferred + tree-sitter для v1 в ADR 0013/0011 | Medium | HLE-513 | 2026-05-28 | [`07§3.1`](./07-linear-sync-drafts.md#31-тема-1-шлейф-добавить-bsl-ls-deferred--tree-sitter-для-v1-в-adr-00130011) |
+| 1.2 | Тема 1, шлейф: добавить runtime-слой в ADR 0013/0022 либо открыть новый ADR | **High** | HLE-514 | 2026-05-28 | [`07§3.2`](./07-linear-sync-drafts.md#32-тема-1-шлейф-добавить-runtime-слой-в-adr-00130022) |
+| 1.3 | Тема 1, шлейф: XML-выгрузка vs DumpConfigToFiles в ADR 0011/0024 | **High** | HLE-515 | 2026-05-28 | [`07§3.3`](./07-linear-sync-drafts.md#33-тема-1-шлейф-xml-выгрузка-vs-dumpconfigtofiles-в-adr-00110024) |
+| 1.4 | Тема 1, шлейф: конкретизировать состав заимствуемого у FSerg в ADR 0014 | Low | HLE-516 | 2026-05-28 | [`07§3.4`](./07-linear-sync-drafts.md#34-тема-1-шлейф-конкретизировать-состав-заимствуемого-у-fserg-в-adr-0014) |
+| 1.5 | Тема 1, шлейф: уточнить состав заимствуемого из bsl-atlas в ADR 0011 | Low | HLE-517 | 2026-05-28 | [`07§3.5`](./07-linear-sync-drafts.md#35-тема-1-шлейф-уточнить-состав-заимствуемого-из-bsl-atlas-в-adr-0011) |
 
 ### 5.2 Child-issues по теме 2 (4 штуки, parent: HLE-414)
 
@@ -219,7 +219,17 @@
 
 ### Записи
 
-*(пусто на момент создания файла)*
+### 2026-05-28: Закрыт шлейф тема 1 (child-issues 1.1–1.5, §5.1)
+
+**Источник:** раздел 1 (Drift темы 1) + раздел 5.1 (child-issues по теме 1).
+**Закрыто:** все 5 child-issue созданы и выполнены:
+- 1.1 → HLE-513: ADR 0011/0013 — BSL LS отложен до v2, tree-sitter первичный (PR #17, merged).
+- 1.2 → HLE-514: ADR 0013 — явная граница «статика vs runtime»; runtime-слой в Neutral/Consequences (PR #16, merged).
+- 1.3 → HLE-515: ADR 0011/0024 — разграничение DumpConfigToFiles vs XML; ADR 0035 (proposed) создан (PR #14, merged).
+- 1.4 → HLE-516: ADR 0014 — конкретизация состава заимствуемого у FSerg; frontmatter обновлён (PR #20, merged).
+- 1.5 → HLE-517: ADR 0013 — конкретные имена файлов форка (parser/, vector_indexer.py, graph/, mcp_server.py, docker/) (PR #19, merged).
+
+**Ссылка:** PR #14, #16, #17, #19, #20; все HLE-513..517 → Done 2026-05-28.
 
 ---
 
