@@ -1,5 +1,16 @@
 # 6. Поведение в рантайме (Runtime View)
 
+> ⚠️ **Этот файл не предназначен для Structurizr viewer.** Mermaid `sequenceDiagram` блоки ниже Structurizr Local не рендерит — приходят как сырой код на нечитаемом dark-фоне.
+>
+> Открывай этот файл **в одном из мест с рендером Mermaid:**
+> - GitHub web: [`docs/architecture/06-runtime-view.md` на github.com](https://github.com/hleserg/azimut/blob/master/docs/architecture/06-runtime-view.md)
+> - IDE с Mermaid-плагином (VS Code + Markdown Preview Mermaid Support, JetBrains встроенно)
+> - Любой markdown-viewer с Mermaid (Obsidian, Typora и т.п.)
+>
+> Structurizr-viewer (`docker compose --profile diagrams up -d structurizr`) — только для C4 views из `workspace.dsl`. Runtime-сценарии живут здесь как Mermaid намеренно (ADR 0034: «Mermaid `sequenceDiagram` — только для §6, лучше читается в git diff»).
+
+---
+
 > arc42 §6 — ключевые сценарии взаимодействия компонентов.
 > Диаграммы: Mermaid `sequenceDiagram` (единственное место в документации, где допускается Mermaid, ADR 0034).
 
