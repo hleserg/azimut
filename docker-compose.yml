@@ -87,4 +87,5 @@ services:
     volumes:
       - ./compose/structurizr-nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./compose/structurizr-custom.css:/etc/nginx/structurizr-custom.css:ro
+      - ./compose/structurizr-custom.js:/etc/nginx/structurizr-custom.js:ro
     restart: unless-stopped
