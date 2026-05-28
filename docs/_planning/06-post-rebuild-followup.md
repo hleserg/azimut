@@ -61,10 +61,10 @@
 
 | # | ADR | Что | Priority | Child-issue (draft → Linear) |
 |---|---|---|---|---|
-| 2.2.1 | ADR 0025 (proposed) | Алгоритм резолва одноимённых процедур (открытая инженерная задача, никто не решил) | **High** (блокирует закрытие темы 2) | [`07-linear-sync-drafts.md` §4.1](./07-linear-sync-drafts.md#41-тема-2-алгоритм-резолва-одноимённых-процедур-adr-0025) → HLE-? |
-| 2.2.2 | ADR 0026 (accepted, не валидирован) | Боевая проверка graph→metadata→grep на реальной ERP | **High** (валидация свежепринятого) | [`07-linear-sync-drafts.md` §4.2](./07-linear-sync-drafts.md#42-тема-2-боевая-проверка-graphmetadatagrep-на-реальной-erp-adr-0026) → HLE-? |
-| 2.2.3 | ADR 0027 (принцип accepted, без списка) | Инвентарь техник из feenlace для портирования в Python | Medium | [`07-linear-sync-drafts.md` §4.3](./07-linear-sync-drafts.md#43-тема-2-список-техник-из-feenlace-для-портирования-в-python-adr-0027) → HLE-? |
-| 2.2.4 | ADR 0015 (открытый риск) | Дымовой прогон bsl-atlas на ChromaDB перед миграцией Qdrant | Medium (валидирует фундаментальное решение темы 1) | [`07-linear-sync-drafts.md` §4.4](./07-linear-sync-drafts.md#44-тема-2-дымовой-прогон-bsl-atlas-на-chromadb-перед-миграцией-qdrant-adr-0015) → HLE-? |
+| 2.2.1 | ADR 0025 (proposed) | Алгоритм резолва одноимённых процедур (открытая инженерная задача, никто не решил) | **High** (блокирует закрытие темы 2) | [`07-linear-sync-drafts.md` §4.1](./07-linear-sync-drafts.md#41-тема-2-алгоритм-резолва-одноимённых-процедур-adr-0025) → [HLE-522](https://linear.app/hleserg/issue/HLE-522) ✅ |
+| 2.2.2 | ADR 0026 (accepted, не валидирован) | Боевая проверка graph→metadata→grep на реальной ERP | **High** (валидация свежепринятого) | [`07-linear-sync-drafts.md` §4.2](./07-linear-sync-drafts.md#42-тема-2-боевая-проверка-graphmetadatagrep-на-реальной-erp-adr-0026) → [HLE-523](https://linear.app/hleserg/issue/HLE-523) ✅ |
+| 2.2.3 | ADR 0027 (принцип accepted, без списка) | Инвентарь техник из feenlace для портирования в Python | Medium | [`07-linear-sync-drafts.md` §4.3](./07-linear-sync-drafts.md#43-тема-2-список-техник-из-feenlace-для-портирования-в-python-adr-0027) → [HLE-524](https://linear.app/hleserg/issue/HLE-524) ✅ |
+| 2.2.4 | ADR 0015 (открытый риск) | Дымовой прогон bsl-atlas на ChromaDB перед миграцией Qdrant | Medium (валидирует фундаментальное решение темы 1) | [`07-linear-sync-drafts.md` §4.4](./07-linear-sync-drafts.md#44-тема-2-дымовой-прогон-bsl-atlas-на-chromadb-перед-миграцией-qdrant-adr-0015) → [HLE-525](https://linear.app/hleserg/issue/HLE-525) ✅ |
 
 **Комментарий к HLE-414** + **переписанный description**: [`07-linear-sync-drafts.md` §2.2](./07-linear-sync-drafts.md#22-комментарий-к-hle-414) и [§5.0](./07-linear-sync-drafts.md#50-hle-414-тема-2--обработка-кода--переписанный-description).
 
@@ -177,22 +177,22 @@
 
 | # | Title (draft) | Priority | Linear ID | Applied | Source draft |
 |---|---|---|---|---|---|
-| 2.1 | Тема 2: алгоритм резолва одноимённых процедур (ADR 0025) | **High** | HLE-? | — | [`07§4.1`](./07-linear-sync-drafts.md#41-тема-2-алгоритм-резолва-одноимённых-процедур-adr-0025) |
-| 2.2 | Тема 2: боевая проверка graph→metadata→grep на реальной ERP (ADR 0026) | **High** | HLE-? | — | [`07§4.2`](./07-linear-sync-drafts.md#42-тема-2-боевая-проверка-graphmetadatagrep-на-реальной-erp-adr-0026) |
-| 2.3 | Тема 2: инвентарь техник feenlace для портирования в Python (ADR 0027) | Medium | HLE-? | — | [`07§4.3`](./07-linear-sync-drafts.md#43-тема-2-список-техник-из-feenlace-для-портирования-в-python-adr-0027) |
-| 2.4 | Тема 2: дымовой прогон bsl-atlas на ChromaDB (ADR 0015) | Medium | HLE-? | — | [`07§4.4`](./07-linear-sync-drafts.md#44-тема-2-дымовой-прогон-bsl-atlas-на-chromadb-перед-миграцией-qdrant-adr-0015) |
+| 2.1 | Тема 2: алгоритм резолва одноимённых процедур (ADR 0025) | **High** | HLE-522 | 2026-05-28 | [`07§4.1`](./07-linear-sync-drafts.md#41-тема-2-алгоритм-резолва-одноимённых-процедур-adr-0025) |
+| 2.2 | Тема 2: боевая проверка graph→metadata→grep на реальной ERP (ADR 0026) | **High** | HLE-523 | 2026-05-28 | [`07§4.2`](./07-linear-sync-drafts.md#42-тема-2-боевая-проверка-graphmetadatagrep-на-реальной-erp-adr-0026) |
+| 2.3 | Тема 2: инвентарь техник feenlace для портирования в Python (ADR 0027) | Medium | HLE-524 | 2026-05-28 | [`07§4.3`](./07-linear-sync-drafts.md#43-тема-2-список-техник-из-feenlace-для-портирования-в-python-adr-0027) |
+| 2.4 | Тема 2: дымовой прогон bsl-atlas на ChromaDB (ADR 0015) | Medium | HLE-525 | 2026-05-28 | [`07§4.4`](./07-linear-sync-drafts.md#44-тема-2-дымовой-прогон-bsl-atlas-на-chromadb-перед-миграцией-qdrant-adr-0015) |
 
 ### 5.3 Комментарии и переписанные description
 
 | Issue | Операция | Applied | Source draft |
 |---|---|---|---|
-| HLE-413 | Комментарий «Done с шлейфом» (со списком child-issues 1.1–1.5) | — | [`07§1`](./07-linear-sync-drafts.md#1-комментарий-к-hle-413-тема-1-done-с-шлейфом) |
-| HLE-414 | Комментарий «diff формулировки» + переписанный description | — | [`07§2.2`](./07-linear-sync-drafts.md#22-комментарий-к-hle-414) + [`07§5.0`](./07-linear-sync-drafts.md#50-hle-414-тема-2--обработка-кода--переписанный-description) |
-| HLE-415 | Переписанный description (тема 3) | — | [`07§5.1`](./07-linear-sync-drafts.md#51-hle-415-тема-3--поисковый-стек--переписанный-description) |
-| HLE-416 | Переписанный description (тема 4) | — | [`07§5.2`](./07-linear-sync-drafts.md#52-hle-416-тема-4--приём-документации--переписанный-description) |
-| HLE-417 | Переписанный description (тема 5) | — | [`07§5.3`](./07-linear-sync-drafts.md#53-hle-417-тема-5--анти-галлюцинации--переписанный-description) |
-| HLE-418 | Переписанный description (тема 6) | — | [`07§5.4`](./07-linear-sync-drafts.md#54-hle-418-тема-6--eval-и-метрики--переписанный-description) |
-| HLE-419 | Переписанный description (тема 7) | — | [`07§5.5`](./07-linear-sync-drafts.md#55-hle-419-тема-7--online--multi-tenancy--переписанный-description) |
+| HLE-413 | Комментарий «Done с шлейфом» (со списком child-issues 1.1–1.5) | 2026-05-28 | [`07§1`](./07-linear-sync-drafts.md#1-комментарий-к-hle-413-тема-1-done-с-шлейфом) |
+| HLE-414 | Комментарий «diff формулировки» + переписанный description | 2026-05-28 | [`07§2.2`](./07-linear-sync-drafts.md#22-комментарий-к-hle-414) + [`07§5.0`](./07-linear-sync-drafts.md#50-hle-414-тема-2--обработка-кода--переписанный-description) |
+| HLE-415 | Переписанный description (тема 3) | 2026-05-28 | [`07§5.1`](./07-linear-sync-drafts.md#51-hle-415-тема-3--поисковый-стек--переписанный-description) |
+| HLE-416 | Переписанный description (тема 4) | 2026-05-28 | [`07§5.2`](./07-linear-sync-drafts.md#52-hle-416-тема-4--приём-документации--переписанный-description) |
+| HLE-417 | Переписанный description (тема 5) | 2026-05-28 | [`07§5.3`](./07-linear-sync-drafts.md#53-hle-417-тема-5--анти-галлюцинации--переписанный-description) |
+| HLE-418 | Переписанный description (тема 6) | 2026-05-28 | [`07§5.4`](./07-linear-sync-drafts.md#54-hle-418-тема-6--eval-и-метрики--переписанный-description) |
+| HLE-419 | Переписанный description (тема 7) | 2026-05-28 | [`07§5.5`](./07-linear-sync-drafts.md#55-hle-419-тема-7--online--multi-tenancy--переписанный-description) |
 
 ### 5.4 Технический момент: подключение Linear MCP
 
