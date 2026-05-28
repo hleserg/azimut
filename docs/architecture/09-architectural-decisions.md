@@ -37,4 +37,11 @@
 | 0025 | code-processing | proposed | [Алгоритм резолва одноимённых процедур — открытая инженерная задача](adr/code-processing/0025-resolve-same-named-procedures.md) |
 | 0026 | code-processing | accepted | [Роутинг поиска по коду — fallback-цепочка graph → metadata → grep](adr/code-processing/0026-code-search-routing.md) |
 | 0027 | code-processing | accepted | [Портировать техники `mcp-1c` (feenlace) в Python — не переписывать на Go](adr/code-processing/0027-port-feenlace-techniques-to-python.md) |
+| 0028 | open | proposed | [Конфликт AGPL × Sentry for Open Source — ждём ответ Sentry; если откажут — план Б](adr/open/0028-sentry-vs-agpl.md) |
+| 0029 | open | proposed | [Мульти-аренда: Qdrant embedded vs server — развилка по режиму деплоя](adr/open/0029-multitenancy-qdrant-embedded-vs-server.md) |
+| 0030 | open | proposed | [Канарейка-в-потоке vs фоновый сторож для VDS — как разбудить «протухшее в покое»](adr/open/0030-multitenancy-canary-vs-watchdog.md) |
+| 0031 | open | proposed | [Push к пользователю через веб-морду — замена отсутствующего push в MCP](adr/open/0031-multitenancy-push-via-web-frontend.md) |
+| 0032 | open | proposed | [Изоляция файлового хранилища по тенантам — `/data/{tenant_id}/...` + JWT-инъекция](adr/open/0032-multitenancy-tenant-storage-isolation.md) |
+| 0033 | open | proposed | [Механика детектирования противоречивости — как технически детектировать, порог, поведение при множестве конфликтов](adr/open/0033-r1-contradiction-detection-mechanics.md) |
+| 0034 | tooling | accepted | [Architecture-as-Code через Structurizr DSL — единый источник статичных C4-диаграмм](adr/tooling/0034-architecture-as-code-structurizr-dsl.md) |
 <!-- ADR-INDEX:END -->
