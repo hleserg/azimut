@@ -1,5 +1,5 @@
 ---
-status: "accepted"
+status: accepted
 date: 2026-05-25
 decision-makers: "[Сергей]"
 linear-task: "HLE-418"
