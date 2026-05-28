@@ -30,6 +30,8 @@ KNOWN_MAPPINGS: dict[str, str] = {
     # Structurizr viewer — dev-инструмент для просмотра C4-диаграмм
     # (compose-профиль "diagrams"), не часть архитектуры системы.
     "structurizr": "dev tooling: viewer for workspace.dsl, ADR 0034",
+    # nginx-sidecar к structurizr — обход Host-header restriction local-mode (HLE-545).
+    "structurizr-proxy": "dev tooling: nginx Host-rewrite sidecar, HLE-545",
 }
 
 

@@ -28,7 +28,7 @@
 
 Просмотр локально (compose-профиль `diagrams`):
 ```bash
-docker compose --profile diagrams up -d structurizr
+docker compose --profile diagrams up -d structurizr-proxy
 ```
 Открыть `http://localhost:8080`. Остановить: `docker compose --profile diagrams down`.
 

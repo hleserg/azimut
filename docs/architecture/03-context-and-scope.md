@@ -4,7 +4,7 @@
 >
 > Локальный просмотр C4-диаграммы (compose-профиль `diagrams`):
 > ```bash
-> docker compose --profile diagrams up -d structurizr
+> docker compose --profile diagrams up -d structurizr-proxy
 > ```
 > Открыть `http://localhost:8080` → view `systemContext`. Остановить: `docker compose --profile diagrams down`.
 

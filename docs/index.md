@@ -9,7 +9,7 @@
 | Что ищешь | Куда идти |
 |---|---|
 | Архитектура (arc42, 12 глав + глава 13) | [`docs/architecture/`](architecture/README.md) |
-| C4-диаграммы (Context / Container / Component) | [`workspace.dsl`](../workspace.dsl) → `docker compose --profile diagrams up -d structurizr` |
+| C4-диаграммы (Context / Container / Component) | [`workspace.dsl`](../workspace.dsl) → `docker compose --profile diagrams up -d structurizr-proxy` |
 | Архитектурные решения (ADR, MADR) | [`docs/architecture/adr/`](architecture/adr/) |
 | Эталонные кейсы | [`docs/cases/`](cases/) |
 | Промпты для ИИ-агентов и ревьюера | [`.github/prompts/`](../.github/prompts/) |
@@ -19,7 +19,7 @@
 ## Быстрый старт Structurizr (on-prem, local-режим)
 
 ```bash
-docker compose --profile diagrams up -d structurizr
+docker compose --profile diagrams up -d structurizr-proxy
 ```
 
 Открыть `http://localhost:8080`. Остановить: `docker compose --profile diagrams down`.

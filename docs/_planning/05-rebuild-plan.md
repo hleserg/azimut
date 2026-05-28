@@ -34,7 +34,7 @@ azimuth/                                            # корень репо
 │                                                   # Properties { adr-link / open-issues } на элементах
 │                                                   # дают трассировку: компонент ↔ ADR ↔ research.
 │                                                   # Локальный просмотр:
-│                                                   # `docker compose --profile diagrams up -d structurizr`
+│                                                   # `docker compose --profile diagrams up -d structurizr-proxy`
 ├── .github/
 │   └── prompts/                                    # ⭐ Промпты для ИИ-агентов (PR-ревьюер + ресерч)
 │       ├── pr-architecture-lint.md                 # промпт 1: архитектурный линтер
@@ -206,7 +206,7 @@ azimuth/                                            # корень репо
 **Локальная сборка/просмотр Structurizr.** Для рендера view'ев из `workspace.dsl` в браузере:
 
 ```
-docker compose --profile diagrams up -d structurizr
+docker compose --profile diagrams up -d structurizr-proxy
 ```
 
 Открыть `http://localhost:8080`. Это инструмент разработчика. Автоматический рендер для PR/main — два варианта в разделе 4.1 (CI/CD).
@@ -694,7 +694,7 @@ docker compose --profile diagrams up -d structurizr
   - **Decision:** статичные C4 (System Context, Container, Component) — в одном файле `workspace.dsl` (Structurizr DSL). Каждый компонент DSL имеет `properties { "adr-link" "..." "open-issues" "..." }`, что даёт двустороннюю трассировку компонент ↔ ADR ↔ research.
   - **Consequences:** + единый источник; + явная типизация (Person/SoftwareSystem/Container/Component); + auto-layout; + Component-view только под нужные контейнеры; + локальный просмотр одним docker run; − зависимость от Java-рантайма у того, кто хочет смотреть локально (Structurizr (on-prem, local-режим) в Docker — снимает); − чуть выше порог входа для людей, которые видят DSL впервые (компенсируется путеводителем `docs/architecture/README.md`).
   - **Mermaid НЕ выбрасываем:** Runtime View (arc42 §6) — sequenceDiagram в `architecture/06-runtime-view.md` (читается в git diff лучше DSL Dynamic-views; Structurizr Dynamic-views экспериментальный). Одиночные flowchart-ы вне модели — тоже Mermaid.
-  - **Confirmation:** workspace.dsl лежит в корне; `docker compose --profile diagrams up -d structurizr` поднимается без ошибок; views `systemContext`, `container`, `component` рендерятся; `properties { "adr-link" ... }` присутствует у ключевых элементов; CI-линт DSL (опционально) — отдельная задача roadmap.
+  - **Confirmation:** workspace.dsl лежит в корне; `docker compose --profile diagrams up -d structurizr-proxy` поднимается без ошибок; views `systemContext`, `container`, `component` рендерятся; `properties { "adr-link" ... }` присутствует у ключевых элементов; CI-линт DSL (опционально) — отдельная задача roadmap.
 
 ---
 
@@ -714,7 +714,7 @@ docker compose --profile diagrams up -d structurizr
 
 **Вариант Б — Корпоративный портал (Structurizr (on-prem, local-режим) в Docker-демоне).** Самый красивый. Внутренний сервер (или машина Сергея) держит viewer в `-d` режиме; webhook из GitHub дёргает `git pull` в смонтированной папке при пуше в `main`. Результат: постоянный внутренний URL (например, `http://arch.azimuth.local`), где интерактивные C4-views, клики «провалиться внутрь», ссылки на ADR через `properties`, навигация по arc42-главам как у portal/encyclopedia.
 
-- Команда (демон): `docker compose --profile diagrams up -d structurizr` (см. `docker-compose.yml`)
+- Команда (демон): `docker compose --profile diagrams up -d structurizr-proxy` (см. `docker-compose.yml`)
 - Webhook GitHub → cron `git -C /opt/azimuth pull` (каждые N минут) или прямой webhook.
 - Этот вариант актуален, когда дойдём до темы 7 (HLE-419) и появится VDS.
 
@@ -1157,7 +1157,7 @@ Cross-platform (Bash + PowerShell — Сергей на Windows, агенты м
 
 Артефакты: пустые папки (`docs/architecture/`, `architecture/adr/{5 подпапок}/`, `architecture/research/` с `.gitkeep`, `docs/cases/`, `.github/prompts/`); `docs/index.md` (мини-README); `docs/architecture/README.md` (путеводитель); 12 arc42-заглушек (заголовок + одна фраза «здесь пока нечего сказать, см. ADR <ссылка>»); `13-lead-operating-manual.md` по шаблону раздела 4.5; `adr/template.md`; 4 промпта в `.github/prompts/`; минимальный `workspace.dsl`.
 
-**DoD:** PR создан; `docker compose --profile diagrams up -d structurizr` поднимает пустую модель без ошибок.
+**DoD:** PR создан; `docker compose --profile diagrams up -d structurizr-proxy` поднимает пустую модель без ошибок.
 
 **Зависимости:** —
 

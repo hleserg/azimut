@@ -55,7 +55,7 @@ workspace.dsl                       # C4-модель (Context / Container / Com
 Просмотр C4-диаграмм локально (compose-профиль `diagrams`, см. `docker-compose.yml`):
 
 ```bash
-docker compose --profile diagrams up -d structurizr
+docker compose --profile diagrams up -d structurizr-proxy
 # → http://localhost:8080
 docker compose --profile diagrams down
 ```

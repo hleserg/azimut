@@ -21,7 +21,7 @@ See [AGENTS.md](AGENTS.md) for all project rules (ADR process, DoD, commit stand
 ./scripts/update-adr-index.sh
 
 # Поднять локальный viewer C4-диаграмм (compose-профиль "diagrams")
-docker compose --profile diagrams up -d structurizr     # → http://localhost:8080
+docker compose --profile diagrams up -d structurizr-proxy     # → http://localhost:8080
 docker compose --profile diagrams down                  # остановить
 ```
 
