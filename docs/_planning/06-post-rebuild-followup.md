@@ -97,7 +97,13 @@
 
 ### Записи
 
-*(пусто на момент создания файла; наполняется при работе над фазами 1–5)*
+### 2026-05-28: Удалён унаследованный workflow `docker-publish.yml`
+
+**Контекст:** `.github/workflows/docker-publish.yml` унаследован от форка `Arman-Kudaibergenov/bsl-atlas`; пытается пушить образ в DockerHub через `secrets.DOCKERHUB_USERNAME` / `secrets.DOCKERHUB_TOKEN`, которых в `hleserg/azimut` нет.
+**Что не так:** Workflow падал на каждом пуше в `master` и давал красный X в истории CI.
+**Влияние:** Косметика CI; на ADR и архитектуру не влияет.
+**Действие:** Файл удалён (HLE-535). Docker-публикационный workflow будет заведён заново в теме 7 (HLE-419) с именем образа `hleserg/azimut` и собственными секретами.
+**Closed:** 2026-05-28 — HLE-535
 
 ---
 
