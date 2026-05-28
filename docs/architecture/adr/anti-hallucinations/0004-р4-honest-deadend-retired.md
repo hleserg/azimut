@@ -1,5 +1,5 @@
 ---
-status: "superseded by 0007"
+status: superseded by 0007
 date: 2026-05-25
 decision-makers: "[Сергей]"
 linear-task: "HLE-417"

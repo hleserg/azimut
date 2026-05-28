@@ -1,5 +1,5 @@
 ---
-status: "proposed"
+status: proposed
 date: 2026-05-28
 decision-makers: "[Сергей]"
 linear-task: "HLE-515"
