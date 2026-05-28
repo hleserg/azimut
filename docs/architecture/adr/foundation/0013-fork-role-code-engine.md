@@ -36,10 +36,11 @@ Chosen option: **«Форк как движок»**, because ценность ф
 **Три категории компонентов:**
 
 **Оставляем (ради этого и форк):**
-- Парсер текста BSL: **tree-sitter** (`alkoleft/tree-sitter-bsl`, MIT, компилируется в `.so` при Docker-сборке) — первичный; regex-fallback — если `.so` отсутствует. BSL Language Server (Java, BSL LS) рассматривался, **отложен до v2**: сложность Java-интеграции и отсутствие Python-биндингов.
-- Детерминированный граф вызовов (SQLite: таблица `calls(caller_id, callee_name)`).
-- Каркас MCP-сервера (точка подключения к Claude / Cherry Studio).
-- Docker-упаковку.
+- `parser/` — парсер текста BSL: **tree-sitter** (`alkoleft/tree-sitter-bsl`, MIT, компилируется в `.so` при Docker-сборке) — первичный; regex-fallback — если `.so` отсутствует. BSL Language Server (Java, BSL LS) рассматривался, **отложен до v2**: сложность Java-интеграции и отсутствие Python-биндингов.
+- `vector_indexer.py` — индексатор: структурный чанкинг по функциям, SQLite, ChromaDB (ChromaDB заменяем → ADR 0015; чанкинг заменяем → ADR 0024).
+- `graph/` — детерминированный граф вызовов (SQLite: таблица `calls(caller_id, callee_name)`).
+- `mcp_server.py` — каркас MCP-сервера (точка подключения к Claude / Cherry Studio).
+- `docker/` — Docker-упаковка.
 - Поддержку русских идентификаторов и локального инференса через Ollama.
 
 **Меняем/выкидываем:**
@@ -91,6 +92,7 @@ Chosen option: **«Форк как движок»**, because ценность ф
 ## More Information
 
 * `_source/notion/design-system-v2--*.md` реш. 1.2 и реш. 1.9 — полная таблица «берём/меняем/пишем».
+* `_source/notion/hle-456-four-implementations--*.md` — анализ 4 реализаций (bsl-atlas, 1c-mcp-metacode, bsl-graph, mcp-1c); подтверждение конкретных имён файлов bsl-atlas.
 * ADR 0022 — детальная граница форк vs наш код (три зоны: форк / библиотеки / наш код).
 * ADR 0024 — детерминированный чанкинг поверх Азимута (заменяет символьный fallback).
 * `workspace.dsl` Container «Азимут-ядро» — архитектурная модель компонентов.
