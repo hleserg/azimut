@@ -1,5 +1,5 @@
 workspace "Азимут" "ИИ-ассистент по коду 1С на базе форка bsl-atlas (ADR 0034)" {
-    # Запуск: docker run --rm -p 8080:8080 -v .:/usr/local/structurizr --user $(id -u):$(id -g) structurizr/structurizr
+    # Запуск: docker compose --profile diagrams up -d structurizr   (см. docker-compose.yml, HLE-537)
 
     !identifiers hierarchical
 

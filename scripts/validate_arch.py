@@ -26,7 +26,11 @@ JSON_OUTPUT = REPO_ROOT / "docs" / "diagrams" / "workspace.json"
 # Services/dirs that are intentionally absent from DSL by exact name but
 # documented under a different name.  Format: {code_name: "reason / DSL ref"}.
 # Expand this list when adding new whitelisted mappings.
-KNOWN_MAPPINGS: dict[str, str] = {}
+KNOWN_MAPPINGS: dict[str, str] = {
+    # Structurizr viewer — dev-инструмент для просмотра C4-диаграмм
+    # (compose-профиль "diagrams"), не часть архитектуры системы.
+    "structurizr": "dev tooling: viewer for workspace.dsl, ADR 0034",
+}
 
 
 def _docker_export_json() -> None:

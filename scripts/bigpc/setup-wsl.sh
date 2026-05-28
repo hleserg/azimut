@@ -11,7 +11,8 @@ REPO_URL="${REPO_URL:-git@github.com:hleserg/azimut.git}"
 REPO_DIR="${REPO_DIR:-$HOME/azimut}"
 BRANCH="${BRANCH:-docs/source-extraction}"
 CONTAINER_NAME="azimuth-arch"
-IMAGE="structurizr/structurizr"
+COMPOSE_PROFILE="diagrams"
+COMPOSE_SERVICE="structurizr"
 
 log() { printf '\n\033[1;36m==>\033[0m %s\n' "$*"; }
 warn() { printf '\n\033[1;33m[!]\033[0m %s\n' "$*"; }
@@ -65,24 +66,13 @@ else
 fi
 log "Repo on $(git rev-parse --abbrev-ref HEAD) at $(git rev-parse --short HEAD)"
 
-# 4. Pull image
-log "Pulling $IMAGE"
-docker pull "$IMAGE"
+# 4. Pull image (через compose)
+log "Pulling Structurizr image via compose"
+docker compose --profile "$COMPOSE_PROFILE" pull "$COMPOSE_SERVICE"
 
-# 5. Replace container (idempotent)
-if docker ps -a --format '{{.Names}}' | grep -qx "$CONTAINER_NAME"; then
-  log "Removing existing container '$CONTAINER_NAME'"
-  docker stop "$CONTAINER_NAME" >/dev/null 2>&1 || true
-  docker rm   "$CONTAINER_NAME" >/dev/null 2>&1 || true
-fi
-
-log "Starting container '$CONTAINER_NAME' (port 8080, volume $REPO_DIR)"
-docker run -d \
-  --restart=unless-stopped \
-  --name "$CONTAINER_NAME" \
-  -p 8080:8080 \
-  -v "$REPO_DIR:/usr/local/structurizr" \
-  "$IMAGE"
+# 5. Поднять viewer (idempotent — compose сам пересоздаст контейнер, если изменилась конфигурация)
+log "Bringing up '$CONTAINER_NAME' via compose-profile '$COMPOSE_PROFILE'"
+docker compose --profile "$COMPOSE_PROFILE" up -d "$COMPOSE_SERVICE"
 
 # 6. Verify
 sleep 3
@@ -97,7 +87,7 @@ azimuth-arch is RUNNING.
 - From LAN (after setup-windows.ps1 on bigPC Windows):
                                 http://bigPC:8080
 - Logs:                         docker logs -f azimuth-arch
-- Stop:                         docker stop azimuth-arch
+- Stop:                         docker compose --profile diagrams down
 - Update DSL on bigPC:          cd ~/azimut && git pull
   (Structurizr watches volume — picks up changes automatically.)
 ============================================================

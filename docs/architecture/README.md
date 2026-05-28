@@ -26,11 +26,11 @@
 
 Единый источник статичных C4-диаграмм (System Context, Container, Component) — файл **[`workspace.dsl`](../../workspace.dsl)** в корне репо (ADR 0034).
 
-Просмотр локально:
+Просмотр локально (compose-профиль `diagrams`):
 ```bash
-docker run --rm -p 8080:8080 -v .:/usr/local/structurizr --user $(id -u):$(id -g) structurizr/structurizr
+docker compose --profile diagrams up -d structurizr
 ```
-Открыть `http://localhost:8080`.
+Открыть `http://localhost:8080`. Остановить: `docker compose --profile diagrams down`.
 
 Mermaid остаётся для §6 Runtime View (sequenceDiagram читается лучше в git diff).
 
