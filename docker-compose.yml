@@ -86,4 +86,5 @@ services:
       - "8080:8080"
     volumes:
       - ./compose/structurizr-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./compose/structurizr-custom.css:/etc/nginx/structurizr-custom.css:ro
     restart: unless-stopped

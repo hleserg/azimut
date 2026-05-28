@@ -1,0 +1,51 @@
+/* compose/structurizr-custom.css — оверрайды CSS Structurizr Local (HLE-557).
+ * Инжектируется nginx-sidecar'ом перед </head> на всех HTML-страницах.
+ *
+ * Цель: сделать читаемыми code-блоки и менее агрессивным inline-код
+ * в Documentation tab при dark-теме.
+ */
+
+/* ── Code blocks (```mermaid sequenceDiagram, ```bash и т.д.) ─────────────── */
+pre,
+pre code {
+    background-color: #1e1e1e !important;
+    color: #e4e6eb !important;
+    border-radius: 6px;
+    border: 1px solid #2d2d2d !important;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+pre {
+    padding: 1em !important;
+    margin: 1em 0 !important;
+}
+
+pre code {
+    border: none !important;
+    padding: 0 !important;
+    font-size: 0.9em;
+}
+
+/* ── Inline code (`workspace.dsl`, `sequenceDiagram` плашки) ──────────────── */
+code {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #d8dce4 !important;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.92em;
+    font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, monospace;
+}
+
+/* Light-theme — оставляем штатный Bootstrap, но всё равно мягче. */
+body:not(.dark) code {
+    background-color: rgba(0, 0, 0, 0.06) !important;
+    color: #24292e !important;
+}
+
+body:not(.dark) pre,
+body:not(.dark) pre code {
+    background-color: #f6f8fa !important;
+    color: #24292e !important;
+    border: 1px solid #d0d7de !important;
+}
