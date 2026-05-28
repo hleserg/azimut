@@ -28,16 +28,35 @@ pre code {
 }
 
 /* ── Inline code (`workspace.dsl`, `sequenceDiagram` плашки) ──────────────── */
-code {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    color: #d8dce4 !important;
+/* Цель: dark-friendly — тёмный фон, но текст ДОСТАТОЧНО светлый чтобы
+ * читался везде (включая table cells, где Structurizr CSS делает inline-code
+ * особенно dim).
+ *
+ * Высокая специфичность `html body ... code` нужна, чтобы перебить
+ * `body.dark .documentation code` штатной темы.
+ */
+/* НЕ white-overlay (это даёт "белую плашку" в dark-теме — режет),
+ * а ТЁМНЫЙ фон чуть светлее основного + светлый текст для контраста. */
+html body code,
+html body table code,
+html body td code,
+html body th code,
+html body p code,
+html body li code {
+    background-color: #2a2d33 !important;   /* dark, чуть светлее основного фона */
+    color: #d8d8d8 !important;              /* светлый — читается */
     padding: 2px 6px;
     border-radius: 3px;
     font-size: 0.92em;
     font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, monospace;
 }
 
-/* Light-theme — оставляем штатный Bootstrap, но всё равно мягче. */
+/* Внутри ссылок — чуть ярче для отличия от обычного inline-кода. */
+html body a code {
+    color: #9ec5ff !important;              /* link-blue, привычный для ссылки */
+}
+
+/* Light-theme — мягкий github-style. */
 body:not(.dark) code {
     background-color: rgba(0, 0, 0, 0.06) !important;
     color: #24292e !important;
