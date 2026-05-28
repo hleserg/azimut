@@ -58,7 +58,7 @@ workspace.dsl                       # C4-модель (Context / Container / Com
 docker run --rm -p 8080:8080 \
   -v .:/usr/local/structurizr \
   --user $(id -u):$(id -g) \
-  structurizr/structurizr local
+  structurizr/structurizr
 # → http://localhost:8080
 ```
 
