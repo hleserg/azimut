@@ -1,0 +1,29 @@
+graph LR
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["System Context View: Азимут"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    1["<div style='font-weight: bold'>Сергей</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Лид-разработчик; основной<br />пользователь системы на<br />ежедневной основе.</div>"]
+    style 1 fill:#08427b,stroke:#052e56,color:#ffffff
+    2["<div style='font-weight: bold'>Мама</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Бухгалтер / 1С-оператор;<br />конечный<br />пользователь-нетехник.</div>"]
+    style 2 fill:#08427b,stroke:#052e56,color:#ffffff
+    3["<div style='font-weight: bold'>Платформа 1С</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Конфигурации ERP/Бухгалтерия;<br />источник BSL-кода и<br />метаданных через<br />DumpConfigToFiles.</div>"]
+    style 3 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    4["<div style='font-weight: bold'>DeepSeek</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Облачная разговорная модель<br />(дефолт): DeepSeek V4 Flash<br />(обычный код) / Pro (тяжёлый<br />код); ADR 0021.</div>"]
+    style 4 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    5["<div style='font-weight: bold'>Claude (Anthropic)</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Облачная LLM для LLM-судьи и<br />Сергея-премиум; Anthropic<br />API; ADR 0021.</div>"]
+    style 5 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    6["<div style='font-weight: bold'>ИТС / Портал платформы</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Справочные материалы 1С;<br />третий уровень иерархии<br />источников (Р6, ADR 0006).</div>"]
+    style 6 fill:#999999,stroke:#6b6b6b,color:#ffffff
+    7["<div style='font-weight: bold'>Азимут</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>MCP-сервер + Азимут-ядро:<br />понимание кода 1С, RAG,<br />анти-галлюцинации. Форк<br />bsl-atlas под AGPL-3.0 (ADR<br />0011).</div>"]
+    style 7 fill:#1168bd,stroke:#0b4884,color:#ffffff
+
+    1-. "<div>использует everyday</div><div style='font-size: 70%'>[Desktop GUI]</div>" .->7
+    2-. "<div>задаёт вопросы по 1С</div><div style='font-size: 70%'>[Desktop GUI]</div>" .->7
+    7-. "<div>ищет справочные материалы<br />(Р6, ADR 0006) via</div><div style='font-size: 70%'>[HTTPS]</div>" .->6
+    7-. "<div>арбитрирует через LLM-судью<br />via</div><div style='font-size: 70%'>[HTTPS / Anthropic API]</div>" .->5
+    7-. "<div>генерирует текст via</div><div style='font-size: 70%'>[HTTPS / OpenAI-compatible API]</div>" .->4
+    3-. "<div>передаёт BSL-код и метаданные<br />via</div><div style='font-size: 70%'>[DumpConfigToFiles / File system]</div>" .->7
+
+  end

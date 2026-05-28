@@ -1,0 +1,43 @@
+graph LR
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Component View: Азимут - MCP-оркестратор"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    5["<div style='font-weight: bold'>Claude (Anthropic)</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Облачная LLM для LLM-судьи и<br />Сергея-премиум; Anthropic<br />API; ADR 0021.</div>"]
+    style 5 fill:#999999,stroke:#6b6b6b,color:#ffffff
+
+    subgraph 7 ["Азимут"]
+      style 7 fill:#ffffff,stroke:#0b4884,color:#0b4884
+
+      subgraph 13 ["MCP-оркестратор"]
+        style 13 fill:#ffffff,stroke:#2e6295,color:#2e6295
+
+        14["<div style='font-weight: bold'>Server-Controlled Retrieval</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Контроль ретривинга на<br />стороне сервера: планка<br />релевантности, триггер<br />добора, потолок окна<br />контекста (Р5, ADR 0005).</div>"]
+        style 14 fill:#85bbf0,stroke:#5d82a8,color:#000000
+        15["<div style='font-weight: bold'>Source Hierarchy</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Иерархия источников при<br />конфликте: код → справка →<br />ИТС. Применяет метрику<br />противоречивости (Р6, ADR<br />0006).</div>"]
+        style 15 fill:#85bbf0,stroke:#5d82a8,color:#000000
+        16["<div style='font-weight: bold'>LLM Judge</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python / Claude API]</div><div style='font-size: 80%; margin-top:10px'>LLM-судья со спан-привязкой:<br />арбитрирует faithfulness и<br />groundedness ответа через<br />Claude API (Р3, ADR 0003).</div>"]
+        style 16 fill:#85bbf0,stroke:#5d82a8,color:#000000
+        17["<div style='font-weight: bold'>Fallback Mode</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Фолбэк = смена режима<br />(дип-ресёрч с тем же<br />контрактом); заменил «честный<br />тупик» Р4. (Р7, ADR 0007).</div>"]
+        style 17 fill:#85bbf0,stroke:#5d82a8,color:#000000
+        18["<div style='font-weight: bold'>Contradiction Metric</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Метрика противоречивости<br />источников ПЕРЕД выдачей<br />ответа. Механика<br />детектирования открыта (Р1,<br />ADR 0001; см. ADR 0033).</div>"]
+        style 18 fill:#85bbf0,stroke:#5d82a8,color:#000000
+        19["<div style='font-weight: bold'>Route Dispatcher</div><div style='font-size: 70%; margin-top: 0px'>[Component: Python]</div><div style='font-size: 80%; margin-top:10px'>Диспетчер поиска по коду:<br />fallback-цепочка graph →<br />metadata → grep по образцу<br />comol/ai_rules_1c (ADR 0026).</div>"]
+        style 19 fill:#85bbf0,stroke:#5d82a8,color:#000000
+      end
+
+      20["<div style='font-weight: bold'>Азимут-ядро</div><div style='font-size: 70%; margin-top: 0px'>[Container: Python / bsl-atlas fork]</div><div style='font-size: 80%; margin-top:10px'>Форк bsl-atlas: парсер BSL,<br />граф вызовов, чанкер,<br />эмбеддер, реранкер. Роль<br />форка — только «движок<br />понимания кода» (ADR 0013).</div>"]
+      style 20 fill:#438dd5,stroke:#2e6295,color:#ffffff
+      26["<div style='font-weight: bold'>Adapter-слой LLM</div><div style='font-size: 70%; margin-top: 0px'>[Container: Python]</div><div style='font-size: 80%; margin-top:10px'>Абстракция над разговорной<br />облачной LLM; дефолт —<br />DeepSeek V4; запас —<br />Claude/Qwen/Yandex. Финал<br />валидируем eval-ом в теме 6<br />(ADR 0020, 0021).</div>"]
+      style 26 fill:#438dd5,stroke:#2e6295,color:#ffffff
+    end
+
+    14-. "<div>управляет ретривингом via</div><div style='font-size: 70%'>[in-process]</div>" .->19
+    19-. "<div>маршрутизирует поиск (graph →<br />metadata → grep) via</div><div style='font-size: 70%'>[Python API]</div>" .->20
+    15-. "<div>передаёт результаты на<br />проверку via</div><div style='font-size: 70%'>[in-process]</div>" .->18
+    16-. "<div>сигнализирует о необходимости<br />добора via</div><div style='font-size: 70%'>[in-process]</div>" .->14
+    16-. "<div>арбитрирует качество ответа<br />via</div><div style='font-size: 70%'>[HTTPS / Anthropic API]</div>" .->5
+    17-. "<div>инициирует дип-ресёрч via</div><div style='font-size: 70%'>[Python API]</div>" .->26
+
+  end
