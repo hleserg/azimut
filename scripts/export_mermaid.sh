@@ -28,6 +28,10 @@ for f in "$OUTPUT_DIR"/structurizr-*.mmd; do
     [ -f "$f" ] && echo "    $(basename "$f")"
 done
 
+# Enrich .mmd files with clickable ADR links
+echo "==> Enriching diagrams with ADR links..."
+python3 "$REPO_ROOT/scripts/enrich_mermaid.py"
+
 # Stage generated .mmd files so they are included in the current commit
 git -C "$REPO_ROOT" add "$OUTPUT_DIR"/structurizr-*.mmd 2>/dev/null || true
 
