@@ -1,6 +1,6 @@
 # Архитектурный state (auto-generated)
 > Сгенерировано 2026-05-28 скриптом `scripts/dump_arch_state.py` (HLE-543). **Не редактировать вручную** — перегенерируется из `workspace.dsl` + frontmatter ADR.
-> Stats: 10 systems, 4 containers, 16 components · 35 ADRs (22 accepted, 11 proposed, 0 superseded) · 2 people.
+> Stats: 10 systems, 4 containers, 16 components · 35 ADRs (21 accepted, 12 proposed, 0 superseded) · 2 people.
 
 ## Пользователи
 
@@ -272,11 +272,12 @@ MCP-сервер + Азимут-ядро: понимание кода 1С, RAG, 
   - ← **Groundedness Detector** [in-process] — триггерит повторный проход (уровень 1)
 
 <a id="component-fallback-mode"></a>
-#### Component: Fallback Mode
+#### Component: Fallback Mode ⚠️ **proposed**
 
 - **Технология**: `Python`
 - **Описание**: Фолбэк = смена режима (дип-ресёрч с тем же контрактом); заменил «честный тупик» Р4. (Р7, ADR 0007).
-- **ADR**: [`0007-р7-fallback-mode-switch.md`](../docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md) — Фолбэк = смена режима (дип-ресёрч в интернете с тем же контрактом) *(accepted)*
+- **Tags**: `Proposed`
+- **ADR**: [`0007-р7-fallback-mode-switch.md`](../docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md) — Фолбэк = смена режима (дип-ресёрч в интернете с тем же контрактом) *(proposed)*
 - **Open issues**: —
 - **Исходящие**:
   - → **Adapter-слой LLM** [Python API] — инициирует дип-ресёрч

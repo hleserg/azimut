@@ -747,10 +747,12 @@
               "kind": "component",
               "technology": "Python",
               "description": "Фолбэк = смена режима (дип-ресёрч с тем же контрактом); заменил «честный тупик» Р4. (Р7, ADR 0007).",
-              "tags": [],
+              "tags": [
+                "Proposed"
+              ],
               "adr_link": {
                 "path": "docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md",
-                "status": "accepted",
+                "status": "proposed",
                 "title": "Фолбэк = смена режима (дип-ресёрч в интернете с тем же контрактом)"
               },
               "open_issues": null,
@@ -1113,8 +1115,8 @@
     "containers": 4,
     "components": 16,
     "adr_total": 35,
-    "adr_proposed": 11,
-    "adr_accepted": 22,
+    "adr_proposed": 12,
+    "adr_accepted": 21,
     "adr_superseded": 0
   }
 }

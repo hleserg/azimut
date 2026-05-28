@@ -46,7 +46,9 @@
 
 | | |
 |---|---|
-| **Цель** | Система продолжает отвечать пользователю при недоступности основной облачной модели |
-| **Стимул** | Облачная LLM (DeepSeek / Claude / Qwen) возвращает ошибку или таймаут |
-| **Реакция** | MCP-сервер активирует режим Р7: переключается на дип-ресёрч в интернете, помечает ответ «из интернета, не из локального индекса» ([ADR 0007](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md)) |
-| **Критерий** | Фолбэк срабатывает за ≤ **5 секунд** после первой ошибки API; метрика `fallback_triggered` в Sentry логируется отдельно от штатного `low_relevance` |
+| **Цель** | Graceful degradation — при отказе основной облачной LLM система либо переходит на запасного провайдера (если настроен), либо возвращает пользователю явную ошибку, а не вешается и не выдаёт ложный ответ |
+| **Стимул** | Основная облачная LLM ([DeepSeek по умолчанию, ADR 0021](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0021-default-model-deepseek-v4.md)) возвращает ошибку, таймаут или 5xx |
+| **Реакция** | Adapter-слой LLM ([ADR 0020](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/foundation/0020-cloud-llm-via-adapter.md)) проверяет конфигурацию: <br>• если в `.env`/конфиге прописан **backup-провайдер** (Claude / Qwen / Yandex) с валидным API-ключом → retry через него с тем же payload <br>• если backup **не сконфигурирован** → возвращает пользователю структурный error `{error: "llm_unavailable", retry_after: 60}` <br>**НЕ** активирует дип-ресёрч-режим — это другой сценарий (Р7 / [ADR 0007](https://github.com/hleserg/azimut/blob/master/docs/architecture/adr/anti-hallucinations/0007-р7-fallback-mode-switch.md), proposed): дип-ресёрч триггерится низкой релевантностью ретривера, а не падением LLM-API |
+| **Критерий** | При настроенном backup — retry-call за ≤ **5 секунд** после первой ошибки; метрики в Sentry: `llm_primary_failure_total` (счётчик), `llm_backup_success_total` (счётчик); при отсутствии backup — `llm_unavailable_returned_to_user_total` + HTTP 5xx со структурным error-объектом |
+
+⚠️ предположение: конкретная механика backup-провайдера (retry-стратегия, timeout, какие провайдеры обязательны/опциональны) **пока не зафиксирована ADR** — нужно проектировать. Текущая реализация: только primary без retry.
