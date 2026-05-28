@@ -28,7 +28,7 @@
 # Если хочется клонировать заранее:
 git clone git@github.com:hleserg/azimut.git ~/azimut
 cd ~/azimut
-git checkout docs/source-extraction
+git checkout master
 
 bash scripts/bigpc/setup-wsl.sh
 ```
@@ -70,7 +70,7 @@ cd \\wsl.localhost\Ubuntu\home\<твой-юзер>\azimut\scripts\bigpc\
 Скрипт:
 
 1. Создаст `C:\scripts\wsl-portproxy.ps1`.
-2. Добавит inbound firewall rule «Structurizr (on-prem, local-режим) 8080» (TCP 8080, профили Private+Domain).
+2. Добавит inbound firewall rule «Structurizr 8080» (TCP 8080, профили Private+Domain).
 3. Зарегистрирует Scheduled Task «WSL Portproxy 8080» (триггер — At Logon, RunLevel Highest).
 4. Запустит task сразу.
 5. Покажет вывод `netsh interface portproxy show all`.
@@ -117,23 +117,23 @@ git pull
 | Контейнер не работает | WSL: `docker ps -a \| grep azimuth-arch`; `docker logs azimuth-arch` |
 | Portproxy не работает | Windows: `netsh interface portproxy show all` |
 | WSL IP сменился, доступ потерян | Windows (от админа): `Start-ScheduledTask -TaskName "WSL Portproxy 8080"` |
-| Firewall блокирует | Windows: `Get-NetFirewallRule -DisplayName "Structurizr (on-prem, local-режим) 8080"` |
+| Firewall блокирует | Windows: `Get-NetFirewallRule -DisplayName "Structurizr 8080"` |
 | Из LAN не открывается | С другой машины: `Test-NetConnection bigPC -Port 8080` |
 | Task падает с exit 1 | Windows: `Get-ScheduledTaskInfo -TaskName "WSL Portproxy 8080"` — посмотри `LastTaskResult` |
 
 ### Удаление
 
-В WSL:
+В WSL (из корня репо `~/azimut`):
 
 ```bash
-docker stop azimuth-arch && docker rm azimuth-arch
+docker compose --profile diagrams down
 ```
 
 В Windows (от админа):
 
 ```powershell
 Unregister-ScheduledTask -TaskName "WSL Portproxy 8080" -Confirm:$false
-Remove-NetFirewallRule -DisplayName "Structurizr (on-prem, local-режим) 8080"
+Remove-NetFirewallRule -DisplayName "Structurizr 8080"
 Remove-Item C:\scripts\wsl-portproxy.ps1
 netsh interface portproxy delete v4tov4 listenport=8080 listenaddress=0.0.0.0
 ```
