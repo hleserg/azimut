@@ -11,7 +11,7 @@
 **`workspace.dsl`** в корне репо — единственный источник правды для статичных C4-диаграмм
 (Context / Container / Component). Фиксируется ADR 0034.
 
-- Просмотр локально: `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/structurizr local`
+- Просмотр локально: `docker run -it --rm -p 8080:8080 -v .:/usr/local/structurizr structurizr/structurizr`
 - Открыть `http://localhost:8080`
 - Перед изменением `workspace.dsl` — прочитать `_source/specs/c4/` (C4-спека).
 - Mermaid `sequenceDiagram` — только для §6 Runtime View (он лучше читается в git diff).
@@ -111,7 +111,7 @@
 Задача **не закрыта**, если не выполнено:
 
 1. **`workspace.dsl` обновлён** — если изменена архитектура (новый контейнер, компонент,
-   связь). Рендер проверяется через Structurizr (`structurizr/structurizr local`, см. §1).
+   связь). Рендер проверяется через Structurizr (`structurizr/structurizr`, см. §1).
 2. **ADR создан или обновлён** — любое архитектурное решение фиксируется в MADR-формате.
    Команда: `./scripts/new-adr.sh <подпапка> <kebab-title>`.
 3. **Глава 13 обновлена** — если добавлен новый инфраструктурный элемент.

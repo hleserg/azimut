@@ -46,7 +46,7 @@
 
 | # | Решение | Подробности | ADR |
 |---|---|---|---|
-| 24 | **Architecture-as-Code: Structurizr DSL.** Единый источник C4-диаграмм — [`workspace.dsl`](../../workspace.dsl) в корне репо; рендер через Structurizr on-prem в local-режиме (`structurizr/structurizr local`, Docker); Mermaid остаётся только для §6 Runtime View. | Связь DSL ↔ ADR — через `properties { "adr-link" "..." }` на элементах DSL: компонент знает свой ADR, ADR знает свой компонент. | [ADR 0034](adr/tooling/0034-architecture-as-code-structurizr-dsl.md) |
+| 24 | **Architecture-as-Code: Structurizr DSL.** Единый источник C4-диаграмм — [`workspace.dsl`](../../workspace.dsl) в корне репо; рендер через Structurizr on-prem в local-режиме (`structurizr/structurizr`, Docker); Mermaid остаётся только для §6 Runtime View. | Связь DSL ↔ ADR — через `properties { "adr-link" "..." }` на элементах DSL: компонент знает свой ADR, ADR знает свой компонент. | [ADR 0034](adr/tooling/0034-architecture-as-code-structurizr-dsl.md) |
 
 ## 4.5 Открытые решения
 

@@ -82,7 +82,7 @@ docker run -d \
   --name "$CONTAINER_NAME" \
   -p 8080:8080 \
   -v "$REPO_DIR:/usr/local/structurizr" \
-  "$IMAGE" local
+  "$IMAGE"
 
 # 6. Verify
 sleep 3
