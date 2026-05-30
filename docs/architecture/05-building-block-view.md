@@ -4,7 +4,9 @@
 > Диаграммы — в [`workspace.dsl`](../../workspace.dsl) (Structurizr DSL, ADR 0034). Статичные C4-схемы в Mermaid не создаются.
 > Запуск: `docker compose --profile diagrams up -d structurizr-proxy` (остановить: `docker compose --profile diagrams down`)
 
-## 5.0 Конвенция: контейнер = пакет, компонент = модуль
+## 5.0 Конвенции
+
+### 5.0.1 Контейнер = пакет, компонент = модуль
 
 В строгом C4 контейнер — это runtime boundary (отдельно запускаемый процесс / БД / файловая система). У нас MCP-сервер и Азимут-ядро формально живут в одном Python-процессе, поэтому конвенция проекта мягче:
 
@@ -12,6 +14,20 @@
 - **Компонент (C3)** — модуль внутри пакета (`src/<package>/<module>.py`) или класс с публичным интерфейсом.
 
 Граница «наш код / форк bsl-atlas» (ADR 0022) — это группа контейнеров (Structurizr `group`), а не отдельный контейнер. Это позволяет видеть и ownership, и реальное устройство кода.
+
+### 5.0.2 Связи
+
+- **Направление**: стрелка от инициатора (кто зовёт) к получателю.
+- **Технология** (значение по умолчанию — sync request-response):
+  - `Python API` — кросс-контейнерный in-process вызов (Python import + function call)
+  - `in-process` — компонент → компонент внутри одного контейнера
+  - `ChromaDB API`, `SQLite API` — sync, embedded клиенты
+  - `MCP / JSON-RPC` — sync request-response (stdio / http transport)
+  - `HTTPS / X` — sync request-response
+  - `HTTPS / X (fire-and-forget)` — async без ожидания ответа (Sentry SDK)
+  - `Python API (async background)` — через FastAPI BackgroundTask (HTTP `/reindex`)
+  - `File system` — чтение файлов
+- **Подпись** — конкретный API-вызов / поток данных, без vague "uses"/"использует".
 
 ---
 
